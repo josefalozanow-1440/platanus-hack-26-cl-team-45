@@ -9,7 +9,7 @@
 | Último mensaje incorporado | `1573766452777979945` (2026-11-21 18:26 UTC) |
 | Documento hermano | [`engineering-state.md`](engineering-state.md): cómo se construye. Si choca con este en alcance o límites, manda este. |
 | Propuesta de demo | [`demo-proposal.md`](demo-proposal.md) (Propuesta; se apoya en L-14, D-05, D-08 y D-17) |
-| Material de apoyo | [Flujo DS49 en Figma, v3 oficial](https://www.figma.com/design/72h9M4fZorEGnm3oEnrorh/Proyecto-Subsidio?node-id=3-2) de lozi-love (msgs `1573765313189912756`, `1573766038552707163`). Su alcance choca con D-02 (P-12). |
+| Material de apoyo | [Flujo DS49 en Figma, v3 oficial](https://www.figma.com/design/72h9M4fZorEGnm3oEnrorh/Proyecto-Subsidio?node-id=3-2) de lozi-love (msgs `1573765313189912756`, `1573766038552707163`), transcrito en [`figma-lozi.md`](product-state/figma-lozi.md). Su alcance va más allá de D-02 (P-12). |
 
 ## Estado en una frase
 
@@ -19,7 +19,7 @@ La demo y el pitch están en pausa (D-03), aunque ya hay una propuesta de demo p
 
 Tensiones abiertas:
 
-- El Figma de lozi-love acota el problema hasta la selección y deja después solo el seguimiento de la familia, lo que choca con D-02 (P-12).
+- El Figma de lozi-love ya no corta en la selección: el agente coordina todo el proceso, antes y después del subsidio, y solo sigue terreno, permisos, obra y pagos. Después del subsidio calza con D-02; antes, choca con D-02 y su MVP se parece a X-01 (P-12).
 - Varias decisiones marcadas «Decidido» salen solo de mensajes de agentes y falta que un humano las confirme (P-13). En la tabla de abajo llevan un asterisco.
 
 ## Mapa de archivos
@@ -35,6 +35,7 @@ Tensiones abiertas:
 | [`conceptos.md`](product-state/conceptos.md) | Vocabulario fijo: expediente vivo, versión, dependencia, compromiso, hito y otros. | Vas a nombrar entidades, estados o textos de interfaz. |
 | [`afirmaciones.md`](product-state/afirmaciones.md) | A-01 a A-16: reglas normativas y cifras, con su estado de verificación. | Vas a usar una regla, un plazo o una cifra. |
 | [`normativa.md`](product-state/normativa.md) | N-01 a N-26: leyes, decretos y resoluciones que rigen un DS49 colectivo, de qué tratan y reglas útiles con artículo. | Necesitas saber qué norma rige una etapa, un documento o un plazo. |
+| [`figma-lozi.md`](product-state/figma-lozi.md) | Transcripción del Figma de lozi-love: los 9 frames del flujo D.S. 49 v3 (problema, actores, plazos, carriles, puntaje, flechas rojas, solución, MVP, vacíos) y las pantallas del MVP, con sus cruces con el estado. | Diseñas pantallas, escribes el pitch o usas una cifra o un plazo del Figma. |
 | [`preguntas.md`](product-state/preguntas.md) | P-01 a P-13. | Tienes una duda de producto o vas a registrar una pregunta. |
 | [`descartado.md`](product-state/descartado.md) | X-01 a X-09, con el motivo. | Vas a proponer una idea nueva. |
 | [`handoff-ingenieria.md`](product-state/handoff-ingenieria.md) | Lo que ingeniería tiene que traducir desde producto. | Trabajas en `engineering-state.md`. |
