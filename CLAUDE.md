@@ -85,7 +85,7 @@ Lanza hasta cinco subagentes en paralelo cuando la tarea se parte en piezas que 
 
 ## Git
 
-Se trabaja en `main` con commits chicos. Haz `git pull --rebase --autostash` antes de partir y antes de cada push. Antes del push corre los checks que existan (tests, tipos, build). Si fallan por tu cambio, arréglalo antes de subir. Código con lógica nueva lleva al menos un test.
+Se trabaja en `main` con commits chicos. Haz `git pull --rebase --autostash` antes de partir y antes de cada push. Antes del push corre `./scripts/check.sh`, que levanta el stack y corre los mismos checks que CI (ruff, pytest, lint, tipos, build, duplicados y Playwright). Si fallan por tu cambio, arréglalo antes de subir. Código con lógica nueva lleva al menos un test.
 
 ## Lo que no se hace sin orden de un humano
 

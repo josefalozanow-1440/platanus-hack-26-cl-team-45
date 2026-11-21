@@ -1,0 +1,40 @@
+services:
+  db:
+    image: postgres:17
+    environment:
+      POSTGRES_USER: comite
+      POSTGRES_PASSWORD: comite
+      POSTGRES_DB: comite
+    ports: ["5432:5432"]
+    volumes: [db-data:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U comite"]
+      interval: 2s
+      retries: 15
+
+  api:
+    build: ./api
+    environment:
+      DATABASE_URL: postgresql+psycopg://comite:comite@db:5432/comite
+    ports: ["8000:8000"]
+    depends_on:
+      db: { condition: service_healthy }
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 2s
+      retries: 30
+
+  web:
+    build: ./web
+    environment:
+      API_URL: http://api:8000
+    ports: ["3000:3000"]
+    depends_on:
+      api: { condition: service_healthy }
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:3000"]
+      interval: 2s
+      retries: 30
+
+volumes:
+  db-data:

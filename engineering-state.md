@@ -10,7 +10,7 @@
 
 ## Estado en una frase
 
-No hay stack decidido ni código (P-02, D-15). La pieza central es el ejecutor en código que valida contrato, quórum y límites duros antes de cualquier acción (L-01). Kapso es el canal de WhatsApp: Kaina indicó que se usará, pero falta registrarlo en #steering (E-02, X-08).
+El stack está decidido (E-01) y el repo tiene la base en `api/` y `web/`; `scripts/check.sh` corre los mismos checks que CI. La pieza central es el ejecutor en código que valida contrato, quórum y límites duros antes de cualquier acción (L-01). Kapso es el canal de WhatsApp: Kaina indicó que se usará, pero falta registrarlo en #steering (E-02, X-08).
 
 ## Mapa de archivos
 
@@ -27,7 +27,7 @@ No hay stack decidido ni código (P-02, D-15). La pieza central es el ejecutor e
 
 | ID | Ítem | Estado | Detalle |
 | --- | --- | --- | --- |
-| E-01 | Stack: Next.js + Supabase + Claude con tool use. Postgres como única fuente de verdad; un grafo solo como copia derivada de solo lectura. | Propuesta (ver D-15) | msgs `1573734184588157009`, `1573746644799725793`, `1573746868121243821` |
+| E-01 | Stack: Postgres con SQLAlchemy y Alembic, API REST en FastAPI (`api/`), front en Next.js (`web/`), todo en `docker-compose.yml` y después en Render. Reglas de código en [`docs/reglas-de-codigo.md`](docs/reglas-de-codigo.md). | Decidido (Golazo, 2026-11-21) | Orden de Golazo por terminal |
 | E-02 | Kapso como canal de WhatsApp para familias y actores, conectado por webhook al servidor del equipo. | Propuesta. Kaina indicó que se usará (2026-11-21); falta confirmarlo en #steering. La demo propuesta lo usa ([`demo-proposal.md`](demo-proposal.md)). | `kapso.md` |
 | E-03 | Prueba automática de legibilidad de los textos para familias. | Propuesta | `accesibilidad.md` |
 | E-04 | Vista de familias accesible y liviana (WCAG 2.2 AA). | Propuesta | `accesibilidad.md` |

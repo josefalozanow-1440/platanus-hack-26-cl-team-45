@@ -9,6 +9,8 @@ Parte de [`engineering-state.md`](../engineering-state.md). Léelo si vas a escr
 | Hilo | [Propuesta de arquitectura de software · golazo#44](https://discord.com/channels/1573512846258741318/1573773445953495300) |
 | Se apoya en | E-01 (stack), E-02 (Kapso), L-01 (ejecutor), D-04, D-05, D-06, D-08, D-13, D-16, D-17 y la demo de [`demo-proposal.md`](../demo-proposal.md) |
 
+> El stack de abajo quedó reemplazado por E-01: FastAPI con SQLAlchemy en `api/`, Next.js en `web/`, Postgres en docker compose y deploy en Render. El ejecutor y las reglas van en `api/app/services/` con tests de pytest. Sin Supabase, Vercel ni Drizzle.
+
 ## La idea en cuatro frases
 
 1. Una sola app Next.js con una base Postgres en Supabase, que es la única fuente de verdad.
