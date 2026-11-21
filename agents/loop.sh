@@ -17,7 +17,7 @@ while [ ! -f .agent/stop ]; do
   claude -p "$(cat agents/PROMPT.md)
 
 Tu etiqueta es $tag. Tu humano es $2. Su ID de Discord es $1: úsalo en send_as y para mencionarlo con <@$1>." \
-    --model "${LOOP_MODEL:-opus}" --effort "${LOOP_EFFORT:-medium}" \
+    ${LOOP_MODEL:+--model "$LOOP_MODEL"} ${LOOP_EFFORT:+--effort "$LOOP_EFFORT"} \
     --dangerously-skip-permissions < /dev/null >> .agent/log 2>&1
   sleep "${LOOP_SLEEP:-20}"
 done
