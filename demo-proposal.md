@@ -1,92 +1,121 @@
 # Propuesta de demo: pitch de 3 minutos
 
-Propuesta de cómo mostrar Comité dentro del pitch de Platanus Hack 26 y del material que se puede diseñar antes de que exista la arquitectura. Todo este documento está en estado **Propuesta** hasta que un humano lo confirme en #steering.
+Propuesta de cómo mostrar Comité completo en el pitch de Platanus Hack 26 y del material que se puede diseñar antes de que exista la arquitectura. Todo este documento está en estado **Propuesta** hasta que un humano lo confirme en #steering.
 
 | Campo | Valor |
 | --- | --- |
-| Estado | Propuesta |
+| Estado | Propuesta (versión 2) |
 | Última actualización | 2026-11-21 |
 | Autor | kaina#62 (agente de Kaina) |
 | Hilo | [Propuesta de demo del pitch · kaina#62](https://discord.com/channels/1573512846258741318/1573768527742107691) |
-| Depende de | `product-state.md` y `engineering-state.md` (Kapso, E-02) |
+| Depende de | `product-state.md` y `engineering-state.md` (E-01, E-02) |
+
+## Qué cambió respecto de la versión 1
+
+La versión 1 armaba los 3 minutos alrededor de WhatsApp, con el jurado haciendo de familias. Kaina corrigió que los 3 minutos son para el producto entero y que WhatsApp es una sección breve. En esta versión el centro es el expediente vivo del proyecto y lo que ve cada actor; WhatsApp ocupa unos 25 segundos como el canal por el que actúan y se enteran quienes no abren un panel.
 
 ## La idea en tres frases
 
-1. El jurado escanea un QR, abre WhatsApp y queda como una familia del comité ficticio "Los Quillayes".
-2. La municipalidad observa un plano. Mientras nadie de la EP acepte corregirlo, el teléfono del jurado dice que todavía no se sabe quién lo hará; cuando la arquitecta de la EP (alguien del equipo, en su teléfono) aprieta "Acepto", el teléfono del jurado cambia al instante.
-3. La pantalla grande muestra el mismo hecho en dos conversaciones: la técnica que recibe la arquitecta y la simple que recibe la familia.
+1. Comité muestra un proyecto DS49 completo en una pantalla: qué hitos avanzan a la vez, qué paso tiene a alguien a cargo y cuál no, y sobre qué versión de cada documento se aprobó cada cosa.
+2. Un solo hecho recorre la demo: la municipalidad observa un plano. El panel marca solo lo que dependía de ese plano, la arquitecta acepta la corrección desde WhatsApp y cada actor se entera en su idioma.
+3. El agente ayuda a cada actor, pero las reglas que protegen a las familias viven en código: cuando el dirigente pide sacar a una familia, el ejecutor lo bloquea.
 
-Por qué es multiplayer: lo que hace la arquitecta cambia lo que ven las familias, y el mensaje de la familia depende de si alguien tomó el paso (D-06, L-05, L-13). Con una sola persona no hay nada que coordinar.
+Por qué es multiplayer: varios actores trabajan sobre el mismo expediente y lo que hace uno cambia lo que ven los demás. La aceptación de la arquitecta cambia el panel de la EP, la vista del dirigente y el mensaje de la familia.
 
 ## Qué supone esta propuesta
 
-Esta propuesta se apoya en ítems que hoy no están todos decididos. Si alguno cambia, cambia el guion.
-
 | Supuesto | Ítem | Estado del ítem | Qué pasa si no se confirma |
 | --- | --- | --- | --- |
-| La demo vuelve al camino crítico. | D-03 | Decidido: demo fuera del camino crítico (Edo) | Esta propuesta queda como diseño para después. Hay que confirmarlo en #steering. |
-| WhatsApp por Kapso es el canal para familias y actores. | X-08, E-02 | En pausa en los documentos; Kaina dijo que se usará Kapso | Se reemplaza WhatsApp por una vista web en el teléfono. |
-| Un cambio de plano marca para revalidar solo las revisiones que dependían de él. | D-05, D-08 | Propuesta | Se quita la parte de "por revalidar" del beat 1. |
-| Que una gestión le corresponda a la EP no significa que la aceptó. | L-14 | Propuesta | Se cae el beat central. Es el ítem más importante de confirmar. |
+| La demo vuelve al camino crítico. | D-03 | Decidido: demo fuera del camino crítico (Edo). `CLAUDE.md` hoy dice que lo del pitch va primero. | Hay que confirmarlo en #steering. |
+| El producto sigue el proyecto después del subsidio, con gestiones entre actores. | D-02, P-12 | Decidido, con tensión abierta por el Figma | Si el alcance se acota a la selección, la demo cambia entera. |
+| Un cambio de plano marca para revalidar solo lo que dependía de él. | D-05, D-08 | Propuesta | Se quita el tramo de revalidación; el panel solo muestra la observación. |
+| Que una gestión le corresponda a la EP no significa que la aceptó. | L-14 | Propuesta | Se cae el contraste "le corresponde / la aceptó", que es el centro del tramo de WhatsApp. |
 | El proyecto muestra hitos en paralelo, no una etapa actual. | D-17 | Propuesta | El panel muestra etapas. |
-| El producto sigue el proyecto después del subsidio, con gestiones entre actores. | D-02, P-12 | Decidido, con tensión abierta por el Figma | Si el alcance se acota a la selección, la escena cambia entera. |
-| El gancho usa la cifra de 118.000 subsidios no pagados. | A-05, P-08 | Por verificar | No se dice la cifra; se usa el gancho sin número (ver guion). |
+| WhatsApp por Kapso es el canal para quienes no usan el panel. | X-08, E-02 | Kaina dijo que se usará; falta registrarlo en #steering | El tramo se hace con la vista web en un teléfono. |
+| El gancho usa la cifra de 118.000 subsidios no pagados. | A-05, P-08 | Por verificar | Se usa el gancho sin número. |
 
 ## Guion minuto a minuto
 
-El QR está en pantalla desde el segundo cero para que el jurado entre mientras se presenta el problema.
+Una persona presenta con el panel en el proyector. Dos teléfonos del equipo (arquitecta y familia) se ven en pantalla con espejo o cámara.
 
-| Tiempo | Qué se ve | Qué se dice (idea, no texto final) | Ítems |
+| Tiempo | Tramo | Qué se ve | Qué se dice (idea, no texto final) | Ítems |
+| --- | --- | --- | --- | --- |
+| 0:00 a 0:20 | Problema | Slide con los actores de un proyecto DS49 alrededor de una familia. | Hay familias con el subsidio asignado que siguen sin casa. Entre el subsidio y la llave intervienen la EP, la constructora, el SERVIU, la DOM, la notaría y el Conservador. Cada uno ve su parte y nadie ve quién tiene el siguiente paso. | A-05 solo si se verifica; `problema.md` |
+| 0:20 a 0:35 | Qué es Comité | Slide de una frase y el panel detrás. | Comité es un expediente vivo por proyecto. Cada actor ve lo que le toca, aporta solo en su ámbito y sabe qué falta y quién lo tomó. No reemplaza a nadie. | D-04, D-10, D-13 |
+| 0:35 a 0:55 | El proyecto completo | Panel de la EP: hitos en paralelo (calificación SERVIU cumplida, permiso en revisión en la DOM, antecedentes de 40 familias al día, pago final 0 de 5) y la lista de gestiones con su estado. | Así se ve el proyecto de 40 familias hoy. Varios hitos avanzan a la vez. Cada paso dice si alguien lo aceptó; nadie queda a cargo por silencio. | D-06, D-17, L-05 |
+| 0:55 a 1:20 | Una observación no reinicia todo | Entra la observación de la DOM al plano sanitario v2. El panel marca "por revalidar" la calificación SERVIU, que dependía de ese plano, y deja vigente la revisión estructural. Aparece la gestión "Corregir plano sanitario": le corresponde a la EP, nadie la aceptó. | Hoy una observación devuelve el proyecto completo. Aquí cada aprobación está ligada a la versión que se revisó, así que solo se reabre lo que dependía de ese plano. Y el sistema no inventa un responsable. | D-05, D-08, L-14 |
+| 1:20 a 1:45 | WhatsApp (sección breve) | El teléfono de la arquitecta recibe el detalle técnico con el botón "Acepto". Lo aprieta. El panel cambia a "aceptada por la arquitecta" y el teléfono de la familia recibe un mensaje simple. | No todos van a abrir un panel. La arquitecta acepta desde WhatsApp y la familia se entera ahí mismo. Es el mismo hecho en dos conversaciones: la técnica dice qué lámina corregir y la simple dice que la familia no tiene que hacer nada. | D-06, D-16, E-02 |
+| 1:45 a 2:10 | Vista del dirigente y límites del agente | Vista del dirigente: qué falta en el proyecto y quién lo tomó, y el estado de cada familia sin ver sus documentos. Escribe al agente "La familia 7 nunca contesta, ¿la sacamos?". El agente no lo recomienda y el registro del ejecutor muestra la acción bloqueada. | El dirigente recibe todas las preguntas del comité. Ahora tiene respuestas. El agente ayuda, pero no decide: las reglas que protegen a las familias no están en el prompt, están en el código. | D-13, L-01, L-02, L-06 |
+| 2:10 a 2:35 | Cómo funciona | Slide de arquitectura: expediente en una base de datos como única fuente de verdad, ejecutor que valida cada acción, agente con herramientas, y dos canales de salida (panel web y WhatsApp por Kapso) que redactan por rol. | Lo difícil fue modelar versiones y dependencias para que un cambio marque solo lo que corresponde, y poner los límites en un ejecutor que el modelo no puede saltarse. | E-01, E-02, L-01 |
+| 2:35 a 3:00 | Cierre | Slide de cierre. | Siguiente paso: una EP carga uno de sus proyectos reales y suma a su comité. Validamos con un caso real dónde se traba la coordinación. | D-18, P-10 |
+
+Si el guion pasa de 3 minutos, se corta en este orden:
+
+1. El mensaje del dirigente al agente queda en una línea y el registro del ejecutor se muestra sin narrarlo.
+2. La slide de arquitectura baja a 10 segundos.
+3. El tramo de WhatsApp no se alarga para compensar: si falla en vivo, se pasa al video de respaldo de ese tramo.
+
+### Tramo opcional (si sobra tiempo en el ensayo)
+
+| Duración | Qué se ve | Qué se dice | Ítems |
 | --- | --- | --- | --- |
-| 0:00 a 0:25 | Slide del problema con el QR grande. | Hay familias con el subsidio asignado y sin casa. Un proyecto DS49 depende de una decena de actores y nadie ve quién tiene el siguiente paso. "Escaneen el QR: ustedes son familias de este comité." | A-05 solo si se verifica |
-| 0:25 a 0:40 | Teléfonos del jurado reciben la bienvenida. Pantalla grande: panel del proyecto con hitos en paralelo. | "Este es un proyecto ficticio con 40 familias. Ustedes ven lo que ve una familia; yo veo lo que ve la EP." | D-13, D-17 |
-| 0:40 a 1:05 | **Beat 1.** Entra la observación de la municipalidad al plano sanitario. El panel marca "por revalidar" la revisión que dependía de ese plano y deja vigente la estructural. Aparece la gestión "Corregir plano sanitario": le corresponde a la EP, nadie la aceptó. Teléfonos del jurado: "todavía no sabemos quién lo va a corregir". | "El sistema no inventa un responsable para tranquilizarlos." | D-05, D-08, L-13, L-14 |
-| 1:05 a 1:25 | **Beat 2.** La arquitecta recibe el mensaje técnico con botones y aprieta "Acepto". El panel cambia y los teléfonos del jurado reciben "La arquitecta de la EP ya está corrigiendo el plano". En la pantalla grande se ven lado a lado los dos mensajes. | "Mismo hecho, dos conversaciones. La familia sabe si tiene que hacer algo; la arquitecta sabe qué lámina y qué revisión." | D-06, D-16, L-14 |
-| 1:25 a 1:45 | **Beat 3.** La arquitecta sube el plano corregido. El panel dice "reingresado a la DOM, sin respuesta", no "permiso aprobado". Un jurado pregunta libre por WhatsApp, por ejemplo "¿cuándo me entregan la casa?", y recibe una respuesta sin fecha inventada. | "Enviar no es aprobar, y una fecha sin fuente no se muestra." | D-07, D-12 |
-| 1:45 a 2:05 | **Beat 4 (se corta si falta tiempo).** El dirigente escribe "La familia 7 nunca contesta, ¿la sacamos?". El agente no lo recomienda y el panel muestra la acción bloqueada por el ejecutor. | "Las reglas que protegen a las familias no están en el prompt; están en el código." | L-01, L-02 |
-| 2:05 a 2:35 | Slide de arquitectura: WhatsApp (Kapso) → servidor → ejecutor que valida → fuente de verdad → mensajes por rol. | El elemento técnico difícil: un ejecutor que valida límites antes de actuar y conversaciones distintas generadas desde el mismo hecho. | L-01, D-16 |
-| 2:35 a 3:00 | Slide de cierre. | Impacto y siguiente paso: una EP conecta su número y su cartera de proyectos. "Lo que hoy coordina un chat que nadie lee, lo coordina el comité completo." | D-10, E-02 |
-
-Si el guion pasa de 3 minutos, se corta primero el beat 4 y después la pregunta libre del beat 3. El beat 2 no se corta: es la prueba de que es multiplayer.
+| 10 s | La arquitecta sube el plano v3. El panel dice "reingresado a la DOM, sin respuesta", no "permiso aprobado". | Enviar no es aprobar. | D-07 |
+| 10 s | En el hito del pago final, dos de los cinco documentos ya están acreditados de etapas anteriores y se reutilizan sin pedirlos otra vez. | Lo que ya se acreditó no se vuelve a pedir mientras siga vigente. | D-11 |
 
 ### Elenco
 
 | Rol en la demo | Quién lo hace | Dispositivo |
 | --- | --- | --- |
-| Familias del comité | El jurado (y una persona del equipo como respaldo) | Su propio teléfono, por WhatsApp |
-| Arquitecta de la EP | Una persona del equipo | Teléfono del equipo, por WhatsApp |
-| Dirigente del comité | Una persona del equipo | Teléfono del equipo, por WhatsApp |
-| Persona que presenta | Una persona del equipo | Computador conectado al proyector (panel de la EP) |
-| DOM de "Valle Alto" | Nadie: la observación la carga el equipo desde el panel | — |
+| Persona que presenta (EP) | Una persona del equipo | Computador en el proyector, panel de la EP |
+| Arquitecta de la EP | Una persona del equipo | Teléfono con WhatsApp, en espejo o cámara |
+| Familia 12 del comité | Una persona del equipo | Teléfono con WhatsApp, en espejo o cámara |
+| Dirigente del comité | La misma persona que presenta | Segunda pestaña con la vista del dirigente |
+| DOM de "Valle Alto" | Nadie: la observación la carga el equipo | — |
 
-En el escenario se dice en voz alta que el proyecto, la comuna y los documentos son ficticios y que la observación de la DOM la cargamos nosotros. La DOM no usa Comité (D-10).
+En el escenario se dice que el proyecto, la comuna y los documentos son ficticios y que la observación de la DOM la cargamos nosotros. La DOM no usa Comité (D-10).
 
 ### Por qué la demo cubre la rúbrica
 
 | Criterio | Peso | Momento que lo prueba |
 | --- | --- | --- |
-| Técnico | 25% | Beat 4 (ejecutor bloquea) y slide de arquitectura. Beat 2 muestra dos conversaciones generadas desde el mismo hecho. |
-| Ambición | 20% | Una decena de actores coordinados por WhatsApp sin cambiar sus atribuciones. |
-| Ejecución | 20% | El jurado entra en menos de 30 segundos con su propio teléfono y ve el cambio en vivo. |
-| Impacto | 20% | Gancho del problema (con cifra solo si se verifica) y siguiente paso con la EP. |
-| Original | 15% | El mensaje honesto "todavía no sabemos quién lo hará" en vez de un estado en verde. |
+| Técnico | 25% | Revalidación parcial por versión y dependencia (0:55). Ejecutor que bloquea al agente (1:45). Slide de arquitectura. |
+| Ambición | 20% | El proyecto completo después del subsidio, con hitos en paralelo y varios actores sobre el mismo expediente (0:35). |
+| Ejecución | 20% | Un hecho que recorre panel, WhatsApp y vista del dirigente sin cortes. |
+| Impacto | 20% | Gancho del problema (con cifra solo si se verifica) y siguiente paso con una EP real. |
+| Original | 15% | "Le corresponde a la EP, nadie la aceptó" en vez de un estado en verde, y el mismo hecho redactado para cada actor. |
+
+## Qué hay que construir para este guion
+
+Esta tabla dice qué piezas del producto aparecen en pantalla. Sirve para repartir trabajo apenas se confirme la demo y el stack.
+
+| Pieza | Tramo | Ítems | Estado de los ítems |
+| --- | --- | --- | --- |
+| Expediente con versiones de documentos y aprobaciones ligadas a una versión | 0:55 | D-04, D-05 | D-05 Propuesta |
+| Dependencias entre aprobaciones y documentos, que marcan "por revalidar" | 0:55 | D-08 | Propuesta |
+| Hitos en paralelo en el panel | 0:35 | D-17 | Propuesta |
+| Gestiones con cuatro estados y aceptación explícita | 0:35, 0:55, 1:20 | D-06, L-05, L-14 | L-14 Propuesta |
+| Vistas por rol: EP y dirigente | 0:35, 1:45 | D-13, L-06 | Decidido* |
+| Mensajes por rol generados desde el mismo hecho | 1:20 | D-16, E-03 | D-16 Decidido |
+| WhatsApp por Kapso: botón "Acepto" y aviso a la familia | 1:20 | E-02 | Propuesta |
+| Ejecutor con límites y registro de acciones bloqueadas | 1:45 | L-01, L-02 | Decidido* |
+| Agente con herramientas para el dirigente | 1:45 | E-01 | Propuesta |
 
 ## Material que se puede diseñar ahora
 
-Nada de esta lista depende de la base de datos ni de los modelos. Cada pieza se puede repartir a un agente distinto porque tocan archivos distintos.
+Nada de esta lista depende de la base de datos ni de los modelos. Cada pieza toca archivos distintos y se puede repartir a un agente distinto.
 
 | ID | Pieza | Qué incluye | Formato sugerido |
 | --- | --- | --- | --- |
-| M-01 | Tarjeta QR de entrada | QR a `wa.me/<número de Kapso>?text=Quiero%20unirme%20al%20comit%C3%A9`, una frase de instrucción y el aviso de que es una demo. El número queda como marcador hasta tener el de Kapso. | Slide y PNG |
-| M-02 | Ficha del proyecto ficticio | Comité Los Quillayes, comuna ficticia Valle Alto, 40 familias, EP ficticia "Raíz Común", hitos y su estado al inicio de la demo (tabla abajo). | Markdown, para que lo usen pantallas y mensajes |
-| M-03 | Documentos ficticios | Ver "Documentos de la demo". | PDF o PNG |
-| M-04 | Guion de mensajes de WhatsApp | Textos exactos de "Mensajes de WhatsApp", con botones. Pasan la revisión de lectura de E-03 antes de congelarlos. | Markdown |
-| M-05 | Pantallas del panel de la EP | Ver "Panel de la EP". | Figma (el archivo de lozi-love) |
-| M-06 | Slides del pitch | Problema con QR, arquitectura, cierre. | Figma o el formato que elija el equipo |
-| M-07 | Video de respaldo | Storyboard con los beats 1 a 3 grabados en dos teléfonos y el panel. Se graba apenas funcione. | Storyboard en Markdown, después video |
-| M-08 | Respuestas a preguntas del jurado | Ver "Preguntas probables". | Markdown |
+| M-01 | Ficha del proyecto ficticio | Comité Los Quillayes, comuna ficticia Valle Alto, 40 familias, EP ficticia "Raíz Común", hitos y su estado al inicio (tabla abajo). | Markdown, para pantallas y mensajes |
+| M-02 | Documentos ficticios | Ver "Documentos de la demo". | PDF o PNG |
+| M-03 | Pantallas | Panel de la EP, detalle del plano con versiones y dependencias, vista del dirigente, registro del ejecutor. Ver "Pantallas". | Figma (el archivo de lozi-love) |
+| M-04 | Mensajes de WhatsApp | Los cuatro textos de "Mensajes de WhatsApp". Pasan la revisión de E-03 antes de congelarlos. | Markdown |
+| M-05 | Conversación del dirigente con el agente | Pregunta, respuesta y la entrada del registro del ejecutor. | Markdown |
+| M-06 | Slides | Problema, qué es Comité, arquitectura, cierre. | Figma o el formato que elija el equipo |
+| M-07 | Video de respaldo | Storyboard de 0:35 a 2:10, grabado con el panel y los dos teléfonos. | Storyboard en Markdown, después video |
+| M-08 | Respuestas al jurado | Ver "Preguntas probables". | Markdown |
 
-### Estado del proyecto al inicio de la demo (M-02)
+### Estado del proyecto al inicio de la demo (M-01)
 
 | Hito | Estado | Sobre qué versión |
 | --- | --- | --- |
@@ -97,19 +126,24 @@ Nada de esta lista depende de la base de datos ni de los modelos. Cada pieza se 
 | Antecedentes de las familias | 40 de 40 con RSH, ahorro y cédula vigentes (solo estados, sin contenido) | — |
 | Documentos para el pago final | 0 de 5 (la lista se muestra; los documentos no existen todavía) | — |
 
-### Documentos de la demo (M-03)
+Gestiones abiertas al inicio, para que el panel no parta vacío:
 
-La lista sale de los documentos del recorrido de referencia de [`product-state/recorrido.md`](product-state/recorrido.md). Solo se diseñan los que aparecen en pantalla; el resto se muestra como nombre en una lista.
+| Gestión | Le corresponde a | Estado |
+| --- | --- | --- |
+| Responder consulta de la DOM sobre accesos | EP | Aceptada por el jefe de proyecto |
+| Programar visita al terreno con la constructora | Constructora | Propuesta, nadie la aceptó |
+| Convocar asamblea para aprobar cambio de terminaciones | Dirigencia | Cumplida con acta |
 
-| Documento | Lo emite | Para qué está en la demo | Se diseña |
+### Documentos de la demo (M-02)
+
+| Documento | Lo emite | Para qué está | Se diseña |
 | --- | --- | --- | --- |
-| Plano sanitario v2, lámina S-02 | EP Raíz Común (ficticia) | Versión sobre la que se aprobaron las revisiones. Lleva un código de versión visible. | Sí |
-| Observación de la DOM n.º 3 al plano sanitario | DOM de Valle Alto (ficticia) | Dispara el beat 1. Pide corregir la pendiente del colector y la ubicación de una cámara de inspección. | Sí |
-| Plano sanitario v3, lámina S-02 | EP Raíz Común (ficticia) | Versión corregida del beat 3, con otro código de versión. | Sí |
-| Permiso de edificación | DOM | Solo como hito "en revisión". No se diseña para no mostrar un permiso aprobado (D-07). | No |
-| Certificado de Proyecto Calificado | SERVIU | Solo como hito cumplido en el panel. | No |
-| Certificado de subsidio endosado, escritura inscrita, prohibición de vender, permiso de edificación, recepción municipal | Varios | Lista de los cinco documentos del pago final, para mostrar qué falta. | No |
-| RSH, cédula, cartola de ahorro de cada familia | Familias | Solo estados ("ahorro ✅"), nunca el documento (L-06). | No |
+| Plano sanitario v2, lámina S-02 | EP Raíz Común (ficticia) | Versión sobre la que se aprobó la calificación. Lleva un código de versión visible. | Sí |
+| Observación de la DOM n.º 3 al plano sanitario | DOM de Valle Alto (ficticia) | Dispara el tramo de 0:55. Pide corregir la pendiente del colector y la ubicación de una cámara de inspección. | Sí |
+| Plano sanitario v3, lámina S-02 | EP Raíz Común (ficticia) | Solo en el tramo opcional. | Sí, si entra el tramo opcional |
+| Acta de asamblea | Comité Los Quillayes | Gestión cumplida del panel. | No, solo el nombre |
+| Cinco documentos del pago final | Varios | Lista del hito de pago final. | No, solo los nombres |
+| RSH, cédula y cartola de ahorro de cada familia | Familias | Solo estados ("ahorro ✅"), nunca el documento (L-06). | No |
 
 Reglas para todos los documentos ficticios:
 
@@ -117,56 +151,57 @@ Reglas para todos los documentos ficticios:
 - La comuna, la EP, el comité y las personas son inventados. No se usan logos, firmas, timbres, RUT ni formatos de folio de instituciones reales.
 - Ningún documento se ve como un permiso, un pago o una resolución aprobada.
 
+### Pantallas (M-03)
+
+Todas se leen desde lejos: letra grande, ícono y palabra además del color (E-04).
+
+| Pantalla | Qué muestra | Tramo |
+| --- | --- | --- |
+| Panel de la EP | Arriba, los hitos en paralelo. A la derecha, las gestiones con su estado: le corresponde a, aceptada, cumplida con evidencia, sin cobertura. | 0:35 |
+| Detalle del plano | Versiones del plano sanitario y qué aprobaciones dependen de cada una. Al entrar la observación, la calificación SERVIU pasa a "por revalidar" y la revisión estructural sigue vigente. | 0:55 |
+| Mismo hecho, dos conversaciones | Franja del panel con el mensaje técnico y el simple lado a lado. | 1:20 |
+| Vista del dirigente | Qué falta y quién lo tomó, estado de cada familia sin documentos, chat con el agente. | 1:45 |
+| Registro del ejecutor | Acciones bloqueadas con el límite que las bloqueó (L-02). | 1:45 |
+
 ### Mensajes de WhatsApp (M-04)
 
-Borrador. Los textos para familias tienen que pasar la revisión de E-03 (oraciones cortas, sin siglas sin explicar). Los botones de respuesta de WhatsApp admiten hasta 3 opciones de hasta 20 caracteres; está por verificar cómo los expone Kapso.
+Solo cuatro, porque el tramo dura 25 segundos. Los botones de WhatsApp admiten hasta 3 opciones de hasta 20 caracteres; está por verificar cómo los expone Kapso.
 
 | Momento | Para | Texto | Botones |
 | --- | --- | --- | --- |
-| Entrada | Jurado (familia) | Hola. Ahora eres la familia 12 del Comité Los Quillayes. Es un proyecto de prueba. Te voy a avisar cuando cambie algo en tu proyecto y si tienes que hacer algo. | — |
-| Beat 1 | Familias | La municipalidad pidió corregir un plano del proyecto. Todavía no sabemos quién lo va a corregir. Tú no tienes que hacer nada por ahora. | — |
-| Beat 1 | Arquitecta de la EP | Observación DOM n.º 3 al plano sanitario v2, lámina S-02: corregir pendiente del colector y ubicación de la cámara de inspección. Queda por revalidar la calificación SERVIU sobre v2. No afecta el cálculo estructural. La gestión le corresponde a la EP y nadie la ha aceptado. | Acepto · No puedo |
-| Beat 2 | Familias | La arquitecta de la EP ya está corrigiendo el plano. Tú no tienes que entregar nada. Te aviso cuando la municipalidad responda. | — |
-| Beat 3 | Familias | La EP mandó el plano corregido a la municipalidad. Todavía no responden. Eso no significa que el permiso esté aprobado. | — |
-| Beat 3 | Respuesta a "¿cuándo me entregan la casa?" | Todavía no hay fecha de entrega. Primero falta el permiso de la municipalidad y después viene la obra. Cuando haya una fecha confirmada, te aviso. | — |
-| Beat 4 | Dirigente | No puedo recomendar sacar a una familia. Sí puedo ver qué le falta a la familia 7 y quién puede ayudarla. Hoy no tiene nada pendiente en el proyecto. | Ver qué falta |
-| Si la arquitecta aprieta "No puedo" | Familias | La corrección del plano todavía no tiene a nadie a cargo. La EP está buscando quién la toma. Tú no tienes que hacer nada. | — |
+| 1:20 | Arquitecta de la EP | Observación DOM n.º 3 al plano sanitario v2, lámina S-02: corregir pendiente del colector y ubicación de la cámara de inspección. Queda por revalidar la calificación SERVIU sobre v2. No afecta el cálculo estructural. La gestión le corresponde a la EP y nadie la ha aceptado. | Acepto · No puedo |
+| 1:20, antes de aceptar | Familia | La municipalidad pidió corregir un plano del proyecto. Todavía no sabemos quién lo va a corregir. Tú no tienes que hacer nada por ahora. | — |
+| 1:20, después de aceptar | Familia | La arquitecta de la EP ya está corrigiendo el plano. Tú no tienes que entregar nada. Te aviso cuando la municipalidad responda. | — |
+| Respaldo, si aprieta "No puedo" | Familia | La corrección del plano todavía no tiene a nadie a cargo. La EP está buscando quién la toma. Tú no tienes que hacer nada. | — |
 
-El último mensaje cubre la rama "sin cobertura" (D-06, L-05). Sirve como respaldo si en el ensayo conviene mostrar esa rama en vez de la aceptación.
+### Conversación del dirigente (M-05)
 
-### Panel de la EP (M-05)
-
-Una sola pantalla para el proyector, pensada para leerse desde lejos:
-
-- Arriba: nombre del proyecto y los hitos de M-02 en paralelo, con ícono y palabra además del color (E-04).
-- Al centro: el plano sanitario con sus versiones y las revisiones que dependen de cada versión. Al cambiar de v2 a v3, la calificación SERVIU pasa a "por revalidar" y la revisión estructural sigue vigente.
-- A la derecha: las gestiones con su estado (corresponde a, pendiente de aceptación, aceptada, cumplida con evidencia, sin cobertura).
-- Abajo: el mismo hecho en dos columnas, "Conversación técnica" y "Conversación con familias".
-- Un registro de acciones bloqueadas por el ejecutor, que se usa en el beat 4.
-
-Las familias no ven este panel. Su vista en la demo es solo WhatsApp.
+| Quién | Texto |
+| --- | --- |
+| Dirigente | La familia 7 nunca contesta, ¿la sacamos? |
+| Agente | No puedo recomendar sacar a una familia. Sí puedo ver qué le falta a la familia 7 y quién puede ayudarla. Hoy no tiene nada pendiente en el proyecto. |
+| Registro del ejecutor | Acción bloqueada: proponer exclusión de familia. Límite L-02. |
 
 ## Riesgos de la demo
 
 | Riesgo | Mitigación |
 | --- | --- |
-| Escribirle a alguien que no escribió primero exige plantillas aprobadas por Meta (R-02). | El jurado escribe primero al escanear el QR y la arquitecta y el dirigente le escriben al número antes de partir. Así toda la demo ocurre dentro de la ventana de 24 horas. |
-| El WiFi del lugar falla. | Teléfonos del equipo con datos propios o hotspot. Video de respaldo (M-07). |
-| El jurado no escanea o no tiene WhatsApp. | Una persona del equipo hace de familia en un teléfono visible en cámara. |
-| Los números del jurado pasan por Meta y Kapso. | Se avisa en la tarjeta QR que es una demo, no se pide ningún dato y se borran las conversaciones después del pitch. |
-| El agente responde lento. | El panel muestra "pensando" y los mensajes de los beats 1, 2 y 3 son avisos que dispara el cambio de estado, no respuestas libres del modelo. |
-| Un documento ficticio se confunde con uno real. | Reglas de M-03. |
+| Escribirle a alguien que no escribió primero exige plantillas aprobadas por Meta (R-02). | Los dos teléfonos del equipo le escriben al número antes de partir, así todo ocurre dentro de la ventana de 24 horas. |
+| El WiFi del lugar falla. | Teléfonos con datos propios o hotspot. Video de respaldo (M-07). |
+| WhatsApp o Kapso responden lento en vivo. | Los avisos los dispara el cambio de estado, no una respuesta libre del modelo. Si tarda más de 5 segundos, se sigue con la vista del dirigente y se vuelve al teléfono al final. |
+| El agente responde lento o distinto en la vista del dirigente. | La negativa sale del ejecutor, no del texto del modelo; el registro del ejecutor se muestra igual. |
+| Un documento ficticio se confunde con uno real. | Reglas de M-02. |
 
 ## Preguntas probables del jurado (M-08)
 
 | Pregunta | Respuesta corta |
 | --- | --- |
+| ¿Por qué no basta con un grupo de WhatsApp? | En el grupo nadie distingue "le toca a la EP" de "la EP lo tomó", no hay versiones y la familia lee lo mismo que el técnico. WhatsApp es solo un canal de Comité. |
 | ¿Qué pasa si lo usa una sola persona? | No hay a quién pasarle el paso. El valor está en que la aceptación de uno cambia lo que ven los demás. |
-| ¿Por qué no basta con un grupo de WhatsApp? | En el grupo nadie distingue "le toca a la EP" de "la EP lo tomó", y la familia lee lo mismo que el técnico. |
-| ¿Qué aporta el agente que no aporte una persona? | Traduce el mismo hecho a cada actor y responde a cualquier hora. Las decisiones no las toma él: el ejecutor valida antes de actuar. |
+| ¿Qué aporta el agente que no aporte una persona? | Redacta el mismo hecho para cada actor y responde a cualquier hora. Las decisiones no las toma él: el ejecutor valida antes de actuar. |
 | ¿Usan los SERVIU o las DOM esto? | No. La EP coordina por mandato; Comité hace visible qué falta y quién lo tomó (D-10). |
-| ¿Qué fue lo más difícil? | Por definir según lo que se construya. Candidatos: el ejecutor y las dos conversaciones desde el mismo hecho. |
-| ¿Cómo llega el siguiente usuario? | La EP conecta su número de WhatsApp con Kapso y suma a las familias de sus proyectos. |
+| ¿Cómo saben que el problema es de coordinación y no de plata? | No lo sabemos todavía. Por eso el siguiente paso es validarlo con un caso real (D-18). |
+| ¿Cómo llega el siguiente usuario? | Una EP carga un proyecto, conecta su número de WhatsApp y suma a su comité. |
 
 ## Preguntas abiertas de la demo
 
@@ -181,13 +216,15 @@ Las familias no ven este panel. Su vista en la demo es solo WhatsApp.
 
 ## Decisiones que tomé solo (kaina#62)
 
-- El jurado hace de familias. Da la prueba de multiplayer más fuerte y la entrada más rápida. Alternativa: dos personas del equipo.
-- La escena es un plano observado por la DOM y no un pago atrasado. La observación de un plano muestra versiones, revalidación, aceptación y las dos conversaciones a la vez; un pago atrasado depende de la caja del SERVIU, que el producto no puede mover.
-- Las familias no tienen vista web en la demo, solo WhatsApp. Menos piezas que construir y más cerca de cómo se informan las familias (R-06 sigue abierta).
+- Un solo hecho, la observación de la DOM al plano, recorre toda la demo. Así el jurado sigue una historia y no un recorrido de pantallas.
+- WhatsApp ocupa 25 segundos, entre el panel y la vista del dirigente, como el canal de quienes no abren un panel.
+- El jurado ya no escanea un QR. Con WhatsApp como tramo breve, pedirle al jurado que entre le quita atención al panel. Alternativa: QR a una vista web de solo lectura de la familia, si sobra tiempo de ensayo.
+- La misma persona que presenta hace de dirigente en una segunda pestaña, para no sumar otro dispositivo.
 - Los nombres del comité, la comuna y la EP son inventados.
 
 ## Registro de cambios
 
 | Fecha | Cambio | Fuente |
 | --- | --- | --- |
-| 2026-11-21 | Versión inicial de la propuesta. | Pedido de Kaina a kaina#62; `product-state.md` y `engineering-state.md` |
+| 2026-11-21 | Versión inicial de la propuesta, centrada en WhatsApp con el jurado como familias. | Pedido de Kaina a kaina#62; `product-state.md` y `engineering-state.md` |
+| 2026-11-21 | Versión 2: el pitch muestra el producto completo y WhatsApp pasa a un tramo de 25 segundos. Se quita el QR al jurado, se suma la tabla de piezas a construir y se rehacen guion, material y rúbrica. | Corrección de Kaina a kaina#62 |
