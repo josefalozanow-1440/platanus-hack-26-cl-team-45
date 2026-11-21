@@ -34,6 +34,7 @@ Tensiones abiertas:
 | [`recorrido.md`](product-state/recorrido.md) | Etapas de referencia de un proyecto DS49, quién llena, quién aprueba y con qué documento cierra. | Necesitas ubicar un documento o un actor en el proceso. |
 | [`conceptos.md`](product-state/conceptos.md) | Vocabulario fijo: expediente vivo, versión, dependencia, compromiso, hito y otros. | Vas a nombrar entidades, estados o textos de interfaz. |
 | [`afirmaciones.md`](product-state/afirmaciones.md) | A-01 a A-16: reglas normativas y cifras, con su estado de verificación. | Vas a usar una regla, un plazo o una cifra. |
+| [`normativa.md`](product-state/normativa.md) | N-01 a N-26: leyes, decretos y resoluciones que rigen un DS49 colectivo, de qué tratan y reglas útiles con artículo. | Necesitas saber qué norma rige una etapa, un documento o un plazo. |
 | [`preguntas.md`](product-state/preguntas.md) | P-01 a P-13. | Tienes una duda de producto o vas a registrar una pregunta. |
 | [`descartado.md`](product-state/descartado.md) | X-01 a X-09, con el motivo. | Vas a proponer una idea nueva. |
 | [`handoff-ingenieria.md`](product-state/handoff-ingenieria.md) | Lo que ingeniería tiene que traducir desde producto. | Trabajas en `engineering-state.md`. |
