@@ -32,11 +32,19 @@ Lo que se va a mostrar en el pitch va primero. Antes de tomar una tarea pregúnt
 
 Qué se muestra en el pitch lo definen los humanos en #steering. Si no está claro si algo entra, pregunta ahí en una línea y mientras tanto toma algo que entra seguro.
 
-Si no tienes órdenes pendientes, no esperes. Elige lo más valioso para el pitch que nadie haya tomado, avisa en #estado y parte.
+El trabajo parte cuando un humano escribe en #steering qué construir. Mientras eso no pase estás en espera: no tomes tareas, no abras hilos y no publiques nada. Termina la vuelta y la siguiente vuelve a mirar.
+
+Después de esa primera instrucción ya no esperas. Si te quedas sin órdenes pendientes, elige lo más valioso para el pitch que nadie haya tomado, avisa en #estado y parte.
+
+## Identidad
+
+Discord muestra todos tus mensajes con el nombre de tu humano, así que cada agente lleva una etiqueta propia, por ejemplo `golazo#5b`. El loop te la entrega en el prompt y es fija para tu clon. Tus subagentes usan la tuya con un número: `golazo#5b-1`, `golazo#5b-2`.
+
+Cada mensaje que publicas parte con una línea chica con tu etiqueta: `-# golazo#5b`. Cuando reportas el trabajo de un subagente, nómbralo con su etiqueta en el texto. Para pedirle algo a otro agente, usa la etiqueta de ese agente.
 
 ## Cómo se toma y se reporta una tarea
 
-Cada tarea tiene un hilo en #ingenieria con el nombre `<tarea en pocas palabras> · <nombre de tu humano>`. Abrir el hilo es tomar la tarea. Antes de abrirlo revisa con `list_channels` que no exista uno igual. Si aparecen dos, se queda el más antiguo.
+Cada tarea tiene un hilo en #ingenieria con el nombre `<tarea en pocas palabras> · <tu etiqueta>`. Abrir el hilo es tomar la tarea. Antes de abrirlo revisa con `list_channels` que no exista uno igual. Si aparecen dos, se queda el más antiguo.
 
 En el hilo escribes:
 
@@ -55,7 +63,7 @@ Lo que un humano responde en tu hilo es feedback sobre esa tarea y lo aplicas en
 
 Una duda no te detiene. Pregunta en el hilo mencionando a tu humano, elige la opción más razonable, anótala como decisión tuya y sigue. Solo quedas bloqueado si no hay forma de avanzar sin la respuesta, y entonces tomas otra tarea mientras esperas.
 
-En #steering respondes con una línea ("lo tomo", o una pregunta corta). El detalle va en el hilo. Para pedirle algo a otro agente, escribe en #estado «Para el agente de <nombre>: …» con el link.
+En #steering respondes con una línea ("lo tomo", o una pregunta corta). El detalle va en el hilo. Para pedirle algo a otro agente, escribe en #estado «Para <etiqueta>: …» con el link.
 
 No le respondas a otro agente si no te nombró. Los mensajes van cortos, en español simple, sin pegar logs.
 
@@ -65,7 +73,7 @@ Lanza hasta cinco subagentes en paralelo cuando la tarea se parte en piezas que 
 
 ## Git
 
-Se trabaja en `main` con commits chicos. Haz `git pull --rebase` antes de partir y antes de cada push. Antes del push corre los checks que existan (tests, tipos, build). Si fallan por tu cambio, arréglalo antes de subir. Código con lógica nueva lleva al menos un test.
+Se trabaja en `main` con commits chicos. Haz `git pull --rebase --autostash` antes de partir y antes de cada push. Antes del push corre los checks que existan (tests, tipos, build). Si fallan por tu cambio, arréglalo antes de subir. Código con lógica nueva lleva al menos un test.
 
 ## Lo que no se hace sin orden de un humano
 

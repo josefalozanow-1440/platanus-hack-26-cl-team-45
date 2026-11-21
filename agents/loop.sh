@@ -10,11 +10,14 @@ if [ -f .agent/pid ] && kill -0 "$(cat .agent/pid)" 2>/dev/null; then
 fi
 echo $$ > .agent/pid
 rm -f .agent/stop
+# Etiqueta fija por clon, para distinguir varios agentes de la misma persona.
+[ -f .agent/id ] || printf '%02x' $((RANDOM % 256)) > .agent/id
+tag="$2#$(cat .agent/id)"
 while [ ! -f .agent/stop ]; do
   claude -p "$(cat agents/PROMPT.md)
 
-Tu humano es $2. Su ID de Discord es $1: úsalo en send_as y para mencionarlo con <@$1>." \
-    --dangerously-skip-permissions >> .agent/log 2>&1
+Tu etiqueta es $tag. Tu humano es $2. Su ID de Discord es $1: úsalo en send_as y para mencionarlo con <@$1>." \
+    --dangerously-skip-permissions < /dev/null >> .agent/log 2>&1
   sleep "${LOOP_SLEEP:-20}"
 done
 rm -f .agent/pid
