@@ -1,4 +1,4 @@
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 
 import pytest
 from fastapi.testclient import TestClient
@@ -51,8 +51,11 @@ def test_accompany_once_and_remind_once_a_day(seeded: Session) -> None:
     assert comite.accompany(seeded, SLUG, perez, "Valentina", NOW).companion_name == "Valentina"
     with pytest.raises(comite.AlreadyAccompaniedError):
         comite.accompany(seeded, SLUG, perez, "Jorge", NOW)
-    assert comite.remind(seeded, SLUG, perez, NOW).sent
-    assert not comite.remind(seeded, SLUG, perez, NOW).sent
+    # A day no e2e run touches, so reminders left in the dev DB don't count.
+    remind_day = datetime(2030, 1, 1, 10, 0)
+    assert comite.remind(seeded, SLUG, perez, remind_day).sent
+    assert not comite.remind(seeded, SLUG, perez, remind_day).sent
+    assert comite.remind(seeded, SLUG, perez, remind_day - timedelta(days=1)).sent
 
 
 def test_reemplazo_shows_deadline_effect_and_waitlist(seeded: Session) -> None:

@@ -1,7 +1,10 @@
 import os
 
 # The only module that reads environment variables.
-DATABASE_URL = os.environ.get("DATABASE_URL", "postgresql+psycopg://comite:comite@localhost:5432/comite")
+# Render hands out postgresql:// URLs; SQLAlchemy needs the psycopg driver named.
+DATABASE_URL = os.environ.get("DATABASE_URL", "postgresql+psycopg://comite:comite@localhost:5432/comite").replace(
+    "postgresql://", "postgresql+psycopg://", 1
+)
 
 # Kapso (WhatsApp). Empty API key means outbound messages are only logged.
 KAPSO_API_KEY = os.environ.get("KAPSO_API_KEY", "")

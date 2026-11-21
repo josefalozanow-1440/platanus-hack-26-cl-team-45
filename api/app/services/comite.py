@@ -3,7 +3,7 @@
 The comité sees the status of each carpeta, never its content (L-06): no amounts, no documents.
 """
 
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 from decimal import Decimal
 
 from sqlalchemy import select
@@ -154,11 +154,13 @@ def remind(session: Session, slug: str, family_id: int, now: datetime) -> Remind
     """Log a reminder for the copilot to send. At most one per family and day (L-03)."""
     comite, family = get_family(session, slug, family_id)
     text = f"Copiloto le recordó a la familia {family.surname} lo que le falta"
+    day_start = datetime.combine(now.date(), datetime.min.time())
     already = session.scalar(
         select(Activity.id).where(
             Activity.comite_id == comite.id,
             Activity.text == text,
-            Activity.occurred_at >= datetime.combine(now.date(), datetime.min.time()),
+            Activity.occurred_at >= day_start,
+            Activity.occurred_at < day_start + timedelta(days=1),
         )
     )
     if already is None:
