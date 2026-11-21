@@ -6,8 +6,9 @@ Estado de producto del proyecto del team-45 en Platanus Hack 26. Reúne lo que e
 | --- | --- |
 | Última actualización | 2026-11-21 |
 | Fuente principal | Canal de Discord `#deficit-habitacional` (ID `1573732246786015383`) |
-| Último mensaje incorporado | `1573761560420286536` (2026-11-21 18:06 UTC) |
-| Documento hermano | `engineering-state.md` (lo arma ingeniería; aún no existe) |
+| Último mensaje incorporado | `1573766452777979945` (2026-11-21 18:26 UTC) |
+| Documento hermano | `engineering-state.md` (lo arma ingeniería) |
+| Material de apoyo | [Flujo DS49 en Figma, v3 oficial](https://www.figma.com/design/72h9M4fZorEGnm3oEnrorh/Proyecto-Subsidio?node-id=3-2) de lozi-love (msgs `1573765313189912756`, `1573766038552707163`). Reemplaza al enlace `2D54yZcfnx1LhGU312AvNs`. Su alcance choca con D-02 (P-12). |
 
 ## Cómo usar este documento (agentes)
 
@@ -40,6 +41,8 @@ Estado de producto del proyecto del team-45 en Platanus Hack 26. Reúne lo que e
 Comité es una herramienta para seguir un proyecto DS49 colectivo de Construcción en Nuevos Terrenos (CNT) después de que el grupo ya tiene el subsidio: muestra qué bloquea el proyecto, quién aceptó hacerse cargo del siguiente paso y qué evidencia permite avanzar, con una vista distinta para cada actor.
 
 La demo y el pitch están en pausa. El foco ahora es construir la solución y su documentación de respaldo. Hay una propuesta de validar la hipótesis con un caso real antes de sumar más diseño (D-18), pendiente de conseguir el caso y a quien entreviste (P-10).
+
+Hay dos tensiones abiertas. El Figma de lozi-love acota el problema hasta la selección y deja después solo el seguimiento de la familia, lo que choca con D-02 (P-12). Además, varias decisiones marcadas como «Decidido» salen solo de mensajes de agentes y falta que un humano las confirme (P-13); D-05 y D-08 ya volvieron a «Propuesta» por esa razón.
 
 ## Problema
 
@@ -79,10 +82,10 @@ Fuera del alcance por ahora: DS01, DS19, DS27, DS52, campamentos, vista regional
 | D-02 | El producto atiende el tramo entre subsidio asignado y vivienda entregada, no la postulación. | Decidido | msgs `1573733829074620438`, `1573734529821053109` |
 | D-03 | La demo sale del camino crítico. Primero solución, documentación y antecedentes. | Decidido | msg `1573734813511327997` (Edo) |
 | D-04 | El núcleo es un expediente vivo por proyecto: un solo objeto compartido en vez de formularios por etapa. Cada actor aporta solo en su ámbito; no es editable por todos. | Decidido | msgs `1573740275963138049`, `1573740596001247273` |
-| D-05 | Cada aprobación queda ligada a una versión inmutable del expediente. Si cambia un antecedente (por ejemplo, el plano sanitario), las revisiones que dependían de él quedan marcadas para revalidar. No se borra todo ni se conserva el visto bueno de forma automática. | Decidido | msg `1573740596001247273` |
+| D-05 | Cada aprobación queda ligada a una versión inmutable del expediente. Si cambia un antecedente (por ejemplo, el plano sanitario), las revisiones que dependían de él quedan marcadas para revalidar. No se borra todo ni se conserva el visto bueno de forma automática. | Propuesta (era «Decidido»; el agente de Edo aclaró que su mensaje propone, no registra un acuerdo, msg `1573761896920780811`) | msg `1573740596001247273` |
 | D-06 | Los compromisos tienen cuatro estados: propuesto, aceptado, cumplido con evidencia y sin cobertura. "Sin cobertura" significa que nadie aceptó el paso; no significa que un actor incumplió. | Decidido | msgs `1573733969206321203`, `1573734529821053109` |
 | D-07 | Una gestión enviada no equivale a un permiso aprobado ni a un pago autorizado. El producto distingue la gestión del resultado. | Decidido | msgs `1573735915774410764`, `1573737856021565452` |
-| D-08 | El flujo se modela como dependencias, cada una con requisitos de entrada y evidencia de salida, indicando qué puede avanzar en paralelo y qué espera una respuesta. No se modela como una cadena fija en serie. | Decidido | msg `1573737856021565452` |
+| D-08 | El flujo se modela como dependencias, cada una con requisitos de entrada y evidencia de salida, indicando qué puede avanzar en paralelo y qué espera una respuesta. No se modela como una cadena fija en serie. | Propuesta (era «Decidido»; mismo motivo que D-05, msg `1573761896920780811`) | msg `1573737856021565452` |
 | D-09 | No hay pasos universales. SEREMITT, anticipo y otros dependen del proyecto. El orden y las reglas los fijan las bases del llamado vigente; para CNT 2026 manda la Resolución 685/2026, no el título de la ficha web. | Decidido | msgs `1573737856021565452`, `1573740016100970756` |
 | D-10 | Comité no reemplaza atribuciones de nadie. La EP ya coordina por mandato; el valor está en hacer visible qué falta y quién tomó el siguiente paso. | Decidido | msg `1573735915774410764` |
 | D-11 | Un hecho acreditado (RSH, ahorro, cédula) se reutiliza mientras siga vigente y sirva para ese trámite. No queda válido para siempre. | Decidido | msg `1573740596001247273` |
@@ -113,6 +116,7 @@ Reglas que el producto no puede romper. Se aplican en código (un ejecutor que v
 | L-11 | La EP no ve el estado de cada familia antes de que esa familia ingrese al comité, para que no pueda elegir solo a las familias con menos dificultades. | Propuesta (pensada para la etapa de postulación, hoy fuera de alcance) | msg `1573732530895716374` |
 | L-12 | Un "ya entendí" de una familia nunca cuenta como aprobación. | Decidido | msg `1573745313192218636` |
 | L-13 | Si nadie tomó un paso, el mensaje a la familia lo dice. El agente no inventa un responsable para que el mensaje suene más tranquilo. | Decidido | msg `1573745313192218636` |
+| L-14 | Que una gestión le corresponda a un actor no significa que ese actor la aceptó. El producto registra por separado a quién corresponde y quién confirmó que la toma. Sin aceptación, la conversación técnica muestra «pendiente de aceptación» y la familia recibe «todavía no tenemos confirmación de quién tomará esta gestión». El plazo oficial corre según su regla; aceptar o no en la herramienta no cambia las obligaciones de la EP. Precisa D-06, L-05 y L-13. | Propuesta (pedida para la función 4 del Figma) | msgs `1573764559909687448`, `1573765520006848543` |
 
 ## Actores
 
@@ -180,7 +184,7 @@ Antes de usar una afirmación en el producto o en el pitch, revisa su estado. "C
 | A-01 | DS49 CNT es colectivo, de 10 a 160 viviendas. Pequeño Condominio también es colectivo, de 2 a 9. Sitio Propio y Densificación Predial pueden ser individuales o colectivos. | Con fuente | [Ficha MINVU DS49](https://www.minvu.gob.cl/beneficio/vivienda/subsidio-para-construir-una-vivienda-de-hasta-950-uf-ds49/) |
 | A-02 | En proyectos colectivos, al menos 70% del grupo en el tramo 40% del RSH y hasta 30% hasta el tramo 90%. Corrige la idea de que el DS49 es "exclusivamente para el 40%". | Con fuente | Ficha MINVU DS49 |
 | A-03 | El llamado 2026 exige que cada familia apruebe el proyecto (unanimidad). | Por verificar en las bases | msg `1573733591165435961` |
-| A-04 | Si una familia no completa el ahorro en 180 días, el SERVIU puede designar reemplazantes. | Por verificar | msg `1573733591165435961` |
+| A-04 | Si una familia no completa el ahorro en 180 días, el SERVIU puede designar reemplazantes. Ámbito: el llamado de adquisición de terrenos, no todo el DS49. | Por verificar; no aplicar a CNT sin fuente | msgs `1573733591165435961`, `1573761896920780811` |
 | A-05 | Más de 118.000 subsidios DS49 vigentes "no pagados" (31,4% de 376.711 otorgados entre 2010 y 2025). | Por verificar en el informe original | Informe Vivienda 2035, H&H Consultores (2026) |
 | A-06 | 131.290 subsidios no convertidos en vivienda entre 2010 y 2025. La suma por programa da unos 249.000; probablemente los no pagados del DS49 no cuentan como fuga. | Conflicto, por verificar | Informe Vivienda 2035, H&H Consultores |
 | A-07 | "No faltó plata, faltó coordinación." | No respaldado. No usar. | msg `1573733969206321203` |
@@ -206,9 +210,11 @@ Antes de usar una afirmación en el producto o en el pitch, revisa su estado. "C
 | P-06 | ¿Dónde se paralizó el proyecto y cómo se enteraron? (dirigentes de comités DS49) | Valida o descarta la hipótesis de coordinación. | Sin asignar (ver P-10) |
 | P-07 | ¿Qué compromisos de otros actores fallan más seguido? (EP) | Qué dependencias modelar primero. | Sin asignar |
 | P-08 | ¿Se confirman las cifras del informe H&H y del informe MACh en su versión original? | Qué cifras se pueden usar en el pitch. | Sin asignar |
-| P-09 | ¿El nombre del producto es "Comité" o "Nosotros"? En el canal "Comité" es la idea y "Nosotros" aparece como nombre de la plataforma. | Naming en producto y pitch. | Equipo |
-| P-10 | ¿Qué proyecto DS49 real usamos para la entrevista (dirigencia y EP del mismo proyecto) y quién hace las entrevistas? La pauta ya existe, pero no está enlazada en el canal. | Si D-18 se puede ejecutar y si la hipótesis de coordinación se sostiene. | Sin asignar |
+| P-09 | ¿El nombre del producto es "Comité" o "Nosotros"? En el canal "Comité" es la idea y "Nosotros" aparece como nombre de la plataforma. El Figma llama a la solución "Copiloto de Carpeta" (msg `1573763992051130528`). | Naming en producto y pitch. | Equipo |
+| P-10 | ¿Qué proyecto DS49 real usamos para la entrevista (dirigencia y EP del mismo proyecto) y quién hace las entrevistas? La pauta de entrevista para P-06 y P-07 ya existe, pero no está enlazada en el canal. Faltan el caso, los contactos y quién entrevista (msg `1573761896920780811`). | Si D-18 se puede ejecutar y si la hipótesis de coordinación se sostiene. | Sin asignar |
 | P-11 | ¿Se adopta D-18 como paso previo a sumar diseño, o se construye en paralelo a las entrevistas? | Orden de trabajo del equipo. | Equipo |
+| P-12 | ¿El Figma propone un alcance nuevo? Su frame «El problema» termina en la selección y deja después solo el seguimiento de la familia. D-02 sigue el proyecto después del subsidio e incluye las gestiones entre actores. El agente de Edo propone mantener esa coordinación posterior y dejar terreno, permisos, obra y pagos fuera de lo que el agente puede resolver, pero no de lo que puede seguir. El Figma también tiene un frame de puntaje del grupo, que es de la postulación (X-01). | Si D-02 se mantiene o se reemplaza, y qué frames del Figma valen como referencia del producto. | lozi-love y Edo (msg `1573766452777979945`) |
+| P-13 | ¿Confirma un humano las decisiones que hoy figuran como «Decidido» pero salen solo de mensajes de agentes? Son D-02, D-04 (la parte «no editable por todos»), D-06, D-07, D-09 a D-14, L-01 a L-09, L-12 y L-13. Los únicos mensajes humanos que las respaldan son los de Edo (`1573734422664970352`, `1573734813511327997`, `1573745189934338091`) y lozi-love (`1573740151665074207`, `1573740275963138049`). | Si se puede construir sobre esos ítems o vuelven a «Propuesta», como D-05 y D-08. | Equipo |
 
 ## Descartado o en pausa
 
@@ -241,3 +247,4 @@ Lo que `engineering-state.md` necesita traducir desde este documento:
 | --- | --- | --- |
 | 2026-11-21 | Versión inicial a partir del canal `#deficit-habitacional` hasta el msg `1573740596001247273`. | Discord |
 | 2026-11-21 | Se agregan la conversación distinta por actor (D-16, L-12, L-13), hitos en vez de etapa actual (D-17), la propuesta de validar con un caso real (D-18, P-10, P-11) y la propuesta de base de datos en D-15 y el handoff. | Discord, msgs `1573745189934338091` a `1573761560420286536` |
+| 2026-11-21 | D-05 y D-08 vuelven a «Propuesta». Se agregan L-14 (corresponder no es aceptar), P-12 (alcance del Figma frente a D-02) y P-13 (decisiones sin confirmación humana). A-04 queda acotado al llamado de adquisición de terrenos. Se enlaza el Figma v3 y se actualizan P-09 y P-10. | Discord, msgs `1573761896920780811` a `1573766452777979945` |
