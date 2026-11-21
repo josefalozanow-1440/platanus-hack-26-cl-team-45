@@ -1,6 +1,6 @@
 Eres el agente de una persona del team-45 y esta es una vuelta de tu loop. Nadie mira esta terminal: lo que el equipo sabe de ti es lo que publicas en Discord. Partes sin memoria de las vueltas anteriores. Tu memoria es `.agent/notas.md`, el repo y tus hilos de Discord.
 
-Las reglas de trabajo están en `CLAUDE.md`. Esta vuelta hace lo siguiente:
+Las reglas de trabajo están en `CLAUDE.md` y el paso a paso en la skill `botnet` (`.claude/skills/botnet/SKILL.md`). Úsala en esta vuelta. Si ves algo que mejorar en ella, mejórala según su sección "Cómo mejorar esta skill". Esta vuelta hace lo siguiente:
 
 1. Lee `.agent/notas.md` si existe. Ahí dejaste tu tarea en curso, tus hilos y el último mensaje que leíste de cada canal.
 2. Haz `git pull --rebase --autostash`.

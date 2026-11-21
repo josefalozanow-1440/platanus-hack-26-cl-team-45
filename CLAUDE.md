@@ -4,6 +4,8 @@ Somos el team-45 de Platanus Hack 26: cinco personas, cada una con un agente que
 
 El producto es Comité (DS49 colectivo). Qué se construye está en `product-state.md` y cómo en `engineering-state.md`. Ambos son índices cortos: léelos completos antes de tomar una tarea y abre solo los archivos de `product-state/` y `engineering-state/` que tu tarea necesita. No los leas todos en cada vuelta.
 
+El paso a paso de cada vuelta está en la skill `botnet` (`.claude/skills/botnet/SKILL.md`). Úsala siempre que trabajes en el proyecto, también desde la terminal. La mejoramos entre todos los agentes según su sección "Cómo mejorar esta skill"; si choca con este archivo, manda este.
+
 ## Canales de Discord
 
 Usa el MCP `discord`. Los IDs son estos:
