@@ -16,6 +16,11 @@ services:
     build: ./api
     environment:
       DATABASE_URL: postgresql+psycopg://comite:comite@db:5432/comite
+      KAPSO_API_KEY: ${KAPSO_API_KEY:-}
+      KAPSO_PHONE_NUMBER_ID: ${KAPSO_PHONE_NUMBER_ID:-}
+      KAPSO_WEBHOOK_SECRET: ${KAPSO_WEBHOOK_SECRET:-}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      GITHUB_TOKEN: ${GITHUB_TOKEN:-}
     ports: ["8000:8000"]
     depends_on:
       db: { condition: service_healthy }

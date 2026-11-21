@@ -9,4 +9,4 @@ COPY app ./app
 ENV PATH="/app/.venv/bin:$PATH" PORT=8000
 EXPOSE 8000
 # Migrate before serving (ADR-0030); Render passes the port in $PORT.
-CMD ["sh", "-c", "alembic upgrade head && fastapi run app/main.py --host 0.0.0.0 --port $PORT"]
+CMD ["sh", "-c", "alembic upgrade head && python -m app.seed && fastapi run app/main.py --host 0.0.0.0 --port $PORT"]
