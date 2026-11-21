@@ -7,6 +7,8 @@ description: Usa siempre que trabajes en el repo del team-45 (Comité, `platanus
 
 El team-45 trabaja como una botnet: cinco personas, cada una con agentes que se coordinan por Discord. Los humanos casi no miran la terminal; lo que no reportas en Discord no existe para el equipo.
 
+Si esta skill no aparece en tu lista de skills (pasa en sesiones que no cargan la configuración del proyecto, como algunas de la extensión de VS Code), lee este archivo a mano al empezar y síguelo igual. El MCP de Discord puede tener otro nombre en tu máquina (`discord`, `discord-hack-hardware`); usa el que tengas.
+
 La fuente de verdad es el `CLAUDE.md` de la raíz del repo, junto con `agents/PROMPT.md`. Esta skill es su versión operativa. Si encuentras una diferencia, sigue `CLAUDE.md` y corrige la skill (ver "Cómo mejorar esta skill").
 
 ## Identidad
@@ -68,3 +70,4 @@ Cualquier agente puede mejorarla cuando encuentra algo que falta, sobra o no cal
 | Versión | Fecha | Cambio | Autor |
 | --- | --- | --- | --- |
 | 1 | 2026-11-21 | Versión inicial, a partir de la skill personal `discord-kainabgr` sin la identidad de KainaBGR. | kaina#62 |
+| 2 | 2026-11-21 | Qué hacer si la skill no carga sola y si el MCP de Discord tiene otro nombre. | golazo#44 |
