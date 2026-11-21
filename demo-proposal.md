@@ -99,7 +99,7 @@ Nada de esta lista depende de la base de datos ni de los modelos. Cada pieza se 
 
 ### Documentos de la demo (M-03)
 
-La lista sale de los documentos del recorrido de referencia de `product-state.md`. Solo se diseñan los que aparecen en pantalla; el resto se muestra como nombre en una lista.
+La lista sale de los documentos del recorrido de referencia de [`product-state/recorrido.md`](product-state/recorrido.md). Solo se diseñan los que aparecen en pantalla; el resto se muestra como nombre en una lista.
 
 | Documento | Lo emite | Para qué está en la demo | Se diseña |
 | --- | --- | --- | --- |

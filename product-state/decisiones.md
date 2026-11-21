@@ -1,0 +1,24 @@
+# Decisiones (D-)
+
+Parte de [`product-state.md`](../product-state.md). Léelo antes de construir. El estado de cada decisión manda.
+
+| ID | Decisión | Estado | Fuente |
+| --- | --- | --- | --- |
+| D-01 | Alcance DS49 CNT colectivo. Se eligió por la coordinación que exige construir juntos, no porque esté medido que sea el mayor problema colectivo. | Decisión de trabajo | msgs `1573734422664970352`, `1573736649739862150`, `1573737354181742774` |
+| D-02 | El producto atiende el tramo entre subsidio asignado y vivienda entregada, no la postulación. | Decidido | msgs `1573733829074620438`, `1573734529821053109` |
+| D-03 | La demo sale del camino crítico. Primero solución, documentación y antecedentes. | Decidido | msg `1573734813511327997` (Edo) |
+| D-04 | El núcleo es un expediente vivo por proyecto: un solo objeto compartido en vez de formularios por etapa. Cada actor aporta solo en su ámbito; no es editable por todos. | Decidido | msgs `1573740275963138049`, `1573740596001247273` |
+| D-05 | Cada aprobación queda ligada a una versión inmutable del expediente. Si cambia un antecedente (por ejemplo, el plano sanitario), las revisiones que dependían de él quedan marcadas para revalidar. No se borra todo ni se conserva el visto bueno de forma automática. | Propuesta (era «Decidido»; el agente de Edo aclaró que su mensaje propone, no registra un acuerdo, msg `1573761896920780811`) | msg `1573740596001247273` |
+| D-06 | Los compromisos tienen cuatro estados: propuesto, aceptado, cumplido con evidencia y sin cobertura. "Sin cobertura" significa que nadie aceptó el paso; no significa que un actor incumplió. | Decidido | msgs `1573733969206321203`, `1573734529821053109` |
+| D-07 | Una gestión enviada no equivale a un permiso aprobado ni a un pago autorizado. El producto distingue la gestión del resultado. | Decidido | msgs `1573735915774410764`, `1573737856021565452` |
+| D-08 | El flujo se modela como dependencias, cada una con requisitos de entrada y evidencia de salida, indicando qué puede avanzar en paralelo y qué espera una respuesta. No se modela como una cadena fija en serie. | Propuesta (era «Decidido»; mismo motivo que D-05, msg `1573761896920780811`) | msg `1573737856021565452` |
+| D-09 | No hay pasos universales. SEREMITT, anticipo y otros dependen del proyecto. El orden y las reglas los fijan las bases del llamado vigente; para CNT 2026 manda la Resolución 685/2026, no el título de la ficha web. | Decidido | msgs `1573737856021565452`, `1573740016100970756` |
+| D-10 | Comité no reemplaza atribuciones de nadie. La EP ya coordina por mandato; el valor está en hacer visible qué falta y quién tomó el siguiente paso. | Decidido | msg `1573735915774410764` |
+| D-11 | Un hecho acreditado (RSH, ahorro, cédula) se reutiliza mientras siga vigente y sirva para ese trámite. No queda válido para siempre. | Decidido | msg `1573740596001247273` |
+| D-12 | Los plazos solo se muestran con fuente y ámbito. Se separa regla normativa, plazo administrativo y demora observada. No se trasladan plazos del DS01 al DS49 y los días transcurridos no se usan como prueba de culpa. | Decidido | msgs `1573740016100970756`, `1573740596001247273` |
+| D-13 | Cada actor tiene su propia vista. Las familias ven qué cambió y en qué estado está el proyecto, sin acceso a documentos internos. | Decidido | msgs `1573733836875899011`, `1573735032768700649` |
+| D-14 | Se usa "entidad patrocinante (EP)" como nombre del rol, no "EGIS". | Decidido | msg `1573737856021565452` |
+| D-15 | Stack técnico abierto. Next.js + Supabase + Claude con tool use es una propuesta de Golazo. Hay una segunda propuesta de usar Postgres (Supabase) como única fuente de verdad y dejar fuera una base de grafos (Relate) salvo como copia derivada de solo lectura. El bot de Edo está de acuerdo con partir relacional, pero no da el stack por acordado. | Propuesta | msgs `1573734184588157009`, `1573734529821053109`, `1573746644799725793`, `1573746868121243821` |
+| D-16 | La conversación cambia según el actor. Con los actores técnicos es técnica (observación exacta, versión del plano, revisión afectada); con las familias es simple (qué significa para su vivienda y si tienen que hacer algo). Ambas salen del mismo hecho y conservan su incertidumbre. La familia puede pedir el detalle que tiene permitido ver. | Decidido | msgs `1573745189934338091` (Edo), `1573745313192218636` |
+| D-17 | El proyecto no tiene una "etapa actual" única. Su avance se describe con hitos que pueden darse al mismo tiempo, en línea con D-08. | Propuesta | msg `1573746868121243821` |
+| D-18 | Antes de sumar más diseño, reconstruir una gestión real con la dirigencia y la EP del mismo proyecto: qué faltaba, quién tomó el paso y cómo se enteraron del cambio. Hay una pauta de entrevista y una prueba de comprensión para familias y técnicos. Convive con D-03, que pide construir la solución y reunir antecedentes. | Propuesta | msg `1573749162300809327` |

@@ -2,7 +2,7 @@
 
 Somos el team-45 de Platanus Hack 26: cinco personas, cada una con un agente que corre en loop y lanza subagentes. Los humanos casi no usan la terminal. Dirigen el trabajo con mensajes en Discord y leen ahí el avance, así que lo que no reportas en Discord para ellos no existe.
 
-El producto es Comité (DS49 colectivo). Qué se construye está en `product-state.md` y cómo en `engineering-state.md`. Léelos antes de tomar una tarea.
+El producto es Comité (DS49 colectivo). Qué se construye está en `product-state.md` y cómo en `engineering-state.md`. Ambos son índices cortos: léelos completos antes de tomar una tarea y abre solo los archivos de `product-state/` y `engineering-state/` que tu tarea necesita. No los leas todos en cada vuelta.
 
 ## Canales de Discord
 
@@ -80,5 +80,5 @@ Se trabaja en `main` con commits chicos. Haz `git pull --rebase --autostash` ant
 - Commitear `.env`, tokens o claves, ni pegarlos en Discord. El repo es público.
 - `git push --force` o reescribir la historia de `main`, porque borra el trabajo de otros agentes.
 - Tocar `README.md`, `platanus-hack-project.jsonc`, `project-description.md` o el logo. Son la entrega de la hackatón.
-- Romper un límite `L-` de `product-state.md`.
+- Romper un límite `L-` de `product-state/limites.md`.
 - Construir sobre un ítem en estado «Propuesta». Pide la confirmación en #steering; un mensaje de un humano basta.
