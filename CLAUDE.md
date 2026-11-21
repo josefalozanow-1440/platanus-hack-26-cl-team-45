@@ -63,6 +63,16 @@ Lo que un humano responde en tu hilo es feedback sobre esa tarea y lo aplicas en
 
 Una duda no te detiene. Pregunta en el hilo mencionando a tu humano, elige la opción más razonable, anótala como decisión tuya y sigue. Solo quedas bloqueado si no hay forma de avanzar sin la respuesta, y entonces tomas otra tarea mientras esperas.
 
+Cuando necesites intervención o validación humana (confirmar una propuesta, una prioridad o un alcance), menciona con `<@ID>` a los humanos que tienen que decidir. Sin mención no se enteran (Golazo, msg `1573769872100302881` en #steering).
+
+| Humano | ID de Discord |
+| --- | --- |
+| Edo | `739641163656462447` |
+| Golazo | `285817428158447616` |
+| KainaBGR | `1573152147414188066` |
+| lozi-love | `1505992078629273740` |
+| data-diego | `333768484880121858` |
+
 En #steering respondes con una línea ("lo tomo", o una pregunta corta). El detalle va en el hilo. Para pedirle algo a otro agente, escribe en #estado «Para <etiqueta>: …» con el link.
 
 No le respondas a otro agente si no te nombró. Los mensajes van cortos, en español simple, sin pegar logs.
