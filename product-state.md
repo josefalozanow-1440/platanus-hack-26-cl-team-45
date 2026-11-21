@@ -6,7 +6,7 @@ Estado de producto del proyecto del team-45 en Platanus Hack 26. Reúne lo que e
 | --- | --- |
 | Última actualización | 2026-11-21 |
 | Fuente principal | Canal de Discord `#deficit-habitacional` (ID `1573732246786015383`) |
-| Último mensaje incorporado | `1573740596001247273` (2026-11-21 16:43 UTC) |
+| Último mensaje incorporado | `1573761560420286536` (2026-11-21 18:06 UTC) |
 | Documento hermano | `engineering-state.md` (lo arma ingeniería; aún no existe) |
 
 ## Cómo usar este documento (agentes)
@@ -39,7 +39,7 @@ Estado de producto del proyecto del team-45 en Platanus Hack 26. Reúne lo que e
 
 Comité es una herramienta para seguir un proyecto DS49 colectivo de Construcción en Nuevos Terrenos (CNT) después de que el grupo ya tiene el subsidio: muestra qué bloquea el proyecto, quién aceptó hacerse cargo del siguiente paso y qué evidencia permite avanzar, con una vista distinta para cada actor.
 
-La demo y el pitch están en pausa. El foco ahora es construir la solución y su documentación de respaldo.
+La demo y el pitch están en pausa. El foco ahora es construir la solución y su documentación de respaldo. Hay una propuesta de validar la hipótesis con un caso real antes de sumar más diseño (D-18), pendiente de conseguir el caso y a quien entreviste (P-10).
 
 ## Problema
 
@@ -48,6 +48,8 @@ La demo y el pitch están en pausa. El foco ahora es construir la solución y su
 **Hipótesis del equipo:** una parte relevante de esa espera viene de la coordinación entre muchos actores que no ven la cadena completa: familias, dirigencia, entidad patrocinante (EP), constructora, SERVIU, DOM, notaría y Conservador, entre otros. Cada actor ve su etapa y nadie ve dónde está detenido el proyecto ni quién tiene el siguiente paso.
 
 **Límite de la evidencia:** "no pagado" no equivale a "proyecto paralizado", y nada de lo revisado prueba que el problema sea de coordinación y no de plata. La frase "no faltó plata, faltó coordinación" no está respaldada y no se usa (A-07).
+
+**Qué debilitaría la hipótesis:** si en un caso real el siguiente paso ya estaba claro para todos y lo que faltaba era financiamiento o una resolución externa, el problema no es de coordinación y otra pantalla no lo resuelve (msg `1573749162300809327`).
 
 ### Fallas del diseño actual (hipótesis)
 
@@ -87,7 +89,10 @@ Fuera del alcance por ahora: DS01, DS19, DS27, DS52, campamentos, vista regional
 | D-12 | Los plazos solo se muestran con fuente y ámbito. Se separa regla normativa, plazo administrativo y demora observada. No se trasladan plazos del DS01 al DS49 y los días transcurridos no se usan como prueba de culpa. | Decidido | msgs `1573740016100970756`, `1573740596001247273` |
 | D-13 | Cada actor tiene su propia vista. Las familias ven qué cambió y en qué estado está el proyecto, sin acceso a documentos internos. | Decidido | msgs `1573733836875899011`, `1573735032768700649` |
 | D-14 | Se usa "entidad patrocinante (EP)" como nombre del rol, no "EGIS". | Decidido | msg `1573737856021565452` |
-| D-15 | Stack técnico abierto. Next.js + Supabase + Claude con tool use es una propuesta de Golazo, no una decisión. | Propuesta | msgs `1573734184588157009`, `1573734529821053109` |
+| D-15 | Stack técnico abierto. Next.js + Supabase + Claude con tool use es una propuesta de Golazo. Hay una segunda propuesta de usar Postgres (Supabase) como única fuente de verdad y dejar fuera una base de grafos (Relate) salvo como copia derivada de solo lectura. El bot de Edo está de acuerdo con partir relacional, pero no da el stack por acordado. | Propuesta | msgs `1573734184588157009`, `1573734529821053109`, `1573746644799725793`, `1573746868121243821` |
+| D-16 | La conversación cambia según el actor. Con los actores técnicos es técnica (observación exacta, versión del plano, revisión afectada); con las familias es simple (qué significa para su vivienda y si tienen que hacer algo). Ambas salen del mismo hecho y conservan su incertidumbre. La familia puede pedir el detalle que tiene permitido ver. | Decidido | msgs `1573745189934338091` (Edo), `1573745313192218636` |
+| D-17 | El proyecto no tiene una "etapa actual" única. Su avance se describe con hitos que pueden darse al mismo tiempo, en línea con D-08. | Propuesta | msg `1573746868121243821` |
+| D-18 | Antes de sumar más diseño, reconstruir una gestión real con la dirigencia y la EP del mismo proyecto: qué faltaba, quién tomó el paso y cómo se enteraron del cambio. Hay una pauta de entrevista y una prueba de comprensión para familias y técnicos. Convive con D-03, que pide construir la solución y reunir antecedentes. | Propuesta | msg `1573749162300809327` |
 
 ## Límites duros
 
@@ -106,6 +111,8 @@ Reglas que el producto no puede romper. Se aplican en código (un ejecutor que v
 | L-09 | Las decisiones que la norma exige por unanimidad (aprobación del proyecto por cada familia, según el llamado 2026) no pueden bajarse a mayoría por configuración. | Decidido como límite; la regla normativa está por verificar (A-03) | msg `1573733591165435961` |
 | L-10 | Avanzar no exige usar un agente. Quien participa por WhatsApp o con ayuda presencial tiene las mismas garantías. | Propuesta | msg `1573732530895716374` |
 | L-11 | La EP no ve el estado de cada familia antes de que esa familia ingrese al comité, para que no pueda elegir solo a las familias con menos dificultades. | Propuesta (pensada para la etapa de postulación, hoy fuera de alcance) | msg `1573732530895716374` |
+| L-12 | Un "ya entendí" de una familia nunca cuenta como aprobación. | Decidido | msg `1573745313192218636` |
+| L-13 | Si nadie tomó un paso, el mensaje a la familia lo dice. El agente no inventa un responsable para que el mensaje suene más tranquilo. | Decidido | msg `1573745313192218636` |
 
 ## Actores
 
@@ -159,7 +166,8 @@ Vocabulario que producto usa con un significado fijo. Ingeniería decide cómo m
 | Evidencia | Lo que permite marcar un compromiso como cumplido. Una consulta enviada no es evidencia de un permiso (D-07). |
 | Revalidación | Marca sobre una aprobación cuando cambió un antecedente del que dependía (D-05). |
 | Hecho acreditado | Dato verificado de una familia o del proyecto, con vigencia y ámbito de uso (D-11, L-06). |
-| Vista por rol | Lo que cada actor puede ver y aportar (D-13, L-06). |
+| Vista por rol | Lo que cada actor puede ver y aportar (D-13, L-06). Incluye el registro de la conversación: técnico o simple según el actor (D-16). |
+| Hito | Logro verificable del proyecto (por ejemplo, permiso de edificación otorgado). Varios hitos pueden estar en curso a la vez (D-17). |
 | Acta | Registro append-only de decisiones del grupo, incluido el disenso (L-07). |
 | Plazo | Fecha o duración con fuente y ámbito. Puede ser regla normativa, plazo administrativo o demora observada (D-12). |
 
@@ -195,10 +203,12 @@ Antes de usar una afirmación en el producto o en el pitch, revisa su estado. "C
 | P-03 | ¿Cómo se reparte el trabajo? Golazo propuso cuatro frentes; Edo tomó el contrato, las reglas del ejecutor y la pieza de cambios, dependencias y revalidación. | Ownership de cada parte. | Equipo |
 | P-04 | ¿Qué llamado respalda el orden "grupo primero" del recorrido de referencia? | Si el producto parte con grupo ya seleccionado o con proyecto ya calificado. | lozi-love |
 | P-05 | ¿Cuál es el plazo de vigencia del subsidio en DS49? | Si el producto puede mostrar un plazo compartido del subsidio. | Sin asignar |
-| P-06 | ¿Dónde se paralizó el proyecto y cómo se enteraron? (dirigentes de comités DS49) | Valida o descarta la hipótesis de coordinación. | Sin asignar |
+| P-06 | ¿Dónde se paralizó el proyecto y cómo se enteraron? (dirigentes de comités DS49) | Valida o descarta la hipótesis de coordinación. | Sin asignar (ver P-10) |
 | P-07 | ¿Qué compromisos de otros actores fallan más seguido? (EP) | Qué dependencias modelar primero. | Sin asignar |
 | P-08 | ¿Se confirman las cifras del informe H&H y del informe MACh en su versión original? | Qué cifras se pueden usar en el pitch. | Sin asignar |
 | P-09 | ¿El nombre del producto es "Comité" o "Nosotros"? En el canal "Comité" es la idea y "Nosotros" aparece como nombre de la plataforma. | Naming en producto y pitch. | Equipo |
+| P-10 | ¿Qué proyecto DS49 real usamos para la entrevista (dirigencia y EP del mismo proyecto) y quién hace las entrevistas? La pauta ya existe, pero no está enlazada en el canal. | Si D-18 se puede ejecutar y si la hipótesis de coordinación se sostiene. | Sin asignar |
+| P-11 | ¿Se adopta D-18 como paso previo a sumar diseño, o se construye en paralelo a las entrevistas? | Orden de trabajo del equipo. | Equipo |
 
 ## Descartado o en pausa
 
@@ -222,9 +232,12 @@ Lo que `engineering-state.md` necesita traducir desde este documento:
 - Cómo se modelan los conceptos del producto: versiones inmutables, dependencias, revalidación, los cuatro estados de compromiso y las vistas por rol.
 - Qué afirmaciones normativas (`A-`) se codifican como reglas y cómo se marca una regla pendiente de validar para que no dispare pagos, permisos ni alertas (L-08).
 - La decisión de stack (P-02) y quién es responsable de cada pieza (P-03).
+- Cómo se generan las dos conversaciones (técnica y simple) desde el mismo hecho sin perder la incertidumbre (D-16, L-12, L-13).
+- Insumos ya propuestos en el canal para ese documento: el modelo de entidades del msg `1573746650609094728` y las condiciones del msg `1573746868121243821`. Una versión es inmutable solo si la cuenta de la aplicación no puede modificarla ni borrarla, y eso se prueba. Una copia derivada (por ejemplo, un grafo para el agente) solo expone hechos autorizados para quien consulta y nunca autoriza una acción; el ejecutor relee estado, permisos y versión en la fuente de verdad.
 
 ## Registro de cambios
 
 | Fecha | Cambio | Fuente |
 | --- | --- | --- |
 | 2026-11-21 | Versión inicial a partir del canal `#deficit-habitacional` hasta el msg `1573740596001247273`. | Discord |
+| 2026-11-21 | Se agregan la conversación distinta por actor (D-16, L-12, L-13), hitos en vez de etapa actual (D-17), la propuesta de validar con un caso real (D-18, P-10, P-11) y la propuesta de base de datos en D-15 y el handoff. | Discord, msgs `1573745189934338091` a `1573761560420286536` |
