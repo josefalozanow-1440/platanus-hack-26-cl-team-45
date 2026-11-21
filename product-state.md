@@ -8,6 +8,7 @@ Estado de producto del proyecto del team-45 en Platanus Hack 26. Reúne lo que e
 | Fuente principal | Canal de Discord `#deficit-habitacional` (ID `1573732246786015383`) |
 | Último mensaje incorporado | `1573766452777979945` (2026-11-21 18:26 UTC) |
 | Documento hermano | `engineering-state.md` (lo arma ingeniería) |
+| Propuesta de demo | `demo-proposal.md` (Propuesta; se apoya en L-14, D-05, D-08 y D-17) |
 | Material de apoyo | [Flujo DS49 en Figma, v3 oficial](https://www.figma.com/design/72h9M4fZorEGnm3oEnrorh/Proyecto-Subsidio?node-id=3-2) de lozi-love (msgs `1573765313189912756`, `1573766038552707163`). Reemplaza al enlace `2D54yZcfnx1LhGU312AvNs`. Su alcance choca con D-02 (P-12). |
 
 ## Cómo usar este documento (agentes)
@@ -227,7 +228,7 @@ Antes de usar una afirmación en el producto o en el pitch, revisa su estado. "C
 | X-05 | Prometer que DOM y SERVIU revisen en paralelo o que el agente destraba permisos. | Descartado | El producto coordina trabajo, no cambia atribuciones (D-07, D-10). |
 | X-06 | Demo en vivo con QR y voluntarios del público, escena de DS49 paralizado. | En pausa | D-03. |
 | X-07 | Sindicato al revés para DS01 (demanda agregada a inmobiliarias). | En pausa | Fuera del alcance actual. |
-| X-08 | Vista regional (muchos comités y SERVIU) y canal WhatsApp. | En pausa | Fuera del alcance actual. |
+| X-08 | Vista regional (muchos comités y SERVIU) y canal WhatsApp. | En pausa la vista regional. WhatsApp con Kapso: Kaina indicó que se usará (instrucción a su agente, 2026-11-21); falta registrarlo en #steering. | Fuera del alcance actual. Ver `demo-proposal.md` y E-02 en `engineering-state.md`. |
 | X-09 | Narrativas "Black Mirror" (exclusión de la familia 7; saturación del SERVIU por agentes). | En pausa (pitch) | Se conservan como origen de L-02 y L-03. |
 
 ## Handoff a ingeniería
@@ -248,3 +249,4 @@ Lo que `engineering-state.md` necesita traducir desde este documento:
 | 2026-11-21 | Versión inicial a partir del canal `#deficit-habitacional` hasta el msg `1573740596001247273`. | Discord |
 | 2026-11-21 | Se agregan la conversación distinta por actor (D-16, L-12, L-13), hitos en vez de etapa actual (D-17), la propuesta de validar con un caso real (D-18, P-10, P-11) y la propuesta de base de datos en D-15 y el handoff. | Discord, msgs `1573745189934338091` a `1573761560420286536` |
 | 2026-11-21 | D-05 y D-08 vuelven a «Propuesta». Se agregan L-14 (corresponder no es aceptar), P-12 (alcance del Figma frente a D-02) y P-13 (decisiones sin confirmación humana). A-04 queda acotado al llamado de adquisición de terrenos. Se enlaza el Figma v3 y se actualizan P-09 y P-10. | Discord, msgs `1573761896920780811` a `1573766452777979945` |
+| 2026-11-21 | X-08: Kaina indicó que WhatsApp irá por Kapso. Se enlaza la propuesta de demo. | Instrucción de Kaina a kaina#62; `demo-proposal.md` |

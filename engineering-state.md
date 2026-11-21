@@ -26,7 +26,7 @@ No hay stack decidido ni código (P-02, D-15). La pieza central es el ejecutor e
 | ID | Ítem | Estado | Fuente |
 | --- | --- | --- | --- |
 | E-01 | Stack: Next.js + Supabase + Claude con tool use. Postgres como única fuente de verdad; un grafo solo como copia derivada de solo lectura. | Propuesta (ver D-15) | msgs `1573734184588157009`, `1573746644799725793`, `1573746868121243821` |
-| E-02 | Kapso como canal de WhatsApp para familias y actores, conectado por webhook al servidor del equipo. Detalle en "Integración: Kapso". | Propuesta, bloqueada por X-08 | Este documento |
+| E-02 | Kapso como canal de WhatsApp para familias y actores, conectado por webhook al servidor del equipo. Detalle en "Integración: Kapso". | Propuesta. Kaina indicó que se usará (2026-11-21); falta confirmarlo en #steering. La demo propuesta lo usa (`demo-proposal.md`). | Este documento |
 | E-03 a E-08 | Propuestas de accesibilidad para familias con poca experiencia digital. Detalle en "Accesibilidad". | Propuesta | Este documento |
 
 ## Integración: Kapso (canal de WhatsApp)
@@ -139,3 +139,4 @@ La lista de lo que ingeniería debe traducir desde producto está en "Handoff a 
 | --- | --- | --- |
 | 2026-11-21 | Versión inicial: estado del stack (E-01) y propuesta de Kapso como canal de WhatsApp (E-02, R-01 a R-07). | Discord `#deficit-habitacional` y docs de Kapso |
 | 2026-11-21 | Se agrega la sección de accesibilidad: datos de contexto, propuestas E-03 a E-08 y riesgos R-08 a R-12. | OCDE, SENADIS, Casen, DataReportal, BCN, Red de Lenguaje Claro y docs de Kapso |
+| 2026-11-21 | E-02: Kaina indicó que WhatsApp irá por Kapso; se enlaza la propuesta de demo. | Instrucción de Kaina a kaina#62 |
