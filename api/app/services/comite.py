@@ -152,6 +152,7 @@ def accompany(session: Session, slug: str, family_id: int, companion_name: str, 
 
 def remind(session: Session, slug: str, family_id: int, now: datetime) -> ReminderSent:
     """Log a reminder for the copilot to send. At most one per family and day (L-03)."""
+    # TODO: nothing is sent yet; wire to kapso.send_text (see "Pendiente" in engineering-state.md).
     comite, family = get_family(session, slug, family_id)
     text = f"Copiloto le recordó a la familia {family.surname} lo que le falta"
     day_start = datetime.combine(now.date(), datetime.min.time())

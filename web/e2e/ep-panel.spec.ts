@@ -12,6 +12,6 @@ test("el panel de la EP muestra los 4 comités y lleva a sus pantallas", async (
   await expect(page).toHaveURL(/\/ep\/observaciones\?comite=los-aromos/);
 
   await page.getByRole("link", { name: "Panel de grupos" }).click();
-  await villa.getByRole("link", { name: "Comité Villa Nueva" }).click();
+  await villa.getByRole("link", { name: "Villa Nueva" }).click();
   await expect(page).toHaveURL(/\/ep\/carpeta\/villa-nueva/);
 });

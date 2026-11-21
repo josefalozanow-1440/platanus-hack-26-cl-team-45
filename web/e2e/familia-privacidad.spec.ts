@@ -3,7 +3,8 @@ import { expect, test } from "@playwright/test";
 test("F0: la familia decide quién ve su carpeta y lo guarda", async ({ page }) => {
   await page.goto("/familia/privacidad");
   await expect(page.getByRole("heading", { name: "¿Quién ve tu carpeta?" })).toBeVisible();
-  await expect(page.getByText("No ve el contenido.")).toBeVisible();
+  await expect(page.getByRole("article", { name: "Familia Rojas" })).toContainText("Tú decides qué ve cada uno");
+  await expect(page.getByText("No ve el contenido.", { exact: false })).toBeVisible();
 
   const sensitive = page.getByRole("switch", { name: "Datos sensibles" });
   const before = await sensitive.getAttribute("aria-checked");

@@ -21,10 +21,15 @@ const ROLES: Role[] = [
     description: "Marta Rojas y su familia, del Comité Los Aromos. Se ve en el celular.",
     screens: [
       { code: "F0", href: "/familia/privacidad", title: "¿Quién ve tu carpeta?", who: "Marta" },
-      { code: "F1", href: "/familia/chat", title: "Copiloto por chat", who: "Marta" },
+      { code: "F1", href: "/familia/chat", title: "Folio por chat", who: "Marta" },
       { code: "F2", href: "/familia/carpeta", title: "Mi carpeta", who: "Marta" },
       { code: "F3", href: "/familia/grupo", title: "Cómo va tu grupo", who: "Marta" },
+      { code: "B1", href: "/familia/te-toca", title: "Te toca", who: "Marta" },
+      { code: "I1", href: "/familia/invitar", title: "Invitar a firmar", who: "Marta" },
+      { code: "I2", href: "/familia/invitacion", title: "Abre la invitación", who: "Pedro, 19 años" },
       { code: "F4", href: "/familia/firma", title: "Firma con ClaveÚnica", who: "Pedro, 19 años" },
+      { code: "F5", href: "/familia/firma/lista", title: "Firma lista", who: "Pedro, 19 años" },
+      { code: "F6", href: "/familia/llamado", title: "Cambió el llamado", who: "Familia Gómez" },
     ],
   },
   {
@@ -32,7 +37,12 @@ const ROLES: Role[] = [
     description: "La directiva del Comité Los Aromos: 40 familias.",
     screens: [
       { code: "C1", href: "/comite/carpetas", title: "Carpetas del grupo", who: "Directiva" },
+      { code: "C1b", href: "/comite/carpetas/despues", title: "Después de la firma", who: "Directiva" },
       { code: "C2", href: "/comite/reemplazo", title: "Renuncia y reemplazo", who: "Directiva" },
+      { code: "C3", href: "/comite/folio", title: "Folio de la directiva", who: "Directiva" },
+      { code: "A1", href: "/comite/asamblea", title: "Asamblea", who: "Familias del comité" },
+      { code: "E5", href: "/autogestionado/llamado", title: "Folio leyó el llamado", who: "Comité autogestionado" },
+      { code: "E5b", href: "/autogestionado/llamado/aplicadas", title: "Reglas aplicadas", who: "Comité autogestionado" },
     ],
   },
   {
@@ -41,7 +51,9 @@ const ROLES: Role[] = [
     screens: [
       { code: "E1", href: "/ep/panel", title: "Panel de grupos", who: "Equipo EP" },
       { code: "E2", href: "/ep/observaciones", title: "Observaciones del SERVIU", who: "Equipo EP" },
+      { code: "E2b", href: "/ep/observaciones/despues", title: "Observaciones después de la firma", who: "Equipo EP" },
       { code: "E3", href: "/ep/carpeta/villa-nueva", title: "Carpeta del grupo", who: "Equipo EP" },
+      { code: "E4", href: "/ep/carpetas", title: "Carpetas del grupo + Folio", who: "Equipo EP" },
     ],
   },
 ];
@@ -61,7 +73,7 @@ export default async function Home() {
       <Eyebrow>DS49 colectivo · datos ficticios</Eyebrow>
       <h1 className="mt-2 text-4xl font-semibold tracking-tight">Comité</h1>
       <p className="mt-2 max-w-xl text-suave">
-        Copiloto de carpeta para comités de vivienda. Elige quién eres para ver su pantalla.
+        Folio: la carpeta compartida de los comités de vivienda. Elige quién eres para ver su pantalla.
       </p>
 
       <div className="mt-10 grid gap-6 md:grid-cols-3">

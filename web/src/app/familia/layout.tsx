@@ -1,14 +1,23 @@
 import type { ReactNode } from "react";
 
-// Family screens are made for the phone: on a laptop they show inside a phone-sized frame.
+import { Shell } from "@/components/sidebar";
+import { PageColumn } from "@/components/ui";
+
 export const dynamic = "force-dynamic";
 
+const ITEMS = [
+  { label: "Mi carpeta", href: "/familia/carpeta" },
+  { label: "Cómo va tu grupo", href: "/familia/grupo" },
+  { label: "Te toca", href: "/familia/te-toca" },
+  { label: "Folio", href: "/familia/chat" },
+  { label: "Quién ve tu carpeta", href: "/familia/privacidad" },
+];
+
+// On a phone the family uses the bottom bar (FamilyNav); on a wide screen, the sidebar.
 export default function FamilyLayout({ children }: { children: ReactNode }) {
   return (
-    <div className="min-h-screen sm:py-8">
-      <div className="mx-auto min-h-screen max-w-[390px] bg-fondo px-4 pb-8 pt-6 sm:min-h-[844px] sm:rounded-[36px] sm:border sm:border-linea sm:shadow-xl">
-        {children}
-      </div>
-    </div>
+    <Shell subtitle="Familia Rojas · Comité Los Aromos" items={ITEMS} sidebarClassName="hidden lg:block">
+      <PageColumn>{children}</PageColumn>
+    </Shell>
   );
 }

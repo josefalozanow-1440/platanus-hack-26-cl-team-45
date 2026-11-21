@@ -35,13 +35,13 @@ export function Avatars({ people, className = "bg-alerta-claro" }: { people: Per
 const TABS = [
   { href: "/familia/carpeta", label: "Carpeta" },
   { href: "/familia/grupo", label: "Grupo" },
-  { href: "/familia/firma", label: "Te toca" },
+  { href: "/familia/te-toca", label: "Te toca" },
 ];
 
-/** Bottom navigation of the family app, as in F2 and F3. */
+/** Bottom navigation of the family app, as in F2, F3, B1 and F6. */
 export function FamilyNav({ current }: { current: string }) {
   return (
-    <nav className="sticky bottom-4 mt-6 flex items-center gap-2">
+    <nav className="sticky bottom-4 mt-6 flex items-center gap-2 lg:hidden">
       <div className="flex flex-1 rounded-full bg-white p-1 shadow-sm">
         {TABS.map((tab) => (
           <Link
@@ -55,8 +55,8 @@ export function FamilyNav({ current }: { current: string }) {
         ))}
       </div>
       <Link href="/familia/chat" className="flex items-center gap-2 rounded-full bg-primario px-4 py-2.5 text-sm font-medium text-white">
-        <span className="inline-flex size-5 items-center justify-center rounded-md bg-white text-[10px] font-bold text-primario">C</span>
-        Copiloto
+        <span className="inline-flex size-5 items-center justify-center rounded-md bg-white text-[10px] font-bold text-primario">F</span>
+        Folio
       </Link>
     </nav>
   );

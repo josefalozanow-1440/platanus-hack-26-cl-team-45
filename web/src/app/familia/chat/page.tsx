@@ -1,4 +1,4 @@
-// F1 · Familia · Copiloto por chat
+// F1 · Familia · Folio por chat
 import { apiGet } from "@/lib/api";
 
 import type { Carpeta } from "../types";
@@ -9,11 +9,11 @@ export default async function ChatPage() {
   return (
     <main className="flex min-h-[796px] flex-col">
       <header className="mb-4 flex items-center gap-3">
-        <span className="inline-flex size-10 items-center justify-center rounded-xl bg-primario-claro font-semibold text-primario">
-          C
+        <span aria-hidden className="inline-flex size-11 items-center justify-center rounded-2xl bg-primario-claro font-semibold">
+          F
         </span>
         <div>
-          <h1 className="text-lg font-semibold">Copiloto de Carpeta</h1>
+          <h1 className="text-lg font-semibold leading-tight">Folio</h1>
           <p className="text-xs text-suave">{carpeta.comite_name} · en línea</p>
         </div>
       </header>

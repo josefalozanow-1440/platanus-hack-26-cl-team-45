@@ -1,18 +1,26 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useTransition } from "react";
+
+import { BUTTON } from "@/components/ui";
 
 import { signDj49, undoSignature } from "../actions";
 
 // shortcut: there is no ClaveÚnica integration yet; the button records the signature directly.
 export function SignButton() {
+  const router = useRouter();
   const [pending, startTransition] = useTransition();
+
+  function sign() {
+    startTransition(async () => {
+      await signDj49();
+      router.push("/familia/firma/lista");
+    });
+  }
+
   return (
-    <button
-      type="button"
-      disabled={pending}
-      onClick={() => startTransition(() => signDj49())}
-      className="mt-4 w-full rounded-2xl bg-primario py-3 text-sm font-medium text-white disabled:opacity-60"
+    <button type="button" disabled={pending} onClick={sign} className={`mt-4 disabled:opacity-60 ${BUTTON.primary}`}
     >
       {pending ? "Conectando con ClaveÚnica…" : "Firmar con ClaveÚnica"}
     </button>

@@ -4,6 +4,7 @@ import { apiGet } from "@/lib/api";
 
 import type { Grupo, StepStatus } from "../types";
 import { FamilyNav, ScreenTitle } from "../ui";
+import { ActivityList } from "./people";
 
 const STEP_LABELS: Record<StepStatus, { label: string; tone: Tone; dot: string }> = {
   listo: { label: "Listo", tone: "ok", dot: "bg-ok" },
@@ -12,7 +13,7 @@ const STEP_LABELS: Record<StepStatus, { label: string; tone: Tone; dot: string }
   seguimiento: { label: "Seguimiento", tone: "neutro", dot: "bg-linea" },
 };
 
-const TIME_FORMAT = new Intl.RelativeTimeFormat("es-CL", { numeric: "auto" });
+const TIME_FORMAT = new Intl.RelativeTimeFormat("es-CL", { numeric: "auto", style: "short" });
 const MINUTES_PER_HOUR = 60;
 const MINUTES_PER_DAY = 1440;
 
@@ -21,6 +22,19 @@ function timeAgo(iso: string): string {
   if (minutes < MINUTES_PER_HOUR) return TIME_FORMAT.format(-minutes, "minute");
   if (minutes < MINUTES_PER_DAY) return TIME_FORMAT.format(-Math.round(minutes / MINUTES_PER_HOUR), "hour");
   return TIME_FORMAT.format(-Math.round(minutes / MINUTES_PER_DAY), "day");
+}
+
+// shortcut: dato fijo, the API does not return a tone per actor and still calls the agent "Copiloto".
+const ACTOR_TONES: Record<string, Tone> = { AM: "ok", VS: "aviso" };
+
+function toActivity(activity: Grupo["activities"][number]) {
+  const folio = activity.actor === "Copiloto";
+  return {
+    initials: folio ? "F" : activity.initials,
+    tone: ACTOR_TONES[activity.initials] ?? "info",
+    text: activity.text.replace("Copiloto", "Folio"),
+    when: timeAgo(activity.occurred_at) + (folio ? " · agente del grupo" : ""),
+  };
 }
 
 function plural(count: number, one: string, many: string): string {
@@ -90,19 +104,9 @@ export default async function GrupoPage() {
 
       <Card className="mt-4">
         <h2 className="font-semibold">Actividad del grupo</h2>
-        <ul className="mt-3 space-y-3">
-          {grupo.activities.map((activity) => (
-            <li key={activity.text} className="flex gap-3">
-              <span className="inline-flex size-7 shrink-0 items-center justify-center rounded-lg bg-primario-claro text-[10px] font-semibold text-primario">
-                {activity.initials}
-              </span>
-              <div>
-                <p className="text-sm">{activity.text}</p>
-                <p className="text-xs text-suave">{timeAgo(activity.occurred_at)}</p>
-              </div>
-            </li>
-          ))}
-        </ul>
+        <div className="mt-3">
+          <ActivityList items={grupo.activities.map(toActivity)} />
+        </div>
       </Card>
 
       <FamilyNav current="/familia/grupo" />

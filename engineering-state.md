@@ -23,6 +23,7 @@ La pieza central sigue siendo el ejecutor en código que valida límites antes d
 | [`arquitectura.md`](engineering-state/arquitectura.md) | Propuesta E-09: componentes, modelo de datos, ejecutor, flujo de una acción, acciones del MVP del Figma, stack, orden de construcción y R-15. | Vas a escribir código o repartir trabajo. |
 | [`casos-limites.md`](engineering-state/casos-limites.md) | Casos de prueba por límite (C-01 a C-39): estado, acción y resultado esperado del ejecutor. | Vas a escribir el ejecutor o sus tests. |
 | [`redactor.md`](engineering-state/redactor.md) | Propuesta E-11: plantillas técnica y simple por evento (T-01 a T-13), glosario simple y reglas para E-03. | Vas a escribir el redactor, los avisos por WhatsApp o textos para familias. |
+| [`figma-pendiente.md`](engineering-state/figma-pendiente.md) | Las 22 pantallas del Figma MVP v2 con su ruta, cuáles leen la API y cuáles son cascarón, y todo lo que falta por pantalla. | Vas a retomar una pantalla, conectar un cascarón a la API o preparar la demo. |
 | [`registro.md`](engineering-state/registro.md) | Registro de cambios. | Actualizas este estado. |
 
 ## Decisiones y propuestas de ingeniería
@@ -56,5 +57,14 @@ La pieza central sigue siendo el ejecutor en código que valida límites antes d
 - Al actualizar, agrega una línea en `registro.md` y cambia la fecha de la cabecera.
 
 ## Pendiente
+
+Revisión del código en `main` después de `72be550` (Golazo, 2026-11-21):
+
+- [ ] «Recordar» (comité) y «Enviar recordatorio» (EP) no mandan WhatsApp: `comite.remind` y `ep.request_reminders` solo anotan la actividad, pero la pantalla dice «El copiloto le recordó…». Hay que conectarlos a `kapso.send_text` o cambiar el texto para que no prometa un envío.
+- [ ] El ejecutor de límites (L-01) no existe. Hoy cada servicio valida sus reglas por su cuenta (por ejemplo, L-03 vive en `comite.remind`). Falta el ejecutor con una prueba por límite (C-01 a C-39, `casos-limites.md`).
+- [ ] Una regla pendiente no debe disparar alertas (L-08): el ejecutor tiene que poder marcar un plazo como pendiente (P-21) y probarlo.
+- [ ] Las fechas del Figma no cuadran con el calendario (PA-404, PA-206). Falta que un humano decida la regla de conteo (P-27).
+- [ ] Lo construido descansa en ítems sin confirmar: el reemplazo de C2 (P-23), lo que ve la EP en la carpeta (P-24), las observaciones asignadas sin aceptación (P-25) y Kapso (E-02). Hay que confirmarlos en #steering.
+- [ ] Siguen en «Propuesta» D-05, D-15, D-18, L-10, L-11, L-14, E-03 a E-11 y la demo v3. Las decisiones «Decidido*» esperan confirmación humana (P-13).
 
 La lista de lo que ingeniería debe traducir desde producto está en [`handoff-ingenieria.md`](product-state/handoff-ingenieria.md): el ejecutor con una prueba por límite, el modelo de versiones, dependencias y compromisos, las reglas normativas pendientes de validar, el stack y el reparto de trabajo.

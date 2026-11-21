@@ -1,9 +1,9 @@
-import { Card, Eyebrow, Pill } from "@/components/ui";
+import { BUTTON, Card, Eyebrow, Initials, Pill, initials } from "@/components/ui";
 import { apiGet } from "@/lib/api";
 
 import { propose } from "../actions";
 import type { ComiteReemplazo, WaitlistFamily } from "../types";
-import { Avatar, Callout, DEMO_COMITE, ErrorScreen, FolderCard, Screen, SectionTitle, formatDate } from "../ui";
+import { Callout, DEMO_COMITE, ErrorScreen, FolderCard, Screen, SectionTitle, formatDate } from "../ui";
 
 export const dynamic = "force-dynamic";
 
@@ -45,14 +45,16 @@ export default async function ReemplazoPage() {
       {renunciation && (
         <div>
           <Eyebrow className="px-4 pb-1">Renuncia</Eyebrow>
-          <div className="flex items-center gap-4 rounded-3xl bg-white/70 p-4">
-            <Avatar name={renunciation.name} className="bg-white text-suave" />
+          <div className="flex items-center gap-4 rounded-3xl bg-white/50 p-4">
+            <span aria-hidden className="rounded-2xl bg-white">
+              <Initials tone="neutro" size="size-12 !bg-transparent text-base text-suave">{initials(renunciation.name)}</Initials>
+            </span>
             <div className="min-w-0 flex-1">
               <p className="text-xl font-semibold text-suave">{renunciation.name}</p>
               <p className="text-sm text-suave">Carta de renuncia recibida{" "}
                 <span className="whitespace-nowrap">{receivedOn(renunciation.renounced_on)}</span></p>
             </div>
-            <span className="rounded-full bg-white px-3 py-1 font-mono text-sm">Sale</span>
+            <span className="rounded-full bg-white px-3 py-1 font-mono text-xs">Sale</span>
           </div>
         </div>
       )}
@@ -109,14 +111,14 @@ export default async function ReemplazoPage() {
           </Callout>
         ) : (
           <form action={propose.bind(null, candidate.id)}>
-            <button type="submit" className="w-full rounded-2xl bg-primario px-4 py-3 text-base font-semibold text-white">
+            <button type="submit" className={BUTTON.primary}>
               Proponer a {candidate.name} en asamblea
             </button>
           </form>
         ))}
 
-      <p className="text-sm text-suave">
-        El reemplazo se aprueba en asamblea según los estatutos. La entidad patrocinante lo ingresa al sistema.
+      <p className="text-xs text-suave">
+        El reemplazo se aprueba en asamblea según los estatutos. La entidad lo ingresa al sistema.
       </p>
     </Screen>
   );

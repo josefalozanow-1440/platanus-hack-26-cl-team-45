@@ -9,7 +9,7 @@ export function ReminderButton({ slug }: { slug: string }) {
   if (state) {
     return (
       <p role="status" className="rounded-3xl bg-ok-claro py-4 text-center text-sm font-semibold text-ok">
-        Listo: le pedimos al copiloto recordarle a {state.families} familias lo que les falta.
+        Listo: le pedimos a Folio recordarle a {state.families} familias lo que les falta.
       </p>
     );
   }

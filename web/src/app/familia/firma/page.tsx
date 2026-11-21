@@ -1,7 +1,7 @@
 // F4 · Pedro · Firma con ClaveÚnica
 import Link from "next/link";
 
-import { Card, Eyebrow, Pill } from "@/components/ui";
+import { BUTTON, Card, Eyebrow, Pill } from "@/components/ui";
 import { apiGet } from "@/lib/api";
 
 import type { Firma } from "../types";
@@ -47,7 +47,7 @@ export default async function FirmaPage() {
         <span className="inline-flex size-11 items-center justify-center rounded-xl bg-primario-claro font-mono text-xs text-primario">
           CU
         </span>
-        <h2 className="mt-3 text-lg font-semibold">Firma con tu ClaveÚnica</h2>
+        <h2 className="mt-3 text-xl font-semibold">Firma con tu ClaveÚnica</h2>
         <p className="mt-2 text-sm text-suave">
           Te llevamos al sitio de ClaveÚnica. Ahí confirmas que eres tú y vuelves aquí. Nunca vemos ni guardamos tu clave.
         </p>
@@ -73,7 +73,7 @@ export default async function FirmaPage() {
         ) : (
           <>
             <SignButton />
-            <Link href="/" className="mt-2 block rounded-2xl border border-linea py-3 text-center text-sm font-medium">
+            <Link href="/" className={`mt-2 ${BUTTON.secondary}`}>
               Ahora no
             </Link>
           </>

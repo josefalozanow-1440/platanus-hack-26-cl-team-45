@@ -7,6 +7,7 @@ test("el comité ve el estado de las carpetas del grupo, no su contenido", async
   await expect(counts).toContainText("34listas");
   await expect(counts).toContainText("4con faltantes");
   await expect(counts).toContainText("2por vencer");
+  await expect(page.getByText("Folio revisó las 40 carpetas hoy")).toBeVisible();
   await expect(page.getByText("2 familias aún no llegan a 10 UF.")).toBeVisible();
 
   const missing = page.getByTestId("missing");

@@ -32,12 +32,12 @@ export default async function CarpetaPage({ params }: { params: Promise<{ comite
   return (
     <>
       <PageHeader
-        title={`Carpeta del grupo · ${carpeta.name}`}
+        title={`Carpeta del grupo · ${carpeta.name.replace(/^Comité /, "")}`}
         subtitle={`${carpeta.family_count} familias · ${STAGES[carpeta.stage].label.toLowerCase()}`}
       />
       {deadline && (
         <section
-          className={`flex items-center gap-6 rounded-3xl px-6 py-5 ${deadline.critical ? "bg-alerta-claro" : "bg-aviso-claro"}`}
+          className={`flex flex-col gap-2 rounded-3xl md:flex-row md:items-center md:gap-6 px-6 py-5 ${deadline.critical ? "bg-alerta-claro" : "bg-aviso-claro"}`}
           data-testid="plazo-carpeta"
         >
           <p className={`shrink-0 text-2xl font-bold ${deadline.critical ? "text-alerta" : "text-aviso"}`}>
@@ -52,7 +52,7 @@ export default async function CarpetaPage({ params }: { params: Promise<{ comite
       )}
       <div className="overflow-x-auto rounded-3xl border border-linea bg-white">
         <table className="w-full text-left text-sm">
-          <thead className="text-xs text-suave">
+          <thead className="bg-fondo/60 text-xs text-suave">
             <tr>
               <th className="px-4 py-3 font-medium">Familia</th>
               {COLUMNS.map((column) => (
@@ -79,7 +79,7 @@ export default async function CarpetaPage({ params }: { params: Promise<{ comite
           </tbody>
         </table>
       </div>
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid gap-4 md:grid-cols-2">
         <section className="rounded-3xl border border-linea bg-white p-5" data-testid="composicion">
           <h2 className="font-semibold">Composición del grupo</h2>
           <p className="mt-1 text-sm">

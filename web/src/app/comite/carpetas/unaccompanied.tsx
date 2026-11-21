@@ -2,38 +2,38 @@
 
 import { useActionState } from "react";
 
-import { Badge, Card, initials } from "@/components/ui";
+import { BUTTON, Card, Initials, initials } from "@/components/ui";
 
 import { accompany, remind } from "../actions";
 import type { MissingFolder, ReminderSent } from "../types";
 
-const BUTTON = "flex-1 rounded-2xl px-4 py-3 text-base font-semibold disabled:opacity-60";
-
-/** "Familia Pérez no tiene acompañante": someone from the directiva takes it, or the copilot reminds it. */
-export function Unaccompanied({ family }: { family: MissingFolder }) {
+/** "Familia Pérez no tiene acompañante": someone from the directiva takes it, or Folio reminds it. */
+export function Unaccompanied({ family, live }: { family: MissingFolder; live: boolean }) {
   const [reminder, sendReminder, reminding] = useActionState<ReminderSent | null>(() => remind(family.id), null);
   const [, takeFamily, taking] = useActionState<null>(async () => {
     await accompany(family.id);
     return null;
   }, null);
+  // On the fixed screen (C1b) the buttons do nothing.
+  const type = live ? "submit" : "button";
 
   return (
     <Card className="flex flex-col gap-4">
       <div className="flex items-start gap-3">
-        <Badge className="bg-aviso-claro text-tinta">{initials(family.name)}</Badge>
+        <Initials tone="aviso">{initials(family.name)}</Initials>
         <div>
-          <p className="font-semibold">{family.name} no tiene acompañante</p>
-          <p className="text-sm text-suave">{family.missing_label}</p>
+          <p className="text-[15px] font-semibold">{family.name} no tiene acompañante</p>
+          <p className="text-xs text-suave">{family.missing_label}</p>
         </div>
       </div>
-      <div className="flex gap-3">
-        <form action={takeFamily} className="flex flex-1">
-          <button type="submit" disabled={taking} className={`${BUTTON} bg-primario text-white`}>
+      <div className="flex gap-2">
+        <form action={takeFamily} className="flex-1">
+          <button type={type} disabled={taking} className={`${BUTTON.primary} disabled:opacity-60`}>
             Acompañar yo
           </button>
         </form>
-        <form action={sendReminder} className="flex flex-1">
-          <button type="submit" disabled={reminding} className={`${BUTTON} border border-linea bg-white text-tinta`}>
+        <form action={sendReminder} className="flex-1">
+          <button type={type} disabled={reminding} className={`${BUTTON.secondary} disabled:opacity-60`}>
             Recordar
           </button>
         </form>
@@ -41,7 +41,7 @@ export function Unaccompanied({ family }: { family: MissingFolder }) {
       {reminder && (
         <p role="status" className="text-sm text-suave">
           {reminder.sent
-            ? `El copiloto le recordó a la ${reminder.family} lo que le falta.`
+            ? `Folio le recordó a la ${reminder.family} lo que le falta.`
             : `Ya le recordamos hoy a la ${reminder.family}. Insistir no lo apura.`}
         </p>
       )}

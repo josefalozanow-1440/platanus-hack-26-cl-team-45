@@ -40,12 +40,12 @@ export function remaining(deadline: Deadline): string {
 
 export function PageHeader({ title, subtitle }: { title: string; subtitle: string }) {
   return (
-    <header className="flex items-start justify-between gap-4">
+    <header className="flex flex-wrap items-start justify-between gap-4">
       <div>
         <h1 className="text-[28px] leading-tight font-bold tracking-tight">{title}</h1>
         <p className="mt-1 text-sm text-suave">{subtitle}</p>
       </div>
-      <span className="shrink-0 rounded-full bg-aviso-claro px-3 py-1 text-xs font-semibold text-aviso">
+      <span className="rounded-full bg-aviso-claro px-3 py-1 text-xs font-semibold text-aviso">
         Reglas: D.S. 49 base + resolución del llamado
       </span>
     </header>

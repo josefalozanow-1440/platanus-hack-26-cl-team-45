@@ -2,6 +2,8 @@
 
 import { useState, useTransition } from "react";
 
+import { BUTTON } from "@/components/ui";
+
 import { savePrivacy } from "../actions";
 import type { PrivacySettings } from "../types";
 
@@ -56,7 +58,7 @@ export function PrivacyForm({ comiteName, epName, initial }: Props) {
 
   return (
     <>
-      <ul className="mt-4 divide-y divide-linea rounded-3xl bg-white px-4">
+      <ul className="mt-4 divide-y divide-linea rounded-3xl bg-white px-5">
         {rows.map((row) => (
           <li key={row.key} className="flex items-start gap-3 py-4">
             <div className="flex-1">
@@ -72,7 +74,7 @@ export function PrivacyForm({ comiteName, epName, initial }: Props) {
         type="button"
         onClick={save}
         disabled={pending}
-        className="mt-4 w-full rounded-2xl bg-primario py-3.5 font-medium text-white disabled:opacity-60"
+        className={`mt-4 disabled:opacity-60 ${BUTTON.primary}`}
       >
         {pending ? "Guardando…" : "Guardar"}
       </button>

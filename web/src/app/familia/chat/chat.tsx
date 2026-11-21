@@ -3,8 +3,10 @@
 import Link from "next/link";
 import { type FormEvent, useState } from "react";
 
-import { Pill } from "@/components/ui";
+import { Bubble, CheckItem, Cite, FolioCard, FolioFooter } from "@/components/folio";
+import { Badge, BUTTON, Pill } from "@/components/ui";
 
+import { Faces, GROUP_FACES } from "../grupo/people";
 import type { Carpeta } from "../types";
 
 type Message =
@@ -20,26 +22,8 @@ const ANSWERS: Record<string, string> = {
     "Es la declaración de núcleo familiar: dice quiénes viven contigo. La firman todos los mayores de 18 años del hogar.",
 };
 
-const REPORT_ICONS = { listo: "✓", falta: "✕", vence: "!", no_aplica: "–" } as const;
-const REPORT_COLORS = { listo: "text-ok", falta: "text-alerta", vence: "text-aviso", no_aplica: "text-suave" } as const;
-
-function Bubble({ from, children }: { from: "bot" | "user"; children: string }) {
-  return from === "user" ? (
-    <p className="ml-auto max-w-[80%] rounded-2xl rounded-br-md bg-primario px-4 py-2.5 text-sm text-white">{children}</p>
-  ) : (
-    <p className="max-w-[85%] rounded-2xl rounded-bl-md bg-white px-4 py-2.5 text-sm">{children}</p>
-  );
-}
-
-function CardHeader({ tag }: { tag: string }) {
-  return (
-    <div className="flex items-center gap-2 text-xs font-medium">
-      <span className="inline-flex size-5 items-center justify-center rounded-md bg-primario text-[10px] text-white">C</span>
-      Copiloto
-      <span className="ml-auto font-mono text-[10px] uppercase tracking-wider text-suave">{tag}</span>
-    </div>
-  );
-}
+const CHECK_STATES = { listo: "ok", falta: "falta", vence: "aviso" } as const;
+const QUICK = "rounded-full border border-linea bg-white px-3.5 py-2 text-xs font-medium";
 
 export function Chat({ carpeta }: { carpeta: Carpeta }) {
   const pending = carpeta.pending_action;
@@ -89,40 +73,40 @@ export function Chat({ carpeta }: { carpeta: Carpeta }) {
 
   function render(message: Message, index: number) {
     if (message.kind === "bot" || message.kind === "user") {
-      return <Bubble key={index} from={message.kind}>{message.text}</Bubble>;
+      return <Bubble key={index} me={message.kind === "user"}>{message.text}</Bubble>;
     }
     if (message.kind === "report") {
       return (
-        <section key={index} className="rounded-2xl bg-white p-4">
-          <CardHeader tag="Informe" />
-          <h2 className="mt-2 font-semibold">Revisé tu carpeta parte por parte</h2>
-          <ul className="mt-2 space-y-1.5 text-sm">
-            {carpeta.documents.map((document) => (
-              <li key={document.kind} className="flex gap-2">
-                <span className={`w-4 text-center font-semibold ${REPORT_COLORS[document.status]}`}>
-                  {REPORT_ICONS[document.status]}
-                </span>
-                <span>
-                  {document.name}
-                  {document.status !== "listo" && `: ${document.status_label.toLowerCase()}`}
-                </span>
-              </li>
-            ))}
+        <FolioCard key={index} label="Informe">
+          <h2 className="font-semibold">Revisé tu carpeta parte por parte</h2>
+          <ul className="mt-3 space-y-2">
+            {carpeta.documents.map(
+              (document) =>
+                document.status !== "no_aplica" && (
+                  <CheckItem key={document.kind} state={CHECK_STATES[document.status]}>
+                    {document.name.replace(/ \(.*\)/, "")}
+                    {document.status !== "listo" && `: ${document.status_label[0].toLowerCase()}${document.status_label.slice(1)}`}
+                  </CheckItem>
+                ),
+            )}
           </ul>
-          <p className="mt-3 flex justify-between text-xs text-suave">
-            <span>
-              {carpeta.progress.ready} de {carpeta.progress.total} listos
-            </span>
-            <span className="font-mono">art. 3 D.S. 49</span>
-          </p>
-        </section>
+          <FolioFooter
+            note={
+              <span className="text-suave">
+                {carpeta.progress.ready} de {carpeta.progress.total} listos
+              </span>
+            }
+          >
+            <Cite>art. 3 D.S. 49</Cite>
+          </FolioFooter>
+        </FolioCard>
       );
     }
     if (message.kind === "signature" && pending) {
       return (
-        <section key={index} className="rounded-2xl bg-white p-4">
+        <section key={index} className="rounded-3xl bg-white p-4">
           <div className="flex items-center gap-3">
-            <span className="inline-flex size-9 items-center justify-center rounded-lg bg-alerta-claro font-mono text-[10px]">DJ1</span>
+            <Badge className="bg-alerta-claro">DJ1</Badge>
             <div>
               <h2 className="text-sm font-semibold">Núcleo familiar</h2>
               <p className="text-xs text-suave">Falta la firma de {pending.member_name}</p>
@@ -135,12 +119,7 @@ export function Chat({ carpeta }: { carpeta: Carpeta }) {
               </Pill>
             ))}
           </div>
-          <button
-            type="button"
-            onClick={sendLink}
-            disabled={linkSent}
-            className="mt-3 w-full rounded-xl bg-primario-claro py-2.5 text-sm font-medium text-primario disabled:opacity-60"
-          >
+          <button type="button" onClick={sendLink} disabled={linkSent} className={`mt-3 disabled:opacity-60 ${BUTTON.soft}`}>
             {linkSent ? "Enlace enviado" : `Enviar enlace a ${pending.member_name}`}
           </button>
         </section>
@@ -148,18 +127,16 @@ export function Chat({ carpeta }: { carpeta: Carpeta }) {
     }
     if (message.kind === "deadline" && cutoff) {
       return (
-        <section key={index} className="rounded-2xl bg-white p-4">
-          <CardHeader tag="Plazo" />
-          <p className="mt-2 text-2xl font-semibold text-primario">{cutoff.due_on.split("-").reverse().join("-")}</p>
-          <p className="mt-1 text-sm text-suave">
+        <FolioCard key={index} label="Plazo">
+          <p className="text-[28px] font-semibold leading-tight text-primario">{cutoff.due_on.split("-").reverse().join("-")}</p>
+          <p className="mt-2 text-sm">
             Ese día el banco certifica tu ahorro. Necesitas {Number(cutoff.required_uf)} UF; hoy tienes{" "}
             {String(Number(cutoff.savings_uf)).replace(".", ",")} UF.
           </p>
-          <p className="mt-2 flex justify-between text-xs">
-            <span className="font-mono text-aviso">Faltan {cutoff.days_left} días</span>
-            <span className="font-mono text-suave">art. 39 D.S. 49</span>
-          </p>
-        </section>
+          <FolioFooter note={`Faltan ${cutoff.days_left} días`}>
+            <Cite>art. 39 D.S. 49</Cite>
+          </FolioFooter>
+        </FolioCard>
       );
     }
     return null;
@@ -173,17 +150,20 @@ export function Chat({ carpeta }: { carpeta: Carpeta }) {
 
       <div className="mt-4 flex flex-wrap gap-2">
         {Object.keys(ANSWERS).map((question) => (
-          <button key={question} type="button" onClick={() => ask(question)} className="rounded-full bg-white px-3 py-1.5 text-xs">
+          <button key={question} type="button" onClick={() => ask(question)} className={QUICK}>
             {question}
           </button>
         ))}
-        <Link href="/familia/carpeta" className="rounded-full bg-white px-3 py-1.5 text-xs">
+        <Link href="/familia/carpeta" className={QUICK}>
           Ver mi carpeta
         </Link>
       </div>
 
-      <p className="mt-3 rounded-2xl bg-primario-claro px-4 py-2.5 text-xs text-primario">
-        {carpeta.comite_progress.complete} de {carpeta.comite_progress.total} familias ya completaron su carpeta
+      <p className="mt-3 flex items-center gap-3 rounded-2xl bg-primario-claro px-4 py-3 text-xs text-primario">
+        <Faces people={GROUP_FACES} />
+        <span>
+          {carpeta.comite_progress.complete} de {carpeta.comite_progress.total} familias ya completaron su carpeta
+        </span>
       </p>
 
       <form onSubmit={submit} className="mt-3 flex items-center gap-2 rounded-full bg-white p-1.5 pl-4">
@@ -191,11 +171,12 @@ export function Chat({ carpeta }: { carpeta: Carpeta }) {
           value={draft}
           onChange={(event) => setDraft(event.target.value)}
           placeholder="Escribe o envía una foto"
-          aria-label="Mensaje para el Copiloto"
-          className="flex-1 bg-transparent text-sm outline-none"
+          aria-label="Mensaje para Folio"
+          className="min-w-0 flex-1 bg-transparent text-sm outline-none"
         />
-        <button type="submit" className="rounded-full bg-primario px-4 py-1.5 text-xs font-medium text-white">
-          Enviar
+        {/* The text goes with Enter, as in the Figma. The photo upload is not built yet. */}
+        <button type="button" className="rounded-full bg-primario px-4 py-2 text-xs font-semibold text-white">
+          Foto
         </button>
       </form>
     </div>
