@@ -20,6 +20,7 @@ No hay stack decidido ni código (P-02, D-15). La pieza central es el ejecutor e
 | [`accesibilidad.md`](engineering-state/accesibilidad.md) | Datos sobre familias con poca experiencia digital, propuestas E-03 a E-08 y riesgos R-08 a R-12. | Tu tarea toca la vista o los textos para familias. |
 | [`arquitectura.md`](engineering-state/arquitectura.md) | Propuesta E-09: componentes, modelo de datos, ejecutor, flujo de una acción, stack y orden de construcción. | Vas a escribir código o repartir trabajo. |
 | [`casos-limites.md`](engineering-state/casos-limites.md) | Casos de prueba por límite (C-01 a C-25): estado, acción y resultado esperado del ejecutor. | Vas a escribir el ejecutor o sus tests. |
+| [`redactor.md`](engineering-state/redactor.md) | Propuesta E-11: plantillas técnica y simple por evento, glosario simple y reglas para E-03. | Vas a escribir el redactor, los avisos por WhatsApp o textos para familias. |
 | [`registro.md`](engineering-state/registro.md) | Registro de cambios. | Actualizas este estado. |
 
 ## Decisiones y propuestas de ingeniería
@@ -36,6 +37,7 @@ No hay stack decidido ni código (P-02, D-15). La pieza central es el ejecutor e
 | E-08 | Otros idiomas para familias, solo si las entrevistas lo muestran. | Propuesta | `accesibilidad.md` |
 | E-09 | Arquitectura: una app Next.js, Postgres como única fuente de verdad y todo cambio de estado como acción que valida el ejecutor. | Propuesta, en revisión de los developers | `arquitectura.md` |
 | E-10 | Casos de prueba por límite, independientes del stack. | Propuesta | `casos-limites.md` |
+| E-11 | Plantillas fijas del redactor: un mensaje técnico y uno simple por evento, desde los mismos datos. | Propuesta | `redactor.md` |
 
 | Rango | Qué cubre | Archivo |
 | --- | --- | --- |
