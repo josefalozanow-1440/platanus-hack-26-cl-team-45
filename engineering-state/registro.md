@@ -11,3 +11,4 @@ Parte de [`engineering-state.md`](../engineering-state.md). Agrega una línea po
 | 2026-11-21 | Propuesta E-09: arquitectura de software en `arquitectura.md`. | Pedido de Golazo en #steering (msg `1573773352877948951`) a golazo#44 |
 | 2026-11-21 | Propuesta E-10: casos de prueba por límite en `casos-limites.md`. | Tarea elegida por golazo#44 mientras E-09 espera revisión |
 | 2026-11-21 | Propuesta E-11: plantillas del redactor en `redactor.md`. | Tarea elegida por golazo#44 mientras E-09 y E-10 esperan revisión |
+| 2026-11-21 | Alineación con el Figma de lozi-love (D-19): E-09 suma carpeta por familia, firmas, consentimiento, observaciones, plazos con capa y reemplazos, y ordena la construcción por el MVP (6, 4, 2, 1); C-26 a C-39; plantillas T-07 a T-13; WhatsApp entra por la función 1; riesgos R-13 a R-15. | Orden de KainaBGR; kaina#62-3 |

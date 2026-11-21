@@ -25,6 +25,7 @@ Lo que el Figma confirma, contradice o deja abierto frente al resto de `product-
 | Vigencia del subsidio | 21 meses, +12 si la obra empezó (frame 3, art. 28, 41 y 64). | Coincide con `normativa.md`, que ya responde P-05. A-12 dice que no hay fuente para DS49: quedó atrás. |
 | Revisión del SERVIU | Hasta 135 días hábiles (Déficit Cero 2024) (frame 3). | Misma cifra que A-12, que sigue «Por verificar». |
 | Puntaje | Frame 5 y función 7 (puntaje del grupo). | Es de la postulación. La función 7 queda en segunda etapa en el mismo Figma. |
+| Fechas de las pantallas | Vence el 05-02-2027, quedan 57 días hábiles y último reemplazo el 13-03-2027 (pantallas E1, E2, F3, C2). | No cuadran con un calendario: el 13-03-2027 es sábado y las pantallas mezclan dos «hoy». Ver «Hallazgos al armar el caso base» en [`pruebas-producto.md`](pruebas-producto.md). |
 
 ## Frame 1 · El problema (`3:2`)
 

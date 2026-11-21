@@ -37,23 +37,33 @@ Los links a LeyChile marcados con (id?) se armaron sin poder abrir la página; b
 
 [Texto MINVU actualizado a julio de 2020](https://www.minvu.gob.cl/wp-content/uploads/2019/05/DS-49_FSEV-texto-DS-105_2014_23jul20.pdf). El DS 105 de 2014 reemplazó el texto, y lo modificaron el DS 22 de 2016 y el [DS 6 de 2024](https://www.bcn.cl/leychile/navegar?i=1202441). Regula todo el programa: quién postula, los subsidios, el ahorro, la obra, las garantías, los pagos y las sanciones. Lo aplica el SERVIU y lo cumplen la EP, la constructora y las familias. Por verificar: cambios posteriores a 2020 que no estén en ese texto.
 
-- Art. 12: la EP tiene 180 días desde que entra la primera familia a un proyecto en preparación para ingresar los antecedentes; si se pasa, se borran del sistema.
+El Figma dice que lo cotejó con BCN y que la única modificación posterior es el DS 6 de 2024, solo en el art. 27 (D-19, Figma, frame 1); falta confirmarlo (P-18).
+
+- Art. 12: la EP tiene 180 días desde que entra la primera familia a un proyecto en preparación para ingresar los antecedentes; si se pasa, se borran del sistema. El Figma cita el inc. 3 y anota que el artículo no dice si son días hábiles o corridos (D-19, Figma, frames 3 y 9; P-21).
 - Art. 14: un cambio que toque el estándar técnico o el cuadro normativo lo aprueban el SERVIU y las familias. Art. 50: el acta del diagnóstico participativo la firma la mayoría de los integrantes. Toca a D-05 y A-03.
-- Art. 28: el certificado de subsidio dura 21 meses; art. 64: se prorroga 12 meses si ya se iniciaron las obras. Responde P-05.
+- Diferencia con el Figma en el art. 14: el Figma lo cita para la permanencia en el Banco (3 procesos, +2) y para el plazo de reemplazo (inc. 3), no para cambios técnicos. Pueden ser incisos distintos del mismo artículo; no lo verificamos (D-19, Figma, frame 3).
+- Diferencia con el Figma en el art. 50: el Figma lo cita para el diagnóstico participativo con acta y, para las reuniones, pide 70% de asistencia según la Res. 1.875 (N-02); aquí dice mayoría de firmas en el acta. Son reglas de instrumentos distintos y no se excluyen; no lo verificamos (D-19, Figma, frame 4).
+- Art. 28: el certificado de subsidio dura 21 meses; art. 64: se prorroga 12 meses si ya se iniciaron las obras. Responde P-05. El Figma suma el art. 41, otros +12 si el proyecto fue eliminado y quedan menos de 12, y la prórroga del Director; también dice que el certificado sale en 15 días hábiles desde la publicación (A-17, A-26; D-19, Figma, frame 3).
 - Art. 29: el contrato de construcción es tripartito entre el grupo, la EP y la constructora. Art. 30: boleta de fiel cumplimiento del 2,5% del contrato, vigente hasta 30 días después del término de obras, y boleta de buena ejecución del 2,5% por al menos un año tras la recepción.
 - Art. 32: las obras se inician dentro de 90 días corridos desde que se publica la resolución que otorga el subsidio; el director del SERVIU puede prorrogarlo (art. 64 d).
-- Art. 37: el ahorro adicional tiene 150 días corridos desde la resolución del subsidio.
+- Art. 37: el ahorro adicional tiene 150 días corridos desde la resolución del subsidio. Según el Figma son 15 UF en el tramo 50–60%, 15 UF en 60–80% y 30 UF en 80–90% (A-27; D-19, Figma, frame 3).
 - Arts. 69 y 71: los anticipos llegan hasta el total de los subsidios menos un 5%, con dos giros al mes como máximo. El primer giro exige contrato, hipoteca y prohibición a favor del SERVIU y boleta de garantía, y lo girado no puede superar el avance que informa el FTO más las garantías vigentes. Toca a D-07 y L-08.
-- Art. 57: se puede reemplazar hasta el 20% de las familias beneficiadas, con carta de renuncia o acta de asamblea; el SEREMI puede autorizar más. El reemplazante debe estar en el mismo tramo de RSH y tener el ahorro listo. Toca a L-02.
-- Art. 60: la familia habita la vivienda 5 años desde la entrega y no puede venderla, gravarla ni cederla en ese plazo sin autorización escrita del SERVIU (10 años con densificación en altura). Art. 61: una infracción antes de aplicar el subsidio lleva a exclusión o caducidad; después, a devolver todo el subsidio.
+- Art. 57: se puede reemplazar hasta el 20% de las familias beneficiadas, con carta de renuncia o acta de asamblea; el SEREMI puede autorizar más. El reemplazante debe estar en el mismo tramo de RSH y tener el ahorro listo. Toca a L-02. El Figma agrega el plazo antes de la selección: reemplazos hasta el día hábil anterior a la fecha máxima de calificación y ninguno durante la selección (arts. 14 inc. 3 y 20 inc. 5; A-24).
+- Art. 60: la familia habita la vivienda 5 años desde la entrega y no puede venderla, gravarla ni cederla en ese plazo sin autorización escrita del SERVIU (10 años con densificación en altura). Art. 61: una infracción antes de aplicar el subsidio lleva a exclusión o caducidad; después, a devolver todo el subsidio. El Figma lo cita igual para la declaración falsa y lo usa en la función 7 (P-22).
+- Otros artículos que cita el Figma (D-19, frames 2 a 4), sin cotejar aquí: art. 3 (documentos de la familia; letra f, certificado de derechos en comunidad de máximo 90 días, A-28; letra i, la familia responde por lo que declara); art. 7 (la EP organiza la demanda, postula e ingresa; los representantes del comité son integrantes y postulantes); art. 10 (los representantes firman el contrato de construcción).
+- Más artículos del Figma: art. 13 (plazos de revisión del SERVIU y observaciones solo a la EP, A-18 y A-30; inc. 6, cambio de familias durante la corrección); art. 15 (calificación definitiva o condicional); art. 19 (terreno sobre la tasación en más de 10%, A-35); arts. 20 y 21 (llamados; en uno especial los plazos los fija su resolución, A-26 y A-36); arts. 22 a 26 (puntaje, selección y reclamos, A-34).
+- Más artículos del Figma: arts. 39 a 41 (corte y giro del ahorro, A-31); arts. 51 y 53 a i (la EP debe informar a las familias, sin forma ni plazo, A-30); art. 52 (la responsabilidad de la EP se fija en el Convenio Marco con la SEREMI, P-15).
 
 ### N-02. Res. Ex. 1875 (V. y U.) de 2015, asistencia técnica, jurídica y social
 
 [PDF MINVU](https://www.minvu.gob.cl/wp-content/uploads/2026/08/Res-Ex-1875-23-MAY-2015-Asistencia-Tecnica.pdf), [LeyChile](https://bcn.cl/3loay). La modificó la Res. 9866 de 2018. Fija qué servicios presta la EP, cuáles el SERVIU y cuáles la constructora, cuánto se paga por cada uno y cómo se fiscaliza la obra. Ya es la fuente de A-09.
 
+Diferencia: el Figma da como última modificación la Res. Ex. 488 de 2023; no verificamos cuál es la vigente (D-19, Figma, frame 1; P-18).
+
 - Art. 3: el SERVIU paga cada servicio de la EP contra el producto acreditado. Por verificar: los montos por tramo, que están en tablas en imagen.
 - Art. 4 n°1 y 2: desde el acta de entrega de terreno toda obra tiene fiscalización técnica (FTO, lo que en el equipo llamamos ITO), hecha por el SERVIU directo o contratada.
 - Art. 4 n°10: hay regímenes de visitas del FTO, desde residente hasta una vez cada 15 días, y todo queda en el Libro de Obras. El Libro de Obras es una fuente natural de evidencia del avance.
+- Lo que cita el Figma (D-19, frames 4, 6 y 7): Art. 2° n°10, reuniones con 70% de asistencia y acta con nombre, cédula y firma (A-29); Art. 2° n°6, si falta una actividad ese servicio no se paga; cuadro 2.5, al menos 2 reuniones en que la EP verifica requisitos y sube documentos; Art. 3° n° 5.2.1 y 5.2.4, la EP cobra 50% del plan social y 50% de la gestión al seleccionarse el grupo (A-33).
 
 ### N-03. Res. Ex. 685 de 2026, llamado CNT 2026
 
@@ -72,6 +82,8 @@ Los links a LeyChile marcados con (id?) se armaron sin poder abrir la página; b
 ### N-05. DS 22 de 2015 MDS, Registro Social de Hogares
 
 [Referencia SUSESO](https://www.suseso.cl/612/w3-article-40081.html). Fija la calificación socioeconómica por tramos que el DS49 usa para definir subsidio y ahorro (DS49 arts. 34 y 37). El llamado 2026 llega hasta el tramo 90% y A-02 fija la mezcla del grupo. Según la Res. 685 (3.3), una familia que ya estaba en el Sistema de Información Territorial de la Demanda mantiene su tramo hasta 36 meses. Es un dato socioeconómico y por eso sensible según N-24.
+
+El Figma cita además los Protocolos RSH (Res. Ex. SSS 04/2026, §V): el trámite toma 5 días hábiles, 20 con visita, y se desiste a los 20+10 días si faltan papeles; los adultos firman o validan con ClaveÚnica; la familia descarga su Cartola Hogar y un tercero solo la obtiene con poder notarial de máximo 6 meses (A-32; D-19, Figma, frames 4 y 7).
 
 ## Urbanismo y construcción
 
@@ -163,8 +175,9 @@ Ley General de Servicios Sanitarios, DFL MOP 382 de 1988 (link por verificar). D
 [Ley 19.628](https://www.bcn.cl/leychile/navegar?idNorma=141599) (id?), [Ley 21.719](https://www.bcn.cl/leychile/navegar?idNorma=1209272) (id?). Rigen los datos de las familias que guarda Comité.
 
 - Hoy (19.628, art. 4): sin ley que lo autorice, hace falta consentimiento expreso y por escrito, informando para qué se usan los datos, y se puede revocar.
-- Ley 21.719: se publicó el 13-12-2024 y entra en vigencia el 1-12-2026. Por verificar: el Congreso despachó el 17-11-2026 una postergación al 15-10-2027 que aún no salía en el Diario Oficial.
+- Ley 21.719: se publicó el 13-12-2024 y entra en vigencia el 1-12-2026. Por verificar: el Congreso despachó el 17-11-2026 una postergación al 15-10-2027 que aún no salía en el Diario Oficial. El Figma da el mismo dato con el Boletín 18.623-07 (D-19, Figma, frame 9; P-17).
 - Ley 21.719, art. 2 g: la situación socioeconómica pasa a ser dato sensible. Es justo lo que guardamos (RSH, ingresos, ahorro).
+- El Figma marca como datos sensibles la discapacidad y la prisión política (factores de puntaje) y pide que la familia los active ella misma; el comité ve el estado de cada documento y no su contenido, con autorización de cada familia (D-19, Figma, frame 8 y pantallas F0 y C1).
 - Arts. 12 y 16: un dato sensible exige consentimiento expreso (escrito, verbal o por medio tecnológico), libre, informado y específico por finalidad, y el responsable tiene que poder probarlo. Para el producto: casilla explícita con fecha, texto aceptado y canal, en web o WhatsApp. Las multas llegan a 20.000 UTM.
 
 ### N-25. Ley 19.799 de documentos y firma electrónica, y Ley 21.180 de transformación digital del Estado
@@ -181,14 +194,14 @@ El DS 1 obliga solo a los órganos del Estado a tener sitios accesibles según p
 
 ## Cruces con el estado de producto
 
-Lo que esta investigación aporta a ítems abiertos. Nada de esto cambia el estado de un ítem: lo cambia una persona del equipo.
+Lo que esta investigación aporta a ítems abiertos. Nada de esto cambia el estado de un ítem: lo cambia una persona del equipo. Desde D-19, si esta sección choca con el Figma de lozi-love, manda el Figma; las diferencias que no pudimos verificar quedan anotadas en cada norma.
 
 - A-03 (unanimidad): la página del llamado dice «el proyecto debe estar aprobado por todas las familias que integran el Comité», pero no encontramos esa frase en el texto de la Res. 685. El DS49 pide aprobación de las familias para cambios (art. 14) y mayoría para el acta del diagnóstico (art. 50). Sigue por verificar si «todas» exige la firma de cada familia.
 - A-04 (180 días): el plazo de 180 días del DS49 (art. 12) no es de ahorro ni de reemplazo; es el plazo de la EP para ingresar antecedentes. El ahorro adicional tiene 150 días (art. 37) y los reemplazos se rigen por el art. 57.
 - A-14 (ahorro, cobertura, venta): ahorro mínimo de 10 y 15 UF según tramo (Res. 685, 3.4) y prohibición de vender por 5 años (DS49 art. 60). No encontramos la «cobertura de hasta 90%».
-- P-05 (vigencia del subsidio): 21 meses, prorrogables 12 si ya se iniciaron las obras (DS49 arts. 28 y 64).
+- P-05 (vigencia del subsidio): 21 meses, prorrogables 12 si ya se iniciaron las obras (DS49 arts. 28 y 64). El Figma da lo mismo y suma el art. 41 (A-17); P-05 queda resuelta.
 - D-05 (versiones y revalidación): el art. 14 del DS49 da base legal a que un cambio técnico pida nueva aprobación de las familias.
 - D-07 y L-08 (gestión no es pago): el anticipo depende del avance informado por el FTO y de garantías vigentes (DS49 arts. 69 y 71), y el silencio del Estado ante un pago probablemente cuenta como rechazo (Ley 19.880, art. 65).
 - L-02 (exclusión de familias): la exclusión de un socio del comité solo se vota en asamblea extraordinaria y en votación secreta (Ley 19.418, art. 18), y el reemplazo en el subsidio lo resuelve el SERVIU (DS49 art. 57). Comité solo puede mostrar el estado.
 - Datos de las familias: la situación socioeconómica pasa a ser dato sensible con la Ley 21.719. Hace falta diseñar el consentimiento explícito y registrado desde el primer prototipo.
-- Plazos (D-12): los plazos con fuente para mostrar son los de la DOM (LGUC arts. 118 y 144), el SERVIU (Ley 19.880 arts. 24 y 27), el inicio de obras (DS49 art. 32) y la vigencia del subsidio (DS49 art. 28).
+- Plazos (D-12): los plazos con fuente para mostrar son los de la DOM (LGUC arts. 118 y 144), el SERVIU (Ley 19.880 arts. 24 y 27), el inicio de obras (DS49 art. 32) y la vigencia del subsidio (DS49 art. 28). El Figma agrega los de la revisión del SERVIU (DS49 art. 13: 30, 60, 15, 20 y 10 días hábiles), que son reglas propias del DS49 y mandan sobre los generales de la Ley 19.880 para ese trámite (A-18; D-19, Figma, frame 3).
