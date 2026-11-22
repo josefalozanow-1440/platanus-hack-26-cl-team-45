@@ -9,7 +9,7 @@ Encuestas como Cadem o Criteria reducen cada opinión a sí, no o una alternativ
 ## Cómo funciona
 
 1. **Pregunta abierta.** Audem hace una pregunta y cada persona responde con un audio, como ya habla por WhatsApp, sin instalar nada.
-2. **De audio a postura.** Cada audio se transcribe y se lee entero: qué temas toca, si está a favor, en contra o en una posición mixta, con cuánta fuerza, con qué emoción y qué propone, siempre con su cita textual.
+2. **De audio a postura.** Cada audio se transcribe y se lee entero: de qué temas habla, qué piensa de cada uno, qué propone y con qué emoción lo dice.
 3. **Mapa en vivo.** Las ideas se agrupan por postura en un mapa que se actualiza con cada respuesta: qué voces aparecen, cuánta gente hay en cada una y qué tan cerca están entre sí.
 4. **Categorías que nadie fijó.** No hay alternativas fijadas de antemano: los temas y posturas salen de lo que dice la gente y se reordenan con cada respuesta, así que la representación se ajusta a la pregunta.
 
