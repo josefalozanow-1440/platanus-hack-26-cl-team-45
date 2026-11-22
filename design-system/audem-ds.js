@@ -1,4 +1,4 @@
-/* @ds-bundle: {"format":4,"namespace":"Audem","components":[{"name":"Marca"},{"name":"Onda"},{"name":"Boton"},{"name":"Selector"},{"name":"Pastilla"},{"name":"Perilla"},{"name":"Rama"},{"name":"Orbe"},{"name":"Panel"},{"name":"Agente"},{"name":"Escena"}]} */
+/* @ds-bundle: {"format":4,"namespace":"Audem","components":[{"name":"Marca"},{"name":"Onda"},{"name":"Boton"},{"name":"Selector"},{"name":"Pastilla"},{"name":"Perilla"},{"name":"Rama"},{"name":"Orbe"},{"name":"Panel"},{"name":"Agente"},{"name":"Escena"},{"name":"BotonVoz"},{"name":"Microfono"}]} */
 (function () {
   var R = window.React, h = R.createElement;
 
@@ -288,7 +288,112 @@
             h(Sugerencias, { items: sugIni, onElegir: function (t) { enviar(t, 'consultar'); } })));
   }
 
+  /* ---------- Voz: el botón para hablar y la pantalla del micrófono ---------- */
+  function reloj(s) { s = Math.max(0, Math.floor(s || 0)); return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); }
+  function azar(i) { var x = Math.sin(i * 12.9898) * 43758.5453; return x - Math.floor(x); }
+  var ICONOS = {
+    mic: [h('rect', { key: 'a', x: 9, y: 3, width: 6, height: 11, rx: 3 }), h('path', { key: 'b', d: 'M5.5 11.5a6.5 6.5 0 0 0 13 0M12 18v3' })],
+    stop: [h('rect', { key: 'a', x: 7.5, y: 7.5, width: 9, height: 9, rx: 2, className: 'is-lleno' })],
+    ok: [h('path', { key: 'a', d: 'M6 12.5l4 4 8-9' })]
+  };
+  function BotonVoz(p) {
+    var T = p.tamano || 200, est = p.estado || 'reposo', D = Math.round(T * 1.8), c = D / 2;
+    var nivel = Math.max(0, Math.min(1, p.nivel || 0)), prog = Math.max(0, Math.min(1, p.progreso || 0));
+    var rayos = [];
+    for (var i = 0; i < 120; i++) {
+      var a = (i * 3 - 90) * Math.PI / 180, r1 = T * 0.67, r2 = r1 + T * (0.04 + 0.15 * azar(i + 1));
+      rayos.push(h('line', { key: i, className: 'au-rayo au-rayo--' + (i % 3), x1: f2(c + r1 * Math.cos(a)), y1: f2(c + r1 * Math.sin(a)), x2: f2(c + r2 * Math.cos(a)), y2: f2(c + r2 * Math.sin(a)) }));
+    }
+    var rp = T * 0.64, circ = 2 * Math.PI * rp;
+    var etiqueta = p.etiqueta || ({ reposo: 'Hablar', grabando: 'Terminar', procesando: 'Procesando tu voz', listo: 'Listo', error: 'Intentar de nuevo' })[est];
+    var icono = est === 'grabando' ? ICONOS.stop : (est === 'listo' ? ICONOS.ok : ICONOS.mic);
+    var orig = c + 'px ' + c + 'px';
+    return h('div', { className: cx('au-voz', 'is-' + est, p.className), style: { width: D + 'px', height: D + 'px', '--nivel': nivel.toFixed(3) } },
+      h('div', { className: 'au-voz-halo', 'aria-hidden': 'true' }),
+      h('svg', { className: 'au-voz-rayos', width: D, height: D, viewBox: '0 0 ' + D + ' ' + D, 'aria-hidden': 'true' },
+        h('g', { className: 'au-voz-pulso', style: { transformOrigin: orig } },
+          h('g', { className: 'au-voz-giro', style: { transformOrigin: orig } }, rayos))),
+      h('div', { className: 'au-voz-anillo', 'aria-hidden': 'true', style: { width: Math.round(T * 1.28) + 'px', height: Math.round(T * 1.28) + 'px' } }),
+      est === 'grabando' ? h('svg', { className: 'au-voz-progreso', width: D, height: D, viewBox: '0 0 ' + D + ' ' + D, 'aria-hidden': 'true' },
+        h('circle', { cx: c, cy: c, r: f2(rp), strokeDasharray: f2(circ), strokeDashoffset: f2(circ * (1 - prog)), transform: 'rotate(-90 ' + c + ' ' + c + ')' })) : null,
+      est === 'listo' ? h('span', { className: 'au-voz-eco', 'aria-hidden': 'true', style: { width: T + 'px', height: T + 'px' } }) : null,
+      h('button', { type: 'button', className: 'au-voz-orbe', style: { width: T + 'px', height: T + 'px' }, onClick: p.onClick, disabled: est === 'procesando', 'aria-label': etiqueta, 'aria-pressed': est === 'grabando' },
+        h('svg', { className: 'au-voz-icono', width: Math.round(T * 0.22), height: Math.round(T * 0.22), viewBox: '0 0 24 24', 'aria-hidden': 'true' }, icono)));
+  }
+
+  var TEXTOS_VOZ = {
+    reposo: ['Toca para hablar', null],
+    grabando: ['Te escucho', 'Toca de nuevo para terminar.'],
+    procesando: ['Leyendo tu voz…', 'Esto toma unos segundos.'],
+    listo: ['Tu voz está en el mapa', 'Gracias. Puedes sumar otra cuando quieras.'],
+    error: ['No pudimos usar tu micrófono', 'Revisa el permiso del navegador o escribe tu respuesta.']
+  };
+  function Microfono(p) {
+    var limite = p.limite || 120;
+    var st = R.useState(p.estadoInicial || 'reposo'), estado = p.estado || st[0];
+    var seg = R.useState(0), segRef = R.useRef(0), modo = R.useState('voz'), voces = R.useState(p.voces || []), niv = R.useState(0);
+    var vivo = R.useRef(true);
+    R.useEffect(function () { return function () { vivo.current = false; }; }, []);
+    function fijar(e) { if (!vivo.current) return; if (!p.estado) st[1](e); if (p.onEstado) p.onEstado(e); }
+    function sumar(texto, tipo) { voces[1](function (v) { return [{ texto: texto, tipo: tipo }].concat(v); }); }
+    function cerrar(promesa, texto, tipo) {
+      fijar('procesando');
+      Promise.resolve(promesa || new Promise(function (ok) { setTimeout(ok, 1600); })).then(function (r) {
+        sumar((r && r.texto) || texto, tipo); fijar('listo');
+        setTimeout(function () { fijar('reposo'); }, 2400);
+      }, function () { fijar('error'); });
+    }
+    function terminar() { var d = segRef.current; cerrar(p.onTerminar ? p.onTerminar(d) : null, 'Audio de ' + reloj(d), 'audio'); }
+    function tocar() {
+      if (estado === 'grabando') return terminar();
+      if (estado === 'procesando') return;
+      segRef.current = 0; seg[1](0); fijar('grabando'); if (p.onGrabar) p.onGrabar();
+    }
+    R.useEffect(function () {
+      if (estado !== 'grabando') return;
+      var t0 = Date.now();
+      var id = setInterval(function () {
+        var s = Math.min(limite, (Date.now() - t0) / 1000); segRef.current = s; seg[1](s);
+        if (s >= limite) { clearInterval(id); terminar(); }
+      }, 200);
+      return function () { clearInterval(id); };
+    }, [estado]);
+    R.useEffect(function () {
+      if (estado !== 'grabando' || p.nivel != null) { niv[1](0); return; }
+      var v = 0.3;
+      var id = setInterval(function () { var pausa = Math.random() < 0.12; v = v * 0.55 + (pausa ? 0.02 : Math.random() * 0.75) * 0.45; niv[1](v); }, 110);
+      return function () { clearInterval(id); };
+    }, [estado, p.nivel != null]);
+    var tx = TEXTOS_VOZ[estado] || TEXTOS_VOZ.reposo;
+    var titulo = estado === 'grabando' ? tx[0] + ' · ' + reloj(seg[0]) : tx[0];
+    var sub = estado === 'reposo' ? 'Hasta ' + reloj(limite) + ', como un audio de WhatsApp.' : tx[1];
+    return h('section', { className: cx('au-micro', p.className), 'aria-label': 'Responder la consulta' },
+      h('div', { className: 'au-micro-fondo', 'aria-hidden': 'true' }),
+      h('header', { className: 'au-micro-cab' }, h(Marca, { tamano: 26 })),
+      h('div', { className: 'au-micro-pregunta' },
+        p.tema ? h('p', { className: 'au-micro-tema' }, p.tema) : null,
+        h('h1', null, p.pregunta || '¿Qué le falta a tu barrio?')),
+      modo[0] === 'voz'
+        ? h('div', { className: 'au-micro-voz' },
+            h(BotonVoz, { estado: estado, nivel: p.nivel != null ? p.nivel : niv[0], progreso: seg[0] / limite, onClick: tocar, tamano: p.tamano || 180 }),
+            h('div', { className: 'au-micro-estado', role: 'status', 'aria-live': 'polite' },
+              h('p', { className: 'au-micro-titulo' }, titulo),
+              sub ? h('p', { className: 'au-micro-sub' }, sub) : null),
+            h('button', { type: 'button', className: 'au-micro-link', onClick: function () { modo[1]('texto'); } }, 'Prefiero escribir'))
+        : h('div', { className: 'au-micro-texto' },
+            h(Entrada, { placeholder: 'Escribe lo que piensas…', etiqueta: 'Tu respuesta', deshabilitado: estado === 'procesando',
+              onEnviar: function (t) { cerrar(p.onEnviarTexto ? p.onEnviarTexto(t) : null, t, 'texto'); } }),
+            estado !== 'reposo' ? h('p', { className: 'au-micro-sub', role: 'status' }, tx[0]) : null,
+            h('button', { type: 'button', className: 'au-micro-link', onClick: function () { modo[1]('voz'); } }, 'Prefiero hablar')),
+      voces[0].length ? h('div', { className: 'au-micro-voces' },
+        h('p', { className: 'au-micro-voces-tit' }, 'Tus voces'),
+        h('ul', null, voces[0].map(function (v, i) {
+          var t = typeof v === 'string' ? { texto: v } : v;
+          return h('li', { key: i }, h(Pastilla, { tono: 'turquesa' }, 'En el mapa'), h('span', null, t.texto));
+        }))) : null);
+  }
+
   var C = window;
   C.Audem = C.Audem || {};
-  Object.assign(C.Audem, { Marca: Marca, Onda: Onda, Boton: Boton, Selector: Selector, Pastilla: Pastilla, Perilla: Perilla, Rama: Rama, Orbe: Orbe, Panel: Panel, Agente: Agente, Escena: Escena, Entrada: Entrada, Simbolo: Simbolo, margen: margen, cifra: cifra });
+  Object.assign(C.Audem, { Marca: Marca, Onda: Onda, Boton: Boton, Selector: Selector, Pastilla: Pastilla, Perilla: Perilla, Rama: Rama, Orbe: Orbe, Panel: Panel, Agente: Agente, Escena: Escena, Entrada: Entrada, BotonVoz: BotonVoz, Microfono: Microfono, Simbolo: Simbolo, margen: margen, cifra: cifra });
 })();
