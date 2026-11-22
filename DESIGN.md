@@ -6,14 +6,15 @@ Toda pantalla o gráfico de Audem sigue esto. Si algo nuevo no calza, se cambia 
 **Instrumento de medición.** La pantalla se lee como una figura de paper: superficies neutras, un solo canal de color con significado, cada codificación tiene su clave y cada número tiene su n. Nada decorativo.
 
 ## Tipografía
-- IBM Plex Sans para texto y títulos, IBM Plex Mono para números, n y notas de método (Google Fonts). No hay más familias.
+- Poppins para texto y títulos, IBM Plex Mono para números, n y notas de método (Google Fonts). No hay más familias.
 - Escala modular 1.2 con base 16 px: 13 · 16 · 19 · 23 · 28 · 33 · 40 (`--t-1` … `--t5`). Nada bajo 13 px.
 - Títulos de sección en minúscula normal (sentence case), nunca en mayúsculas.
 - Números en mono con `tabular-nums`.
 
 ## Color
 - **Tono** (positivo/neutro/negativo) es el único canal de color con datos. La emoción concreta va en texto, nunca en color.
-  - Claro: pos `#2a78d6`, neu `#898781`, neg `#e34948`. Oscuro: pos `#3987e5`, neu `#b5b4ad`, neg `#e66767`.
+  - Paleta de Motion: Harmonic (Excite Audio), solo modo claro y fondo blanco: pos cian `#16a8c0`, neu crema `#eab54e`, neg coral `#ec5449`. Acento de interfaz cian `#14b4c9`; banda iridiscente `--iris` arriba de cada página.
+  - Los puntos se dibujan como esferas iluminadas (`url(#g-pos|neu|neg)` en `web/index.html`); botones y tarjetas con relieve suave (`--raised`, `--sunk`, `--card`).
   - Validados para daltonismo con el validador de dataviz (todos los pares, en ambos modos). El neutro gris es a propósito.
 - El tono se deriva de la emoción con una lista cerrada (ver `POS`/`NEG` en `web/src/comun.js`). Lo que no está en la lista cuenta como neutro.
 - Neutros: tinta casi negra y fondo blanco roto, nunca #000 ni #fff puros. Modo oscuro diseñado aparte, con elevación por pasos de luminosidad y sin sombras.

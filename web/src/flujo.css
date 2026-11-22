@@ -2,7 +2,7 @@ header { display: flex; align-items: center; gap: var(--s5); padding: var(--s4) 
 h1 { margin: 0; font-size: clamp(var(--t3), 2.6vw, var(--t5)); font-weight: 600; line-height: 1.15; letter-spacing: -0.015em; flex: 1 1 100%; }
 nav { display: flex; gap: var(--s2); }
 main { padding: 0 var(--s6) var(--s6); }
-section { background: var(--surface); border: 1px solid var(--edge); border-radius: 12px; padding: var(--s4) var(--s5); overflow-x: auto; }
+section { background: var(--surface); border: 1px solid var(--edge); border-radius: 20px; padding: var(--s4) var(--s5); overflow-x: auto; }
 figure { margin: 0; }
 #flujo { width: 100%; min-width: 900px; height: auto; max-height: calc(100vh - 190px); display: block; margin: 0 auto; }
 figcaption { border-top: 1px solid var(--line); margin-top: var(--s2); padding-top: var(--s3); display: flex; flex-wrap: wrap; justify-content: center; gap: var(--s2) var(--s5); align-items: center; font-size: var(--t-1); color: var(--ink-2); }

@@ -133,7 +133,7 @@ export function montar() {
           if (visto.size) p.classList.add('nuevo');
           el('circle', { class: 'hit', r: r + 6 }, p);
           el('circle', { class: 'anillo', r: r + 4 }, p);
-          el('circle', { class: 'dato', r, fill: `var(--${t})` }, p);
+          el('circle', { class: 'dato', r, fill: `url(#g-${t})` }, p);
           p.addEventListener('mousemove', ev => mostrarTip(ev, `<q>${esc(f.cita || f.texto)}</q><span>${esc(f.emocion)} (${NOMBRE_TONO[t]}) · intensidad <span class="num">${(f.intensidad ?? 0).toFixed(2)}</span> · ${esc(g.nombre)}</span>`));
           p.addEventListener('mouseleave', ocultarTip);
           visto.add(f.id);
@@ -213,7 +213,7 @@ export function montar() {
           n.el.addEventListener('click', () => seleccionar(n.q.g.id));
         } else if (q.tipo === 'frase') {
           const r = 4.5 + 5 * Math.max(0, Math.min(1, q.f.intensidad ?? 0.5));
-          el('circle', { class: 'anillo', r: r + 4 }, n.el); el('circle', { class: 'dato', r, fill: `var(--${tono(q.f.emocion)})` }, n.el);
+          el('circle', { class: 'anillo', r: r + 4 }, n.el); el('circle', { class: 'dato', r, fill: `url(#g-${tono(q.f.emocion)})` }, n.el);
           n.el.addEventListener('click', () => seleccionar(q.f.cluster_id));
         } else {
           el('circle', { r: 5 }, n.el);

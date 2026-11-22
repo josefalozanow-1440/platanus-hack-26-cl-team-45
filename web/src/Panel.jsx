@@ -71,7 +71,7 @@ const Lienzo = memo(() => (
             <figcaption>
               <span className="clave solo-red"><svg width="14" height="14" aria-hidden="true"><circle cx="7" cy="7" r="5" fill="var(--surface)" stroke="var(--ink-2)" strokeWidth="1.5" /></svg>persona</span>
               <span className="clave solo-red"><svg width="14" height="14" aria-hidden="true"><circle cx="7" cy="7" r="5" fill="var(--ink)" /></svg>persona que une 2 o más temas</span>
-              <span className="clave solo-red"><svg width="22" height="22" aria-hidden="true"><circle cx="11" cy="11" r="10" fill="var(--surface-2)" stroke="var(--ink)" strokeWidth="2" /></svg>tema (número = personas)</span>
+              <span className="clave solo-red"><svg width="22" height="22" aria-hidden="true"><circle cx="11" cy="11" r="10" fill="url(#g-perla)" stroke="var(--accent)" strokeWidth="2" /></svg>tema (número = personas)</span>
               <span className="clave"><svg width="30" height="14" aria-hidden="true"><circle cx="4" cy="7" r="3.5" fill="var(--muted)" /><circle cx="21" cy="7" r="7" fill="var(--muted)" /></svg>frase: color = tono, tamaño = intensidad</span>
               <span className="clave solo-temas">área del círculo = n.º de frases</span>
               <span className="clave"><svg width="16" height="16" aria-hidden="true"><circle cx="8" cy="8" r="6.5" fill="none" stroke="var(--ink)" strokeWidth="2" /></svg>últimas 2 frases</span>
