@@ -1,12 +1,37 @@
 {
   "contexto": "Encuesta de clima laboral. Cada respuesta es la transcripción automática de un audio de hasta 3 minutos.",
-  "escala": {
-    "-2": "Muy negativo: lo critica con fuerza o lo describe como un problema grave",
-    "-1": "Negativo: lo critica de forma moderada o con matices",
-    "0": "Neutro o mixto: lo menciona sin un juicio claro, o lo bueno y lo malo se compensan",
-    "1": "Positivo: lo valora de forma moderada",
-    "2": "Muy positivo: lo elogia con entusiasmo"
+  "dimensiones_tema": {
+    "direccion": {
+      "positivo": "La valora: lo que dice de este tema es favorable",
+      "negativo": "La critica: lo que dice de este tema es desfavorable",
+      "neutro": "Lo menciona sin dar un juicio, solo describe",
+      "mixto": "Dice cosas buenas y malas de este tema, sin que una domine"
+    },
+    "intensidad": {
+      "leve": "Lo dice de pasada o con matices",
+      "moderada": "Lo dice con claridad, sin énfasis especial",
+      "fuerte": "Lo dice con énfasis, con ejemplos o con molestia o entusiasmo marcados"
+    },
+    "tendencia": {
+      "mejora": "Dice que ha mejorado con el tiempo",
+      "igual": "Dice que siempre ha sido así o que no ha cambiado",
+      "empeora": "Dice que antes era mejor o que ha empeorado",
+      "no_dice": "No dice nada sobre cómo ha cambiado"
+    }
   },
+  "dimensiones_respuesta": {
+    "riesgo_fuga": "La persona da señales de querer irse de la empresa",
+    "emocion": {
+      "frustracion": "Molestia por algo que debería funcionar y no funciona",
+      "resignacion": "Cansancio de quien ya no espera que algo cambie",
+      "ansiedad": "Preocupación o inseguridad por lo que viene",
+      "entusiasmo": "Ganas y energía por lo que está viviendo",
+      "gratitud": "Agradece lo que recibe",
+      "calma": "Habla tranquila, sin una emoción marcada"
+    },
+    "propone": "La persona propone una mejora concreta"
+  },
+  "nota_intensidad": "La intensidad solo aplica cuando la dirección es positivo o negativo; en neutro y mixto va null.",
   "preguntas": [
     {
       "id": "p1_jefatura",
@@ -18,9 +43,24 @@
         "feedback_desarrollo": "Si la jefatura da retroalimentación y apoya el crecimiento profesional"
       },
       "perfiles": [
-        {"persona": "Analista contable, 4 años en la empresa", "valores": {"comunicacion": -2, "reconocimiento": -1, "autonomia": null, "feedback_desarrollo": -2}},
-        {"persona": "Ejecutiva de ventas, 1 año en la empresa", "valores": {"comunicacion": 1, "reconocimiento": 2, "autonomia": -1, "feedback_desarrollo": null}},
-        {"persona": "Desarrollador de software, 2 años en la empresa", "valores": {"comunicacion": 0, "reconocimiento": null, "autonomia": 2, "feedback_desarrollo": 1}}
+        {"persona": "Analista contable, 4 años en la empresa",
+         "temas": {"comunicacion": {"direccion": "negativo", "intensidad": "fuerte", "tendencia": "empeora"},
+                   "reconocimiento": {"direccion": "mixto", "intensidad": null, "tendencia": "igual"},
+                   "autonomia": null,
+                   "feedback_desarrollo": {"direccion": "negativo", "intensidad": "fuerte", "tendencia": "igual"}},
+         "riesgo_fuga": true, "emocion": "frustracion", "propone": false},
+        {"persona": "Ejecutiva de ventas, 1 año en la empresa",
+         "temas": {"comunicacion": {"direccion": "positivo", "intensidad": "moderada", "tendencia": "mejora"},
+                   "reconocimiento": {"direccion": "positivo", "intensidad": "fuerte", "tendencia": "igual"},
+                   "autonomia": {"direccion": "negativo", "intensidad": "leve", "tendencia": "no_dice"},
+                   "feedback_desarrollo": null},
+         "riesgo_fuga": false, "emocion": "gratitud", "propone": true},
+        {"persona": "Desarrollador de software, 2 años en la empresa",
+         "temas": {"comunicacion": {"direccion": "neutro", "intensidad": null, "tendencia": "no_dice"},
+                   "reconocimiento": null,
+                   "autonomia": {"direccion": "positivo", "intensidad": "fuerte", "tendencia": "igual"},
+                   "feedback_desarrollo": {"direccion": "mixto", "intensidad": null, "tendencia": "empeora"}},
+         "riesgo_fuga": false, "emocion": "calma", "propone": true}
       ]
     },
     {
@@ -33,9 +73,24 @@
         "apoyo_empresa": "Las políticas o beneficios de la empresa para conciliar trabajo y vida personal"
       },
       "perfiles": [
-        {"persona": "Supervisor de bodega, 6 años en la empresa", "valores": {"volumen_trabajo": -2, "horarios": -2, "bienestar": -1, "apoyo_empresa": null}},
-        {"persona": "Diseñadora UX, 3 años en la empresa, mamá de dos niños", "valores": {"volumen_trabajo": 0, "horarios": 2, "bienestar": 1, "apoyo_empresa": 1}},
-        {"persona": "Ejecutivo de atención al cliente, 8 meses en la empresa", "valores": {"volumen_trabajo": -1, "horarios": null, "bienestar": null, "apoyo_empresa": -2}}
+        {"persona": "Supervisor de bodega, 6 años en la empresa",
+         "temas": {"volumen_trabajo": {"direccion": "negativo", "intensidad": "fuerte", "tendencia": "empeora"},
+                   "horarios": {"direccion": "negativo", "intensidad": "fuerte", "tendencia": "igual"},
+                   "bienestar": {"direccion": "negativo", "intensidad": "moderada", "tendencia": "empeora"},
+                   "apoyo_empresa": null},
+         "riesgo_fuga": true, "emocion": "resignacion", "propone": false},
+        {"persona": "Diseñadora UX, 3 años en la empresa, mamá de dos niños",
+         "temas": {"volumen_trabajo": {"direccion": "neutro", "intensidad": null, "tendencia": "no_dice"},
+                   "horarios": {"direccion": "positivo", "intensidad": "fuerte", "tendencia": "mejora"},
+                   "bienestar": {"direccion": "positivo", "intensidad": "moderada", "tendencia": "mejora"},
+                   "apoyo_empresa": {"direccion": "mixto", "intensidad": null, "tendencia": "igual"}},
+         "riesgo_fuga": false, "emocion": "gratitud", "propone": true},
+        {"persona": "Ejecutivo de atención al cliente, 8 meses en la empresa",
+         "temas": {"volumen_trabajo": {"direccion": "negativo", "intensidad": "moderada", "tendencia": "igual"},
+                   "horarios": null,
+                   "bienestar": null,
+                   "apoyo_empresa": {"direccion": "negativo", "intensidad": "fuerte", "tendencia": "no_dice"}},
+         "riesgo_fuga": false, "emocion": "ansiedad", "propone": false}
       ]
     },
     {
@@ -48,9 +103,24 @@
         "comparacion_mercado": "Cómo se compara la remuneración con lo que pagan otras empresas"
       },
       "perfiles": [
-        {"persona": "Ingeniera de datos, 2 años en la empresa", "valores": {"sueldo": -1, "beneficios": 2, "transparencia": -2, "comparacion_mercado": null}},
-        {"persona": "Jefe de proyectos, 5 años en la empresa", "valores": {"sueldo": 1, "beneficios": null, "transparencia": 0, "comparacion_mercado": 1}},
-        {"persona": "Operario de producción, 10 años en la empresa", "valores": {"sueldo": -2, "beneficios": -1, "transparencia": null, "comparacion_mercado": -2}}
+        {"persona": "Ingeniera de datos, 2 años en la empresa",
+         "temas": {"sueldo": {"direccion": "negativo", "intensidad": "leve", "tendencia": "igual"},
+                   "beneficios": {"direccion": "positivo", "intensidad": "fuerte", "tendencia": "igual"},
+                   "transparencia": {"direccion": "negativo", "intensidad": "fuerte", "tendencia": "empeora"},
+                   "comparacion_mercado": null},
+         "riesgo_fuga": true, "emocion": "frustracion", "propone": true},
+        {"persona": "Jefe de proyectos, 5 años en la empresa",
+         "temas": {"sueldo": {"direccion": "positivo", "intensidad": "moderada", "tendencia": "mejora"},
+                   "beneficios": null,
+                   "transparencia": {"direccion": "mixto", "intensidad": null, "tendencia": "mejora"},
+                   "comparacion_mercado": {"direccion": "positivo", "intensidad": "leve", "tendencia": "no_dice"}},
+         "riesgo_fuga": false, "emocion": "calma", "propone": false},
+        {"persona": "Operario de producción, 10 años en la empresa",
+         "temas": {"sueldo": {"direccion": "negativo", "intensidad": "fuerte", "tendencia": "empeora"},
+                   "beneficios": {"direccion": "mixto", "intensidad": null, "tendencia": "igual"},
+                   "transparencia": null,
+                   "comparacion_mercado": {"direccion": "negativo", "intensidad": "fuerte", "tendencia": "no_dice"}},
+         "riesgo_fuga": true, "emocion": "resignacion", "propone": false}
       ]
     },
     {
@@ -63,9 +133,24 @@
         "mentoria": "Si hay personas que guían, enseñan o acompañan el desarrollo"
       },
       "perfiles": [
-        {"persona": "Asistente de marketing, 1 año y medio en la empresa", "valores": {"capacitacion": 2, "ascensos": -1, "plan_carrera": null, "mentoria": 1}},
-        {"persona": "Técnico de soporte, 7 años en la empresa", "valores": {"capacitacion": null, "ascensos": -2, "plan_carrera": -2, "mentoria": null}},
-        {"persona": "Analista financiera junior, 10 meses en la empresa", "valores": {"capacitacion": 0, "ascensos": 1, "plan_carrera": 1, "mentoria": 2}}
+        {"persona": "Asistente de marketing, 1 año y medio en la empresa",
+         "temas": {"capacitacion": {"direccion": "positivo", "intensidad": "fuerte", "tendencia": "mejora"},
+                   "ascensos": {"direccion": "negativo", "intensidad": "moderada", "tendencia": "igual"},
+                   "plan_carrera": null,
+                   "mentoria": {"direccion": "positivo", "intensidad": "leve", "tendencia": "no_dice"}},
+         "riesgo_fuga": false, "emocion": "entusiasmo", "propone": false},
+        {"persona": "Técnico de soporte, 7 años en la empresa",
+         "temas": {"capacitacion": null,
+                   "ascensos": {"direccion": "negativo", "intensidad": "fuerte", "tendencia": "empeora"},
+                   "plan_carrera": {"direccion": "negativo", "intensidad": "fuerte", "tendencia": "igual"},
+                   "mentoria": null},
+         "riesgo_fuga": true, "emocion": "resignacion", "propone": true},
+        {"persona": "Analista financiera junior, 10 meses en la empresa",
+         "temas": {"capacitacion": {"direccion": "neutro", "intensidad": null, "tendencia": "no_dice"},
+                   "ascensos": {"direccion": "mixto", "intensidad": null, "tendencia": "no_dice"},
+                   "plan_carrera": {"direccion": "positivo", "intensidad": "moderada", "tendencia": "mejora"},
+                   "mentoria": {"direccion": "positivo", "intensidad": "fuerte", "tendencia": "igual"}},
+         "riesgo_fuga": false, "emocion": "entusiasmo", "propone": false}
       ]
     },
     {
@@ -78,9 +163,24 @@
         "herramientas": "Las herramientas y reuniones que se usan para coordinarse: software, canales, rituales"
       },
       "perfiles": [
-        {"persona": "Ingeniero de operaciones, 3 años en la empresa", "valores": {"companerismo": 2, "colaboracion_areas": -2, "manejo_conflictos": null, "herramientas": -1}},
-        {"persona": "Coordinadora de recursos humanos, 4 años en la empresa", "valores": {"companerismo": 1, "colaboracion_areas": 0, "manejo_conflictos": -1, "herramientas": null}},
-        {"persona": "Vendedor en terreno, 2 años en la empresa", "valores": {"companerismo": -1, "colaboracion_areas": null, "manejo_conflictos": -2, "herramientas": 1}}
+        {"persona": "Ingeniero de operaciones, 3 años en la empresa",
+         "temas": {"companerismo": {"direccion": "positivo", "intensidad": "fuerte", "tendencia": "igual"},
+                   "colaboracion_areas": {"direccion": "negativo", "intensidad": "fuerte", "tendencia": "empeora"},
+                   "manejo_conflictos": null,
+                   "herramientas": {"direccion": "negativo", "intensidad": "moderada", "tendencia": "igual"}},
+         "riesgo_fuga": false, "emocion": "frustracion", "propone": true},
+        {"persona": "Coordinadora de recursos humanos, 4 años en la empresa",
+         "temas": {"companerismo": {"direccion": "positivo", "intensidad": "moderada", "tendencia": "mejora"},
+                   "colaboracion_areas": {"direccion": "mixto", "intensidad": null, "tendencia": "igual"},
+                   "manejo_conflictos": {"direccion": "negativo", "intensidad": "leve", "tendencia": "no_dice"},
+                   "herramientas": null},
+         "riesgo_fuga": false, "emocion": "calma", "propone": false},
+        {"persona": "Vendedor en terreno, 2 años en la empresa",
+         "temas": {"companerismo": {"direccion": "mixto", "intensidad": null, "tendencia": "igual"},
+                   "colaboracion_areas": null,
+                   "manejo_conflictos": {"direccion": "negativo", "intensidad": "fuerte", "tendencia": "empeora"},
+                   "herramientas": {"direccion": "positivo", "intensidad": "moderada", "tendencia": "mejora"}},
+         "riesgo_fuga": false, "emocion": "ansiedad", "propone": false}
       ]
     }
   ]

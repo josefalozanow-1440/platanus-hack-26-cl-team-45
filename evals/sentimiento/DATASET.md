@@ -1,294 +1,228 @@
 # Dataset del eval
 
-Generado por Claude Opus desde `preguntas.json`. Cada respuesta debía expresar exactamente los valores esperados.
+Lo escribió un subagente Opus a partir de `preguntas.json`.
 
-## ¿Cómo describirías tu relación con tu jefatura directa?
+## p1_jefatura_r1: Analista contable, 4 años en la empresa
 
-### p1_jefatura_r1: Analista contable, 4 años en la empresa
+**¿Cómo describirías tu relación con tu jefatura directa?**
 
-| Columna | Esperado |
+| Tema | Esperado |
 |---|---|
-| comunicacion: Qué tan clara y frecuente es la comunicación con la jefatura | -2 |
-| reconocimiento: Si la jefatura reconoce y valora el trabajo bien hecho | -1 |
-| autonomia: Cuánta confianza y libertad da la jefatura para decidir, o si microgestiona | no lo menciona |
-| feedback_desarrollo: Si la jefatura da retroalimentación y apoya el crecimiento profesional | -2 |
+| comunicacion | negativo · fuerte · empeora |
+| reconocimiento | mixto · igual |
+| autonomia | no lo menciona |
+| feedback_desarrollo | negativo · fuerte · igual |
 
-eh bueno ya, mi relación con mi jefe directo eh... o sea cómo lo digo. Es complicada igual. Llevo cuatro años acá y yo creo que el principal problema es que no hay comunicación, o sea no existe po. Yo me entero de las cosas por otros lados cachai. Por ejemplo el año pasado cambiaron la fecha de cierre de mes, la adelantaron como tres días y yo me enteré porque me lo dijo una compañera de tesorería en el pasillo, no porque él me avisara. Le mando correos y no contesta, le pregunto algo por el chat y me responde dos días después con un ok, nada más. Reuniones de equipo no tenemos hace no sé, como ocho meses, se suspendieron y nunca más. Entonces uno anda medio a ciegas adivinando qué es lo que está pasando y eso desgasta harto
+Riesgo de fuga: sí · Emoción: frustracion · Propone: no
 
-Eh qué más. Lo del reconocimiento igual, a ver, no es que sea una persona pesada no, a veces dice gracias, cuando sacamos el cierre anual puso como buena equipo en el grupo de whatsapp. Pero es eso, o sea es muy general muy de pasada. Yo me he quedado hasta tarde varias veces arreglando con si liaciones bancarias que venían mal de antes y no sé, uno espera que alguien te diga oye vi lo que hiciste cachai, y eso no pasa mucho. No me trata mal pero tampoco se nota que lo valore tanto
+eh bueno mi jefatura directa es la Carolina que está a cargo de contabilidad hace como tres años. Y mira la comunicación está mal, está bien mal y lo digo en serio. Antes teníamos una reunión los lunes cortita, veinte minutos, y uno sabía qué venía en la semana qué cierres había qué le tocaba a quién. Eso se murió, el año pasado se dejó de hacer y nunca más. Ahora uno se entera de las cosas por correo un viernes a las seis de la tarde o peor, se entera porque otra área te pregunta por algo que tú ni sabías que existía. En el cierre de septiembre me pasó que cambiaron el formato del informe para gerencia y nadie me avisó, yo lo hice como siempre, dos días de trabajo, y después me dicen no si eso ya no va así. O sea cómo, si nadie me dijo. Y le escribo por teams y me deja en visto, días. Antes no era así antes uno le preguntaba algo y te contestaba al tiro, ahora es como hablarle a la pared. Con el tema de si valora lo que uno hace eh ahí es más o menos, siempre ha sido igual en eso. Cuando sale bien un cierre ella lo dice en la reunión de área, da las gracias, menciona a la gente por nombre, eso igual se agradece. Pero al mismo tiempo cuando uno se saca la mugre quedándose hasta tarde para la auditoría eso como que se da por hecho, no hay un gracias no hay nada. Entonces es como mitad y mitad, desde que llegó ha sido así. Y lo otro que me tiene, me tiene cansada es que nunca, nunca en cuatro años he tenido una conversación de cómo voy, qué podría mejorar, hacia dónde puedo ir. La evaluación de desempeño es un formulario que llenas tú sola y ella le pone un check. Dos veces le he preguntado si podíamos conversar de mi desarrollo y las dos veces me dijo sí sí la próxima semana, y nada. Yo quería hacer el diplomado en ifres y ni siquiera me respondió si la empresa podía apoyar. Siempre ha sido así con ella no es que haya cambiado, siempre ha sido así de ausente en eso. Perdón está pasando el camión de la basura aquí afuera, pasa todos los martes a esta hora, bueno. Entonces nada, yo la verdad estoy mirando otras opciones, actualicé el linkedín el mes pasado y ya tuve una entrevista. No es que quiera irme por irme pero así uno no crece cachai, y llega un punto en que te cansai de esperar.
 
-Ah y perdón un paréntesis, hoy día llegué tarde porque el metro en la línea uno estuvo detenido como veinte minutos, no sé qué pasó, había un montón de gente, así que estoy medio acelerada todavía
+## p1_jefatura_r2: Ejecutiva de ventas, 1 año en la empresa
 
-Ya, lo otro que para mí es lo más grave es el tema de crecer acá. En cuatro años yo he tenido una sola conversación con él sobre mi desempeño y fue porque recursos humanos obligó a hacer la evaluación, y duró como diez minutos, me dijo que estaba todo bien y firmamos. Nunca me ha dicho mira esto lo puedes hacer mejor o esto te falta para pasar a analista senior, nunca. Yo le he pedido derechamente fid bak, le dije que quería hacer un diplomado en i efe erre ese y si la empresa podía apoyar y me dijo que lo veía y nunca más, o sea quedó ahí. Y uno ve que entra gente nueva y como que eh, yo sigo en el mismo lugar haciendo lo mismo que hacía el primer año. Entonces siento que estoy estancada y que a él no le interesa mucho mi desarrollo
+**¿Cómo describirías tu relación con tu jefatura directa?**
 
-Eso, no sé, es lo que hay
-
-### p1_jefatura_r2: Ejecutiva de ventas, 1 año en la empresa
-
-| Columna | Esperado |
+| Tema | Esperado |
 |---|---|
-| comunicacion: Qué tan clara y frecuente es la comunicación con la jefatura | +1 |
-| reconocimiento: Si la jefatura reconoce y valora el trabajo bien hecho | +2 |
-| autonomia: Cuánta confianza y libertad da la jefatura para decidir, o si microgestiona | -1 |
-| feedback_desarrollo: Si la jefatura da retroalimentación y apoya el crecimiento profesional | no lo menciona |
+| comunicacion | positivo · moderada · mejora |
+| reconocimiento | positivo · fuerte · igual |
+| autonomia | negativo · leve · no_dice |
+| feedback_desarrollo | no lo menciona |
 
-eh ya a ver, mi relación con mi jefa. Eh bueno o sea yo diría que es buena en general, igual tiene sus cosas pero es buena. Lo que más me gusta de ella, o sea de verdad, es que cuando una hace bien las cosas ella lo nota y lo dice cachai. Por ejemplo el mes pasado yo cerré una venta con una con structora que llevábamos como tres meses persiguiendo y ella en la reunión del lunes paró todo y dijo frente a todo el equipo miren esto lo logró la Cami, y después le mandó un correo al gerente comercial contando todo el proceso. Y no es una vez no más, lo hace siempre, si alguien se saca la mugre ella se da cuenta, nos lleva a almorzar, aparece con alfajores de la nada. Eso a mí me motiva caleta, yo he estado en otras pegas donde nadie te decía nada nunca y aquí es como, es como otra cosa.
+Riesgo de fuga: no · Emoción: gratitud · Propone: sí
 
-Eh la comunicación igual bien, tenemos una reunión fija los lunes y ella responde el wasap rápido, casi siempre. A veces se pierde un poco cuando anda en reuniones con gerencia y una queda ahí esperando, pero en general uno sabe qué está pasando con las metas, con los cambios de precios, esas cosas no te pillan de sorpresa.
+ya mi jefe es el Rodrigo, el subgerente comercial de la zona centro. Eh qué te puedo decir, yo estoy súper agradecida la verdad. Lo que más destaco es que él reconoce lo que uno hace y no de la boca para afuera. Cuando cerré el contrato con la clínica en marzo, que era harta plata, él mandó un correo a todo el equipo contando cómo lo había logrado yo, con nombre y apellido, y después en la reunión mensual me lo volvió a mencionar delante del gerente. Y no es solo conmigo, desde que entré es así con todos, cuando alguien hace algo bien él lo dice, lo celebra, una vez nos llevó a tomar once a todos porque superamos la meta del trimestre. Eso para mí vale mucho, uno se siente visto cachai. Con la comunicación al principio me costó un poco, porque yo llegué en un momento en que él estaba con mil cosas, había entrado gente nueva, y a veces no sabía bien cuáles eran las prioridades de la semana o me enteraba tarde de los cambios en las con misiones. Pero eso ha ido mejorando harto, ahora tenemos un chat del equipo donde él avisa todo y una conversación de quince minutos los jueves, y ya no me pasa eso de estar perdida. Lo único, y es menor, es que a veces le cuesta soltar un poco. Por ejemplo los descuentos, aunque sea un tres por ciento igual quiere que se lo consulte antes, y a veces el cliente está ahí esperando y yo tengo que llamarlo. No es grave pero a veces se pierde un poquito de tiempo. Ah y perdón que me desvíe, pero hoy fui a dejar a mi sobrino al colegio y la micro se demoró como cuarenta minutos, entonces si me escucho medio acelerada es por eso, vengo corriendo todo el día. Bueno lo que yo propondría concretamente es que se defina un margen de descuento que uno pueda dar sola, no sé, hasta un cinco por ciento, y que sobre eso sí se consulte. Así él no tiene que estar contestando el teléfono por cada cotisación y nosotros cerramos más rápido. Creo que a él también le serviría porque anda con el celular pegado todo el día. Pero en general de verdad estoy muy contenta con él, me ha tratado súper bien y le agradezco harto la buena onda que tiene con el equipo. Uno no siempre tiene esa suerte con los jefes, entonces eso, gracias.
 
-Lo que sí, eh, cómo decirlo. Es como que le cuesta soltar. O sea cada cotización que yo mando ella quiere revisarla antes, aunque sea un cliente chico de toda la vida. Y si doy un descuento de un dos por ciento igual tengo que pedirle permiso y a veces el cliente está al teléfono esperando y yo como ya, déjame confirmar y te llamo. Y me pide que la deje en copa en todos los correos, en todos. Yo entiendo que hubo un tema antes con un vendedor que regalaba márgenes y por eso está así, igual lo entiendo, pero ya llevo un año y siento que podría, no sé, que podría manejar eso sola. No es terrible tampoco, ella no es pesada, pero cansa un poco.
+## p1_jefatura_r3: Desarrollador de software, 2 años en la empresa
 
-Ah y nada que ver pero los estacionamientos de la oficina no alcanzan, yo llego a las ocho y cuarto y ya no hay, entonces dejo el auto en la calle y el parquímetro está carísimo. Bueno eso no tiene que ver con la jefa.
+**¿Cómo describirías tu relación con tu jefatura directa?**
 
-Eh entonces eso, en resumen la relación es buena, me siento valorada de verdad, me gustaría que confiara un poquito más en mi criterio no más. Eso.
-
-### p1_jefatura_r3: Desarrollador de software, 2 años en la empresa
-
-| Columna | Esperado |
+| Tema | Esperado |
 |---|---|
-| comunicacion: Qué tan clara y frecuente es la comunicación con la jefatura | +0 |
-| reconocimiento: Si la jefatura reconoce y valora el trabajo bien hecho | no lo menciona |
-| autonomia: Cuánta confianza y libertad da la jefatura para decidir, o si microgestiona | +2 |
-| feedback_desarrollo: Si la jefatura da retroalimentación y apoya el crecimiento profesional | +1 |
+| comunicacion | neutro · no_dice |
+| reconocimiento | no lo menciona |
+| autonomia | positivo · fuerte · igual |
+| feedback_desarrollo | mixto · empeora |
 
-eh ya bueno mi jefatura directa es el Rodrigo que es el tech lead del equipo, entré y a los dos meses quedó él a cargo así que llevo casi todo el tiempo con él. eh como describiría la relación... igual buena po, buena. lo que más destaco lejos lejos es que te deja hacer tu pega cachai, o sea no está encima tuyo, no te anda preguntando a cada rato en qué vas ni revisando los comits uno por uno. por ejemplo el año pasado tuvimos que rehacer el módulo de pagos y él me dijo ya tú vei cómo lo armai, y yo elegí la arquitectura, propuse cambiar la librería y él me dijo dale, confío en tu criterio, si algo se cae lo vemos juntos. y eso pa mí es oro, de verdad, porque en mi pega anterior el jefe te revisaba hasta el nombre de las variables entonces acá es otro mundo, uno se siente adulto po.
+Riesgo de fuga: no · Emoción: calma · Propone: sí
 
-eh la comunicación es... ahí depende. tenemos la daily todos los días y ahí uno se entera de harto, eso funciona bien. pero a veces cambian las prioridades y uno se entera por el gira o porque alguien lo comentó en el slack, no porque él te lo dijo, cachai. tampoco es que sea malo, cuando le escribís te responde al tiro, pero a veces falta que baje la información antes. igual entiendo que a él también le llega tarde de arriba entonces... no sé, mitad y mitad.
+bueno mi jefatura es la Fernanda, es la tech lead del equipo de pagos. Eh a ver cómo funciona. Tenemos una daily todos los días a las nueve y media que dura quince minutos más o menos, y después una guan on guan cada dos semanas que es media hora. Fuera de eso hablamos por slack cuando hay algo puntual, y ya, así es más o menos como nos comunicamos. Lo que sí destaco harto es que ella confía en uno, o sea de verdad. Desde que entré ha sido así, me pasó un ticket del sistema de conciliación a la segunda semana y me dijo decide tú cómo lo armas, si necesitas algo me avisas. Y no estaba encima, no me revisaba cada comit ni nada. Cuando tuvimos que elegir la librería para las colas yo propuse una distinta a la que se usaba y ella me dijo dale, tú lo investigaste tú sabes. Eso para mí es lo mejor que tiene en serio, he tenido jefes antes que te preguntan cada dos horas en qué vas y acá nunca ha sido así, siempre ha sido igual de tranquilo en eso. Con el tema de que te ayude a crecer ahí es más mixto. Por un lado cuando ella revisa código te deja comentarios buenos, te explica el por qué, y de eso he aprendido harto. Pero antes, el primer año, en las one on one hablábamos de qué quería aprender, me recomendaba cosas, armamos un plan para que yo me metiera en infraestructura. Y eso de un tiempo a esta parte se perdió, desde que le pasaron el otro equipo además del nuestro las one on one se volvieron más de estado del sprint, qué está bloqueado, y la parte de desarrollo quedó medio botada. No es que lo haga mal, es que antes había más de eso. Ah igual un paréntesis, esta semana cambiaron la máquina de café del piso y ahora hace un café que no sé, sabe a agua de calcetín, todo el mundo está bajando al Starbucks de la esquina. En fin. Lo que yo propondría es separar las cosas, que una de cada dos one on one, una al mes digamos, sea solo para hablar de desarrollo, sin tocar el sprint para nada. Así no se lo come lo operativo. Y que eso venga como una práctica de toda el área y no que dependa de que uno se acuerde de pedirlo, porque así es más fácil de mantener. Eso, en general estoy tranquilo, me gusta trabajar con ella.
 
-y en lo de crecer eh ahí lo encuentro bien. tenemos unos uno a uno cada mes, bueno se supone que cada mes, a veces se corren, y conversamos qué quiero aprender, pa dónde quiero ir. yo le dije que me interesaba la parte de infraestructura, devops, y me metió en un par de tareas de eso y me consiguió que la empresa me pagara un curso de cuber netes. y en los pul request te comenta cosas concretas, no es solo apruebo y listo, te explica por qué él lo haría distinto. no es un plan de carrera súper armado pero sí te ayuda.
+## p2_carga_r1: Supervisor de bodega, 6 años en la empresa
 
-ah y una cosa que no tiene nada que ver pero ya que estamos, el estacionamiento de bicicletas del edificio es terrible, son como seis cupos pa todo el piso y si llegai después de las nueve no hay dónde dejarla, la tengo que amarrar a un poste afuera y me da susto que me la roben. ya eso nomás, pa que quede.
+**¿Qué opinas de tu carga de trabajo y del equilibrio con tu vida personal?**
 
-eh qué más... no, eso, en general con el Rodrigo bien, lo que más valoro es la libertad que te da, eso lejos.
-
-## ¿Qué opinas de tu carga de trabajo y del equilibrio con tu vida personal?
-
-### p2_carga_r1: Supervisor de bodega, 6 años en la empresa
-
-| Columna | Esperado |
+| Tema | Esperado |
 |---|---|
-| volumen_trabajo: La cantidad de trabajo asignado y si alcanza el tiempo para hacerlo | -2 |
-| horarios: La flexibilidad de horarios, el trabajo remoto y las horas extra | -2 |
-| bienestar: El estrés, el cansancio y la salud física o mental de la persona | -1 |
-| apoyo_empresa: Las políticas o beneficios de la empresa para conciliar trabajo y vida personal | no lo menciona |
+| volumen_trabajo | negativo · fuerte · empeora |
+| horarios | negativo · fuerte · igual |
+| bienestar | negativo · moderada · empeora |
+| apoyo_empresa | no lo menciona |
 
-eh ya bueno a ver, la carga de trabajo. o sea yo llevo seis años acá en la bodega y nunca había estado como está ahora cachai. antes éramos cinco supervisores por turno no, cuatro, éramos cuatro y ahora quedamos dos pa cubrir lo mismo, y encima con más despachos porque llegaron los clientes nuevos del retel. entonces uno no alcanza o sea literal no alcanza. yo llego a las siete y a las nueve ya tengo como tres camiones esperando en el anden, los chiquillos preguntándome qué cargo primero, y el inventario que me piden pal viernes que no lo he tocado en dos semanas. es imposible, es como que te pasan la pega de tres persona y te dicen ya sácalo igual no más
+Riesgo de fuga: sí · Emoción: resignacion · Propone: no
 
-y lo de los horarios eh eso es lo que más me tiene chorreado la verdad. aquí no existe eso de que te puedai ir a la hora. se supone que salgo a las cinco y media y salgo a las ocho, ocho y media, todos los días todos, y las horas extra muchas veces ni siquiera se registran porque como soy supervisor dicen que eso está incluido que es parte del cargo. y remoto ni hablar, o sea entiendo que la bodega es presencial obvio, pero hay cosas como los informes las planillas que podría hacerlas desde la casa un día y no, tiene que ser acá sí o sí. el mes pasado me llamaron un domingo a las seis de la mañana porque no llegó el que abría y tuve que ir no más, sin aviso nada. y pedir un cambio de turno pa ir al médico es casi una negociación con el jefe, te miran feo
+eh ya a ver. Yo llevo seis años en la bodega de Lo Espejo, supervisor de turno. Y la pega, la cantidad de pega está imposible. Cuando entré éramos catorce en el turno y despachábamos no sé, unos ochenta camiones a la semana. Ahora somos once porque se fueron tres y no los repusieron, y estamos despachando más de cien. Y con el saiber de noviembre ni te cuento, la semana pasada no alcancé a hacer el inventario del pasillo cuatro en toda la semana porque estaba yo mismo arriba de la grúa horquilla tapando huecos. Antes uno terminaba el turno con las cosas hechas, ahora termina con una lista de pendientes que pasa para el día siguiente y así. Y los horarios bueno, eso siempre ha sido igual, aquí nunca ha habido flexibilidad de nada. Entras a las siete y sales cuando se va el último camión, que dice el contrato a las cuatro y media pero eso es mentira, yo salgo a las siete ocho de la noche fácil tres veces a la semana. Y los sábados, que supuestamente eran cada dos semanas, terminan siendo todos. Así ha sido siempre, desde que llegué, no es nuevo. Y uno lo siente en el cuerpo igual. Ya no duermo bien, me despierto a las tres pensando en el despacho del otro día. La espalda también, fui al doctor y me dijo que tenía una contra tura que no se me iba a ir si no descansaba. Antes no estaba así, los primeros años yo llegaba a la casa y jugaba a la pelota con mi hijo, ahora llego y me tiro en el sillón, no tengo ganas de nada. Mi señora me dice que parezco zombi y tiene razón. A propósito el domingo fuimos al estadio a ver a la U, perdimos dos a cero, pero fue lo único que hice en toda la semana que no fuera trabajar o dormir. Bueno, la U tampoco ayuda mucho. La verdad es que ya no espero mucho. He dicho esto mismo en otras encuestas, al jefe de operaciones, y todo sigue igual o peor. Así que estoy viendo, un primo trabaja en una empresa de transporte en Quilicura y me dijo que había un puesto, y lo estoy pensando en serio. No sé, a estas alturas uno se cansa de pelear. Eso, no tengo mucho más que decir.
 
-eh qué más. ah el otro día por cierto se nos inundó el estacionamiento con la lluvia y quedó la media laguna, tuve que dejar el auto como a tres cuadras y llegué con los zapatos todos mojados, bueno eso no tiene nada que ver pero igual po
+## p2_carga_r2: Diseñadora UX, 3 años en la empresa, mamá de dos niños
 
-lo del cansancio igual, o sea no te voy a decir que estoy enfermo ni nada, pero sí ando más cansado, duermo mal algunos días, me cuesta desconectarme, llego a la casa y sigo pensando en el despacho de mañana, en si va a llegar el camión de. mi señora me dice que ando más irritable y puede ser cachai. no es que esté colapsado tampoco, pero sano sano no es. me duele la espalda a veces pero eso es más por los años en bodega que otra cosa
+**¿Qué opinas de tu carga de trabajo y del equilibrio con tu vida personal?**
 
-así que eso, o sea la pega me gusta, el equipo es bueno, los cabros son buenos, pero así como está no sé cuánto más se aguanta la verdad
-
-### p2_carga_r2: Diseñadora UX, 3 años en la empresa, mamá de dos niños
-
-| Columna | Esperado |
+| Tema | Esperado |
 |---|---|
-| volumen_trabajo: La cantidad de trabajo asignado y si alcanza el tiempo para hacerlo | +0 |
-| horarios: La flexibilidad de horarios, el trabajo remoto y las horas extra | +2 |
-| bienestar: El estrés, el cansancio y la salud física o mental de la persona | +1 |
-| apoyo_empresa: Las políticas o beneficios de la empresa para conciliar trabajo y vida personal | +1 |
+| volumen_trabajo | neutro · no_dice |
+| horarios | positivo · fuerte · mejora |
+| bienestar | positivo · moderada · mejora |
+| apoyo_empresa | mixto · igual |
 
-eh ya bueno a ver por dónde parto. O sea la carga de trabajo es... igual depende de la época cachai, hay semanas que estamos con un esprín muy apretado y como que no alcanza el tiempo, y otras semanas que en verdad está súper tranquilo y uno alcanza a hacer todo e incluso a ordenar los archivos del fima que eso nunca pasa jaja. Entonces como que se compensa no sé, no diría que estoy colapsada pero tampoco que me sobra el tiempo, es como normal
+Riesgo de fuga: no · Emoción: gratitud · Propone: sí
 
-Ahora lo que sí, lo que sí quiero destacar es la flexibilidad porque eso para mí ha sido o sea un siete. Yo tengo dos niños el mayor tiene seis y la chica tiene tres, y poder trabajar desde la casa tres días a la semana es lo máximo en serio. Si tengo que ir a buscar a la chica al jardín a las cuatro voy, nadie me pregunta nada, después me conecto un rato en la noche si hace falta y listo. Y mi jefa nunca me ha dicho oye por qué no estabas conectada nunca. Y horas extra casi no hay, la vez que me tocó quedarme hasta tarde por el lanzamiento de la app después me dieron la tarde libre el viernes, o sea eso en otras pegas yo nunca lo vi, en mi pega anterior era quedarse hasta las nueve y nadie te decía ni gracias
+hola ya bueno. Yo soy diseñadora en el equipo de producto, llevo tres años y tengo dos niños, la Emilia de siete y el Tomás de cuatro, entonces este tema para mí es el tema cachai. Mira en cuanto a la pega en sí, yo tengo asignados dos escuads, el de la app y el del portal de clientes, y por sprint me tocan más o menos entre cuatro y seis pantallas o flujos, más las sesiones de investigación con usuarios que son unas dos al mes. Esa es más o menos la carga. Lo que yo agradezco un montón es la flexibilidad. Cuando entré era presencial cuatro días y era una locura, salir corriendo a las cinco y media para alcanzar a buscar al Tomás al jardín. Después pasamos a híbrido, dos días en la oficina, y este año además nos dejaron elegir el horario, entonces yo trabajo de ocho a cuatro y en la tarde estoy con los niños. Si el Tomás se enferma trabajo desde la casa y nadie me pone mala cara. De verdad es otra vida, otra vida, no me imagino volver a lo de antes. Y eso se nota en cómo estoy yo. Antes andaba con dolor de cabeza todos los días, durmiendo mal. Ahora estoy bastante más tranquila, hasta volví a hacer yoga los miércoles en la mañana, cosa que hace dos años era impensable. Con las otras cosas que da la empresa para la familia ahí es medio y medio, y ha sido así desde que llegué. Te dan la tarde libre para el cumpleaños de los hijos y los días de actos del colegio, que eso es súper lindo y lo uso. Pero por otro lado no hay nada para las vacaciones de invierno por ejemplo, que son dos semanas y uno queda colgando, y el aporte de sala cuna es solo lo legal nada más. Perdón la perrita está ladrando porque llegó el cartero, espérame. Ya. Es una salchicha que se cree pastor alemán, no sé qué le pasa con el cartero, en fin. Lo que yo propondría es que en las vacaciones de invierno hubiera algo, no sé, un convenio con algún taller o campamento para los hijos de los trabajadores, aunque sea con co pago. Hay varias compañeras que estamos en la misma y nos andamos turnando con las abuelas. Pero bueno en general súper agradecida, de verdad, gracias.
 
-Eh... qué más. Ah cómo me siento yo. Yo diría que bien o sea igual hay días que termino cansada obvio, con dos cabros chico en la casa no hay descanso jaja, pero no siento que la pega me esté enfermando ni nada. Antes de entrar acá tenía como insomnio por la pega y eso se me pasó, entonces algo bien debe estar pasando
+## p2_carga_r3: Ejecutivo de atención al cliente, 8 meses en la empresa
 
-Y de los beneficios está bueno lo del día libre de cumpleaños y lo de la tarde libre cuando los niños tienen actos en el colegio, eso lo uso harto. Lo del seguro complementario también ayuda. Igual no sé si mucha gente conoce todos los beneficios, a mí me los contó una compañera no recursos humanos, pero están bien
+**¿Qué opinas de tu carga de trabajo y del equilibrio con tu vida personal?**
 
-Ah y perdón una cosa que no tiene nada que ver, pero el café de la máquina del tercer piso está malísimo, o sea el otro día alguien le pegó un cartelito que decía agua café jaja, no sé si alguien va a leer esto pero bueno
-
-Y nada eso, en general contenta eh sí. Eso
-
-### p2_carga_r3: Ejecutivo de atención al cliente, 8 meses en la empresa
-
-| Columna | Esperado |
+| Tema | Esperado |
 |---|---|
-| volumen_trabajo: La cantidad de trabajo asignado y si alcanza el tiempo para hacerlo | -1 |
-| horarios: La flexibilidad de horarios, el trabajo remoto y las horas extra | no lo menciona |
-| bienestar: El estrés, el cansancio y la salud física o mental de la persona | no lo menciona |
-| apoyo_empresa: Las políticas o beneficios de la empresa para conciliar trabajo y vida personal | -2 |
+| volumen_trabajo | negativo · moderada · igual |
+| horarios | no lo menciona |
+| bienestar | no lo menciona |
+| apoyo_empresa | negativo · fuerte · no_dice |
 
-eh bueno a ver la carga de trabajo eh o sea igual es harta no te voy a mentir, nosotros en atención al cliente tenemos una meta de casos diarios que son como sesenta sesenta y tantos tiquets entre llamadas y correos y eh la mayoría de los días se llega pero hay días que no. Por ejemplo los lunes o cuando se cae el sistema o cuando sale una promoción nueva ahí te llega el doble y quedan casos pendientes para el día siguiente y uno queda medio atrasado toda la semana cachai. Igual no es que sea imposible o sea hay compañeros que llevan más tiempo y lo sacan bien, yo creo que también tiene que ver con que yo llevo ocho meses no más y todavía me pierdo con algunos procesos, pero sí creo que la meta está calculada como si todos los casos fueran fáciles y no es así, hay casos que te toman cuarenta minutos fácil.
+Riesgo de fuga: no · Emoción: ansiedad · Propone: no
 
-Ahora lo otro, lo de los beneficios para la vida personal eso sí que es, o sea ahí sí que estamos mal mal. Eh no hay nada o sea no hay nada concreto. Yo te doy un ejemplo, a mi señora la operaron en junio y yo pedí un día para acompañarla y me dijeron que tenía que ser día administrativo y yo no tenía porque no he cumplido el año, entonces me lo descontaron. Me lo descontaron del sueldo po. Y nadie de recursos humano me llamó ni nada. Tampoco hay día libre de cumpleaños que en todas las empresas hoy día hay, no hay bono de escolaridad, no hay convenio de sala una para los compañeros que tienen agua, nada. Y cuando uno pregunta te dicen que está en evaluación, llevan ocho meses que yo sepa evaluándolo.
+eh hola. Bueno yo estoy en el call center de atención a clientes, en la parte de reclamos, llevo ocho meses. Eh a ver la carga. Nos ponen una meta de cuarenta y cinco llamadas por turno más los correos que llegan a la bandeja, y la verdad no alcanza, o sea uno llega a las cuarenta llamadas y los correos quedan ahí, al otro día hay setenta en la bandeja. Desde que entré es así, no es que haya cambiado, la bandeja siempre está llena. Y el supervisor mira el número al final del día, entonces uno no sabe bien si priorizar el teléfono o el correo. Lo que más me tiene no sé, preocupado, es el tema de lo que la empresa ofrece para la vida personal, porque yo no veo nada. Mi pareja está embarazada, nace en marzo la guagua, y fui a preguntar a recursos humanos qué había para los papás, no sé, algún día extra, algo, y la respuesta fue lo que dice la ley y nada más. Ni un día más. Le pregunté a una compañera que tuvo un hijo el año pasado y me dijo que a ella tampoco le dieron nada, que incluso le costó que le respetaran la hora de a mamantar. Y no hay un convenio con jardín, no hay un seguro complementario que uno pueda usar para la familia, el bono de escolaridad es una cosa chiquitita. Para una empresa de este tamaño me parece, me parece mal la verdad, es como que la vida de uno afuera no existe para ellos. Y uno queda pensando cachai, qué va a pasar cuando nazca, cómo me voy a organizar, si voy a tener algún apoyo de la empresa o voy a estar solo. Me da susto la verdad, porque no sé cómo lo voy a hacer con la meta encima y sin nada de ayuda. No sé si me van a mirar feo si pido el día del parto, esas cosas. Ah y aprovecho de contar que el otro día fuimos a comprar la cuna a un lugar en franclin y nos perdimos como una hora buscando la galería, ese barrio es un laberinto, terminamos comiendo un completo y volviendo sin cuna. Bueno. Eso, no sé qué más decir, igual me gusta lo que hago, atender gente, me gusta. Pero esto me tiene inquieto, no sé qué va a pasar en marzo.
 
-Eh no sé qué más, ah el otro día igual, esto no tiene nada que ver pero, cambiaron la máquina de café del piso tres y la nueva es peor el café sale aguado y le pusieron un vaso más chico, todos reclamando jaja, bueno.
+## p3_remuneracion_r1: Ingeniera de datos, 2 años en la empresa
 
-Volviendo eh lo que pasa es que el mensaje que uno recibe es como que la vida personal es problema tuyo cachai. En la inducción hablaron de que somos una familia y no sé qué y después cuando necesitai algo no hay ninguna política ningún protocolo, depende de si el supervisor te tiene buena o no. Eso es lo que más me molesta, o sea es como una lotería. Así que eso, la carga es harta pero se puede, lo otro sí que hay que arreglarlo urgente
+**¿Cómo ha sido tu experiencia con la remuneración y los beneficios?**
 
-## ¿Cómo ha sido tu experiencia con la remuneración y los beneficios?
-
-### p3_remuneracion_r1: Ingeniera de datos, 2 años en la empresa
-
-| Columna | Esperado |
+| Tema | Esperado |
 |---|---|
-| sueldo: El monto del sueldo y si alcanza para vivir | -1 |
-| beneficios: Los beneficios no monetarios o complementarios: seguro, aguinaldos, días libres, convenios | +2 |
-| transparencia: Qué tan claros son los criterios para aumentos y bandas salariales | -2 |
-| comparacion_mercado: Cómo se compara la remuneración con lo que pagan otras empresas | no lo menciona |
+| sueldo | negativo · leve · igual |
+| beneficios | positivo · fuerte · igual |
+| transparencia | negativo · fuerte · empeora |
+| comparacion_mercado | no lo menciona |
 
-eh bueno ya, parto por lo bueno igual porque si no voy a sonar muy pesada. Los beneficios acá son muy buenos o sea de verdad, el seguro con plementario es buenísimo, el año pasado me operaron de la rodilla y me devolvieron casi todo, yo al final pagué como no sé, ochenta lucas de algo que eran como dos millones y algo. Eso po. Y el aguinaldo de fiestas patrias y de navidad llega siempre, nunca han fallado, más la gift card. Y los días libres, tenemos el día del cumpleaños, la tarde libre los viernes en verano, y como cinco días administrativos que uno los pide y nadie te pregunta nada cachai. Eso pa mí vale oro en serio. Los convenios también, el del gimnasio lo uso harto, el de la óptica, o sea en eso cero queja, aplaudo de pie.
+Riesgo de fuga: sí · Emoción: frustracion · Propone: sí
 
-eh el sueldo... el sueldo igual alcanza, no es que esté pasando hambre ni nada, pero llego justa a fin de mes, pago el arriendo que me sube con la UF, el crédito del auto, y quedo ahí apretadita. No me puedo dar muchos gustos. Este año casi no pude ahorrar pa vacaciones y terminé yendo donde mis papás a Concepción. No es terrible pero me gustaría tener un poquito más de holgura.
+ya bueno, yo soy ingeniera de datos, llevo dos años en el equipo de analítica. Eh el sueldo, mira, el sueldo es un poco bajo para lo que hago, nada dramático, alcanza pero justo, a fin de mes con el arriendo quedo apretada, y eso ha sido así desde que entré, no ha cambiado mucho. Pero no es lo que más me molesta. Lo que sí tengo que decir es que los beneficios son buenísimos, de verdad. El seguro complementario de salud es muy bueno, cuando me operaron de la rodilla el año pasado casi no pagué nada. Nos dan la semana entre navidad y año nuevo libre, el día de cumpleaños, el aguinaldo de fiestas patrias y de navidad que es harto generoso, y el convenio con el gimnasio. Eso siempre ha sido así desde que llegué y es lo que más valoro de estar acá. Ahora lo que me tiene chata es el tema de los aumentos. Nadie sabe cómo funcionan. Cuando entré al menos había una conversación en marzo donde tu jefatura te decía mira, te subimos tanto por esto y por esto. Ahora ni eso. Este año me llegó la liquidación de abril con un tres por ciento más y nadie me explicó nada, ni por qué tres, ni qué tenía que hacer para que fuera más. Y yo sé que a un compañero que entró conmigo, mismo cargo, le subieron el doble, y cuando pregunté en recursos humanos me dijeron que eso era confidencial y que dependía de la evaluación. Pero qué evaluación si a mí nadie me evaluó. Eso me da rabia porque uno trabaja, saca proyectos, migramos todo el data wer house a la nube el semestre pasado, y después es una caja negra. Antes era más claro de verdad, ahora es peor. Pucha perdón, se me está acabando la batería del audífono, si se corta es por eso. Me pasa siempre que me acuerdo de cargarlo justo cuando estoy hablando. Lo que yo propongo es que publiquen las bandas salariales por cargo, aunque sea internamente, y que digan cuáles son los criterios para pasar de una banda a otra. Con eso uno sabe dónde está parada y qué tiene que hacer. Y si eso no cambia, honestamente no sé si voy a seguir acá el próximo año. Ya estoy pensando en eso, no te voy a mentir. Me gusta el equipo pero esto de no saber nunca qué va a pasar con mi sueldo me cansa.
 
-Lo que sí me tiene, me tiene súper frustrada es el tema de los aumentos. O sea nadie sabe cómo funciona. Yo en dos años he tenido el reajuste por y pe ce y ya, y le he preguntado a mi jefe tres veces qué tengo que hacer pa subir, qué criterio usan, y la respuesta es siempre como eh se está viendo con personas, ya va a salir la política de de compensaciones, y nunca sale. Las bandas no existen o si existen no las conoce nadie. Y a un compañero que entró después que yo, mismo cargo, le subieron y nadie sabe por qué, ni él sabe por qué cachai. Eso genera una desconfianza tremenda, la gente habla en el café, se arma pelambre, y es súper desmotivante porque uno no sabe si hacer más pega sirve de algo o no. Pa mí eso es grave, es lo que más me hace pensar en irme la verdad.
+## p3_remuneracion_r2: Jefe de proyectos, 5 años en la empresa
 
-Ah y ya que estamos, no tiene nada que ver, pero alguien tiene que arreglar la máquina del café del piso cuatro, lleva como un mes botando agua y pusieron un balde nomás. Bueno.
+**¿Cómo ha sido tu experiencia con la remuneración y los beneficios?**
 
-Eso. Pero los beneficios súper bien, que no los toquen porfa.
-
-### p3_remuneracion_r2: Jefe de proyectos, 5 años en la empresa
-
-| Columna | Esperado |
+| Tema | Esperado |
 |---|---|
-| sueldo: El monto del sueldo y si alcanza para vivir | +1 |
-| beneficios: Los beneficios no monetarios o complementarios: seguro, aguinaldos, días libres, convenios | no lo menciona |
-| transparencia: Qué tan claros son los criterios para aumentos y bandas salariales | +0 |
-| comparacion_mercado: Cómo se compara la remuneración con lo que pagan otras empresas | +1 |
+| sueldo | positivo · moderada · mejora |
+| beneficios | no lo menciona |
+| transparencia | mixto · mejora |
+| comparacion_mercado | positivo · leve · no_dice |
 
-eh ya bueno a ver la remuneración. eh o sea yo llevo cinco años acá entré como analista senior y después me pasaron a jefe de proyectos hace como dos años y medio más o menos y igual el sueldo o sea a mí me alcanza bien, no es que esté nadando en plata pero pago el di videndo pago el colegio de los niños y queda algo pa ahorrar cachai que no es poco hoy día con lo caro que está todo. hay meses más apretados obviamente como marzo, marzo es terrible, pero en general llego bien a fin de mes y eso lo valoro harto
+Riesgo de fuga: no · Emoción: calma · Propone: no
 
-eh comparado con afuera yo igual he mirado o sea no voy a mentir me han llamado headhunters un par de veces el año pasado y las ofertas que me llegaron eran parecidas o un poquito menos, una era como un diez por ciento más pero en Santiago centro y yo vivo en Maipú entonces no. y conversando con ex compañeros de la u que están en consultoras grandes estamos ahí ahí quizás un poco mejor nosotros en algunos casos así que por ese lado tranquilo
+bueno yo soy jefe de proyectos en el área de implementación, llevo cinco años. Eh sobre el sueldo, la verdad es que estoy bien. Cuando entré venía de otra pega y entré ganando, no sé, lo justo, me costaba un poco llegar a fin de mes porque estaba pagando el dividendo recién. Pero con los años ha ido subiendo, tuve el cambio de cargo hace dos años y ahí subió harto, y ahora estoy tranquilo, me alcanza bien, puedo ahorrar algo. Ha mejorado eso es así. Con el tema de cómo se deciden los aumentos eso ha ido mejorando también, aunque tiene sus cosas. Hace unos años era muy a dedo, dependía de cuánto le caías bien al gerente. Ahora hay una matrís, te evalúan en tres o cuatro ejes y según eso cae un porcentaje, y eso está bien, uno entiende de dónde sale el número. Pero las bandas no las conoce nadie, o sea yo sé en qué tramo estoy pero no sé cuál es el techo, y para la gente de mi equipo es difícil explicarles por qué uno sube más que otro cuando yo mismo no tengo toda la información. Entonces mejor que antes sí, pero quedan cosas oscuras, quedan cosas que uno no entiende. Y comparado con lo que se paga afuera, por lo que he visto, estamos bien, un poco arriba quizás. Algunos conocidos en cargos parecidos en otras consultoras ganan parecido o un poco menos, no es una gran diferencia pero no estamos mal parados. A ver un paréntesis, justo hoy en la mañana estaba leyendo que la línea siete del metro pasa a unas cuadras de mi casa, así que capaz que deje de usar el auto, eso me tiene contento, el taco de la mañana es terrible, pero bueno no tiene nada que ver con esto. Volviendo al tema, en general no sé, yo estoy tranquilo con esto, no tengo mayores reclamos. Es un tema que en otras partes genera mucho ruido, conozco gente que vive peleando por el sueldo, y acá lo veo bastante ordenado, con lo que te dije de las bandas, que es algo que existe, pero no es que me quite el sueño. Eso sería, no sé si quieres que profundice en algo más.
 
-ahora lo de los aumentos eh eso es como depende. o sea hace un par de años sacaron las vandas salariales y uno puede ver en qué tramo está y eso está bien porque antes era todo como a hojo pero eh no sé igual no queda tan claro cómo se pasa de un tramo al otro, la evaluación de desempeño cuenta pero no se sabe cuánto, a mí este año me subieron y me explicaron más o menos por qué y a un colega del equipo no le subieron y nadie le supo decir bien qué le faltó entonces está como a medio camino mejoró algo pero falta
+## p3_remuneracion_r3: Operario de producción, 10 años en la empresa
 
-ah y aparte perdón me acordé el otro día en la reunión del jueves se cayó el internet de todo el piso como por una hora y estábamos todos mirándonos fue chistoso porque nadie sabía trabajar sin el teams, bueno nada que ver pero eso
+**¿Cómo ha sido tu experiencia con la remuneración y los beneficios?**
 
-eh qué más no sé en resumen o sea yo me siento bien pagado no excelente pero bien y me quedaría acá por eso también eh lo de los criterios es lo que lo que uno le pediría que lo terminen de ordenar pero
-
-### p3_remuneracion_r3: Operario de producción, 10 años en la empresa
-
-| Columna | Esperado |
+| Tema | Esperado |
 |---|---|
-| sueldo: El monto del sueldo y si alcanza para vivir | -2 |
-| beneficios: Los beneficios no monetarios o complementarios: seguro, aguinaldos, días libres, convenios | -1 |
-| transparencia: Qué tan claros son los criterios para aumentos y bandas salariales | no lo menciona |
-| comparacion_mercado: Cómo se compara la remuneración con lo que pagan otras empresas | -2 |
+| sueldo | negativo · fuerte · empeora |
+| beneficios | mixto · igual |
+| transparencia | no lo menciona |
+| comparacion_mercado | negativo · fuerte · no_dice |
 
-eh ya a ver... o sea la verdad es que con el sueldo estoy mal, mal. Yo llevo diez años acá en producción en la línea y el sueldo no me alcanza así de simple. Llego al veinte del mes y ya estoy con la tarjeta, cachai, pagando la luz con la tarjeta el gas con la tarjeta. Tengo dos cabros chicos en el colegio y mi señora trabaja medio día nomás y aun así no, no alcanza. En marzo tuve que pedir un avance para el arriendo con los útiles y todo o sea imagínate. Y uno hace turno de noche trabaja los sábados y igual. Igual no.
+Riesgo de fuga: sí · Emoción: resignacion · Propone: no
 
-Y lo otro que me da rabia es que uno conversa con gente de otras empresas acá mismo en el sector, en la planta que está al lado de la carretera los operarios que hacen lo mismo que yo, lo mismo, ganan como doscientas lucas más. O más. Un compadre que entró conmigo se fue para allá hace como tres años y me dice oye por qué seguís ahí si estái perdiendo plata. Y tiene razón po. Acá se han ido varios de los buenos los que sabían manejar las máquinas, y llega gente nueva que no sabe y uno tiene que enseñarles, por la misma plata cachai. Estamos muy por debajo, muy por debajo de lo que pagan afuera y eso lo sabe todo el mundo
+ya yo soy operario en la línea de envasado, llevo diez años aquí en la planta de San Bernardo. Y el sueldo, mira, el sueldo no alcanza. No alcanza. Hace unos años con lo que ganaba pagaba el arriendo, la comida, y algo quedaba para los niños. Ahora no, ahora con lo que ha subido todo, el pan, la luz, la vencina, a mitad de mes ya estoy pidiendo prestado o pasando la tarjeta. El mes pasado tuve que vender la bicicleta de mi hijo mayor para pagar la cuenta del agua, imagínate. Antes no era así, antes uno vivía tranquilo con este sueldo, ahora es pura angustia. Los beneficios ahí hay de todo. Está el aguinaldo de septiembre, que es bueno, y la caja de navidad que siempre ha sido buena, trae de todo. Pero el seguro de salud cubre poco, cuando a mi señora la hospitalizaron igual tuvimos que pagar casi todo nosotros, y el casino, la colación, eso es malo, la comida es mala. Así ha sido siempre, toda la vida igual. Y lo que más me da rabia es que uno sabe lo que pagan en otras partes. Mi cuñado hace exactamente lo mismo que yo en una planta de alimentos en Buin y gana como doscientos mil pesos más. Doscientos mil. Y otro compañero que se fue el año pasado a una embotelladora me dice que allá le pagan las horas extra mejor y el sueldo base es más alto. Acá estamos muy por debajo, muy por debajo, no hay ni comparación. Eh perdón, aquí el compadre del lado me está diciendo que ya va a empezar el turno, déjame terminar. Se llama Jaime, le dicen el Chino, lleva más años que yo aquí, ese sí que no se va nunca. Bueno la verdad es que ya no espero nada. Diez años y uno lo ha dicho mil veces, al supervisor, al sindicato, y nada cambia. Así que estoy viendo si mi cuñado me consigue algo allá en Buin. Me da pena porque son diez años, uno conoce a todos aquí, pero uno tiene que ver por la familia. Ya, eso, me tengo que ir a la línea.
 
-eh los beneficios... igual hay cosas no voy a decir que no hay nada. Está el seguro complementario que sirve, a mí me sirvió cuando operaron a mi hija de las amígdalas me devolvieron una parte. Pero el aguinaldo de fiestas patrias es poquito es como una caja y unas lucas. Y los convenios con la caja de con pensación eh la mayoría son créditos, que al final es endeudarse más. Y por el cumpleaños nos dan medio día nomás. Entonces sí hay pero es como justo, justito.
+## p4_crecimiento_r1: Asistente de marketing, 1 año y medio en la empresa
 
-Ah y perdona que me desvíe pero el otro día venía en la micro y se quedó en pane en plena subida ahí en el puente y estuvimos como cuarenta minutos esperando, y el chofer ni sabía qué hacer era nuevo parece. En fin eso no tiene nada que ver.
+**¿Qué tan claras ves tus oportunidades de crecer dentro de la empresa?**
 
-Pero eso o sea lo principal es la plata. Uno le tiene cariño a la empresa diez años no es poco, uno conoce a todos, pero el sueldo no da, no da para vivir tranquilo. Y si mañana me ofrecen allá en la otra planta yo creo que me voy la verdad. Eso nomás.
-
-## ¿Qué tan claras ves tus oportunidades de crecer dentro de la empresa?
-
-### p4_crecimiento_r1: Asistente de marketing, 1 año y medio en la empresa
-
-| Columna | Esperado |
+| Tema | Esperado |
 |---|---|
-| capacitacion: Los cursos, capacitaciones y oportunidades de aprender que ofrece la empresa | +2 |
-| ascensos: Las oportunidades de ascenso y si los criterios para ascender son justos | -1 |
-| plan_carrera: Qué tan clara es la ruta de carrera y los pasos para avanzar | no lo menciona |
-| mentoria: Si hay personas que guían, enseñan o acompañan el desarrollo | +1 |
+| capacitacion | positivo · fuerte · mejora |
+| ascensos | negativo · moderada · igual |
+| plan_carrera | no lo menciona |
+| mentoria | positivo · leve · no_dice |
 
-eh ya, bueno, a ver. Yo llevo como un año y medio acá en marketing, de asistente, y eh, lo primero que te diría es que en el tema de aprender la empresa es súper buena o sea de verdad. Cuando entré me dieron acceso altiro a la plataforma esta de cursos, cursera, y he hecho como cinco o seis cursos, uno de google analytics, otro de campañas en meta ash que me sirvió caleta para el día a día, cachai. Y aparte el año pasado me pagaron la mitad de un diplomado en marketing digital en la Católica, que igual no es barato, y me dejaban salir antes los jueves para llegar a clases. Eso yo lo valoro un montón, encuentro que es lo mejor que tiene la pega lejos, en otros lados mis amigas me cuentan que ni un curso de excel les pagan.
+Riesgo de fuga: no · Emoción: entusiasmo · Propone: no
 
-Eh, también está la Coni, mi jefa, que igual me enseña harto, o sea se sienta conmigo a revisar las métricas y me explica por qué una campaña funcionó o no funcionó. Y el Rodrigo de diseño también me ha ayudado, me ha mostrado cosas de figma y eso. No es que tengan un tiempo fijo pa eso porque andan con mil cosas, pero cuando les pregunto me responden, me tienen paciencia, eso está bien.
+hola ya. Bueno soy asistente de marketing, llevo un año y medio. Y mira lo primero que quiero decir es que con el tema de aprender estoy feliz, feliz. Cuando entré había poco, un curso de inducción y unas cápsulas en la plataforma que nadie veía. Pero este año cambió muchísimo, abrieron un presupuesto de capacitación por persona y yo hice un curso de Google Ads certificado, después uno de analítica web, y ahora estoy en un taller de copy raiting los jueves que dicta una agencia de afuera. Y no es solo eso, ahora hacen almuerzos de aprendizaje una vez al mes donde alguien de otra área cuenta lo que hace, el último fue de la gente de e comers y fue buenísimo. Siento que en este año aprendí más que en toda la universidad, de verdad. Además la Paula, que es la coordinadora digital, me ha ayudado harto, cuando tengo dudas con una campaña me siento con ella diez minutos y me explica. No es algo formal ni nada pero se agradece. Con los ascensos ahí ya es otra cosa. Los pocos cargos que se abren casi nunca se concursan, se los pasan a alguien y uno se entera por el correo de bienvenida. El año pasado se abrió una vacante de analista y nadie del equipo supo que existía hasta que llegó una persona de afuera que era conocida del gerente. Y antes de eso pasó algo parecido, me cuentan los que llevan más tiempo, así que es como la costumbre acá. No me parece muy justo la verdad, porque hay gente en el equipo que lleva tres, cuatro años haciendo la pega bien y nadie les preguntó. Ay perdón, me acordé de algo que no tiene nada que ver, pero hoy es el cumpleaños de mi mamá y todavía no le compro nada, tengo que pasar por la florería a la vuelta, ojalá no esté cerrada. Ya, sigo. Pero bueno igual estoy con muchas ganas, siento que estoy en un momento súper bueno, aprendiendo un montón, cada semana hay algo nuevo, me encanta lo que hago y me encanta el equipo. Así que nada, eso, muy contenta.
 
-Ahora lo de subir de cargo eh, ahí es donde yo tengo más, como, reparos. Porque el año pasado se abrió un puesto de analista en el equipo y al final se lo dieron a una persona que llevaba menos tiempo que otros dos compañeros que igual estaban súper preparados, y nadie explicó mucho por qué fue ella. O sea yo no digo que lo haga mal, pero se notaba que tenía más llegada con el gerente, almorzaban juntos y todo eso, cachai, entonces queda esa sensación de que influye más el, el pituto que el trabajo que hací. Y aparte se abren pocos cupos, como uno al año si es que, entonces igual uno se pregunta de qué sirve tanto curso si después, no sé, no se traduce en eso.
+## p4_crecimiento_r2: Técnico de soporte, 7 años en la empresa
 
-Ah y perdón, una cosa que no tiene nada que ver pero igual, el estacionamiento de bicicletas que pusieron abajo está buenísimo, yo ahora me vengo en bici desde Ñuñoa y me ahorro como cuarenta minutos de micro, eso me cambió la vida jaja.
+**¿Qué tan claras ves tus oportunidades de crecer dentro de la empresa?**
 
-Ya, volviendo, eh, en resumen yo aprendo harto acá y tengo gente que me apoya, eso sí, pero lo de los ascensos lo encuentro medio, medio poco transparente. Si eso se arreglara yo creo que la gente se quedaría más tiempo. Eso, nada más.
-
-### p4_crecimiento_r2: Técnico de soporte, 7 años en la empresa
-
-| Columna | Esperado |
+| Tema | Esperado |
 |---|---|
-| capacitacion: Los cursos, capacitaciones y oportunidades de aprender que ofrece la empresa | no lo menciona |
-| ascensos: Las oportunidades de ascenso y si los criterios para ascender son justos | -2 |
-| plan_carrera: Qué tan clara es la ruta de carrera y los pasos para avanzar | -2 |
-| mentoria: Si hay personas que guían, enseñan o acompañan el desarrollo | no lo menciona |
+| capacitacion | no lo menciona |
+| ascensos | negativo · fuerte · empeora |
+| plan_carrera | negativo · fuerte · igual |
+| mentoria | no lo menciona |
 
-eh ya o sea la verdad es que claras claras no, nada claras. Yo llevo siete años acá en soporte y te juro que todavía no sé qué tengo que hacer para pasar al siguiente nivel o sea si es que hay un siguiente nivel porque eso tampoco nadie te lo dice. Entré como técnico de soporte y sigo siendo técnico de soporte, el mismo cargo el mismo nombre en el contrato siete años. Y no es que no haya preguntado eh, he preguntado varias veces en las evaluaciones oye qué viene después para mí, y la respuesta siempre es como ya lo vamos a ver hay que esperar que se abra algo, y ahí queda. No hay un documento no hay un, no sé un mapa que diga mira de técnico pasai a analista y para eso necesitai esto esto y esto. Nada. Es todo como a la pinta del momento cachai
+Riesgo de fuga: sí · Emoción: resignacion · Propone: sí
 
-Y lo otro que igual me tiene bien cabreado es cómo se deciden los ascensos. Hace como dos años se abrió un cargo de coordinador en mi área y yo pos tulé, varios postulamos, y al final quedó un cabro que llevaba un año y medio que era bien amigo del gerente, juegan pádel juntos los jueves. O sea no digo que sea mala persona el cabro pero nadie supo por qué él. No hubo entrevista para el resto no hubo fidbak nada, un correo un lunes diciendo felicitamos a fulano. Y eso pasa siempre no fue una vez. El año pasado trajeron a alguien de afuera para supervisor y nosotros nos enteramos cuando ya estaba sentado en el escritorio. Entonces uno dice para qué me esfuerzo si al final esto se decide en un asado
+eh bueno. Soy técnico de soporte, nivel dos, llevo siete años. Siete años en el mismo cargo, eso ya te dice todo cachai. Mira antes por lo menos de vez en cuando subía alguien. Cuando entré, de soporte varios pasaron a infraestructura o a jefe de turno, el Marcelo, la Javiera, gente que subió desde abajo. Pero eso se acabó. Los últimos tres años cada vez que se abre un cargo de jefatura traen a alguien de afuera. El último jefe de turno que llegó tenía menos experiencia que yo, yo le tuve que explicar cómo funcionaba el sistema de tiquets las primeras semanas. Imagínate lo que se siente eso. Y nadie te explica por qué lo eligieron a él y no a alguien de adentro, es pura decisión de arriba. Antes no era así, antes había chance, ahora no. Y el otro tema es que nunca, en siete años, alguien me ha dicho qué tengo que hacer para pasar a nivel tres o a otro cargo. No hay nada escrito, no hay una lista de requisitos, nada. Le he preguntado a tres jefes distintos y cada uno me dice una cosa diferente, uno me dijo que dependía de los años, otro que de las métricas, el otro que no sabía. Siempre ha sido así desde que entré, es un misterio. Perdón me está entrando una llamada del banco, déjala no más, siempre llaman a esta hora para ofrecer tarjetas, ya les he dicho mil veces que no quiero. Lo que habría que hacer, y lo digo aunque no creo que pase, es armar un documento con los niveles de soporte y qué se necesita para pasar de uno a otro, años, métricas, lo que sea, pero que esté escrito y que sea igual para todos. Y que los cargos de jefatura se publiquen primero adentro antes de buscar afuera. Eso no cuesta nada. Pero bueno ya lo he dicho en otras encuestas y no pasa nada, así que tampoco me hago ilusiones. La verdad es que estoy mandando currículo hace un par de meses, ya tuve dos entrevistas. No es lo que quería, me hubiera gustado crecer acá, pero siete años esperando es mucho tiempo. Uno ya se cansa.
 
-eh perdona es que estoy en el auto y aquí en Vicuña Mackenna está todo parado, todos los días lo mismo a esta hora, pusieron como tres conos y una máquina y no hay nadie trabajando no sé qué hacen, bueno
+## p4_crecimiento_r3: Analista financiera junior, 10 meses en la empresa
 
-qué te iba diciendo, ah ya. Entonces eso o sea yo cacho que la empresa piensa que porque uno lleva harto tiempo está cómodo y no se va a ir y no es así, mucha gente buena se ha ido justamente por esto porque ven que acá no hay hacia dónde ir. Yo mismo he estado mirando afuera no te voy a mentir. Me gustaría que al menos dijeran las reglas claras, cuánto tiempo, qué evaluación necesitai, quién decide, que sea parejo para todos. Porque hoy día honestamente es una lotería, o mejor dicho ni siquiera lotería porque en la lotería por lo menos todos tienen la misma posibilidad. Eso eso sería
+**¿Qué tan claras ves tus oportunidades de crecer dentro de la empresa?**
 
-### p4_crecimiento_r3: Analista financiera junior, 10 meses en la empresa
-
-| Columna | Esperado |
+| Tema | Esperado |
 |---|---|
-| capacitacion: Los cursos, capacitaciones y oportunidades de aprender que ofrece la empresa | +0 |
-| ascensos: Las oportunidades de ascenso y si los criterios para ascender son justos | +1 |
-| plan_carrera: Qué tan clara es la ruta de carrera y los pasos para avanzar | +1 |
-| mentoria: Si hay personas que guían, enseñan o acompañan el desarrollo | +2 |
+| capacitacion | neutro · no_dice |
+| ascensos | mixto · no_dice |
+| plan_carrera | positivo · moderada · mejora |
+| mentoria | positivo · fuerte · igual |
 
-eh ya bueno a ver. Yo llevo como diez meses acá entré en enero entonces igual mi visión es como de alguien que recién está cachando cómo funciona todo. Eh lo primero que te diría y esto lo digo de verdad es mi jefa, la Carolina, o sea la Carolina es lo mejor que me ha pasado en la pega en serio. Desde la primera semana se sentó conmigo a explicarme el cierre mensual paso a paso me revisaba las planillas y no era como pa retarte sino pa que entendieras por qué no te cuadraba, cachai. Y no es solo ella el Felipe que es el senior del equipo también, cada vez que me pillo con algo en el e erre pe le pregunto y me dedica el tiempo, me ha enseñado un montón de modelos de flujo que yo en la u nunca vi. Y tenemos una reunión cada dos semanas de como qué quieres aprender para dónde vas, y eso pa mí ha sido increíble increíble.
+Riesgo de fuga: no · Emoción: entusiasmo · Propone: no
 
-Eh lo de para dónde voy o sea igual está bastante claro, me mostraron el mapa de cargos del área, analista junior analista senior, y qué se espera en cada uno tipo manejar el presupuesto sola presentarle al gerente. No está todo todo detallado hay cosas que son medio de criterio pero sé más o menos qué tengo que hacer pa pasar al siguiente nivel que no es poco.
+hola bueno, soy analista financiera junior, llevo diez meses, así que todavía soy bien nueva. Eh pero te cuento. Lo que más me ha marcado es mi mentor, el Andrés, que es analista senior. Desde el primer día me lo asignaron y es increíble, de verdad. Se sienta conmigo a revisar los modelos de flujo de caja línea por línea, me explica por qué se hace cada supuesto, y cuando me equivoco no me hace sentir tonta, me dice ya veamos dónde se fue. La semana pasada me quedé pegada con una consolidación y él se quedó media hora después de la hora para ayudarme. Y no es solo él, en el equipo todos tienen esa disposición, desde que llegué ha sido así, nunca he sentido que moleste preguntando. Con lo de hacia dónde puedo ir, al principio no tenía idea la verdad. Cuando entré nadie me explicó mucho. Pero en la evaluación de los seis meses mi jefa me mostró el esquema, junior, analista, senior, y qué se espera en cada uno, qué tipo de análisis tienes que manejar, qué responsabilidades. Y eso ahora lo tengo mucho más claro, sé lo que viene. Sobre los cursos, hay una plataforma con cursos de excell avanzado y de pawer bi, y hay un fondo para diplomados al que se postula una vez al año. Yo hice el de excel en la plataforma. Eso es lo que hay disponible. Y los ascensos mira, ahí tengo sensaciones encontradas. Por un lado he visto que a dos personas que eran junior las subieron en menos de dos años, y eso me motiva, se ve que es posible. Pero por otro lado escuché que a una compañera que también lo merecía la dejaron esperando porque no había cupo en el presupuesto, y eso no depende de uno. Entonces es como, depende. Ay y te cuento algo que no tiene nada que ver, pero me acabo de cambiar de departamento a Ñuñoa y estoy feliz, tengo una plaza al frente y puedo salir a correr en la mañana antes de venir. Pero bueno en general estoy con muchas ganas, siento que estoy aprendiendo un montón y que tengo con quién. Estoy contenta de estar aquí.
 
-Y lo de ascender eh, a una compañera que entró un año antes que yo la subieron a analista hace poco y fue como bien conversado, se notó que fue por resultados y no por ser amiga de nadie. Igual uno no sabe exactamente cuándo le toca, los plazos no son tan tan claros pero se ve que es justo.
+## p5_equipo_r1: Ingeniero de operaciones, 3 años en la empresa
 
-Ah y perdón una cosa que no tiene nada que ver, el otro día se cortó la luz en todo el piso por la lluvia y estuvimos como dos horas en la cafetería tomando té, terminamos jugando al gacho con unos dados que tenía alguien, ya nada que ver.
+**¿Cómo es el ambiente con tu equipo y la colaboración con otras áreas?**
 
-Eh y los cursos, mira hay una plataforma con cursos online, hice uno de Excel avanzado que estaba bien pero otros son medio genéricos como de liderazgo así muy básico. Y pedí uno de y efe erre ese y me dijeron que quizás el próximo año por presupuesto. Entonces es como hay cosas pero no sé ni fu ni fa.
-
-Así que en general sí, lo veo bastante claro sobre todo por la gente que tengo al lado, eso.
-
-## ¿Cómo es el ambiente con tu equipo y la colaboración con otras áreas?
-
-### p5_equipo_r1: Ingeniero de operaciones, 3 años en la empresa
-
-| Columna | Esperado |
+| Tema | Esperado |
 |---|---|
-| companerismo: La relación y el buen trato entre compañeros del mismo equipo | +2 |
-| colaboracion_areas: Qué tan fácil es trabajar y coordinarse con otras áreas | -2 |
-| manejo_conflictos: Cómo se manejan los conflictos: si se conversan y resuelven, o se evitan y escalan | no lo menciona |
-| herramientas: Las herramientas y reuniones que se usan para coordinarse: software, canales, rituales | -1 |
+| companerismo | positivo · fuerte · igual |
+| colaboracion_areas | negativo · fuerte · empeora |
+| manejo_conflictos | no lo menciona |
+| herramientas | negativo · moderada · igual |
 
-eh bueno ya, partiendo por el equipo, o sea mi equipo es lo mejor que tiene esta pega lejos, en serio. somos como seis en operaciones y nos llevamos súper bien, nos ayudamos harto, si a alguien se le complica un turno o se le cae una planilla el resto se mete altiro sin que nadie se lo pida. cuando entré hace tres años el Rodrigo se quedó como dos semanas explicándome todo el proceso de despacho con una paciencia que, no sé, no la había visto en otra empresa. y eso se mantiene po, el trato es buena onda, hay respeto, nos reímos, los viernes a veces vamos a comer algo. o sea yo por el equipo me quedo, cachai.
+Riesgo de fuga: no · Emoción: frustracion · Propone: sí
 
-ahora con las otras áreas es otra historia, es, es terrible la verdad. pedirle algo a comercial o a mantención es como mandar una carta al vacío. te doy un ejemplo, el mes pasado necesitábamos que planificación nos confirmara un cambio de programa para la semana y la respuesta llegó el mismo día que había que ejecutar, entonces tuvimos que rearmar todo en dos horas. y no es una vez, pasa todo el rato. cada área tiene sus prioridades y nadie sabe bien quién es responsable de qué, entonces uno termina persiguiendo gente por los pasillos para que le firmen una orden. es desgastante, hay días que uno pierde más tiempo coordinando que haciendo la pega misma.
+ya mira yo soy ingeniero de operaciones, estoy en el equipo de planificación de producción, tres años. Y lo primero, mi equipo es lo mejor que tiene esta pega, lejos. Somos seis y nos llevamos increíble, de verdad. Si a alguien se le complica algo el resto se mete a ayudar sin que nadie lo pida. Cuando nació la hija del Felipe entre todos le cubrimos la planificación dos semanas para que no tuviera que conectarse. Almorzamos juntos casi todos los días. Eso siempre ha sido así, desde que llegué, es un equipo muy bueno. Pero con las otras áreas es un desastre, y cada vez peor. Con mantenimiento y con compras sobre todo. Antes uno levantaba el teléfono, hablaba con el jefe de mantenimiento y en una hora tenías la respuesta. Ahora todo tiene que ser por solicitud formal, cada área tiene sus propias prioridades y nadie te avisa nada. El mes pasado paramos una línea completa medio día porque compras no pidió un repuesto que nosotros habíamos pedido hace tres semanas, y nadie nos avisó que se había atrasado. Medio día parados. Eso hace dos años no pasaba, se ha ido poniendo cada vez peor desde que reorganizaron las gerencias. Y las herramientas tampoco ayudan. Usamos el sap para algunas cosas, una planilla compartida para otras, correos, guasap, y nunca sabes dónde está la información actualizada. Y la reunión semanal de coordinación es una hora y media donde cada área lee su reporte y nadie se compromete a nada. Siempre ha sido así la verdad, nunca ha funcionado bien eso. Uh perdón, se me cayó el café encima del teclado, espera. Ya, no pasó nada, sobrevivió. Es el tercer teclado este año, en la oficina ya me miran raro. Lo que yo propondría, concretamente, es un tablero único compartido entre planificación, mantenimiento y compras, donde estén los pedidos críticos con fecha y responsable, y que todos lo actualicen. Y cambiar esa reunión semanal por una de veinte minutos de pie, solo con los temas bloqueados. Con eso solo ya ganaríamos harto. Me frustra porque son cosas que deberían funcionar solas y no funcionan, y uno pierde tiempo persiguiendo a la gente en vez de hacer su trabajo.
 
-eh, y las herramientas tampoco ayudan mucho. tenemos el tims, tenemos correo, un grupo de whatsapp, el sistema de tickets y la información queda repartida en todos lados, entonces nunca sabís dónde quedó lo que se acordó. la reunión de coordinación de los lunes igual sirve un poco, no digo que no, pero es larga y muchas veces se va en, eh, en revisar cosas que se podían mandar por correo. el sab lo usamos bien pa lo básico pero hay cosas que siguen en un excel paralelo igual.
+## p5_equipo_r2: Coordinadora de recursos humanos, 4 años en la empresa
 
-ah y una cosa aparte, el casino cambió de proveedor y ahora la comida está harto mejor, el pastel de choclo de los jueves está buenísimo, no tiene nada que ver pero lo quería decir. bueno, eso, no sé. el equipo bien, súper bien, pero lo otro hay que arreglarlo porque se nos va la energía en eso
+**¿Cómo es el ambiente con tu equipo y la colaboración con otras áreas?**
 
-### p5_equipo_r2: Coordinadora de recursos humanos, 4 años en la empresa
-
-| Columna | Esperado |
+| Tema | Esperado |
 |---|---|
-| companerismo: La relación y el buen trato entre compañeros del mismo equipo | +1 |
-| colaboracion_areas: Qué tan fácil es trabajar y coordinarse con otras áreas | +0 |
-| manejo_conflictos: Cómo se manejan los conflictos: si se conversan y resuelven, o se evitan y escalan | -1 |
-| herramientas: Las herramientas y reuniones que se usan para coordinarse: software, canales, rituales | no lo menciona |
+| companerismo | positivo · moderada · mejora |
+| colaboracion_areas | mixto · igual |
+| manejo_conflictos | negativo · leve · no_dice |
+| herramientas | no lo menciona |
 
-eh ya bueno con mi equipo... con mi equipo bien, o sea somos cinco personas y nos llevamos bien, igual nos conocemos harto porque yo llevo como cuatro años y la mayoría lleva caleta también entonces hay confianza cachai. Si alguien tiene un problema en la casa o tiene que salir antes por el hijo eh los demás le cubren sin drama. El otro día una compañera estaba con todo el tema de los fin y quitos de fin de mes y la ayudamos entre todos, nadie lo pidió salió solo. Eso lo valoro. No es que sea perfecto tampoco hay días que andamos todos con la mecha corta y se nota, pero en general el trato es bueno es respetuoso.
+Riesgo de fuga: no · Emoción: calma · Propone: no
 
-Con las otras áreas eh... depende, o sea depende mucho del área. Con finanzas por ejemplo funciona bien, uno pide algo y te responden, hay disposición. Con operaciones es más, es más complicado porque ellos tienen sus tiempos y a veces uno necesita un dato para remuneraciones y te llega tarde o incompleto, pero también entiendo que están con la producción encima entonces... no sé es como, hay de todo, unos días fluye y otros días no.
+bueno yo soy coordinadora de recursos humanos, llevo cuatro años. Eh el ambiente en mi equipo está bien, somos cinco. Cuando llegué había más distancia, cada una en lo suyo, se notaba que venían de una época complicada con mucha rotación, gente que entraba y salía. Pero con los años se ha ido armando un grupo más unido, ahora nos cubrimos cuando alguien sale de vacaciones, nos preguntamos cómo estamos, celebramos los cumpleaños con una torta en la cocina. El año pasado cuando a la Marcela se le enfermó el papá, entre todas nos repartimos sus procesos sin que tuviera que pedirlo. Eso hace cuatro años no habría pasado. Ha mejorado bastante, es un buen equipo. Con las otras áreas mira, depende. Con finanzas trabajamos bien, cuando hay que cerrar re muneraciones ellos responden rápido y tienen buena disposición, si hay un error en una liquidación lo corrigen el mismo día. Pero con operaciones cuesta más, cuando necesitamos datos para un proceso de se lección o la información de turnos para las evaluaciones, a veces pasa una semana y hay que pedirlo varias veces. Y eso siempre ha sido así, no es nuevo, unas áreas con las que se trabaja fácil y otras con las que no tanto, y uno ya sabe con quién es cuál. Lo único, y es algo menor, es que cuando hay algún roce, entre nosotras o con otra área, se tiende a dejarlo pasar. Nadie lo conversa directamente, queda ahí, y a veces se nota un poco en el trato después. No es grave pero pasa. A ver un paréntesis, hoy vine en bicicleta por primera vez desde Providencia, me compré una eléctrica, y llegué en quince minutos, no lo podía creer, así que estoy contenta con eso, aunque llegué un poco despeinada. Pero bueno, en general estoy tranquila con el ambiente. Es un lugar donde uno se puede sentir cómoda, la gente es amable, y no tengo grandes quejas sobre esto. Eso sería lo que te puedo contar, no sé si hay algo más que quieras saber.
 
-Lo que sí, lo que sí me complica un poco es cómo se manejan los roces. Porque acá la gente no se dice las cosas de frente cachai, se lo guarda y después te enterai por otro lado que alguien estaba molesto contigo hace semanas. Y cuando ya se pone feo en vez de conversarlo entre las personas se va directo a la jefatura, y la jefatura a veces tampoco lo resuelve, lo deja ahí como que se enfría solo. Me pasó con una persona de otra área por unas horas extra mal ingresadas y en vez de hablarlo conmigo lo subió al gerente, y yo quedé como mal parada sin saber nada. Al final se aclaró, pero igual quedó como un mal gusto. Y uno siendo de recursos humanos debería eh dar el ejemplo también, entonces es algo que yo misma intento mejorar.
+## p5_equipo_r3: Vendedor en terreno, 2 años en la empresa
 
-Ah y perdón, estoy grabando esto desde el auto porque el taco en Vespucho está terrible hoy día, llevo como cuarenta minutos aquí parada, en fin.
+**¿Cómo es el ambiente con tu equipo y la colaboración con otras áreas?**
 
-Eso, o sea el equipo bien, con las otras áreas va y viene, y lo de los roces es lo que más habría que trabajar creo yo. Eso.
-
-### p5_equipo_r3: Vendedor en terreno, 2 años en la empresa
-
-| Columna | Esperado |
+| Tema | Esperado |
 |---|---|
-| companerismo: La relación y el buen trato entre compañeros del mismo equipo | -1 |
-| colaboracion_areas: Qué tan fácil es trabajar y coordinarse con otras áreas | no lo menciona |
-| manejo_conflictos: Cómo se manejan los conflictos: si se conversan y resuelven, o se evitan y escalan | -2 |
-| herramientas: Las herramientas y reuniones que se usan para coordinarse: software, canales, rituales | +1 |
+| companerismo | mixto · igual |
+| colaboracion_areas | no lo menciona |
+| manejo_conflictos | negativo · fuerte · empeora |
+| herramientas | positivo · moderada · mejora |
 
-eh ya, bueno a ver... con el equipo. O sea igual es como complicado porque uno anda todo el día en terreno entonces no nos vemos tanto, pero cuando nos juntamos en la oficina eh, no sé, con algunos hay buena onda y con otros no tanto. Hay un grupito que lleva más años y ellos como que se cierran cachai, y a veces tiran tallas medio pesadas a los más nuevos, no es que sea terrible pero igual se nota, uno llega y te saludan así medio de reojo. Y hay otros que son súper buena gente, que te pasan datos de clientes, te prestan el muestrario si se te olvidó, entonces es como, como mitad y mitad.
+Riesgo de fuga: no · Emoción: ansiedad · Propone: no
 
-Ahora lo que sí es un problema grave grave es cuando hay un roce entre nosotros, porque nadie lo conversa. El año pasado tuvimos un tema con las zonas, a un compañero le pasaron unos clientes míos de Maipú y nadie me dijo nada, me enteré porque el cliente me llamó a mí preguntando por qué venía otra persona. Y yo fui a hablar con él y me dijo no, eso lo vio el jefe, y el jefe me dijo que lo arreglara con él, y así estuvimos como dos meses dando vueltas. Al final quedó como quedó, nadie resolvió nada. Y eso pasa siempre o sea, la gente se guarda las cosas y después explota, o manda un correo a la gerencia con copia a todo el mundo acusando al otro, y ahí queda la escoba. Es muy tóxico la verdad, se va acumulando la mala onda y nadie se hace cargo, y uno al final prefiere quedarse callado no más porque sabe que si reclama va a terminar peor.
-
-eh perdón es que voy manejando, esta vespucio está imposible a esta hora, todos los viernes lo mismo, no sé por qué no arreglan esa salida, ya, bueno.
-
-Eh, lo que sí funciona bien es la aplicación, el se erre eme que pusieron hace como un año, uno ve los pedidos, ve las visitas que tiene, carga todo desde el celular y eso igual ordenó harto, antes era todo en planilla y se perdían cosas. Y la reunión de los lunes por tims, cortita, media hora, se revisan las metas de la semana y listo, sirve, no es una lata. A veces en terreno se cae la señal y la app se queda pegada pero en general bien. El grupo de WhatsApp también ayuda para avisar cosas rápidas, aunque igual mandan demasiados stickers jaja. Pero eso, en lo de coordinarse estamos bien, el problema es más la gente, no las herramientas... eso no más.
+ya hola. Yo soy vendedor en terreno, zona sur de Santiago, llevo dos años. Eh el equipo, mira, es raro. Somos ocho vendedores y hay gente súper buena onda, el Cristian me ha prestado el auto cuando el mío estaba en el taller, nos pasamos datos de clientes cuando uno no alcanza. Pero también hay un grupito que es más competitivo, que no te pasa ni la hora, y si pueden quitarte un cliente te lo quitan. Siempre ha sido así, mitad y mitad, desde que entré. Lo que me preocupa de verdad es cómo se manejan los problemas cuando hay pelea. Antes, cuando había un lío, por ejemplo dos vendedores peleándose una cuenta, el jefe anterior nos sentaba a los dos y se arreglaba ahí mismo, en media hora. Ahora con el jefe nuevo nadie se hace cargo. Hace un mes el Patricio y el Nelson se agarraron por una ferretaría en La Florida, se gritaron en el estacionamiento, y nadie dijo nada. Hasta hoy no se hablan y el ambiente quedó pésimo. Y lo peor es que yo tengo un cliente que también está en la zona del Nelson y me tiene nervioso que me pase lo mismo, que de repente me acusen de algo y nadie lo resuelva. Cada vez está peor eso, se va acumulando. Lo que sí ha mejorado es lo de las herramientas. Antes todo era por planilla y llamadas, y ahora tenemos una aplicación en el celular donde cargamos las visitas, los pedidos, y uno ve en el mapa qué clientes le tocan. Y la reunión de los lunes ahora es más corta y más ordenada, con los números en la pantalla. Eso está mejor que antes. Eh y algo aparte, el otro día me paró carabineros en la Gran Avenida por la revisión técnica vencida, me salvé porque tenía hora tomada, pero casi me quedo sin auto para la semana, imagínate. Bueno eso. Ando un poco inquieto con lo del equipo, no sé cómo va a terminar todo esto la verdad, si se va a seguir poniendo peor o qué, y uno no sabe con quién va a tener el próximo problema.

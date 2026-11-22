@@ -1,0 +1,12 @@
+{
+  "S1": "jev_columnas_sabidas (sin Claude)",
+  "S2": "claude_solo · Claude opus",
+  "S3": "claude_respuestas_jev · Claude opus",
+  "S4": "claude_pregunta_jev · Claude opus",
+  "S5": "claude_solo · Claude sonnet",
+  "S6": "claude_respuestas_jev · Claude sonnet",
+  "S7": "claude_pregunta_jev · Claude sonnet",
+  "S8": "claude_solo · Claude haiku",
+  "S9": "claude_respuestas_jev · Claude haiku",
+  "S10": "claude_pregunta_jev · Claude haiku"
+}

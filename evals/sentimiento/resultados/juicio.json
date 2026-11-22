@@ -1,907 +1,171 @@
 {
-  "corridas": {
+  "nombres": {
     "S1": "jev_columnas_sabidas (sin Claude)",
     "S2": "claude_solo · Claude opus",
-    "S3": "claude_pregunta_jev · Claude opus",
-    "S4": "claude_respuestas_jev · Claude opus",
+    "S3": "claude_respuestas_jev · Claude opus",
+    "S4": "claude_pregunta_jev · Claude opus",
     "S5": "claude_solo · Claude sonnet",
-    "S6": "claude_pregunta_jev · Claude sonnet",
-    "S7": "claude_respuestas_jev · Claude sonnet",
+    "S6": "claude_respuestas_jev · Claude sonnet",
+    "S7": "claude_pregunta_jev · Claude sonnet",
     "S8": "claude_solo · Claude haiku",
-    "S9": "claude_pregunta_jev · Claude haiku",
-    "S10": "claude_respuestas_jev · Claude haiku"
+    "S9": "claude_respuestas_jev · Claude haiku",
+    "S10": "claude_pregunta_jev · Claude haiku"
   },
-  "juicios": {
-    "S1": {
-      "veredicto": "Aceptable",
-      "errores": [
-        {
-          "respuesta": "p1_jefatura_r2",
-          "columna": "feedback_desarrollo",
-          "tipo": "grave",
-          "explicacion": "La persona nunca habla de retroalimentación ni de crecimiento profesional. Habla de reconocimiento, comunicación y microgestión (revisar cotizaciones, pedir permiso para descuentos). El sistema inventa un +1, probablemente arrastrado por el buen reconocimiento o confundiendo la revisión de cotizaciones con feedback. Agrega un dato positivo falso sobre desarrollo a una columna clave."
-        },
-        {
-          "respuesta": "p1_jefatura_r3",
-          "columna": "reconocimiento",
-          "tipo": "grave",
-          "explicacion": "No hay ninguna mención a que el jefe reconozca o elogie el trabajo. 'Confío en tu criterio' es autonomía, que ya quedó en +2. El sistema inventa un +2 de reconocimiento: cuenta dos veces la misma frase y además le pone la intensidad máxima. Un informe mostraría reconocimiento entusiasta donde no se dijo nada."
-        },
-        {
-          "respuesta": "p2_carga_r1",
-          "columna": "apoyo_empresa",
-          "tipo": "menor",
-          "explicacion": "Hay elementos que rozan políticas de la empresa: las horas extra de supervisor que 'están incluidas en el cargo' y no se registran, el trabajo remoto negado y lo difícil que es cambiar un turno para ir al médico. Asignar algo negativo se puede justificar, pero todo eso ya está en horarios, así que es un doble conteo. Y el -2 es demasiado fuerte para algo que no se trata como beneficios o políticas de conciliación."
-        },
-        {
-          "respuesta": "p2_carga_r2",
-          "columna": "apoyo_empresa",
-          "tipo": "menor",
-          "explicacion": "Valora los beneficios ('está bueno', 'lo uso harto', 'ayuda', 'están bien') pero sin entusiasmo y con un reparo: RR.HH. no los difunde. Le corresponde +1; el +2 exagera. La dirección está bien."
-        },
-        {
-          "respuesta": "p2_carga_r3",
-          "columna": "bienestar",
-          "tipo": "grave",
-          "explicacion": "La persona no menciona estrés, cansancio ni salud. Habla de quedar atrasado con los tickets y de su molestia con las políticas. El sistema infiere un -1 de bienestar a partir del tono general. Inventar una señal de desgaste en un tema sensible como la salud puede llevar a conclusiones erróneas sobre riesgo psicosocial."
-        },
-        {
-          "respuesta": "p3_remuneracion_r2",
-          "columna": "transparencia",
-          "tipo": "defendible",
-          "explicacion": "La persona dice que las bandas 'mejoraron algo pero falta', que no se sabe cómo pasar de tramo y que a un colega nadie le explicó por qué no le subieron. Cierra pidiendo que 'terminen de ordenar' los criterios. El 0 de la referencia recoge la mejora; el -1 recoge que lo que se pide es una corrección. Las dos lecturas son razonables."
-        },
-        {
-          "respuesta": "p4_crecimiento_r1",
-          "columna": "plan_carrera",
-          "tipo": "menor",
-          "explicacion": "No habla de una ruta de carrera ni de pasos para avanzar. Sus críticas (pocos cupos, el 'pituto', que tanto curso no se traduzca en ascenso) son sobre ascensos, que ya tiene -1. Tiene un vínculo indirecto con plan de carrera, pero es un doble conteo que infla la percepción negativa de la ruta de carrera."
-        },
-        {
-          "respuesta": "p5_equipo_r3",
-          "columna": "companerismo",
-          "tipo": "menor",
-          "explicacion": "La persona describe el equipo como 'mitad y mitad': un grupo cerrado con tallas pesadas y otros 'súper buena gente'. El 'muy tóxico' se refiere a cómo se manejan los roces, que ya es -2 en manejo_conflictos. El -2 en compañerismo mezcla las dos columnas y exagera; la dirección negativa sí es correcta."
-        },
-        {
-          "respuesta": "p5_equipo_r3",
-          "columna": "colaboracion_areas",
-          "tipo": "grave",
-          "explicacion": "No se menciona ninguna otra área. El conflicto es entre compañeros del mismo equipo, con el jefe y la gerencia de por medio. La persona incluso dice 'en lo de coordinarse estamos bien'. El sistema inventa un -2 en una columna que el informe usaría para diagnosticar problemas entre áreas."
-        }
-      ],
-      "fortalezas": "Cuando la persona habla de un tema, el sistema acierta casi siempre en la dirección y casi siempre en la intensidad. En las 15 respuestas no invierte ninguna opinión. Lee bien las respuestas con matices: separa lo bueno de lo malo dentro de una misma respuesta (beneficios +2 con transparencia -2 y sueldo -1 en p3_r1; compañerismo +2 con colaboración -2 en p5_r1) y reconoce los neutros o mixtos (comunicación 0 en p1_r3, volumen 0 en p2_r2, colaboración 0 en p5_r2). Ignora siempre los desvíos irrelevantes (metro, café, estacionamientos, tacos) y no los mete en ninguna columna. Respeta bien los temas ausentes más claros (autonomía en p1_r1, comparación de mercado en p3_r1, capacitación y mentoría en p4_r2).",
-      "debilidades": "El problema de fondo es un efecto halo que hace aparecer temas que la persona no tocó. Cuando la respuesta tiene un tono general marcado, el sistema rellena columnas no mencionadas con un valor del mismo signo, a menudo con intensidad máxima: reconocimiento +2 en p1_r3, colaboración entre áreas -2 en p5_r3, feedback +1 en p1_r2, bienestar -1 en p2_r3. Además cuenta dos veces una misma frase en columnas vecinas: 'confío en tu criterio' termina en autonomía y en reconocimiento, la queja por ascensos se repite en plan de carrera, y las horas extra se repiten en apoyo de la empresa. En un informe esto infla cuántas veces se menciona cada tema y empuja los promedios hacia el tono dominante de cada respuesta. Lo más grave es que fabrica señales en temas sensibles (bienestar) o de diagnóstico organizacional (colaboración entre áreas). También tiende un poco a exagerar la intensidad (+2 en lugar de +1, -2 en lugar de -1) cuando mezcla columnas.",
-      "calidad_columnas": "El sistema usó exactamente las columnas de referencia, con una correspondencia uno a uno, sin agregar ni dejar fuera ninguna. Por eso no aporta hallazgos nuevos, pero tampoco pierde cobertura. Las columnas están bien elegidas para cada pregunta y cubren lo que de verdad dicen las personas: lo que queda fuera son desvíos irrelevantes. El punto débil es que varias se pisan entre sí, y ahí se concentran casi todos los errores: autonomía con reconocimiento (la confianza puede leerse como valoración), autonomía con feedback (revisar el trabajo puede leerse como retroalimentación), horarios con apoyo de la empresa (horas extra y remoto pueden leerse como política de conciliación), ascensos con plan de carrera, compañerismo con manejo de conflictos, y manejo de conflictos con colaboración entre áreas cuando los conflictos escalan a jefaturas. Bienestar es amplia y se presta a inferirse del tono. Convendría que las definiciones excluyeran explícitamente los casos vecinos (por ejemplo, 'reconocimiento: elogios o valoración explícita, no la confianza para decidir'; 'colaboración entre áreas: solo cuando se nombra otra área').",
-      "confiaria_para_un_informe": false,
-      "resumen": "El sistema es sólido leyendo la opinión de los temas que la persona sí trata: no invierte ninguna opinión y acierta casi siempre en la intensidad. Su problema de fondo es que inventa temas: rellena columnas no mencionadas con el tono general de la respuesta, a veces con ±2, y cuenta dos veces una misma frase en columnas que se pisan. Hay 4 errores graves (reconocimiento en p1_r3, feedback en p1_r2, bienestar en p2_r3 y colaboración entre áreas en p5_r3), 4 menores y 1 defendible. No lo usaría tal cual en un informe: las cifras de cuántas veces se menciona cada tema y algunos promedios quedarían inflados. Serviría con una revisión humana de los temas marcados como presentes y con definiciones de columnas más excluyentes."
+  "juicio": {
+    "sistemas": {
+      "S1": {
+        "veredicto": "Aceptable",
+        "graves": 3,
+        "menores": 16,
+        "defendibles": 9,
+        "resumen": "Las conclusiones gruesas se sostienen, pero inventa feedback_desarrollo positivo fuerte para la vendedora que nunca habla de desarrollo y mentoría negativa para el técnico de soporte. Lee al vendedor de terreno como compañerismo negativo y empeorando cuando él dice explícitamente mitad y mitad. Además, infla intensidades de forma sistemática.",
+        "calidad_columnas": "Usa las columnas de referencia fijas, así que agrega bien, pero no distingue temas vecinos: duplica la queja de ascensos en plan_carrera y la de coordinación entre áreas en manejo_conflictos. No propone nada extra.",
+        "dimensiones_nuevas": "Acierta el riesgo de fuga y si propone mejora en las 15 respuestas. En emoción solo confunde resignación con frustración una vez; la tendencia a veces se contagia de un tema a otro (el empeora del manejo de conflictos termina en compañerismo)."
+      },
+      "S2": {
+        "veredicto": "Excelente",
+        "graves": 0,
+        "menores": 1,
+        "defendibles": 4,
+        "resumen": "No tiene ninguna diferencia grave: cada dirección, tema mencionado u omitido y riesgo de fuga calza con lo que dice la gente. Su lectura de transparencia en el jefe de proyectos (bandas negativas leves y la matriz aparte) es tan buena como la esperada, y el único desvío es una mentoría informal leída como moderada.",
+        "calidad_columnas": "Crea columnas por respuesta pero con nombres bastante estables (comunicacion_jefatura, carga_trabajo, beneficios_familia, nivel_sueldo), y omite las que no aplican en vez de inventarlas. Sus extras, criterios_aumentos y reuniones_coordinacion, separan bien cosas que la referencia mezcla, aunque hay que normalizar algún nombre (transparencia_aumentos y transparencia_bandas) antes de agregar.",
+        "dimensiones_nuevas": "Acierta el riesgo de fuga y si propone mejora en las 15 respuestas. Usa no_dice para la tendencia cuando la persona no la declara, y la única diferencia en emoción (resignación por frustración en la contadora) es defendible."
+      },
+      "S3": {
+        "veredicto": "Bueno",
+        "graves": 1,
+        "menores": 12,
+        "defendibles": 8,
+        "resumen": "Es el más fiel de los que usan columnas fijas: solo inventa un feedback_desarrollo positivo para la vendedora. El resto son intensidades infladas (sueldo fuerte para quien dice nada dramático) y el manejo de conflictos atribuido al ingeniero de operaciones, que no cambian ninguna conclusión.",
+        "calidad_columnas": "Columnas estables en las 15 respuestas y muy cercanas a la referencia, lo que lo hace el más cómodo para agregar en un informe. Igual que otros, duplica coordinación entre áreas como conflicto y ascensos como plan de carrera.",
+        "dimensiones_nuevas": "Acierta el riesgo de fuga y si propone mejora en las 15 respuestas. La tendencia está bien salvo cuando arrastra el empeora de un tema a otro (comunicación de la tech lead); en emoción solo confunde resignación con frustración una vez."
+      },
+      "S4": {
+        "veredicto": "Insuficiente",
+        "graves": 8,
+        "menores": 17,
+        "defendibles": 5,
+        "resumen": "Al no tener columnas para desarrollo profesional, mentoría, apoyo de la empresa ni herramientas, pierde justo los temas centrales de varias respuestas: la contadora que lleva cuatro años sin conversación de desarrollo, el papá del call center sin apoyo de la empresa y la analista cuyo mentor es lo que más destaca. Además, inventa horarios negativos para el call center y pierde la comparación con el mercado del operario.",
+        "calidad_columnas": "Usa una grilla fija con extras genéricos de manual (trato_respeto, liderazgo_organizacion, inclusion_pertenencia, bonos_incentivos) que no salen de lo que dice la gente, mientras deja sin columna temas que sí aparecen. Están mal elegidas: anchas donde no hacía falta y ausentes donde había material.",
+        "dimensiones_nuevas": "Acierta el riesgo de fuga y si propone mejora en las 15 respuestas. Acierta las emociones salvo un cruce resignación-frustración defendible, pero los extras no aportan dimensiones nuevas útiles."
+      },
+      "S5": {
+        "veredicto": "Bueno",
+        "graves": 1,
+        "menores": 1,
+        "defendibles": 3,
+        "resumen": "Tiene casi todo exacto; su error grave es no registrar la mejora de bienestar de la diseñadora (adiós dolores de cabeza, volvió al yoga), que es parte de su mensaje. Lo demás es la comunicación neutra de la tech lead omitida, sin consecuencias.",
+        "calidad_columnas": "Las columnas son por respuesta y demasiado estrechas o inconsistentes para agregar (autonomia_descuentos, apoyo_coordinadora, metas_carga_llamadas, beneficios_paternidad, comunicacion_jefe y comunicacion_jefatura). Las extras de reuniones separan bien la reunión del resto de las herramientas, pero para un informe habría que normalizar todo a mano.",
+        "dimensiones_nuevas": "Acierta el riesgo de fuga y si propone mejora en las 15 respuestas. Usa no_dice con criterio en la tendencia y la única diferencia de emoción (resignación en la contadora) es defendible."
+      },
+      "S6": {
+        "veredicto": "Aceptable",
+        "graves": 5,
+        "menores": 12,
+        "defendibles": 8,
+        "resumen": "Inventa más de la cuenta: carga de trabajo positiva fuerte y mejorando para la diseñadora (lo que mejoró fue la flexibilidad), horarios negativos para el call center, comparación con el mercado para la ingeniera que solo se compara con un colega y feedback positivo para la vendedora. También distorsiona el compañerismo del vendedor de terreno.",
+        "calidad_columnas": "Columnas fijas razonables y bien nombradas. La extra intencion_de_permanencia es valiosa para un informe de fuga, y competencia_interna recoge bien al grupito competitivo del vendedor. Separar horarios_jornada de flexibilidad_teletrabajo también tiene sentido.",
+        "dimensiones_nuevas": "Acierta el riesgo de fuga y si propone mejora en las 15 respuestas. Las emociones calzan salvo un cruce defendible, pero la tendencia se contagia entre temas (comunicación de la tech lead empeorando)."
+      },
+      "S7": {
+        "veredicto": "Insuficiente",
+        "graves": 12,
+        "menores": 15,
+        "defendibles": 5,
+        "resumen": "Es el peor: sin columna de transparencia pierde la queja principal de la ingeniera de datos y la mejora que cuenta el jefe de proyectos; sin feedback, mentoría ni apoyo de la empresa pierde lo central de la contadora, la analista junior, la diseñadora y el papá del call center. Encima inventa reconocimiento mixto y empeorando para la tech lead y distorsiona el compañerismo del vendedor.",
+        "calidad_columnas": "Grilla fija con extras genéricas (confianza_trato, apoyo_disponibilidad, equidad_interna, comunicacion_interna) que se pisan con las columnas base y dejan huecos donde la gente sí habló. Las columnas no capturan lo que dice la gente.",
+        "dimensiones_nuevas": "Acierta el riesgo de fuga y si propone mejora en las 15 respuestas. Las emociones están casi todas bien, pero nada de eso compensa los temas perdidos."
+      },
+      "S8": {
+        "veredicto": "Excelente",
+        "graves": 0,
+        "menores": 3,
+        "defendibles": 3,
+        "resumen": "Sin errores graves: las direcciones, los temas presentes y el riesgo de fuga calzan con las transcripciones. Lo único discutible es leer como negativo el desarrollo de la tech lead (ella también destaca los buenos code reviews) y omitir la ayuda informal de la coordinadora a la asistente de marketing.",
+        "calidad_columnas": "Columnas por respuesta con nombres solo a medias estables (oportunidades_ascenso y ascensos_transparencia, equipo_interno y ambiente_equipo), así que habría que normalizar. Sus extras son el mejor hallazgo de los diez: respuesta_a_reclamos y reclamos_sin_respuesta marcan a quienes ya reclamaron sin resultado, que es justo la señal que anticipa la fuga.",
+        "dimensiones_nuevas": "Acierta el riesgo de fuga y si propone mejora en las 15 respuestas. La tendencia queda en no_dice cuando no se declara y acierta todas las emociones."
+      },
+      "S9": {
+        "veredicto": "Bueno",
+        "graves": 2,
+        "menores": 11,
+        "defendibles": 9,
+        "resumen": "Lee bien casi todo, incluida la comunicación de la tech lead como positiva moderada y estable, que es defendible. Sus dos errores graves son omitir los ascensos de la analista junior (los comenta con sentimientos encontrados) y leer al vendedor de terreno como compañerismo negativo y empeorando.",
+        "calidad_columnas": "Columnas fijas y bien nombradas que agregan sin problema. Fusionar capacitacion_y_mentoria esconde al mentor de la analista junior, que era lo que más destacaba; ahí la columna queda demasiado ancha.",
+        "dimensiones_nuevas": "Acierta el riesgo de fuga y si propone mejora en las 15 respuestas. En emoción solo confunde resignación con frustración una vez; infla intensidades y a veces pone tendencia (empeora) donde la persona no la declara."
+      },
+      "S10": {
+        "veredicto": "Insuficiente",
+        "graves": 11,
+        "menores": 16,
+        "defendibles": 2,
+        "resumen": "Le faltan columnas básicas: no tiene reconocimiento (pierde el elogio central de la vendedora), feedback ni bienestar, y como su columna de horarios es solo horas_extra, se le escapa la flexibilidad de la diseñadora, que es su tema principal. También inventa comparación con el mercado para la ingeniera de datos y distorsiona el compañerismo del vendedor.",
+        "calidad_columnas": "Mezcla comunicación con retroalimentación en una sola columna y suma extras de manual (confianza_jefatura, claridad_prioridades, bonos_incentivos) que no salen de las respuestas. evaluacion_desempeno y dotacion_recursos sí tienen sentido, pero no compensan los huecos.",
+        "dimensiones_nuevas": "Acierta el riesgo de fuga y si propone mejora en las 15 respuestas. Acierta las emociones, pero pone tendencia de más (sueldo y mercado empeorando sin que nadie lo diga)."
+      }
     },
-    "S2": {
-      "veredicto": "Bueno",
-      "errores": [
-        {
-          "respuesta": "p3_remuneracion_r1",
-          "columna": "beneficios",
-          "tipo": "menor",
-          "explicacion": "Se esperaba +2 y el sistema no llenó la columna. Lo que pasó es que repartió el tema en cuatro columnas extra (seguro +2, aguinaldos +1, días libres +2, convenios +2). Todas van en la dirección correcta y la información se puede recuperar. Aun así, un informe armado con las columnas de referencia diría que esta persona no habló de beneficios, cuando es lo que más elogia («aplaudo de pie», «que no los toquen»). Es menor solo porque los datos están, pero hay que volver a juntarlos a mano."
-        },
-        {
-          "respuesta": "p3_remuneracion_r2",
-          "columna": "transparencia",
-          "tipo": "defendible",
-          "explicacion": "Se esperaba 0 y salió -1. El sistema separó lo que mejoró (bandas_salariales +1) de lo que falta (criterios_aumentos -1). Si se leen juntas, dan la misma opinión mixta («mejoró algo pero falta»). Con esa separación, el -1 para la parte de criterios es razonable."
-        },
-        {
-          "respuesta": "p3_remuneracion_r3",
-          "columna": "beneficios",
-          "tipo": "menor",
-          "explicacion": "Se esperaba -1 y el sistema no llenó la columna. Repartió el tema en columnas extra: seguro +1, aguinaldo -1, convenios -1 y cumpleaños -1. Juntas dan algo coherente con un -1 («hay pero es justo, justito»), pero la columna de referencia queda vacía. Es el mismo error que en p3_r1, así que no es un caso aislado: el sistema nunca usa la columna beneficios."
-        },
-        {
-          "respuesta": "p5_equipo_r2",
-          "columna": "colaboracion_areas",
-          "tipo": "menor",
-          "explicacion": "Se esperaba 0 y el sistema no llenó la columna. Separó la opinión por área: finanzas +1 y operaciones -1. Juntas dan lo mismo que la referencia («depende del área»), y el detalle por área sirve. Pero la columna general queda vacía."
-        },
-        {
-          "respuesta": "p5_equipo_r2",
-          "columna": "manejo_conflictos",
-          "tipo": "menor",
-          "explicacion": "Se esperaba -1 y el sistema no llenó la columna, aunque la tenía disponible y la persona dice que es «lo que más habría que trabajar». Lo partió en comunicacion_directa_roces -1 y escalamiento_conflictos_jefatura -1. La dirección y la intensidad están bien, pero quien lea solo las columnas de referencia pierde la queja principal. Es lo más cercano a un error grave de toda la revisión."
-        },
-        {
-          "respuesta": "p5_equipo_r3",
-          "columna": "companerismo",
-          "tipo": "menor",
-          "explicacion": "Se esperaba -1 y el sistema no llenó la columna. Lo partió en exclusion_nuevos_grupo_antiguo -1 y apoyo_entre_companeros +1. Juntas parecen neutras, mientras la referencia lo lee algo negativo por el maltrato a los nuevos. Volver a juntarlas no da el mismo resultado, así que hace falta criterio humano."
-        },
-        {
-          "respuesta": "p5_equipo_r3",
-          "columna": "herramientas",
-          "tipo": "menor",
-          "explicacion": "Se esperaba +1 y el sistema no llenó la columna. Lo partió en crm_movil +1, reunion_semanal_lunes +1 y grupo_whatsapp +1. Las tres coinciden con la referencia («en lo de coordinarse estamos bien»), pero la columna de referencia queda vacía."
-        }
-      ],
-      "fortalezas": "En las 15 respuestas no hay ninguna opinión al revés ni ningún tema inventado. Cuando el sistema llena una columna de referencia, casi siempre acierta también la intensidad: distingue bien -2 de -1 y +2 de +1 (por ejemplo, reconocimiento -1 en p1_r1 porque «no me trata mal», y bienestar -1 en p2_r1 porque «no es que esté colapsado»). Separa bien lo que sí importa de los comentarios que no tienen que ver (metro, café, estacionamiento, tacos). Nunca convirtió esos comentarios en columnas. Las descripciones de cada columna son fieles a lo que dijo la persona y traen los ejemplos concretos, lo que sirve para citar en el informe.",
-      "debilidades": "El problema es de estructura, no de cómo lee las opiniones. Cuando un tema es mixto o trae mucho detalle, el sistema deja vacía la columna de referencia y reparte el contenido en varias columnas extra. Así perdió beneficios en dos de tres respuestas sobre remuneración, y también colaboración con otras áreas, manejo de conflictos, compañerismo y herramientas. Si el informe se arma por tema de referencia, va a mostrar «no lo menciona» justo donde las personas sí dieron opiniones fuertes. Además, el sistema no es consistente: en p3_r1 y p3_r3 parte beneficios, pero en p2_r2 usa una sola columna de beneficios. Y en p5_r2 tenía la columna manejo_conflictos disponible y no la usó.",
-      "calidad_columnas": "Las columnas son demasiado estrechas y muchas se pisan con las de referencia o entre sí. Ejemplos: cupos_ascenso con ascensos, estancamiento_cargo con plan_carrera, responsabilidades_entre_areas con colaboracion_areas, jefatura_no_resuelve_conflictos con manejo_conflictos, retroalimentacion_en_revisiones_de_codigo con feedback_desarrollo, y en p2_r1 falta_de_trabajo_remoto, llamados_fuera_de_turno y rigidez_para_cambios_de_turno, que son todas parte de horarios. Las columnas de «relación general» (p1_r2, p1_r3) no agregan nada. Hay algunas extra valiosas que la referencia no tenía. desarrollo_profesional separado de retroalimentacion en p1_r1 tiene sentido, porque dar feedback y apoyar la carrera son cosas distintas. retencion_talento y fuga_talento_por_sueldo muestran riesgo de que la gente se vaya, algo muy útil para un informe. inequidad_salarial_interna y difusion_beneficios (los beneficios existen pero nadie los comunica) también son hallazgos que se pueden accionar. Sirven como detalle bajo cada tema, no en reemplazo de las columnas de referencia.",
-      "confiaria_para_un_informe": false,
-      "resumen": "El sistema lee muy bien las opiniones: no da vuelta ninguna, no inventa temas y casi siempre acierta la intensidad. Pero arma mal las columnas. Cuando un tema es mixto o trae detalle, deja vacía la columna de referencia y reparte el contenido en varias columnas extra. Por eso un informe armado directo con las columnas de referencia mostraría huecos falsos (beneficios, conflictos, colaboración entre áreas). Lo usaría solo si antes alguien junta las columnas extra bajo su tema de referencia. Dejaría como detalle las que son hallazgos valiosos, como el riesgo de que la gente se vaya o la falta de difusión de los beneficios."
-    },
-    "S3": {
-      "veredicto": "Aceptable",
-      "errores": [
-        {
-          "respuesta": "p1_jefatura_r1",
-          "columna": "reconocimiento",
-          "tipo": "defendible",
-          "explicacion": "El reconocimiento por sí solo es tibio (-1): 'a veces dice gracias', 'no me trata mal'. Pero la columna del sistema también incluye la retroalimentación, y ahí la persona es muy dura: 'nunca me ha dicho esto lo puedes hacer mejor', 'le he pedido fid bak'. Con esa definición, -2 es razonable."
-        },
-        {
-          "respuesta": "p1_jefatura_r2",
-          "columna": "feedback_desarrollo",
-          "tipo": "menor",
-          "explicacion": "La persona no habla de su desarrollo ni de que la jefa la ayude a resolver problemas. El +1 parece salir del reconocimiento, que ya está medido en otra columna. Agrega un tema que no está, pero el tono positivo coincide con la respuesta."
-        },
-        {
-          "respuesta": "p1_jefatura_r3",
-          "columna": "reconocimiento",
-          "tipo": "defendible",
-          "explicacion": "La columna del sistema incluye la retroalimentación, y la persona la menciona en positivo: 'en los pull request te comenta cosas concretas... te explica por qué él lo haría distinto'. El +1 se sostiene."
-        },
-        {
-          "respuesta": "p1_jefatura_r3",
-          "columna": "feedback_desarrollo",
-          "tipo": "menor",
-          "explicacion": "Exagera un poco. Hay 1:1 que 'a veces se corren', curso pagado y 'no es un plan de carrera súper armado pero sí te ayuda'. Eso es +1, no entusiasmo pleno."
-        },
-        {
-          "respuesta": "p2_carga_r2",
-          "columna": "apoyo_empresa",
-          "tipo": "menor",
-          "explicacion": "El sistema no tiene ninguna columna para las políticas y beneficios de conciliación. Se pierde la valoración positiva del día libre de cumpleaños, la tarde libre por actos del colegio y el seguro, además de la observación de que la gente no conoce los beneficios. Es un tema secundario en esta respuesta, pero la falta es de diseño y se repite."
-        },
-        {
-          "respuesta": "p2_carga_r3",
-          "columna": "apoyo_empresa",
-          "tipo": "grave",
-          "explicacion": "Es la queja principal: 'ahí sí que estamos mal mal', 'hay que arreglarlo urgente'. Lo critica todo: le descontaron el día, no hay protocolos, no hay beneficios. El sistema la reparte entre horarios (-2) y apoyo_jefatura (-2), así que el informe culparía a la flexibilidad o al supervisor en vez de a la falta de política de la empresa, que es justo lo que la persona denuncia."
-        },
-        {
-          "respuesta": "p2_carga_r3",
-          "columna": "horarios",
-          "tipo": "defendible",
-          "explicacion": "La columna del sistema incluye permisos, y el caso del día negado y descontado para acompañar a la esposa es un problema de permisos. Ante la falta de una columna de políticas, ponerlo aquí es razonable, aunque deja la columna más cargada de lo que la persona dijo sobre horarios en sí."
-        },
-        {
-          "respuesta": "p2_carga_r3",
-          "columna": "bienestar",
-          "tipo": "menor",
-          "explicacion": "No habla de estrés, cansancio ni salud. Solo dice 'uno queda medio atrasado toda la semana' y 'la carga es harta pero se puede'. El -1 es una inferencia débil que puede inflar las señales de desgaste."
-        },
-        {
-          "respuesta": "p3_remuneracion_r1",
-          "columna": "transparencia",
-          "tipo": "grave",
-          "explicacion": "La opacidad de los aumentos es lo que más la frustra y lo que la hace pensar en irse. El sistema pone 0 porque su columna mezcla 'criterios claros' con 'pagos a tiempo', y el aguinaldo que 'nunca falla' compensa. El informe mostraría transparencia neutra justo donde está la alerta de fuga. Lo atenúan en parte reajustes_aumentos (-2) y equidad_interna (-2), que sí lo recogen."
-        },
-        {
-          "respuesta": "p3_remuneracion_r2",
-          "columna": "comparacion_mercado",
-          "tipo": "menor",
-          "explicacion": "No hay columna propia; la columna de sueldo del sistema absorbe la comparación con el mercado y queda en +1, consistente. Se pierde la posibilidad de distinguir 'me alcanza' de 'estoy bien frente al mercado'."
-        },
-        {
-          "respuesta": "p3_remuneracion_r3",
-          "columna": "comparacion_mercado",
-          "tipo": "menor",
-          "explicacion": "La brecha con la planta vecina ('doscientas lucas más', 'se han ido varios de los buenos') queda dentro de sueldo -2. La conclusión sobre el sueldo no cambia, pero se pierde por separado el hallazgo de riesgo de fuga por competencia, que importa mucho en un informe."
-        },
-        {
-          "respuesta": "p4_crecimiento_r1",
-          "columna": "capacitacion",
-          "tipo": "menor",
-          "explicacion": "Se queda corto en intensidad: 'es lo mejor que tiene la pega lejos', diplomado pagado, salidas antes para ir a clases. Es un +2 claro, y lo más destacado de la respuesta aparece rebajado."
-        },
-        {
-          "respuesta": "p4_crecimiento_r1",
-          "columna": "plan_carrera",
-          "tipo": "menor",
-          "explicacion": "No habla de que la ruta sea poco clara. Lo que critica es que haya pocos cupos y que se asciende por 'pituto'. El -1 se pisa con movilidad_interna y ascensos."
-        },
-        {
-          "respuesta": "p4_crecimiento_r2",
-          "columna": "capacitacion",
-          "tipo": "grave",
-          "explicacion": "Inventa una crítica fuerte (-2) a la capacitación, que la persona no menciona en ningún momento. Probablemente viene de la definición demasiado amplia ('nuevos desafíos para crecer'). En un informe sumaría una falsa queja sobre formación."
-        },
-        {
-          "respuesta": "p4_crecimiento_r2",
-          "columna": "mentoria",
-          "tipo": "defendible",
-          "explicacion": "La columna del sistema mide si la jefatura conversa sobre desarrollo. La persona cuenta que pregunta en cada evaluación 'qué viene después para mí' y le responden 'ya lo vamos a ver'. Que lo mencione es correcto; el -2 quizás es algo fuerte."
-        },
-        {
-          "respuesta": "p5_equipo_r1",
-          "columna": "herramientas",
-          "tipo": "menor",
-          "explicacion": "No hay columna para herramientas. Se pierde la crítica a la información repartida entre Teams, correo, WhatsApp, tickets y Excel, y a la reunión de los lunes que se alarga. Comunicacion (-2) la recoge en parte, mezclada con la coordinación entre áreas."
-        },
-        {
-          "respuesta": "p5_equipo_r2",
-          "columna": "manejo_conflictos",
-          "tipo": "menor",
-          "explicacion": "Es lo que ella dice que 'más habría que trabajar'. Sin columna propia, aparece solo indirectamente en liderazgo_jefatura (-1) y comunicacion (-1). La dirección se conserva, pero se lo atribuye a la jefatura cuando el problema es entre pares."
-        },
-        {
-          "respuesta": "p5_equipo_r3",
-          "columna": "companerismo",
-          "tipo": "menor",
-          "explicacion": "La persona dice 'mitad y mitad', 'no es que sea terrible' y destaca a gente 'súper buena'. El -2 parece mezclar la toxicidad de los conflictos con el trato del día a día, cosa que la definición del sistema permite, pero exagera."
-        },
-        {
-          "respuesta": "p5_equipo_r3",
-          "columna": "colaboracion_areas",
-          "tipo": "grave",
-          "explicacion": "Inventa un -2 sobre la coordinación con otras áreas, de la que no dice nada. Lo que relata es un conflicto dentro del propio equipo de ventas. Fabrica un problema entre áreas que no existe."
-        },
-        {
-          "respuesta": "p5_equipo_r3",
-          "columna": "manejo_conflictos",
-          "tipo": "grave",
-          "explicacion": "Es el 'problema grave grave' de la respuesta ('muy tóxico', 'nadie se hace cargo'). Sin columna propia queda repartido entre companerismo, liderazgo_jefatura y comunicacion, y el informe no puede ver el manejo de conflictos como hallazgo central."
-        },
-        {
-          "respuesta": "p5_equipo_r3",
-          "columna": "herramientas",
-          "tipo": "grave",
-          "explicacion": "Es el único aspecto positivo y la persona lo contrasta a propósito: 'el problema es más la gente, no las herramientas' (CRM, reunión corta de los lunes). El sistema lo pierde y toda la respuesta queda en -2, sin el matiz que la persona quiso dejar claro."
-        }
-      ],
-      "fortalezas": "Los temas centrales que tienen columna clara quedan bien puntuados en dirección y casi siempre en intensidad: comunicación y desarrollo en p1, volumen y flexibilidad en p2, sueldo y beneficios en p3, ascensos y ruta de carrera en p4, compañerismo en p5_r1 y r2. Las respuestas mixtas (p1_r3, p2_r2, p3_r2, p5_r2) se leen con buen matiz, usando 0 donde corresponde. Ignora sin problema las desviaciones sin relación con la pregunta (metro, café, estacionamiento). Algunas columnas extra aportan hallazgos reales: organizacion_recursos en p2_r1 (de cuatro supervisores a dos), apoyo_jefatura en p2, reajustes_aumentos y equidad_interna en p3_r1 (salvan la queja central) y movilidad_interna en p4.",
-      "debilidades": "Los problemas más serios vienen del diseño de las columnas más que de la lectura. Faltan columnas para temas que las personas plantean como centrales: políticas de conciliación (p2_r3), manejo de conflictos (p5_r2 y r3) y herramientas (p5_r1 y r3). Hay columnas demasiado amplias que mezclan conceptos y producen promedios engañosos: transparencia_cumplimiento da 0 en p3_r1 cuando es la queja principal, y la definición amplia de capacitación (que incluye 'nuevos desafíos') facilita inventar temas. Además, el sistema inventa temas con puntajes extremos (-2 en capacitación en p4_r2 y en colaboración entre áreas en p5_r3) y tiende a llevar todo a -2 en respuestas negativas, borrando los matices positivos (p5_r3).",
-      "calidad_columnas": "Por pregunta:\n\n- **Jefatura (p1):** el conjunto es razonable, pero hay solapes. reconocimiento_y_retroalimentacion y apoyo_y_desarrollo se pisan en la retroalimentación. confianza_y_trato vuelve a contar la autonomía en p1_r3 ('confío en tu criterio') y el reconocimiento en otros casos. equidad no se usó nunca y sobra.\n- **Carga y equilibrio (p2):** falta la columna de políticas de la empresa, que es lo más grave del set porque en p2_r3 era la queja principal. horario_jornada duplica a flexibilidad_laboral (valores idénticos en r1 y r2). apoyo_jefatura sí es un hallazgo valioso ('te miran feo' por un cambio de turno; 'mi jefa nunca me ha dicho por qué no estabas conectada'). organizacion_recursos aporta en r1 pero se rellena sin base en r2.\n- **Remuneración (p3):** transparencia_cumplimiento es demasiado amplia, porque junta 'criterios claros' con 'pagos a tiempo' y anula la señal. nivel_sueldo absorbe la comparación con el mercado, lo que impide separar 'me alcanza' de 'estoy bajo el mercado'. reajustes_aumentos y equidad_interna son extras valiosas que recogen lo que la columna de transparencia pierde. bonos_incentivos nunca se usó.\n- **Crecimiento (p4):** es el mejor diseño del set. movilidad_interna es un aporte real. reconocimiento_compensacion aporta en r1. capacitacion_aprendizaje es demasiado amplia.\n- **Equipo (p5):** el diseño más débil. Faltan manejo de conflictos y herramientas, justo lo que más distingue las respuestas r2 y r3. colaboracion_equipo duplica a relaciones_equipo (valores idénticos en las tres respuestas). comunicacion es muy amplia y mezcla lo interno con lo que pasa entre áreas. liderazgo_jefatura recoge en parte el tema de conflictos, pero se lo atribuye a la jefatura.\n\nEn conjunto, las columnas extra aportan algo en p2, p3 y p4, pero en p1 y p5 sobre todo duplican, y faltan columnas para temas que las personas consideran centrales.",
-      "confiaria_para_un_informe": false,
-      "resumen": "El sistema es aceptable. Lee bien los temas principales cuando tiene una columna adecuada para ellos, y en jefatura y crecimiento sus resultados son casi confiables. No lo usaría sin revisión para un informe, por cuatro razones:\n\n1. **Pierde quejas principales por falta de columnas:** las políticas de conciliación en p2_r3 y el manejo de conflictos en p5_r3.\n2. **Columnas demasiado amplias diluyen la alerta más fuerte:** en p3_r1, transparencia aparece neutra (0) cuando la opacidad de los aumentos es lo que hace pensar a la persona en irse.\n3. **Inventa temas con puntajes extremos:** -2 en capacitación en p4_r2 y -2 en colaboración entre áreas en p5_r3, temas que las personas no mencionan.\n4. **Borra matices positivos en respuestas negativas:** en p5_r3 se pierden las herramientas, que la persona destacó a propósito.\n\nAntes de usarlo en un informe hay que rediseñar las columnas de las preguntas 2, 3 y 5 y revisar a mano los puntajes extremos."
-    },
-    "S4": {
-      "veredicto": "Bueno",
-      "errores": [
-        {
-          "respuesta": "p1_jefatura_r2",
-          "columna": "feedback_desarrollo",
-          "tipo": "grave",
-          "explicacion": "El sistema inventa un tema. La vendedora no habla de feedback sobre su desempeño, de su carrera ni de capacitación. Lo único parecido es que la jefa nota los logros y los dice en público, y eso ya está en reconocimiento (+2). Que la jefa revise cada cotización es microgestión (autonomía), no feedback. Poner +1 infla el indicador de desarrollo con una opinión que la persona nunca dio."
-        },
-        {
-          "respuesta": "p2_carga_r1",
-          "columna": "apoyo_empresa",
-          "tipo": "grave",
-          "explicacion": "El sistema inventa un tema con la nota más negativa (-2). El supervisor de bodega no menciona beneficios ni políticas de conciliación (días libres, permisos, seguros, bonos). Lo que critica (horas extra sin registrar, que no haya teletrabajo, el llamado de un domingo, lo difícil que es cambiar un turno) cae en horarios y jornada_horas_extra, que ya están en -2. El informe mostraría una queja sobre beneficios que no existe y contaría dos veces el mismo malestar."
-        },
-        {
-          "respuesta": "p2_carga_r3",
-          "columna": "horarios",
-          "tipo": "defendible",
-          "explicacion": "La referencia no lo marca, pero la persona pidió un día para acompañar a su señora a una operación y se lo descontaron del sueldo, y dice que todo 'depende de si el supervisor te tiene buena o no'. La definición de flexibilidad incluye justamente 'ausentarse por temas personales con acuerdo de la jefatura', así que el -2 tiene base. El problema es que la misma anécdota también alimenta apoyo_empresa: el informe la contaría dos veces."
-        },
-        {
-          "respuesta": "p3_remuneracion_r1",
-          "columna": "beneficios",
-          "tipo": "defendible",
-          "explicacion": "Esta columna de referencia no tiene pareja en el sistema, pero el sistema la reparte en seguro_salud, aguinaldos_bonos y dias_libres_convenios, todas en +2, que es exactamente lo que dice la persona. No se pierde información y el informe sale más detallado. Solo habría que sumarlas para comparar con la referencia."
-        },
-        {
-          "respuesta": "p3_remuneracion_r3",
-          "columna": "beneficios",
-          "tipo": "defendible",
-          "explicacion": "La referencia espera -1 en beneficios. El sistema lo separa en seguro +1, aguinaldos -1 y días/convenios -1, y eso describe mejor la transcripción: el seguro sirvió, pero el aguinaldo es poquito, los convenios son créditos y por el cumpleaños dan medio día. El desglose es más útil para tomar acciones que un -1 general."
-        },
-        {
-          "respuesta": "p4_crecimiento_r1",
-          "columna": "plan_carrera",
-          "tipo": "menor",
-          "explicacion": "La asistente de marketing no habla de un mapa de cargos ni de requisitos para avanzar. Su queja es que la promoción se decidió por afinidad con el gerente (ascensos) y que se abren pocos cupos (disponibilidad_de_vacantes). El -1 sale de criterios que se tocan entre sí. Va en la misma dirección que el resto de sus críticas, pero agrega una queja que ella no hizo."
-        },
-        {
-          "respuesta": "p4_crecimiento_r2",
-          "columna": "mentoria",
-          "tipo": "defendible",
-          "explicacion": "La referencia no lo marca, pero el técnico cuenta que preguntó varias veces en sus evaluaciones 'qué viene después para mí' y la respuesta fue siempre 'ya lo vamos a ver'. La definición de apoyo de jefatura incluye que 'conversan con la persona sobre su desarrollo', así que hay base. Eso sí, el -2 es intenso para algo que también se cuenta en plan_carrera."
-        },
-        {
-          "respuesta": "p5_equipo_r3",
-          "columna": "companerismo",
-          "tipo": "menor",
-          "explicacion": "La persona describe un equipo 'mitad y mitad': un grupito cerrado que tira tallas, pero 'no es que sea terrible', y compañeros 'súper buena gente' que ayudan. El -2 parece contagiado por la parte de 'muy tóxico', que se refiere a cómo se manejan los conflictos. La dirección es la misma, pero la intensidad está exagerada."
-        }
-      ],
-      "fortalezas": "En la gran mayoría de las celdas, la dirección y la intensidad coinciden con la referencia, también en casos difíciles: respuestas mixtas que valen 0 (comunicación en p1_r3, aumentos en p3_r2, capacitación en p4_r3) y matices entre -1 y -2. No se deja llevar por los paréntesis irrelevantes (metro, estacionamiento, café, tacos) ni crea temas a partir de ellos. Las columnas extra de remuneración (seguro, aguinaldos, días libres y convenios) están bien aplicadas y en p3_r3 muestran algo que un -1 general taparía: el seguro sirve, pero el resto se siente justo. disponibilidad_de_vacantes también capta algo concreto en p4_r1 y p4_r2 (pocos cupos, contratación externa).",
-      "debilidades": "Los dos errores graves son del mismo tipo: el sistema llena una columna vecina con lo que la persona dijo para otra columna. Reconocimiento termina en feedback (p1_r2) y horarios/horas extra termina en beneficios (p2_r1). Lo mismo pasa en menor grado con ascensos → plan_carrera (p4_r1) y conflictos → compañerismo (p5_r3). Cuando las columnas se pisan, el sistema tiende a puntuar en todas en vez de elegir una, y eso duplica quejas y infla la cantidad de temas mencionados. Es un riesgo para un informe que cuenta menciones por tema.",
-      "calidad_columnas": "En general, las columnas reflejan bien lo que dicen las personas, pero varias se pisan:\n1) Carga de trabajo: la columna horarios del sistema incluye horas extra y además existe jornada_horas_extra. Las dos terminan con el mismo valor (p2_r1 -2/-2, p2_r2 +2/+2), así que la extra aporta poco tal como están definidas. Convendría dejar horarios solo para flexibilidad y teletrabajo, como la referencia.\n2) Remuneración: separar beneficios en seguro de salud, aguinaldos/bonos y días libres/convenios es un hallazgo valioso. La gente valora cada beneficio de forma distinta (p3_r3) y así se ve en qué actuar. A cambio, se pierde el indicador global de beneficios, que habría que reconstruir.\n3) Crecimiento: ascensos, plan_carrera y disponibilidad_de_vacantes se pisan. 'Nadie explicó por qué' cabe en ascensos y en plan_carrera, y 'se abren pocos cupos' cabe en ascensos y en vacantes. Aun así, vacantes es una extra útil porque separa 'no hay puestos' de 'no se reparten con justicia'. Mentoría y plan_carrera también se tocan cuando la jefatura no conversa sobre la carrera.\n4) Jefatura y equipo: columnas bien delimitadas. El único roce es reconocimiento con feedback_desarrollo.",
-      "confiaria_para_un_informe": true,
-      "resumen": "El sistema es bueno. Acierta casi siempre en dirección e intensidad, ignora bien el ruido y sus columnas extra (desglose de beneficios, vacantes) son un aporte real. Tiene dos errores graves: inventa feedback positivo en p1_r2 y una queja de -2 sobre beneficios en p2_r1. Los dos vienen de columnas que se pisan, porque el sistema puntúa la columna vecina en vez de elegir una. Lo usaría en un informe revisando a mano las columnas que se pisan (feedback, beneficios/conciliación, plan de carrera) y sin sumar menciones de columnas que solapan."
-    },
-    "S5": {
-      "veredicto": "Bueno",
-      "errores": [
-        {
-          "respuesta": "p2_carga_r1",
-          "columna": "apoyo_empresa",
-          "tipo": "defendible",
-          "explicacion": "La referencia no espera el tema, pero la persona sí critica cosas que dependen de la política de la empresa: no hay trabajo remoto ni para informes, lo llamaron un domingo sin aviso y cambiar un turno para ir al médico 'es casi una negociación'. Un -1 es razonable. El problema es que la columna 'flexibilidad_y_permisos' en realidad repite lo que la referencia pone en 'horarios' (flexibilidad y trabajo remoto). Hay riesgo de contar dos veces lo mismo."
-        },
-        {
-          "respuesta": "p3_remuneracion_r1",
-          "columna": "beneficios",
-          "tipo": "menor",
-          "explicacion": "La columna de referencia queda vacía aunque los beneficios son un tema central ('aplaudo de pie', 'que no los toquen porfa'). El sistema sí lo captó, pero repartido en cuatro columnas sueltas (seguro, aguinaldos, días libres, convenios), todas en +2. La dirección y la intensidad están bien, así que la información no se pierde. Pero un informe armado con las columnas de referencia mostraría que nadie habló de beneficios, y habría que juntar las cuatro a mano."
-        },
-        {
-          "respuesta": "p3_remuneracion_r2",
-          "columna": "transparencia",
-          "tipo": "menor",
-          "explicacion": "La persona lo describe como algo intermedio: 'está como a medio camino, mejoró algo pero falta'. Las bandas salariales son un avance, a ella le explicaron su aumento y a un colega no. El resumen del propio sistema dice que 'mejoraron la claridad'. Un 0 refleja mejor lo dicho; el -1 lo hace ver más negativo, aunque el reclamo de fondo (falta ordenar los criterios) sí existe."
-        },
-        {
-          "respuesta": "p3_remuneracion_r3",
-          "columna": "beneficios",
-          "tipo": "menor",
-          "explicacion": "'Hay, pero es justo, justito': de cuatro beneficios critica tres (aguinaldo escaso, convenios que son créditos, solo medio día por cumpleaños) y solo valora el seguro. Un -1 es más fiel. Además, el 0 contradice las propias columnas detalladas del sistema (tres en -1 y una en +1). Aquí el sistema creó una columna general Y las detalladas, al revés de lo que hizo en r1, así que es inconsistente y cuenta dos veces lo mismo."
-        },
-        {
-          "respuesta": "p4_crecimiento_r1",
-          "columna": "ascensos",
-          "tipo": "menor",
-          "explicacion": "El tono es moderado: 'tengo más reparos', 'medio poco transparente', 'no digo que lo haga mal'. La sospecha de pituto es real, pero no la plantea como algo grave. El -2 exagera; el -1 es más fiel. Además, la escasez de cupos ya va aparte en 'cupos_promocion', así que la intensidad se suma dos veces."
-        },
-        {
-          "respuesta": "p5_equipo_r2",
-          "columna": "companerismo",
-          "tipo": "menor",
-          "explicacion": "Dice 'bien', 'no es perfecto', 'hay días que andamos todos con la mecha corta'. Es un +1 claro. El sistema pone +2, aunque su propio resumen menciona tensión. Parece que el apoyo espontáneo entre compañeros, que además mide aparte en 'apoyo_entre_companeros' (+2), le subió la nota a la columna principal."
-        },
-        {
-          "respuesta": "p5_equipo_r2",
-          "columna": "manejo_conflictos",
-          "tipo": "menor",
-          "explicacion": "'Me complica un poco', 'al final se aclaró, pero quedó un mal gusto'. Es una crítica real pero moderada, no fuerte. El -2 exagera y se acerca a la intensidad de p5_r3, donde la persona habla de un ambiente 'tóxico'. En el informe se perdería la diferencia entre las dos situaciones."
-        },
-        {
-          "respuesta": "p5_equipo_r3",
-          "columna": "companerismo",
-          "tipo": "defendible",
-          "explicacion": "La persona dice literalmente 'como mitad y mitad': algunos son 'súper buena gente' y un grupo antiguo es cerrado y tira tallas pesadas. El 0 es tan razonable como el -1 de la referencia, que parece pesar más lo negativo."
-        },
-        {
-          "respuesta": "p5_equipo_r3",
-          "columna": "herramientas",
-          "tipo": "menor",
-          "explicacion": "La columna de referencia queda vacía aunque la persona cierra con 'en lo de coordinarse estamos bien, el problema es más la gente, no las herramientas'. El sistema lo repartió en crm_app, reunion_lunes y whatsapp_equipo, todas en +1. La dirección es correcta, pero queda fragmentado. Además es inconsistente con p5_r1, donde sí usó una sola columna de herramientas."
-        },
-        {
-          "respuesta": "p5_equipo_r3",
-          "columna": "reparto_zonas_jefatura (extra)",
-          "tipo": "menor",
-          "explicacion": "El caso de las zonas de Maipú es justamente el ejemplo que la persona usa para ilustrar el mal manejo de conflictos. Ponerlo en otra columna en -2 cuenta el mismo hecho dos veces. 'trabajo_terreno' (-1) también es dudosa: estar en terreno se menciona como contexto, no como queja."
-        }
-      ],
-      "fortalezas": "En ninguna de las 15 respuestas hay una opinión invertida ni un tema importante inventado. Coincide exactamente con la referencia en la gran mayoría de los casos, incluidos los matices más finos: comunicación en 0 en p1_r3, volumen en 0 en p2_r2, capacitación en 0 en p4_r3, colaboración en 0 en p5_r2. Detecta bien cuándo no se menciona un tema e ignora sin problemas los comentarios fuera de tema (metro, café, estacionamiento, tacos). Los resúmenes de cada columna son precisos, citan hechos concretos y servirían directamente para elegir citas para el informe. Algunas columnas extra son hallazgos valiosos: 'retencion_talento' (p4_r2) muestra la intención de irse, que ninguna columna de referencia recoge; 'discrecionalidad_supervisor' (p2_r3) y 'roles_responsabilidades' (p5_r1) identifican causas de fondo que se pueden accionar.",
-      "debilidades": "1) Fragmenta los temas de forma inconsistente: a veces divide un tema de referencia en varias columnas y deja la principal vacía (beneficios en p3_r1, herramientas en p5_r3), y otras veces crea la columna general más las detalladas, contando lo mismo dos veces (p3_r3). 2) Tiende a exagerar la intensidad hacia los extremos (-2 en ascensos de p4_r1, -2 en conflictos y +2 en compañerismo de p5_r2). Así se borra la diferencia entre una crítica moderada y una fuerte, que es justo lo que un informe necesita para priorizar. 3) Varias columnas extra repiten temas de referencia (flexibilidad_y_permisos con horarios, reparto_zonas con manejo_conflictos, respuesta_jefatura_evaluaciones con plan_carrera), así que sumar las columnas inflaría la negatividad. 4) En dos casos la nota general no cuadra con las notas detalladas que el mismo sistema asignó.",
-      "calidad_columnas": "Las columnas de referencia que el sistema sí usa capturan bien lo que dice la gente. El problema está en cuánto detalle usa: no es parejo. Por un lado divide demasiado: beneficios en 4-5 columnas, herramientas en 3, mentoría en jefatura, compañeros y conversaciones, colaboración por área (finanzas/operaciones). Por otro lado mantiene columnas amplias en otras respuestas, así que no se puede agregar entre personas sin limpiar primero. Varias columnas extra se pisan con las de referencia y generan doble conteo (flexibilidad_y_permisos/horarios, horas_extra_compensacion/horarios, reparto_zonas_jefatura/manejo_conflictos, picos_de_demanda/volumen_trabajo, cupos_promocion/ascensos). Algunas extra no tienen mucho valor (whatsapp_equipo, trabajo_terreno, trato_personal en 0, relacion_general, que solo repite el tono global). Hay hallazgos que sí valen la pena y que la referencia no tenía: 'retencion_talento'/intención de irse (aparece de forma implícita también en p3_r1, p3_r3 y p4_r1, así que convendría una columna transversal), 'discrecionalidad_supervisor' (falta de protocolo, 'lotería') y 'roles_responsabilidades' entre áreas. La división de feedback_desarrollo en desempeño y desarrollo profesional (p1_r1) también es razonable, porque son cosas distintas.",
-      "confiaria_para_un_informe": true,
-      "resumen": "Es un sistema sólido para el informe: no invierte ninguna opinión, no inventa temas importantes y sus resúmenes son fieles y fáciles de citar. Ninguna diferencia es grave. Hay seis menores, sobre todo de intensidad exagerada hacia los extremos, y además fragmenta los temas, lo que deja vacías columnas de referencia (beneficios, herramientas) aunque la información sí está capturada. Lo usaría con un paso previo: juntar las columnas extra en sus temas de referencia, evitar contar lo mismo dos veces y revisar los -2/+2 cuando la persona usa matices como 'un poco' o 'medio'. Vale la pena agregar una columna de intención de irse."
-    },
-    "S6": {
-      "veredicto": "Aceptable",
-      "errores": [
-        {
-          "respuesta": "p1_jefatura_r1",
-          "columna": "autonomia",
-          "tipo": "grave",
-          "explicacion": "La persona nunca habla de autonomía ni de microgestión. Su queja es que el jefe está ausente y no comunica, que es lo contrario de controlar. El -2 repite en otra columna el problema de comunicación, y el informe mostraría una 'jefatura que no da autonomía' que nadie mencionó."
-        },
-        {
-          "respuesta": "p1_jefatura_r1",
-          "columna": "confianza_trato (extra)",
-          "tipo": "defendible",
-          "explicacion": "Dice 'no me trata mal pero tampoco se nota que lo valore'. Un -1 suave en trato es una lectura posible, aunque un 0 también se sostiene."
-        },
-        {
-          "respuesta": "p1_jefatura_r2",
-          "columna": "autonomia",
-          "tipo": "grave",
-          "explicacion": "Es la única crítica clara de la respuesta: revisa cada cotización, pide permiso por un 2% de descuento, la copia en todos los correos y la persona dice 'cansa' y 'me gustaría que confiara más en mi criterio'. Con el 0 desaparece el único punto a mejorar de una respuesta que por lo demás es positiva. Probablemente pasa porque la columna mezcla autonomía con estilo de liderazgo en general."
-        },
-        {
-          "respuesta": "p1_jefatura_r2",
-          "columna": "feedback_desarrollo",
-          "tipo": "menor",
-          "explicacion": "No habla de crecimiento profesional ni de aprendizaje. El +1 se arrastra del reconocimiento. Va en la misma dirección que el resto de la respuesta, pero no tiene base en lo que dijo."
-        },
-        {
-          "respuesta": "p1_jefatura_r3",
-          "columna": "reconocimiento",
-          "tipo": "defendible",
-          "explicacion": "La columna del sistema incluye el feedback sobre desempeño, y la persona destaca los comentarios concretos en los pull requests y el 'confío en tu criterio'. Un +1 es razonable."
-        },
-        {
-          "respuesta": "p1_jefatura_r3",
-          "columna": "feedback_desarrollo",
-          "tipo": "menor",
-          "explicacion": "Tiene uno a uno, le pagaron un curso y la metieron en tareas de DevOps, pero ella misma dice 'no es un plan de carrera súper armado'. +1 encaja mejor que +2. Misma dirección."
-        },
-        {
-          "respuesta": "p2_carga_r1",
-          "columna": "bienestar",
-          "tipo": "menor",
-          "explicacion": "Dice textualmente 'no es que esté colapsado tampoco, pero sano sano no es'. Corresponde a -1, y el sistema exagera con -2."
-        },
-        {
-          "respuesta": "p2_carga_r1",
-          "columna": "apoyo_jefatura_equipo (extra)",
-          "tipo": "menor",
-          "explicacion": "La crítica va contra la jefatura (le cuesta conseguir un cambio de turno, le dejaron sin dotación), pero elogia al equipo ('los cabros son buenos'). Como la columna junta jefatura y compañeros, el -2 tapa ese elogio."
-        },
-        {
-          "respuesta": "p2_carga_r2",
-          "columna": "apoyo_empresa",
-          "tipo": "menor",
-          "explicacion": "El sistema no tiene una columna de políticas o beneficios de la empresa. El día libre de cumpleaños y las tardes libres quedan en parte dentro de flexibilidad_permisos (+2), pero se pierden el seguro complementario y el comentario de que los beneficios se conocen poco."
-        },
-        {
-          "respuesta": "p2_carga_r3",
-          "columna": "apoyo_empresa",
-          "tipo": "menor",
-          "explicacion": "Es la queja central ('no hay ninguna política'). Sin columna propia, queda repartida entre flexibilidad_permisos, equilibrio_vida_personal y apoyo_jefatura_equipo, todas en -2. La dirección se mantiene, pero el informe no podría decir que el problema es que faltan políticas de empresa."
-        },
-        {
-          "respuesta": "p2_carga_r3",
-          "columna": "bienestar",
-          "tipo": "menor",
-          "explicacion": "No habla de estrés ni de salud. Solo dice que queda 'medio atrasado'. El -1 es una inferencia débil."
-        },
-        {
-          "respuesta": "p3_remuneracion_r1",
-          "columna": "beneficios",
-          "tipo": "defendible",
-          "explicacion": "La columna se dividió en beneficios_salud_bienestar (+2) y beneficios_tiempo_flexibilidad (+2). El elogio queda bien capturado y además más detallado."
-        },
-        {
-          "respuesta": "p3_remuneracion_r1",
-          "columna": "bonos_incentivos (extra)",
-          "tipo": "grave",
-          "explicacion": "Pone -2 cuando la persona elogia que los aguinaldos 'llegan siempre, nunca han fallado'. No hay ninguna crítica a bonos. Es un tema inventado y con la opinión invertida, probablemente contagiado por la queja sobre los aumentos."
-        },
-        {
-          "respuesta": "p3_remuneracion_r1",
-          "columna": "pago_y_reajustes (extra)",
-          "tipo": "defendible",
-          "explicacion": "Solo recibe el reajuste por IPC y los aumentos prometidos nunca llegan. El -2 se sostiene, aunque repite lo mismo que transparencia."
-        },
-        {
-          "respuesta": "p3_remuneracion_r2",
-          "columna": "comparacion_mercado",
-          "tipo": "menor",
-          "explicacion": "Compara de forma explícita con ofertas de headhunters y con excompañeros. La comparación queda dentro de sueldo (+1), porque la columna del sistema incluye la competitividad frente al mercado. No se pierde la dirección, pero sí el dato separado."
-        },
-        {
-          "respuesta": "p3_remuneracion_r3",
-          "columna": "transparencia",
-          "tipo": "grave",
-          "explicacion": "No dice nada sobre criterios de aumento, bandas o equidad interna. Un -2 inventado en un tema que suele ser prioritario en el informe."
-        },
-        {
-          "respuesta": "p3_remuneracion_r3",
-          "columna": "comparacion_mercado",
-          "tipo": "menor",
-          "explicacion": "Es un argumento central: la planta vecina paga unas 200 lucas más y él se iría. Queda absorbido en sueldo (-2), así que la dirección se mantiene, pero se pierde el riesgo de fuga hacia la competencia como hallazgo propio."
-        },
-        {
-          "respuesta": "p3_remuneracion_r3",
-          "columna": "beneficios",
-          "tipo": "defendible",
-          "explicacion": "Se divide en salud (-1: el seguro sirve, los convenios son créditos) y tiempo (-1: medio día por cumpleaños). Es coherente con 'hay, pero justito'."
-        },
-        {
-          "respuesta": "p4_crecimiento_r1",
-          "columna": "plan_carrera",
-          "tipo": "menor",
-          "explicacion": "No habla de una ruta o de requisitos. Critica la falta de transparencia y los pocos cupos, que ya están en ascensos y en justicia. El -1 duplica esa misma queja."
-        },
-        {
-          "respuesta": "p4_crecimiento_r1",
-          "columna": "mentoria",
-          "tipo": "defendible",
-          "explicacion": "No hay columna de mentoría, pero rol_jefatura_feedback (+1) recoge lo que aporta la Coni. Se pierde al compañero de diseño."
-        },
-        {
-          "respuesta": "p4_crecimiento_r3",
-          "columna": "mentoria",
-          "tipo": "menor",
-          "explicacion": "Es lo más valorado de la respuesta: la Carolina, el Felipe y la reunión cada dos semanas. rol_jefatura_feedback (+2) captura a la jefa, pero el acompañamiento de los compañeros senior se pierde y capacitacion queda en 0."
-        },
-        {
-          "respuesta": "p5_equipo_r1",
-          "columna": "herramientas",
-          "tipo": "menor",
-          "explicacion": "Critica que la información está dispersa en Teams, correo, WhatsApp y Excel, y que la reunión es larga. coordinacion_procesos (-2) lo recoge en parte, pero sin una columna de herramientas se pierde una recomendación concreta."
-        },
-        {
-          "respuesta": "p5_equipo_r1",
-          "columna": "comunicacion_liderazgo (extra)",
-          "tipo": "grave",
-          "explicacion": "No menciona a las jefaturas en ningún momento. El -2 sale de la queja sobre otras áreas e inventa una crítica al liderazgo."
-        },
-        {
-          "respuesta": "p5_equipo_r2",
-          "columna": "manejo_conflictos",
-          "tipo": "defendible",
-          "explicacion": "comunicacion_liderazgo (-1) incluye 'median conflictos' y la persona critica que la jefatura deja que los roces se enfríen solos. Se captura con la intensidad correcta, aunque se pierde la parte de que la gente evita hablar las cosas de frente."
-        },
-        {
-          "respuesta": "p5_equipo_r3",
-          "columna": "companerismo",
-          "tipo": "menor",
-          "explicacion": "Describe el clima como 'mitad y mitad' y 'no es terrible'. El 'muy tóxico' se refiere a cómo se manejan los conflictos. El -2 mezcla las dos cosas."
-        },
-        {
-          "respuesta": "p5_equipo_r3",
-          "columna": "colaboracion_areas",
-          "tipo": "grave",
-          "explicacion": "No menciona otras áreas en absoluto. Es un -2 inventado."
-        },
-        {
-          "respuesta": "p5_equipo_r3",
-          "columna": "coordinacion_procesos (extra)",
-          "tipo": "grave",
-          "explicacion": "La persona dice textualmente 'en lo de coordinarse estamos bien, el problema es más la gente, no las herramientas' y elogia el CRM y la reunión de los lunes. El -2 invierte la opinión. Además se pierde el +1 de herramientas."
-        },
-        {
-          "respuesta": "p5_equipo_r3",
-          "columna": "apoyo_trabajo_equipo (extra)",
-          "tipo": "grave",
-          "explicacion": "Cuenta que algunos compañeros le pasan datos de clientes y le prestan el muestrario, o sea, el apoyo es mixto. Un -2 contradice lo que dice."
-        },
-        {
-          "respuesta": "p5_equipo_r3",
-          "columna": "manejo_conflictos",
-          "tipo": "menor",
-          "explicacion": "Es la queja principal. Queda en parte dentro de comunicacion_liderazgo (-2, el jefe no resolvió), pero la dinámica de que la gente se guarda las cosas, explota y acusa con copia a gerencia no tiene columna."
-        }
-      ],
-      "fortalezas": "En las respuestas de un solo tono acierta casi siempre en las columnas principales: comunicación y desarrollo en p1_r1, las tres de p2_r1, sueldo en las tres de remuneración y todo p4_r2. También gradúa bien los casos mixtos (0) cuando la persona lo dice explícitamente, como en comunicación de p1_r3, volumen de p2_r2, transparencia de p3_r2 y colaboración de p5_r2. Algunas columnas extra afinan lo que la referencia agrupaba: dividir beneficios en salud y tiempo permite leer matices, por ejemplo que el seguro sirve y los convenios no. justicia_transparencia_criterios separa bien el favoritismo de la existencia de vacantes. Ignora correctamente los comentarios fuera de tema (café, metro, estacionamiento).",
-      "debilidades": "Tiene un sesgo de halo negativo: cuando el tono general es crítico, rellena columnas vecinas con -2 aunque la persona no hable del tema o incluso lo elogie. Pasa con bonos en p3_r1, transparencia en p3_r3, autonomía en p1_r1, liderazgo en p5_r1, y con colaboración entre áreas, coordinación y apoyo del equipo en p5_r3. Son exactamente los errores que más daño hacen en un informe, porque generan focos rojos falsos. También diluye la única crítica en respuestas positivas (autonomía en p1_r2). Al faltar columnas de beneficios de empresa, comparación con el mercado, mentoría, herramientas y manejo de conflictos, temas importantes quedan absorbidos o se pierden. El peor caso es manejo de conflictos, que fue el tema central de p5_r2 y p5_r3.",
-      "calidad_columnas": "Mezcla de aciertos y problemas estructurales.\n\n**Columnas que se pisan entre sí:**\n- autonomia_liderazgo junta autonomía con organización y estilo de liderazgo. Por eso diluye la microgestión (p1_r2) y absorbe la falta de reuniones (p1_r1).\n- En remuneración, pago_y_reajustes y equidad_transparencia se superponen en el tema de los aumentos.\n- justicia_transparencia_criterios duplica la parte de 'criterios justos' de ascensos.\n- En carga, flexibilidad_permisos se pisa con horarios y equilibrio_vida_personal. Las tres suelen moverse juntas, así que agregan poca información.\n\n**Columnas demasiado amplias:**\n- apoyo_jefatura_equipo junta jefatura y compañeros, que muchas veces se valoran al revés (p2_r1).\n- comunicacion_liderazgo mete a las jefaturas en una pregunta sobre equipo, y el sistema tiende a llenarla aunque no se las mencione.\n\n**Vacíos importantes:**\n- No hay columna de políticas o beneficios de empresa en carga, que fue la queja central de p2_r3.\n- Tampoco hay columnas de comparación con el mercado, mentoría, herramientas ni manejo de conflictos. Manejo de conflictos es la mayor pérdida, porque fue el tema principal en dos de las tres respuestas sobre equipo.\n\n**Extras con valor real:**\n- La división de beneficios en salud y tiempo.\n- rol_jefatura_feedback en crecimiento, que en la práctica funciona como columna de mentoría de la jefatura.\n- justicia_transparencia_criterios, como hallazgo separado del favoritismo.",
-      "confiaria_para_un_informe": false,
-      "resumen": "Acierta bien en los temas centrales cuando la respuesta tiene un tono claro, pero inventa críticas fuertes en temas que la persona no mencionó o incluso elogió. Los casos más claros son bonos en p3_r1, coordinación y colaboración en p5_r3 y liderazgo en p5_r1. Además su esquema de columnas no captura conflictos, herramientas, mentoría ni políticas de empresa. No lo usaría para un informe sin revisión humana: el informe mostraría focos rojos falsos y perdería hallazgos clave, sobre todo en la pregunta de equipo."
-    },
-    "S7": {
-      "veredicto": "Bueno",
-      "errores": [
-        {
-          "respuesta": "p1_jefatura_r2",
-          "columna": "feedback_desarrollo",
-          "tipo": "grave",
-          "explicacion": "Se esperaba que no lo mencionara y el sistema puso +1. La vendedora no habla de feedback sobre su desempeño, de conversaciones de carrera ni de capacitación. Que la jefa revise cada cotización es control (autonomía), no desarrollo, y el reconocimiento ya está en otra columna. Es un tema importante inventado, en positivo, que se suma a la cuenta favorable de desarrollo."
-        },
-        {
-          "respuesta": "p2_carga_r1",
-          "columna": "apoyo_empresa",
-          "tipo": "grave",
-          "explicacion": "Se esperaba que no lo mencionara y el sistema puso -2. El supervisor de bodega nunca habla de beneficios ni de políticas formales (días libres, bonos, seguros, permisos). Lo que critica son las horas extra que no se registran y lo difícil que es cambiar un turno, y eso ya está en horarios y horarios_extra. El sistema contó la misma queja dos veces e inventó un -2 en beneficios, que en el informe aparecería como un problema fuerte que la persona nunca planteó."
-        },
-        {
-          "respuesta": "p2_carga_r3",
-          "columna": "horarios",
-          "tipo": "defendible",
-          "explicacion": "Se esperaba que no lo mencionara y el sistema puso -2. Pidió un día para acompañar a su señora a una operación y se lo descontaron del sueldo. La definición de referencia de flexibilidad incluye literalmente 'ausentarse por temas personales sin trabas', así que hay base. El costo es que la misma anécdota también alimenta apoyo_empresa."
-        },
-        {
-          "respuesta": "p3_remuneracion_r1",
-          "columna": "beneficios",
-          "tipo": "defendible",
-          "explicacion": "La referencia esperaba +2 en beneficios. El sistema no tiene esa columna y lo repartió en beneficios_salud_convenios +2 y bonos_dias_libres +2. La señal es la misma, con más detalle."
-        },
-        {
-          "respuesta": "p3_remuneracion_r2",
-          "columna": "transparencia",
-          "tipo": "menor",
-          "explicacion": "Se esperaba 0 y el sistema puso -1. El jefe de proyectos reconoce un avance ('mejoró algo pero falta', las bandas ahora se ven, a él le explicaron su aumento) y a la vez critica que no se sabe cómo pasar de un tramo a otro. Es mixto. El -1 carga un poco el lado negativo, pero la lectura de fondo es la misma."
-        },
-        {
-          "respuesta": "p3_remuneracion_r3",
-          "columna": "beneficios",
-          "tipo": "defendible",
-          "explicacion": "La referencia esperaba -1. El sistema puso -1 en las dos columnas extra. En salud_convenios se podría discutir un 0, porque el seguro 'sirve' y los convenios son créditos, pero el total coincide con la referencia."
-        },
-        {
-          "respuesta": "p4_crecimiento_r1",
-          "columna": "plan_carrera",
-          "tipo": "menor",
-          "explicacion": "Se esperaba que no lo mencionara y el sistema puso -1. La asistente de marketing no habla de un mapa de cargos ni de requisitos para subir. Habla de ascensos poco justos y de pocos cupos, que ya están en ascensos y disponibilidad_oportunidades. Es un desborde de temas vecinos en la misma dirección. No cambia la conclusión, pero infla las menciones de plan de carrera."
-        },
-        {
-          "respuesta": "p5_equipo_r3",
-          "columna": "colaboracion_areas",
-          "tipo": "grave",
-          "explicacion": "Se esperaba que no lo mencionara y el sistema puso -2. El conflicto que cuenta el vendedor de terreno (clientes de su zona pasados a un compañero, el jefe que no resuelve, correos a la gerencia) ocurre dentro de su equipo y es manejo de conflictos. No menciona ninguna otra área. Es un -2 inventado en un tema central del informe."
-        }
-      ],
-      "fortalezas": "Casi siempre acierta en la dirección y en la intensidad: en ninguna celda la opinión quedó al revés. Distingue bien los matices mixtos (comunicación en p1_r3, volumen en p2_r2, colaboración en p5_r2, capacitación en p4_r3) y detecta bien las quejas más fuertes, que son las que más importan en un informe. Ignora sin problema las digresiones (metro, café, estacionamientos, tacos) y nunca las convierte en temas.",
-      "debilidades": "Tiene un patrón claro: inventa temas vecinos. Cuando una persona habla con fuerza de un tema, el sistema 'contagia' una columna cercana (desarrollo a partir de reconocimiento y control, beneficios a partir de horas extra, colaboración entre áreas a partir de un conflicto interno, plan de carrera a partir de ascensos). Pasó en 4 de 15 respuestas, varias veces con -2. Eso infla las menciones y la negatividad de temas que la persona no tocó, justo en lo que un informe cuenta como 'principales dolores'. Además, cuando hay columnas que se pisan, la misma anécdota se cuenta dos veces.",
-      "calidad_columnas": "En general las columnas de referencia cubren bien lo que dicen las personas, pero varias se pisan. En carga de trabajo, 'horarios' ya incluye las horas extra y aun así se agregó horarios_extra, así que todo sale duplicado (p2_r1 y p2_r2 dan valores idénticos). En equipo, 'herramientas' incluye reuniones y además existe reuniones_de_coordinacion. En jefatura, trato_personal se mezcla con reconocimiento y autonomía: en p1_r3 da +2 solo por la confianza que da el jefe, y en p1_r1 da -1 cuando la persona dice 'no me trata mal'. Ahí parece reflejar el ánimo general más que el trato. Hay extras que sí son hallazgos valiosos: disponibilidad_oportunidades (pocas vacantes, gente que se va por falta de futuro) agrega algo real que ascensos y plan_carrera no capturan. trato_jefatura_equipo en carga muestra bien la 'lotería del supervisor'. Separar beneficios en salud/convenios y bonos/días libres da más detalle sin perder la señal. reuniones_de_coordinacion sería útil si se sacaran las reuniones de 'herramientas'.",
-      "confiaria_para_un_informe": false,
-      "resumen": "Revisé las 15 respuestas: hay 3 errores graves, 2 menores y 3 diferencias defendibles. El sistema interpreta bien el sentido y la intensidad de lo que la gente sí dice, y en ningún caso deja una opinión al revés. Su problema es que inventa temas: en 3 respuestas agrega con seguridad (incluso con -2) temas cercanos que la persona no mencionó, y en una cuarta (plan_carrera en p4_r1) hace lo mismo en grado menor. En un informe, eso inflaría la frecuencia y la gravedad de dolores como beneficios o colaboración entre áreas. Además, algunas columnas se pisan y cuentan dos veces la misma queja. Lo usaría para un informe solo revisando a mano las menciones de temas que la persona no tocó de forma explícita y depurando las columnas duplicadas."
-    },
-    "S8": {
-      "veredicto": "Excelente",
-      "errores": [
-        {
-          "respuesta": "p3_remuneracion_r2",
-          "columna": "transparencia",
-          "tipo": "menor",
-          "explicacion": "Se esperaba 0 y el sistema dio -1. El sistema separó el tema en dos columnas: bandas_salariales (0), donde pone lo bueno (las bandas ahora se publican), y criterios_aumentos (-1), donde pone lo malo (no se sabe cómo pasar de un tramo a otro ni cuánto pesa la evaluación). Solo criterios_aumentos quedó asociada a la columna de referencia, así que se perdió la mitad positiva que la definición de 'transparencia' sí incluye. La persona dice 'mejoró algo pero falta' y además le explicaron 'más o menos' su propio aumento, así que el tono es mixto, aunque se inclina hacia lo negativo. La dirección es parecida y cambia la intensidad, pero un informe sobre transparencia no debería tapar la mejora que la persona reconoce."
-        },
-        {
-          "respuesta": "p5_equipo_r3",
-          "columna": "companerismo",
-          "tipo": "defendible",
-          "explicacion": "Se esperaba -1 y el sistema dio 0. La persona dice textualmente 'mitad y mitad': algunos compañeros la ayudan (le pasan datos de clientes, le prestan el muestrario) y un grupo antiguo es cerrado y pesado con los nuevos. El sistema registró eso como mixto y puso lo negativo en una columna aparte, trato_a_nuevos (-1), así que la información no se pierde. La referencia probablemente le sumó el ambiente 'tóxico', pero esa parte corresponde a manejo_conflictos, que sí quedó en -2. Las dos lecturas son razonables."
-        }
-      ],
-      "fortalezas": "En 15 respuestas solo hay 2 diferencias con la referencia, y ninguna da vuelta una opinión. No inventa temas: los cuatro casos de 'no lo menciona' coinciden. Ignora bien los comentarios que no tienen que ver con la pregunta (metro, café, estacionamiento, tacos, casino), aunque varios eran positivos o negativos y podían contaminar el puntaje. Lee bien las opiniones con matices: en p2_carga_r3 separa 'la carga es harta pero se puede' (-1) de 'lo otro hay que arreglarlo urgente' (-2), y en p1_jefatura_r2 pone la autonomía en -1 aunque la persona justifica a su jefa. Los resúmenes de cada columna son fieles, traen evidencia concreta y se podrían citar en un informe tal cual. Además rescata señales que la referencia no captura y que un analista de personas valora mucho, como la intención de irse y la desconfianza.",
-      "debilidades": "El problema principal está en cómo arma las columnas, no en los puntajes. Crea columnas nuevas en cada respuesta y les pone nombres distintos para el mismo concepto (sueldo_base, salario_general y nivel_sueldo; carga_trabajo y volumen_trabajo). También corta temas en pedazos muy chicos (grupo_whatsapp, reunion_semanal_lunes, seguro_complementario) o los asocia a personas concretas (apoyo_felipe_senior, jefatura_carolina), y eso no se puede sumar entre respuestas. Sin la correspondencia con la referencia, un informe agregado necesitaría bastante trabajo manual para ordenar todo. Cuando corta un tema, a veces la columna que queda asociada a la referencia es más estrecha que la definición original y pierde una parte de la opinión, como pasó con transparencia en p3_r2. En p3_r3, el seguro complementario (+1) queda fuera de 'beneficios', y quien mire solo la columna extra puede llevarse una idea equivocada.",
-      "calidad_columnas": "Tomadas una por una, las columnas reflejan con fidelidad lo que dice cada persona. Como conjunto tienen problemas:\n\n1) Se pisan entre sí. desarrollo_carrera y retroalimentacion_desempeno se reparten 'feedback_desarrollo' en p1_r1. jefatura_carolina, apoyo_felipe_senior y reuniones_de_desarrollo juntas son la mentoría de p4_r3. reunion_semanal_lunes, grupo_whatsapp y aplicacion_crm son todas parte de 'herramientas'. bandas_salariales y criterios_aumentos son las dos mitades de 'transparencia'.\n\n2) Algunas son demasiado estrechas. Columnas con nombre propio o con una sola herramienta (colaboracion_finanzas, colaboracion_operaciones, seguro_complementario, grupo_whatsapp) no sirven para comparar respuestas entre sí.\n\n3) Los nombres no son consistentes entre respuestas, lo que obliga a homologarlos antes de agregar.\n\nHay extras que sí aportan y que la referencia no tenía:\n- Intención de irse o de quedarse: desconfianza_y_permanencia, retencion_de_talento y permanencia_por_remuneracion. Aparece en varias respuestas y es un hallazgo clave para el informe.\n- gestion_solicitudes_personales y discurso_familia_empresa: muestran que los permisos dependen de la buena voluntad del supervisor y que hay distancia entre lo que la empresa dice y lo que hace.\n- trato_a_nuevos: da una pista útil sobre inducción y sobre grupos cerrados dentro del equipo.\n- relacion_general: sirve como evaluación global de la jefatura.\n\nRecomendación: dejar las 4 columnas de referencia como base y sumar como fijas 'intención de permanencia' y 'equidad y discrecionalidad en permisos'.",
-      "confiaria_para_un_informe": true,
-      "resumen": "El sistema puntúa casi perfecto. En 15 respuestas hay solo dos diferencias con la referencia: una menor (transparencia en p3_r2, -1 en vez de 0) y una defendible (compañerismo en p5_r3, 0 en vez de -1, cuando la persona dice 'mitad y mitad'). No hay errores graves, no inventa temas y no se deja llevar por los comentarios fuera de tema. La debilidad está en las columnas: las corta demasiado, les pone nombres distintos para lo mismo y algunas se pisan, así que hay que ordenarlas antes de agregar resultados. A cambio, aporta hallazgos valiosos como la intención de irse y la discrecionalidad en los permisos. Lo usaría para un informe, siempre que las columnas se ordenen sobre la estructura de referencia."
-    },
-    "S9": {
-      "veredicto": "Aceptable",
-      "errores": [
-        {
-          "respuesta": "p1_jefatura_r1",
-          "columna": "reconocimiento",
-          "tipo": "menor",
-          "explicacion": "El sistema no tiene una columna de reconocimiento. Lo incluye dentro de retroalimentacion_desarrollo (-2), que define como 'reconocimiento de logros, correcciones…'. La dirección negativa se mantiene, pero se pierde el matiz: la persona dice que el reconocimiento existe aunque es genérico (-1), y que lo grave es la falta de desarrollo."
-        },
-        {
-          "respuesta": "p1_jefatura_r1",
-          "columna": "trato_personal (extra)",
-          "tipo": "defendible",
-          "explicacion": "'No me trata mal pero tampoco se nota que lo valore' admite un 0 o un -1. Es una columna extra y no distorsiona la conclusión."
-        },
-        {
-          "respuesta": "p2_jefatura_r2",
-          "columna": "reconocimiento",
-          "tipo": "menor",
-          "explicacion": "Es el elogio central de la respuesta ('lo que más me gusta', 'me motiva caleta') y merece +2. El sistema lo pasa a feedback_desarrollo con +1. La dirección se mantiene, pero el punto fuerte de esta jefatura queda rebajado y mezclado con desarrollo, del que la persona no habla."
-        },
-        {
-          "respuesta": "p1_jefatura_r2",
-          "columna": "feedback_desarrollo",
-          "tipo": "defendible",
-          "explicacion": "Es el reconocimiento redirigido: según la definición del sistema, retroalimentacion_desarrollo incluye 'reconocimiento de logros'. Tiene sentido dentro de su esquema."
-        },
-        {
-          "respuesta": "p1_jefatura_r3",
-          "columna": "trato_personal (extra)",
-          "tipo": "menor",
-          "explicacion": "El +2 en trato parece salir de las frases sobre confianza y autonomía ('confío en tu criterio', 'lo vemos juntos'). La persona no habla de cordialidad ni de trato. Se cuenta dos veces lo mismo que en autonomía."
-        },
-        {
-          "respuesta": "p2_carga_r1",
-          "columna": "bienestar",
-          "tipo": "menor",
-          "explicacion": "La persona matiza explícitamente: 'no es que esté colapsado tampoco, pero sano sano no es'. Lo justo es -1 y el sistema pone -2. Misma dirección, intensidad inflada."
-        },
-        {
-          "respuesta": "p2_carga_r2",
-          "columna": "apoyo_empresa",
-          "tipo": "menor",
-          "explicacion": "El sistema no tiene columna para políticas y beneficios de conciliación. Se pierde la valoración positiva del día libre de cumpleaños, la tarde libre por actos del colegio y el seguro, y también el comentario de que se conocen poco. No es el tema central de esta respuesta."
-        },
-        {
-          "respuesta": "p2_carga_r3",
-          "columna": "apoyo_empresa",
-          "tipo": "grave",
-          "explicacion": "Es la queja principal de la respuesta ('hay que arreglarlo urgente'): no hay políticas, le descontaron el día de la operación de su señora, depende del supervisor. El sistema no tiene dónde ponerlo y la queja desaparece como tal."
-        },
-        {
-          "respuesta": "p2_carga_r3",
-          "columna": "bienestar",
-          "tipo": "grave",
-          "explicacion": "El sistema registra la falta de políticas como impacto en bienestar y vida personal (-2). La persona no menciona estrés, cansancio ni salud. Un informe concluiría que hay un problema de salud o desgaste cuando lo que se pide son políticas de conciliación: el diagnóstico es equivocado y la acción sugerida también."
-        },
-        {
-          "respuesta": "p3_remuneracion_r2",
-          "columna": "comparacion_mercado",
-          "tipo": "menor",
-          "explicacion": "Sin columna de mercado, se pierde un párrafo explícito y positivo (ofertas de headhunters parecidas, ex compañeros en consultoras ganan igual). Es un argumento de retención útil, pero el sueldo ya aparece como +1."
-        },
-        {
-          "respuesta": "p3_remuneracion_r3",
-          "columna": "comparacion_mercado",
-          "tipo": "grave",
-          "explicacion": "La brecha con el mercado ('en la planta de al lado ganan doscientas lucas más', se van los buenos, 'me voy') es el motor de fuga de esta persona. Se pierde por completo."
-        },
-        {
-          "respuesta": "p3_remuneracion_r3",
-          "columna": "transparencia",
-          "tipo": "grave",
-          "explicacion": "El sistema pone -2 en transparencia o equidad salarial, pero la persona nunca habla de criterios, bandas ni diferencias internas. Es la comparación externa mal clasificada. El informe atribuiría a esta persona un reclamo de opacidad que no hizo."
-        },
-        {
-          "respuesta": "p4_crecimiento_r1",
-          "columna": "plan_carrera",
-          "tipo": "defendible",
-          "explicacion": "'Se abren pocos cupos, como uno al año' puede leerse como que la ruta de ascenso es limitada. Un -1 es razonable."
-        },
-        {
-          "respuesta": "p4_crecimiento_r1",
-          "columna": "mentoria",
-          "tipo": "menor",
-          "explicacion": "La enseñanza de Coni y Rodrigo queda en parte en retroalimentacion_jefatura con +0 en lugar de +1, y el aporte de Rodrigo, que es un par de otra área, se pierde."
-        },
-        {
-          "respuesta": "p4_crecimiento_r3",
-          "columna": "mentoria",
-          "tipo": "menor",
-          "explicacion": "Lo central (Carolina y la reunión quincenal) queda bien recogido en retroalimentacion_jefatura con +2. Se pierde la mentoría de pares (Felipe), que la persona destaca expresamente ('sobre todo por la gente que tengo al lado')."
-        },
-        {
-          "respuesta": "p5_equipo_r1",
-          "columna": "herramientas",
-          "tipo": "menor",
-          "explicacion": "La dispersión de canales y la reunión larga quedan en comunicacion_informacion, pero con -2 en vez de -1, mezcladas con la mala coordinación entre áreas. Misma dirección."
-        },
-        {
-          "respuesta": "p5_equipo_r2",
-          "columna": "manejo_conflictos",
-          "tipo": "menor",
-          "explicacion": "La persona señala los roces como 'lo que más habría que trabajar'. El sistema lo reparte entre liderazgo_jefatura (-1) y comunicacion_informacion (-1). El tono negativo se conserva, pero el informe no mostraría que el problema es cómo se manejan los conflictos."
-        },
-        {
-          "respuesta": "p5_equipo_r3",
-          "columna": "manejo_conflictos",
-          "tipo": "grave",
-          "explicacion": "Es el problema 'grave grave' y 'muy tóxico' de la respuesta. Sin columna propia, se diluye entre compañerismo, liderazgo, comunicación y una colaboración entre áreas inventada. El tema central desaparece."
-        },
-        {
-          "respuesta": "p5_equipo_r3",
-          "columna": "colaboracion_areas",
-          "tipo": "grave",
-          "explicacion": "El sistema inventa un -2. La persona no habla de otras áreas: el conflicto de zonas fue dentro de su equipo y con su jefe."
-        },
-        {
-          "respuesta": "p5_equipo_r3",
-          "columna": "herramientas",
-          "tipo": "grave",
-          "explicacion": "La persona elogia el CRM, la reunión corta de los lunes y el WhatsApp ('en lo de coordinarse estamos bien, el problema es la gente, no las herramientas'). El sistema no lo registra y además pone comunicacion_informacion en -2, cuya definición incluye canales y reuniones. La opinión sobre las herramientas queda al revés."
-        },
-        {
-          "respuesta": "p5_equipo_r3",
-          "columna": "companerismo",
-          "tipo": "menor",
-          "explicacion": "La persona describe el ambiente como 'mitad y mitad' (-1). El -2 parece absorber la parte del conflicto. Misma dirección, intensidad inflada."
-        }
-      ],
-      "fortalezas": "Cuando una columna del sistema coincide con una de referencia, la precisión es muy alta. Casi todas las marcas de comunicación, autonomía, volumen, horarios, sueldo, beneficios, capacitación, ascensos y compañerismo coinciden exactamente, en dirección e intensidad, incluidos los mixtos (0), que son difíciles. Ignora bien las digresiones (metro, café, estacionamientos, tacos). Algunas columnas extra aportan hallazgos útiles: recursos_apoyo en p2_r1 identifica la falta de personal como causa del exceso de carga, y retroalimentacion_jefatura en crecimiento recoge bien el acompañamiento de la jefatura.",
-      "debilidades": "Los errores graves salen todos del esquema de columnas, no de leer mal el sentimiento. Cuando la persona habla de un tema para el que el sistema no tiene columna (políticas de conciliación, comparación con el mercado, manejo de conflictos, herramientas, reconocimiento, mentoría), el sistema lo mete en la columna más cercana. Eso produce diagnósticos equivocados: un problema de bienestar donde se reclaman políticas, de transparencia donde se reclama la brecha con el mercado, y de colaboración entre áreas o de comunicación donde hay conflictos dentro del equipo y herramientas que funcionan bien. Lo más preocupante es que estos fallos caen justo en los temas que más pesan en cada respuesta (p2_r3, p3_r3, p5_r3), y en dos casos están ligados a la intención de irse. Además, varias columnas extra repiten lo que ya miden otras y cuentan el mismo dato dos veces.",
-      "calidad_columnas": "En general, las columnas del sistema son más amplias o se pisan entre sí, y les faltan temas concretos que las personas sí mencionan.\n- **Jefatura:** retroalimentacion_desarrollo junta reconocimiento y desarrollo, y no distingue a una jefa que reconoce mucho pero no desarrolla (r2). trato_personal es razonable, pero en r3 recoge lo que ya mide autonomía. equidad_justicia nunca se activó.\n- **Carga:** falta una columna de políticas o beneficios de conciliación, y es el hueco más dañino. horas_extra_desconexion repite casi exactamente lo que mide horarios. recursos_apoyo sí es un hallazgo valioso que la referencia no tenía.\n- **Remuneración:** falta comparación con el mercado, otro hueco dañino porque es el principal motivo de fuga. aumentos_y_progresion repite transparencia en r1 y r2. bonos_variables nunca se usó.\n- **Crecimiento:** retroalimentacion_jefatura es buena y cubre la mayor parte de la mentoría, pero deja fuera a los pares. movilidad_interna se pisa con ascensos.\n- **Equipo:** las extras son las peores del conjunto. comunicacion_informacion es demasiado amplia: mezcla canales, información entre áreas y conflictos, y por eso invierte la opinión sobre herramientas en r3. liderazgo_jefatura no reemplaza a manejo_conflictos.\n\nRecomendación: incorporar apoyo_empresa, comparacion_mercado, manejo_conflictos y herramientas, y fusionar o eliminar las columnas extra redundantes.",
-      "confiaria_para_un_informe": false,
-      "resumen": "El sistema lee bien el sentimiento: en las columnas que comparte con la referencia acierta casi siempre, incluso en los mixtos. Pero sus columnas tienen huecos en temas clave. Cuando falta una columna, el sistema mete el tema en la más cercana y el informe saca conclusiones equivocadas, justamente en las quejas principales: políticas de conciliación en p2_r3, brecha con el mercado en p3_r3, y conflictos y herramientas en p5_r3. No lo usaría para un informe sin antes ajustar las columnas. Con esas cuatro columnas añadidas y las extras redundantes depuradas, probablemente sería un sistema bueno."
-    },
-    "S10": {
-      "veredicto": "Bueno",
-      "errores": [
-        {
-          "respuesta": "p1_jefatura_r2",
-          "columna": "feedback_desarrollo",
-          "tipo": "grave",
-          "explicacion": "La vendedora nunca habla de retroalimentación ni de crecimiento profesional. Elogia el reconocimiento público y critica la microgestión: que la jefa revise cada cotización es control, no feedback. El sistema inventa un +1 en desarrollo, probablemente arrastrando el 'me siento valorada' de reconocimiento. Esto suma una opinión positiva falsa sobre desarrollo, justo el tema donde otras respuestas (r1) son muy críticas, y suaviza la conclusión del informe."
-        },
-        {
-          "respuesta": "p2_carga_r1",
-          "columna": "apoyo_empresa",
-          "tipo": "menor",
-          "explicacion": "La referencia dice que no lo menciona. El sistema pone -2. Hay una base débil: el permiso para ir al médico es 'casi una negociación' y no le pagan las horas extra porque 'está incluido en el cargo', lo que se podría leer como una política aplicada mal. Pero la persona no habla de beneficios ni de políticas de conciliación. El sistema vuelve a contar como apoyo_empresa algo que ya está en horarios y además le pone la máxima intensidad. Infla el peso negativo de 'beneficios' en el informe."
-        },
-        {
-          "respuesta": "p2_carga_r2",
-          "columna": "apoyo_empresa",
-          "tipo": "menor",
-          "explicacion": "Dice que los beneficios 'están bueno', 'están bien' y que los usa harto, pero aclara que mucha gente no los conoce porque RR.HH. no los difunde. Es un positivo moderado (+1). El +2 exagera el entusiasmo y pierde el matiz sobre la difusión."
-        },
-        {
-          "respuesta": "p3_remuneracion_r2",
-          "columna": "transparencia",
-          "tipo": "menor",
-          "explicacion": "Él mismo dice que está 'a medio camino, mejoró algo pero falta': valora que existan las bandas y que a él le explicaran su aumento, pero no queda claro cómo se cambia de tramo. Es mixto (0). El -1 no es absurdo porque cierra pidiendo que lo ordenen, pero borra la mejora que la persona reconoce de forma explícita."
-        },
-        {
-          "respuesta": "p4_crecimiento_r1",
-          "columna": "plan_carrera",
-          "tipo": "menor",
-          "explicacion": "No habla de niveles de cargo, requisitos ni plazos. Su crítica es a la falta de transparencia en un ascenso puntual y a que hay pocos cupos, y eso cabe en ascensos. El -1 en plan_carrera repite ese malestar en una columna donde no dijo nada. Va en la misma dirección que lo que sí expresó, pero es un tema agregado."
-        },
-        {
-          "respuesta": "p5_equipo_r3",
-          "columna": "companerismo",
-          "tipo": "menor",
-          "explicacion": "Describe al equipo como 'mitad y mitad': un grupito cerrado que tira tallas pesadas y otros 'súper buena gente' que lo ayudan. Eso da -1, o incluso 0. El -2 parece contaminado por el relato de los conflictos ('muy tóxico'), que ya queda bien medido en manejo_conflictos."
-        }
-      ],
-      "fortalezas": "Nunca invierte una opinión: en todos los temas que la persona trata de verdad, el signo coincide con la referencia. Captura bien los temas centrales y las mezclas difíciles, como la jefa que reconoce mucho pero microgestiona (p1_r2), la persona con buenos beneficios pero aumentos poco transparentes (p3_r1), el equipo bueno con otras áreas malas (p5_r1) y las herramientas que funcionan con relaciones tóxicas (p5_r3). Distingue bien entre neutro y mixto (p1_r3 comunicación, p2_r2 volumen, p4_r3 capacitación, p5_r2 otras áreas). Ignora siempre los comentarios que no vienen al caso (metro, café, estacionamientos, tacos) y no pierde ningún tema mencionado.",
-      "debilidades": "El problema de fondo es que rellena columnas vecinas: cuando una persona habla con fuerza de un tema, el sistema tiende a asignar opinión a una columna cercana de la que no dijo nada (p1_r2 feedback, p2_r1 apoyo_empresa, p4_r1 plan_carrera). No hay ningún caso al revés, es decir, ningún tema perdido. El efecto es que se inflan los conteos de menciones y se duplica la señal, casi siempre en la misma dirección que el tema fuerte. También se le cuela la intensidad de un tema a otro (p5_r3: los conflictos hunden a companerismo). En las respuestas mixtas tiende a cargar hacia el extremo (p2_r2 +2, p3_r2 -1).",
-      "calidad_columnas": "Las columnas del sistema calzan bien con las de referencia y sus descripciones son razonables, pero varias se pisan entre sí, y eso explica casi todos los errores:\n(1) 'horarios' incluye horas extra en su descripción y la columna extra 'horarios_desconexion' cubre lo mismo. En esta muestra siempre tienen el mismo valor (-2/-2, +2/+2, ninguna/ninguna), así que hoy la extra no aporta información distinta. La idea de fondo sí vale: la desconexión, las horas extra no pagadas y los llamados fuera de horario son un tema concreto y con riesgo legal, distinto de la flexibilidad o el teletrabajo. Para que sirva, 'horarios' tendría que limitarse a flexibilidad y trabajo remoto.\n(2) 'apoyo_empresa' se pisa con 'horarios' en lo de permisos y horas extra, y eso llevó al -2 de p2_r1.\n(3) 'ascensos' incluye 'oportunidades de ascenso' y se cruza con 'plan_carrera'. Habría que dejar ascensos para la justicia de las decisiones y plan_carrera para la claridad de la ruta.\n(4) 'feedback_desarrollo' junta dos cosas (retroalimentación y apoyo a la carrera) y queda pegada a 'reconocimiento', lo que llevó al error de p1_r2.\nNo aparece ninguna columna extra que sea un hallazgo nuevo. Un hallazgo posible que nadie midió: las quejas por infraestructura (máquina de café, estacionamientos) se repiten en varias respuestas. Están bien excluidas porque no responden a la pregunta, pero podrían ir en un anexo.",
-      "confiaria_para_un_informe": true,
-      "resumen": "El sistema es sólido: no invierte ninguna opinión, no pierde temas y maneja bien los matices y los casos mixtos. Hay un error grave (inventa un feedback positivo en p1_r2) y cinco menores. Casi todos vienen del mismo patrón: asigna opinión a columnas vecinas que se pisan (horarios con desconexión y con apoyo_empresa, ascensos con plan_carrera, reconocimiento con feedback). Lo usaría en un informe, con dos condiciones: revisar a mano las menciones de columnas secundarias cuando aparecen junto a un tema fuerte, y separar mejor las definiciones de las columnas que se pisan."
-    }
-  },
-  "final": {
     "ranking": [
       {
-        "sistema": "S8",
+        "sistema": "S2",
         "puesto": 1,
-        "porque": "Solo 2 diferencias en 15 respuestas (una menor y una defendible), sin temas inventados, sin opiniones invertidas ni contagio de los comentarios fuera de tema; su único costo es tener que ordenar y renombrar columnas fragmentadas.",
+        "porque": "Cero errores graves y columnas que solo hay que normalizar un poco.",
         "lo_usaria": true
       },
       {
-        "sistema": "S2",
+        "sistema": "S8",
         "puesto": 2,
-        "porque": "Lee muy bien las opiniones, no inventa temas ni invierte ninguna y casi siempre acierta la intensidad; deja vacías columnas de referencia (beneficios, conflictos, herramientas) pero la información está en las columnas extra y se puede volver a juntar, salvo compañerismo en p5_r3, que necesita criterio humano.",
+        "porque": "Cero graves y el extra más útil del grupo (reclamó antes y nada cambió), aunque los nombres de columna varían más.",
+        "lo_usaria": true
+      },
+      {
+        "sistema": "S3",
+        "puesto": 3,
+        "porque": "Un solo grave y columnas fijas listas para agregar; sus fallas son intensidades infladas.",
         "lo_usaria": true
       },
       {
         "sistema": "S5",
-        "puesto": 3,
-        "porque": "Sin errores graves ni temas inventados y con resúmenes que se pueden citar, pero lleva varias críticas moderadas a ±2 y fragmenta los temas de forma inconsistente, lo que obliga a limpiar el doble conteo antes de agregar.",
-        "lo_usaria": true
-      },
-      {
-        "sistema": "S10",
         "puesto": 4,
-        "porque": "Usa las columnas de referencia uno a uno, no pierde temas y no invierte opiniones; tiene un solo error grave (feedback +1 inventado en p1_r2) y algunos desbordes hacia columnas vecinas.",
+        "porque": "Casi exacto, pero pierde la mejora de bienestar de la diseñadora y sus columnas son demasiado estrechas para agregar sin retrabajo.",
         "lo_usaria": true
       },
       {
-        "sistema": "S4",
+        "sistema": "S9",
         "puesto": 5,
-        "porque": "Acierta casi siempre y el desglose de beneficios es útil, pero inventa dos temas, uno con -2 (beneficios en p2_r1), por llenar columnas que se pisan; solo serviría con revisión manual de esas columnas.",
-        "lo_usaria": false
-      },
-      {
-        "sistema": "S7",
-        "puesto": 6,
-        "porque": "Mismo patrón que S4, pero más marcado: 3 temas inventados, dos con -2 (beneficios en p2_r1 y colaboración entre áreas en p5_r3), que inflarían justo los 'principales dolores' del informe.",
+        "porque": "Columnas sólidas, pero pierde los ascensos de la analista junior y distorsiona el compañerismo del vendedor.",
         "lo_usaria": false
       },
       {
         "sistema": "S1",
-        "puesto": 7,
-        "porque": "Efecto halo: 4 temas inventados con el tono general de la respuesta, incluido un -1 en bienestar, que es un tema sensible, y un -2 en colaboración entre áreas, aunque nunca invierte una opinión.",
-        "lo_usaria": false
-      },
-      {
-        "sistema": "S3",
-        "puesto": 8,
-        "porque": "Le faltan columnas para quejas centrales (políticas de conciliación, manejo de conflictos, herramientas), deja neutra la transparencia justo donde está la alerta de fuga en p3_r1 e inventa dos -2.",
-        "lo_usaria": false
-      },
-      {
-        "sistema": "S9",
-        "puesto": 9,
-        "porque": "Como le faltan columnas, mete los temas en la más cercana y diagnostica mal las quejas principales: bienestar donde se piden políticas, opacidad salarial donde la queja es la brecha con el mercado, y la opinión sobre herramientas queda al revés en p5_r3.",
+        "puesto": 6,
+        "porque": "Las conclusiones gruesas aguantan, pero inventa tres temas o lecturas que un informe repetiría.",
         "lo_usaria": false
       },
       {
         "sistema": "S6",
+        "puesto": 7,
+        "porque": "Tiene extras buenas como la intención de permanencia, pero inventa cinco lecturas que cambian conclusiones.",
+        "lo_usaria": false
+      },
+      {
+        "sistema": "S4",
+        "puesto": 8,
+        "porque": "Su grilla genérica deja sin columna desarrollo, mentoría, apoyo de la empresa y herramientas.",
+        "lo_usaria": false
+      },
+      {
+        "sistema": "S10",
+        "puesto": 9,
+        "porque": "No tiene reconocimiento, feedback ni bienestar, y confunde flexibilidad con horas extra.",
+        "lo_usaria": false
+      },
+      {
+        "sistema": "S7",
         "puesto": 10,
-        "porque": "El peor: halo negativo que inventa varios -2 e invierte opiniones explícitas (bonos en p3_r1, coordinación en p5_r3), borra la única crítica de p1_r2 y no tiene columnas para conflictos, herramientas ni mentoría.",
+        "porque": "Pierde transparencia salarial, desarrollo, mentoría y apoyo familiar, y además inventa lecturas.",
         "lo_usaria": false
       }
     ],
-    "conclusion": "S8 es la mejor opción para el informe y S2, S5 y S10 son alternativas aceptables: ninguno invierte opiniones y sus problemas son de estructura de columnas o de intensidad, que se arreglan revisando o reordenando las columnas. De S4 hacia abajo el fallo de fondo es inventar temas o perder quejas centrales, lo que produce focos rojos falsos o diagnósticos equivocados, y eso es justo lo que no puede pasar en un informe real. Sea cual sea el sistema elegido, conviene ordenar las columnas sobre la estructura de referencia y agregar una columna fija de intención de irse."
+    "conclusion": "Los diez aciertan el riesgo de fuga y si la persona propone mejora, así que la diferencia está en las columnas: los que arman columnas a partir de lo que dice cada persona (S2, S8, S5) casi no se equivocan, y los de grilla genérica (S4, S7, S10) pierden temas centrales. Para un informe real usaría S2, o S8 por su hallazgo de reclamos sin respuesta, siempre normalizando antes los nombres de columna; si hace falta una grilla fija desde el principio, S3."
   }
 }
