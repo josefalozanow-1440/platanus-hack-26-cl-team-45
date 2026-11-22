@@ -2,7 +2,7 @@
   "name": "audem",
   "private": true,
   "scripts": {
-    "dev": "convex dev",
+    "dev": "convex dev --start vite",
     "web": "vite",
     "build": "vite build"
   },
