@@ -12,8 +12,8 @@ Entrega: POR CONFIRMAR (¿domingo 22-nov en la mañana?) · Formato del pitch: P
 
 ## Contratos entre lanes
 Kaina → Gonzalo: `respuesta {id, participante_id, ronda, audio_url, transcripcion|null, creado_en}`
-Gonzalo → Diego: `frase {id, respuesta_id, texto, cita, emocion, intensidad 0-1, cluster_id}` y `cluster {id, nombre, resumen, n, x, y}`
-Diego lee `GET /api/mapa` → `{clusters: [...], frases: [...], total_participantes}` y consulta cada 2-3 s.
+Gonzalo → Diego: `frase {id, respuesta_id, texto, cita, emocion, intensidad 0-1, cluster_id, conceptos: [1-2 palabras en minúscula, vocabulario compartido]}` y `cluster {id, nombre, resumen, n, x, y}`
+Diego lee `GET /api/mapa` → `{pregunta, clusters: [...], frases: [...], respuestas: [{id, texto}], total_participantes}` (`respuestas` y `conceptos` alimentan la vista Flujo; si faltan, se degrada sin romperse) y consulta cada 2-3 s.
 
 ## Stack (propuesta)
 Canal: WhatsApp vía Kapso (webhook entrante + envío) · Backend: FastAPI + Postgres · STT: el que ya tenga key el equipo (español chileno) · LLM: Claude para extracción y nombres de clusters · Embeddings + UMAP + k-means para el mapa · Front: Next.js, pantalla en vivo que consulta cada 2-3 s · Deploy: Render (URL: pendiente)
