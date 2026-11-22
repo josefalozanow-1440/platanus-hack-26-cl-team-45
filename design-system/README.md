@@ -11,7 +11,7 @@ Versión navegable, con vistas en vivo: https://claude.ai/artifact/2T9s87Ro77sCA
 | `tokens.json` | Todos los tokens: color (temas Claro y Noche), tipografía, espaciado, radios, sombras |
 | `tokens.css` | Los mismos tokens como variables CSS, generados desde `tokens.json` |
 | `audem-ds.css` | Estilos de los componentes (carga Outfit y Poppins desde Google Fonts) |
-| `audem-ds.js` | Los 9 componentes como script clásico de React 18: expone `window.Audem` |
+| `audem-ds.js` | Los 11 componentes como script clásico de React 18: expone `window.Audem` |
 | `audem-ds.d.ts` | Las props de cada componente |
 | `audem-simbolo.svg` | El símbolo de la marca |
 | `demo.html` | Todos los componentes en una página, con botón Claro/Noche |
@@ -75,7 +75,7 @@ Audem es escucha ciudadana por WhatsApp: cada persona habla dos minutos y su voz
 
 ### Movimiento
 
-- Lo único que se mueve solo es el Orbe: un giro lento del color (26 s) y una respiración (7 s, ida y vuelta). Todo lo demás se mueve solo cuando alguien lo toca: 200 ms, `ease-out`.
+- Lo único que se mueve solo es el Orbe: un giro lento del color (26 s) y una respiración (7 s, ida y vuelta). Todo lo demás se mueve solo cuando alguien lo toca: 200 ms, `ease-out`. La excepción es la Escena: al abrir el agente, el Orbe se corre y el panel entra en 400 ms.
 - Cuando entra una voz nueva, el Orbe cambia de forma hacia la rama que creció. No hay confeti ni contadores que saltan.
 - Con `prefers-reduced-motion`, el Orbe queda quieto.
 
@@ -90,7 +90,19 @@ Audem es escucha ciudadana por WhatsApp: cada persona habla dos minutos y su voz
 
 - Una idea por pantalla, centrada en el Orbe o en una cifra. El texto acompaña a un costado, alineado a la izquierda.
 - En el mapa: el Orbe a la izquierda sobre `rubor`, y a la derecha un Panel `hondo` con las Perillas de margen y la lista de Ramas.
+- Para preguntarle al mapa: la Escena. El Orbe al centro; al activar el agente, el Orbe se corre a la izquierda y el Agente entra a la derecha en `rubor-hondo`, a 380px. El Orbe nunca se tapa.
 - En láminas: fondo `lienzo`, el bloque de marca o una cifra grande, y el Orbe o el halo como imagen. Menos de veinte palabras por lámina.
+
+## El agente
+
+El agente sirve para consultar y diagnosticar lo que dijo la gente. No es un clon de nadie ni opina: lee las voces y las devuelve ordenadas.
+
+- **Responde solo con voces reales.** Cada respuesta dice con cuántas voces cuenta y de qué rama salen (`Basado en 183 voces de la rama «Más árboles y sombra»`).
+- **Cita textual.** Las palabras de la gente van entre comillas angulares («…»), sin corregirlas, con su fuente: `Voz 214 · audio · Villa Los Aromos`. Nunca el nombre ni el teléfono.
+- **Si no sabe, lo dice y ofrece preguntar:** «Nadie habló de estacionamientos todavía, así que no lo voy a adivinar», con el botón «Preguntarlo por WhatsApp».
+- **Dos modos.** *Consultar* habla de lo que opina la gente. *Diagnosticar* habla de la muestra: quién falta frente al Censo, qué audios se transcribieron con baja confianza, qué rama tiene un margen demasiado grande. Los hallazgos llevan Pastilla «Bien», «Revisar» o «Dato».
+- **Tono:** el mismo tuteo corto del resto. Frases de una idea. Sin «¡Excelente pregunta!» ni emoji.
+- **Forma:** la pregunta de quien consulta va en una burbuja `tinta`; la respuesta del agente va sin burbuja, sobre `rubor-hondo`, con las citas en tarjetas `lienzo`. Su avatar es un Orbe en miniatura, el único otro lugar donde aparece el degradado.
 
 ## Iconografía
 
@@ -196,6 +208,36 @@ Una superficie `rubor` con cabecera, flecha y separador fino, para agrupar contr
 - `children`: se ordenan en fila y bajan de línea cuando no caben.
 
 Sin sombra y sin borde: el color de fondo ya lo separa. No metas un Panel dentro de otro.
+
+### Agente
+
+Un chat para consultar y diagnosticar lo que dijo la gente: responde solo con las voces reales, las cita y dice con cuántas cuenta.
+
+- `mensajes`: la conversación. Cada uno es `{ de: 'persona', texto }` o `{ de: 'agente', texto, citas, ramas, diagnostico, accion, base }`.
+  - `citas`: `{ texto, fuente }`, palabras textuales de una voz (`Voz 214 · audio · Villa Los Aromos`).
+  - `ramas`: props de Rama, para mostrar respaldo y margen.
+  - `diagnostico`: `{ etiqueta, valor, estado }` con estado `ok` («Bien»), `alerta` («Revisar») o `info` («Dato»).
+  - `accion`: `{ etiqueta, onClick }`, un botón de contorno (por ejemplo «Preguntarlo por WhatsApp»).
+  - `base`: de dónde sale la respuesta, en una línea al pie.
+- `onEnviar(texto, modo)`: se llama al enviar; el modo es `consultar` o `diagnosticar`.
+- `pensando`: `true` o un texto («Leyendo 482 voces…») mientras llega la respuesta.
+- `sugerencias`: una lista, o `{ consultar: [...], diagnosticar: [...] }`.
+- `onCerrar`: muestra la × de cierre. `modos={false}` quita el selector. `titulo`, `subtitulo`, `modoInicial`.
+
+Ocupa el alto de su contenedor: dale un alto fijo (580px junto al mapa). Va en `rubor-hondo`, nunca encima del Orbe.
+
+Reglas del agente: no inventa. Si nadie habló de algo, lo dice y ofrece preguntarlo por WhatsApp. Cada afirmación lleva su número de voces, y una cifra lleva su margen. Cita textual, sin corregir a la gente. En modo diagnóstico habla de la muestra (quién falta, qué audios se entendieron mal, qué rama tiene poco respaldo), no de las opiniones.
+
+### Escena
+
+El mapa con el agente al lado: el Orbe vive al centro de la superficie `rubor` y, al tocar «Pregúntale al mapa», se corre a la izquierda y el Agente entra a la derecha.
+
+- `ramas`, `tamano`, `descripcion`, `animado`: van directo al Orbe.
+- `responder(texto, modo)`: devuelve (o promete) el mensaje del agente, con la forma de un mensaje de Agente sin `de`. Si falla, la Escena muestra «No pude leer las voces ahora».
+- `agente`: props extra para el Agente (`sugerencias`, `titulo`, `modoInicial`).
+- `mensajes`: conversación inicial. `abierto`: empieza con el agente abierto. `alto`: alto en px (580). `etiquetaActivar`: el texto del botón.
+
+La transición dura 400 ms y no ocurre con `prefers-reduced-motion`. Bajo 720px de ancho, el agente baja y queda debajo del Orbe. Una Escena por pantalla.
 
 ## Logo
 

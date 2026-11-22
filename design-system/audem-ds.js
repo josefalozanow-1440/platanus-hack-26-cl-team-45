@@ -1,4 +1,4 @@
-/* @ds-bundle: {"format":4,"namespace":"Audem","components":[{"name":"Marca"},{"name":"Onda"},{"name":"Boton"},{"name":"Selector"},{"name":"Pastilla"},{"name":"Perilla"},{"name":"Rama"},{"name":"Orbe"},{"name":"Panel"}]} */
+/* @ds-bundle: {"format":4,"namespace":"Audem","components":[{"name":"Marca"},{"name":"Onda"},{"name":"Boton"},{"name":"Selector"},{"name":"Pastilla"},{"name":"Perilla"},{"name":"Rama"},{"name":"Orbe"},{"name":"Panel"},{"name":"Agente"},{"name":"Escena"}]} */
 (function () {
   var R = window.React, h = R.createElement;
 
@@ -191,7 +191,94 @@
       h('div', { className: 'au-panel-cuerpo' }, p.children));
   }
 
+  /* ---------- Agente ---------- */
+  var DIAG = { ok: ['turquesa', 'Bien'], alerta: ['coral', 'Revisar'], info: ['neutro', 'Dato'] };
+  function MensajeAgente(m) {
+    return h('div', { className: 'au-ag-msg' },
+      m.texto ? h('p', null, m.texto) : null,
+      m.ramas && m.ramas.length ? h('div', { className: 'au-ag-ramas' }, m.ramas.map(function (r, i) { return h(Rama, Object.assign({ key: i }, r)); })) : null,
+      m.citas && m.citas.length ? h('div', { className: 'au-ag-citas' }, m.citas.map(function (c, i) {
+        return h('figure', { key: i, className: 'au-ag-cita' }, h('blockquote', null, '«' + c.texto + '»'), c.fuente ? h('figcaption', null, c.fuente) : null);
+      })) : null,
+      m.diagnostico && m.diagnostico.length ? h('div', { className: 'au-ag-diag' }, m.diagnostico.map(function (d, i) {
+        var t = DIAG[d.estado] || DIAG.info;
+        return h('div', { key: i, className: 'au-ag-diag-fila' },
+          h('span', { className: 'au-ag-diag-etq' }, d.etiqueta),
+          h('span', { className: 'au-ag-diag-val' }, d.valor),
+          h(Pastilla, { tono: t[0] }, t[1]));
+      })) : null,
+      m.accion ? h(Boton, { variante: 'contorno', className: 'au-ag-accion', onClick: m.accion.onClick }, m.accion.etiqueta) : null,
+      m.base ? h('p', { className: 'au-ag-base' }, m.base) : null);
+  }
+  function Agente(p) {
+    var id = useUid();
+    var txt = R.useState(''), modo = R.useState(p.modoInicial || 'consultar');
+    var lista = R.useRef(null);
+    var n = (p.mensajes || []).length;
+    R.useEffect(function () { var el = lista.current; if (el) el.scrollTop = el.scrollHeight; }, [n, !!p.pensando]);
+    function enviar(t) {
+      t = (t || '').trim();
+      if (!t || p.pensando) return;
+      if (p.onEnviar) p.onEnviar(t, modo[0]);
+      txt[1]('');
+    }
+    var sug = p.sugerencias ? (Array.isArray(p.sugerencias) ? p.sugerencias : (p.sugerencias[modo[0]] || [])) : [];
+    return h('aside', { className: cx('au-ag', p.className), 'aria-label': p.titulo || 'Agente de Audem' },
+      h('header', { className: 'au-ag-cab' },
+        h('div', { className: 'au-ag-id' },
+          h('span', { className: 'au-ag-avatar', 'aria-hidden': 'true' }),
+          h('div', null,
+            h('p', { className: 'au-ag-nombre' }, p.titulo || 'Agente de Audem'),
+            h('p', { className: 'au-ag-sub' }, p.subtitulo || 'Responde solo con lo que dijo la gente'))),
+        p.onCerrar ? h('button', { type: 'button', className: 'au-ag-cerrar', 'aria-label': 'Cerrar el agente', onClick: p.onCerrar }, '×') : null),
+      p.modos === false ? null : h(Selector, { className: 'au-ag-modo', etiqueta: null, valor: modo[0], onChange: modo[1],
+        opciones: [{ valor: 'consultar', etiqueta: 'Consultar' }, { valor: 'diagnosticar', etiqueta: 'Diagnosticar' }] }),
+      h('div', { className: 'au-ag-lista', ref: lista, role: 'log', 'aria-live': 'polite' },
+        n === 0 && !p.pensando ? h('p', { className: 'au-ag-vacio' }, modo[0] === 'diagnosticar'
+          ? 'Revisa la calidad de las voces: quién falta, qué audios se entendieron mal, qué rama tiene poco respaldo.'
+          : 'Pregunta qué dijo la gente. Te respondo con sus palabras y con cuántas voces lo dicen.') : null,
+        (p.mensajes || []).map(function (m, i) {
+          return m.de === 'persona' ? h('p', { key: i, className: 'au-ag-yo' }, m.texto) : h(MensajeAgente, Object.assign({ key: i }, m));
+        }),
+        p.pensando ? h('p', { className: 'au-ag-pensando' }, p.pensando === true ? 'Leyendo las voces…' : p.pensando) : null),
+      sug.length && !p.pensando ? h('div', { className: 'au-ag-sug', role: 'group', 'aria-label': 'Preguntas sugeridas' }, sug.map(function (s) {
+        return h('button', { key: s, type: 'button', className: 'au-ag-chip', onClick: function () { enviar(s); } }, s);
+      })) : null,
+      h('form', { className: 'au-ag-form', onSubmit: function (e) { e.preventDefault(); enviar(txt[0]); } },
+        h('label', { className: 'au-oculto', htmlFor: id + 'q' }, 'Tu pregunta'),
+        h('textarea', { id: id + 'q', rows: 1, value: txt[0],
+          placeholder: modo[0] === 'diagnosticar' ? '¿Hay sesgo por edad?' : 'Pregunta sobre lo que dijo la gente',
+          onChange: function (e) { txt[1](e.target.value); },
+          onKeyDown: function (e) { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); enviar(txt[0]); } } }),
+        h('button', { type: 'submit', className: 'au-ag-enviar', 'aria-label': 'Enviar', disabled: !txt[0].trim() || !!p.pensando }, '→')));
+  }
+
+  /* ---------- Escena: el Orbe al centro y el agente al lado ---------- */
+  function Escena(p) {
+    var ab = R.useState(!!p.abierto);
+    var msgs = R.useState(p.mensajes || []), pens = R.useState(false);
+    function enviar(t, modo) {
+      msgs[1](function (prev) { return prev.concat([{ de: 'persona', texto: t }]); });
+      if (!p.responder) return;
+      pens[1](true);
+      Promise.resolve(p.responder(t, modo)).then(function (r) {
+        pens[1](false);
+        if (r) msgs[1](function (prev) { return prev.concat([Object.assign({ de: 'agente' }, r)]); });
+      }, function () {
+        pens[1](false);
+        msgs[1](function (prev) { return prev.concat([{ de: 'agente', texto: 'No pude leer las voces ahora. Vuelve a preguntar en un momento.' }]); });
+      });
+    }
+    return h('div', { className: cx('au-escena', ab[0] && 'is-abierta', p.className), style: p.alto ? { '--alto-escena': p.alto + 'px' } : null },
+      h('div', { className: 'au-escena-grid' },
+        h('div', { className: 'au-escena-orbe' },
+          h(Orbe, { ramas: p.ramas, tamano: p.tamano, descripcion: p.descripcion, animado: p.animado }),
+          ab[0] ? null : h('button', { type: 'button', className: 'au-escena-activar', 'aria-expanded': false, onClick: function () { ab[1](true); } },
+            h('span', { className: 'au-ag-avatar', 'aria-hidden': 'true' }), p.etiquetaActivar || 'Pregúntale al mapa')),
+        ab[0] ? h(Agente, Object.assign({}, p.agente, { mensajes: msgs[0], pensando: pens[0], onEnviar: enviar, onCerrar: function () { ab[1](false); } })) : null));
+  }
+
   var C = window;
   C.Audem = C.Audem || {};
-  Object.assign(C.Audem, { Marca: Marca, Onda: Onda, Boton: Boton, Selector: Selector, Pastilla: Pastilla, Perilla: Perilla, Rama: Rama, Orbe: Orbe, Panel: Panel, Simbolo: Simbolo, margen: margen, cifra: cifra });
+  Object.assign(C.Audem, { Marca: Marca, Onda: Onda, Boton: Boton, Selector: Selector, Pastilla: Pastilla, Perilla: Perilla, Rama: Rama, Orbe: Orbe, Panel: Panel, Agente: Agente, Escena: Escena, Simbolo: Simbolo, margen: margen, cifra: cifra });
 })();
