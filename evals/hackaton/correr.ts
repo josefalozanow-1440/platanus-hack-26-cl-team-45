@@ -3,10 +3,8 @@
 //
 //   set -a; . ./.env; set +a; node evals/hackaton/correr.ts
 import Anthropic from "@anthropic-ai/sdk";
-import { zodOutputFormat } from "@anthropic-ai/sdk/helpers/zod";
-import { z } from "zod";
 import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
-import { agruparFrases, extraerFrases, EMOCIONES, MODELO } from "../../convex/extraccion.ts";
+import { agruparFrases, analizarRespuesta, extraerFrases, MODELO } from "../../convex/extraccion.ts";
 
 const aqui = new URL(".", import.meta.url).pathname;
 const PREGUNTA = "¿Cómo ha sido tu experiencia en la Platanus Hack hasta ahora?";
@@ -26,35 +24,15 @@ async function pipeline() {
   return { model: MODELO.model, effort: MODELO.effort, frases, ...agrupado };
 }
 
-// ---------- Haiku solo: temas libres por respuesta, como claude_solo de evals/sentimiento ----------
-const Analisis = z.object({
-  temas: z.array(z.object({
-    tema: z.string().describe("Nombre corto del tema, 1 a 4 palabras, en minúscula"),
-    direccion: z.enum(["positivo", "negativo", "neutro", "mixto"]).describe("mixto: dice cosas buenas y malas del mismo tema"),
-    intensidad: z.enum(["leve", "moderada", "fuerte"]).nullable().describe("Solo si es positivo o negativo; si no, null"),
-    tendencia: z.enum(["mejora", "igual", "empeora", "no_dice"]).describe("Si dice que el tema cambió durante la hackatón"),
-    cita: z.string().describe("Cita textual breve que lo respalda"),
-  })),
-  emocion: z.enum(EMOCIONES).describe("Emoción que domina en la respuesta"),
-  propone: z.string().nullable().describe("La mejora concreta que propone, o null si no propone ninguna"),
-});
-
+// ---------- Haiku solo: el análisis por respuesta de la app (convex/extraccion.ts) ----------
 export const PREGUNTA_HACKATON = PREGUNTA;
 export async function haikuSolo(r: { id: string; respuesta: string }, c: Anthropic = claude) {
-  const res = await c.messages.parse({
-    model: "claude-haiku-5-5",
-    max_tokens: 4000,
-    output_config: { effort: "medium", format: zodOutputFormat(Analisis) },
-    system: "Analizas respuestas habladas (transcritas por voz, pueden tener errores) a una encuesta. Identifica cada tema del que habla la persona y qué opina de él. Usa temas propios de lo que dice, no una lista genérica. No inventes nada que la persona no haya dicho.",
-    messages: [{ role: "user", content: `Pregunta: ${PREGUNTA}\n\nRespuesta transcrita:\n${r.respuesta}` }],
-  });
-  if (!res.parsed_output) throw new Error(`haiku sin salida en ${r.id} (stop_reason=${res.stop_reason})`);
-  return [r.id, res.parsed_output] as const;
+  return [r.id, await analizarRespuesta(c, PREGUNTA, r.respuesta)] as const;
 }
 
 if (import.meta.main) {
   const t0 = Date.now();
-  const [pipe, solo] = await Promise.all([pipeline(), Promise.all(respuestas.map(haikuSolo)).then(Object.fromEntries)]);
+  const [pipe, solo] = await Promise.all([pipeline(), Promise.all(respuestas.map(r => haikuSolo(r))).then(Object.fromEntries)]);
   console.log(`listo en ${((Date.now() - t0) / 1000).toFixed(1)} s`);
   mkdirSync(aqui + "salidas", { recursive: true });
   writeFileSync(aqui + "salidas/pipeline.json", JSON.stringify(pipe, null, 2) + "\n");

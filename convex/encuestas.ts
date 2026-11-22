@@ -52,9 +52,11 @@ export const borrarRespuesta = mutation({
     const r = await ctx.db.get(respuestaId);
     if (!r) return;
     for (const f of await ctx.db.query("frases").withIndex("by_respuesta", q => q.eq("respuestaId", respuestaId)).collect()) await ctx.db.delete(f._id);
+    for (const a of await ctx.db.query("analisis").withIndex("by_respuesta", q => q.eq("respuestaId", respuestaId)).collect()) await ctx.db.delete(a._id);
     if (r.audioId) await ctx.storage.delete(r.audioId);
     await ctx.db.delete(respuestaId);
     await pedirAgrupar(ctx, r.encuestaId);
+    await pedirNormalizar(ctx, r.encuestaId);
   },
 });
 
@@ -168,12 +170,58 @@ export const mapa = query({
   },
 });
 
+// ---------- tópicos: Haiku's analysis aggregated per neutral topic (pending a visualization, see HACK.md) ----------
+
+const DIRECCIONES = ["positivo", "negativo", "mixto", "neutro"] as const;
+// Several temas of one person in the same tópico collapse into one cell: good and bad together is mixto.
+function celda(dirs: string[]) {
+  const d = new Set(dirs);
+  return d.has("mixto") || (d.has("positivo") && d.has("negativo")) ? "mixto" : d.has("positivo") ? "positivo" : d.has("negativo") ? "negativo" : "neutro";
+}
+
+export const topicos = query({
+  args: { slug: v.string() },
+  handler: async (ctx, { slug }) => {
+    const e = await porSlug(ctx, slug);
+    if (!e) return null;
+    const rs = await ctx.db.query("respuestas").withIndex("by_encuesta", q => q.eq("encuestaId", e._id)).collect();
+    const as = await ctx.db.query("analisis").withIndex("by_encuesta", q => q.eq("encuestaId", e._id)).collect();
+    const ks = await ctx.db.query("topicos").withIndex("by_encuesta", q => q.eq("encuestaId", e._id)).collect();
+    const quien = new Map(rs.map(r => [r._id as string, r.participante]));
+    return {
+      pregunta: e.pregunta,
+      analizadas: as.length,
+      topicos: ks.map(k => {
+        const celdas = as.flatMap(a => {
+          const ts = a.temas.filter(t => t.topicoId === k.tid);
+          if (!ts.length) return [];
+          const tend = ts.map(t => t.tendencia).find(t => t !== "no_dice") ?? "no_dice";
+          return [{ respuestaId: a.respuestaId, participante: quien.get(a.respuestaId) ?? "", direccion: celda(ts.map(t => t.direccion)),
+            tendencia: tend, temas: ts.map(t => ({ tema: t.tema, direccion: t.direccion, intensidad: t.intensidad, cita: t.cita })) }];
+        });
+        const cuenta = Object.fromEntries(DIRECCIONES.map(d => [d, celdas.filter(c => c.direccion === d).length]));
+        return { id: k.tid, nombre: k.nombre, descripcion: k.descripcion, personas: new Set(celdas.map(c => c.participante)).size,
+          ...cuenta, mejora: celdas.filter(c => c.tendencia === "mejora").length, empeora: celdas.filter(c => c.tendencia === "empeora").length, celdas };
+      }).filter(k => k.personas > 0).sort((a, b) => b.personas - a.personas),
+      propuestas: as.filter(a => a.propone).map(a => ({ respuestaId: a.respuestaId, participante: quien.get(a.respuestaId) ?? "", texto: a.propone! })),
+      emociones: Object.entries(as.reduce<Record<string, number>>((acc, a) => ({ ...acc, [a.emocion]: (acc[a.emocion] ?? 0) + 1 }), {}))
+        .map(([emocion, n]) => ({ emocion, n })).sort((a, b) => b.n - a.n),
+    };
+  },
+});
+
 // ---------- pipeline internals (used by procesar.ts) ----------
 
 export async function pedirAgrupar(ctx: { db: any; scheduler: any }, encuestaId: Id<"encuestas">) {
   const token = Date.now();
   await ctx.db.patch(encuestaId, { agruparPedido: token });
   await ctx.scheduler.runAfter(1500, internal.procesar.agrupar, { encuestaId, token });
+}
+
+export async function pedirNormalizar(ctx: { db: any; scheduler: any }, encuestaId: Id<"encuestas">) {
+  const token = Date.now();
+  await ctx.db.patch(encuestaId, { normalizarPedido: token });
+  await ctx.scheduler.runAfter(1500, internal.procesar.normalizar, { encuestaId, token });
 }
 
 export const leerRespuesta = internalQuery({
@@ -239,6 +287,60 @@ export const guardarTemas = internalMutation({
       const t = a.get(f._id);
       if (t && tids.has(t)) await ctx.db.patch(f._id, { temaId: t });
       // Frases added after this grouping started keep their old tema; the regroup they scheduled will place them.
+    }
+  },
+});
+
+export const guardarAnalisis = internalMutation({
+  args: {
+    respuestaId: v.id("respuestas"),
+    temas: v.array(v.object({ tema: v.string(), direccion: v.string(), intensidad: v.union(v.string(), v.null()), tendencia: v.string(), cita: v.string() })),
+    emocion: v.string(),
+    propone: v.union(v.string(), v.null()),
+  },
+  handler: async (ctx, { respuestaId, ...a }) => {
+    const r = await ctx.db.get(respuestaId);
+    if (!r) return; // deleted while processing
+    for (const x of await ctx.db.query("analisis").withIndex("by_respuesta", q => q.eq("respuestaId", respuestaId)).collect()) await ctx.db.delete(x._id);
+    await ctx.db.insert("analisis", { encuestaId: r.encuestaId, respuestaId, ...a });
+    await pedirNormalizar(ctx, r.encuestaId);
+  },
+});
+
+// Tema ids are "<analisisId>:<index>" so the LLM can refer to each one.
+export const leerParaNormalizar = internalQuery({
+  args: { encuestaId: v.id("encuestas"), token: v.number() },
+  handler: async (ctx, { encuestaId, token }) => {
+    const e = await ctx.db.get(encuestaId);
+    if (!e || e.normalizarPedido !== token) return null; // a newer request superseded this one
+    const as = await ctx.db.query("analisis").withIndex("by_encuesta", q => q.eq("encuestaId", encuestaId)).collect();
+    const ks = await ctx.db.query("topicos").withIndex("by_encuesta", q => q.eq("encuestaId", encuestaId)).collect();
+    return {
+      pregunta: e.pregunta,
+      topicos: ks.map(k => ({ id: k.tid, nombre: k.nombre, descripcion: k.descripcion })),
+      temas: as.flatMap(a => a.temas.map((t, i) => ({ id: `${a._id}:${i}`, tema: t.tema, cita: t.cita.slice(0, 160) }))),
+    };
+  },
+});
+
+export const guardarTopicos = internalMutation({
+  args: {
+    encuestaId: v.id("encuestas"),
+    topicos: v.array(v.object({ id: v.string(), nombre: v.string(), descripcion: v.string() })),
+    asignacion: v.array(v.object({ tema: v.string(), topico: v.string() })),
+  },
+  handler: async (ctx, { encuestaId, topicos, asignacion }) => {
+    for (const k of await ctx.db.query("topicos").withIndex("by_encuesta", q => q.eq("encuestaId", encuestaId)).collect()) await ctx.db.delete(k._id);
+    for (const k of topicos) await ctx.db.insert("topicos", { encuestaId, tid: k.id, nombre: k.nombre, descripcion: k.descripcion });
+    const tids = new Set(topicos.map(k => k.id));
+    const a = new Map(asignacion.map(x => [x.tema, x.topico]));
+    for (const an of await ctx.db.query("analisis").withIndex("by_encuesta", q => q.eq("encuestaId", encuestaId)).collect()) {
+      // Analyses added after this run started keep their old tópico; the run they scheduled will place them.
+      const temas = an.temas.map((t, i) => {
+        const k = a.get(`${an._id}:${i}`);
+        return k && tids.has(k) ? { ...t, topicoId: k } : t;
+      });
+      await ctx.db.patch(an._id, { temas });
     }
   },
 });

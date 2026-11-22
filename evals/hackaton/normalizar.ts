@@ -4,8 +4,7 @@
 //
 //   set -a; . ./.env; set +a; node evals/hackaton/normalizar.ts
 import Anthropic from "@anthropic-ai/sdk";
-import { zodOutputFormat } from "@anthropic-ai/sdk/helpers/zod";
-import { z } from "zod";
+import { normalizarTemas } from "../../convex/extraccion.ts";
 import { readFileSync, writeFileSync } from "node:fs";
 
 const aqui = new URL(".", import.meta.url).pathname;
@@ -20,29 +19,11 @@ const CONFIGS = [
 ] as const;
 const claude = new Anthropic();
 
-const Topicos = z.object({
-  topicos: z.array(z.object({
-    id: z.string().describe("Id corto estable, p. ej. k1. Reutiliza el id de un tópico existente si sigue siendo el mismo"),
-    nombre: z.string().describe("De qué se habla, 1 a 4 palabras, sin valoración (no 'comida mala' sino 'comida')"),
-    descripcion: z.string().describe("Una oración: qué entra en este tópico"),
-  })),
-  asignacion: z.array(z.object({ tema: z.string().describe("id del tema"), topico: z.string().describe("id del tópico") })),
-});
-
 export async function normalizar(m: { model: string; effort: "low" | "medium" }, topicos: { id: string; nombre: string; descripcion: string }[],
   temas: { id: string; tema: string; cita: string }[], c: Anthropic = claude) {
-  const r = await c.messages.parse({
-    model: m.model,
-    max_tokens: 16000,
-    output_config: { effort: m.effort, format: zodOutputFormat(Topicos) },
-    system: "Agrupas en tópicos los temas que mencionaron las personas al responder una encuesta. Un tópico es de qué se habla, no qué se opina: posturas opuestas sobre lo mismo van al mismo tópico. Cada tema va a exactamente un tópico. Mantén estables los tópicos existentes: reutiliza su id y nombre salvo que ya no calcen. Crea un tópico nuevo solo si ningún existente calza; está bien que un tópico tenga una sola persona.",
-    messages: [{ role: "user", content: JSON.stringify({ pregunta: PREGUNTA, topicos_existentes: topicos, temas }) }],
-  });
-  if (!r.parsed_output) throw new Error(`normalizar sin salida (stop_reason=${r.stop_reason})`);
-  return r.parsed_output;
+  return normalizarTemas(c, PREGUNTA, topicos, temas, m);
 }
 
-const ORDEN = ["positivo", "negativo", "mixto", "neutro"];
 function celda(ts: Tema[]) { // varios temas de una persona en el mismo tópico se juntan en una celda
   const ds = new Set(ts.map(t => t.direccion));
   const direccion = ds.has("mixto") || (ds.has("positivo") && ds.has("negativo")) ? "mixto"
@@ -58,7 +39,7 @@ if (import.meta.main) {
 
   for (const m of CONFIGS) {
     const t0 = Date.now();
-    let out: z.infer<typeof Topicos> = { topicos: [], asignacion: [] };
+    let out: Awaited<ReturnType<typeof normalizarTemas>> = { topicos: [], asignacion: [] };
     const historia: number[] = [];
     for (let i = 0; i < ids.length; i++) {
       const temas = ids.slice(0, i + 1).flatMap(rid => solo[rid].temas.map((t, k) => ({ id: `${rid}_t${k + 1}`, tema: t.tema, cita: t.cita.slice(0, 160) })));

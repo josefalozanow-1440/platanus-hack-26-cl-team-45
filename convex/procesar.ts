@@ -2,7 +2,7 @@ import Anthropic from "@anthropic-ai/sdk";
 import { v } from "convex/values";
 import { internalAction } from "./_generated/server";
 import { internal } from "./_generated/api";
-import { agruparFrases, extraerFrases } from "./extraccion";
+import { agruparFrases, analizarRespuesta, extraerFrases, normalizarTemas } from "./extraccion";
 
 const claude = () => new Anthropic(); // reads ANTHROPIC_API_KEY (+ ANTHROPIC_BASE_URL for the hack proxy) from the Convex env
 
@@ -44,6 +44,7 @@ export const extraer = internalAction({
   handler: async (ctx, { respuestaId }) => {
     const d = await ctx.runQuery(internal.encuestas.leerRespuesta, { respuestaId });
     if (!d) return;
+    await ctx.scheduler.runAfter(0, internal.procesar.analizar, { respuestaId }); // every path with text goes through here
     try {
       const frases = await extraerFrases(claude(), d.encuesta.pregunta, d.respuesta.texto);
       await ctx.runMutation(internal.encuestas.guardarFrases, { respuestaId, frases });
@@ -62,5 +63,32 @@ export const agrupar = internalAction({
     if (!d || !d.frases.length) return;
     const out = await agruparFrases(claude(), d.pregunta, d.temas, d.frases);
     await ctx.runMutation(internal.encuestas.guardarTemas, { encuestaId, ...out });
+  },
+});
+
+// Haiku reads the whole answer (temas libres with direction, intensity, trend). Runs beside extraer;
+// a failure here only logs, so the live map never shows an error because of it.
+export const analizar = internalAction({
+  args: { respuestaId: v.id("respuestas") },
+  handler: async (ctx, { respuestaId }) => {
+    const d = await ctx.runQuery(internal.encuestas.leerRespuesta, { respuestaId });
+    if (!d?.respuesta.texto) return;
+    try {
+      const a = await analizarRespuesta(claude(), d.encuesta.pregunta, d.respuesta.texto);
+      await ctx.runMutation(internal.encuestas.guardarAnalisis, { respuestaId, ...a });
+    } catch (e) {
+      console.error("analizar", respuestaId, e);
+    }
+  },
+});
+
+// Same pattern as agrupar: one call regroups every tema of the poll into neutral tópicos.
+export const normalizar = internalAction({
+  args: { encuestaId: v.id("encuestas"), token: v.number() },
+  handler: async (ctx, { encuestaId, token }) => {
+    const d = await ctx.runQuery(internal.encuestas.leerParaNormalizar, { encuestaId, token });
+    if (!d || !d.temas.length) return;
+    const out = await normalizarTemas(claude(), d.pregunta, d.topicos, d.temas);
+    await ctx.runMutation(internal.encuestas.guardarTopicos, { encuestaId, ...out });
   },
 });

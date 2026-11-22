@@ -60,3 +60,60 @@ export async function agruparFrases(
   if (!out) throw new Error(`agrupar sin salida (stop_reason=${r.stop_reason})`);
   return out;
 }
+
+// ---------- análisis por respuesta y tópicos (corre al lado de extraer/agrupar, no los reemplaza) ----------
+// Medido en evals/: Haiku leyendo la respuesta completa con temas libres saca 90% de celdas completas
+// contra 65% del pipeline de frases, por ~0,06 ¢ por respuesta. Ver evals/README.md.
+
+export const MODELO_ANALISIS = { model: "claude-haiku-5-5", effort: "medium" } as const;
+
+const Analisis = z.object({
+  temas: z.array(z.object({
+    tema: z.string().describe("Nombre corto del tema, 1 a 4 palabras, en minúscula"),
+    direccion: z.enum(["positivo", "negativo", "neutro", "mixto"]).describe("Lo que opina hoy. mixto: dice cosas buenas y malas del mismo tema"),
+    intensidad: z.enum(["leve", "moderada", "fuerte"]).nullable().describe("Solo si es positivo o negativo; si no, null"),
+    tendencia: z.enum(["mejora", "igual", "empeora", "no_dice"]).describe("no_dice salvo que la persona diga que el tema cambió"),
+    cita: z.string().describe("Cita textual breve que lo respalda"),
+  })),
+  emocion: z.enum(EMOCIONES).describe("Emoción que domina en la respuesta"),
+  propone: z.string().nullable().describe("La mejora concreta que propone, o null si no propone ninguna"),
+});
+
+export async function analizarRespuesta(claude: Anthropic, pregunta: string, texto: string, m: Modelo = MODELO_ANALISIS) {
+  const r = await claude.messages.parse({
+    model: m.model,
+    max_tokens: 4000,
+    output_config: { effort: m.effort, format: zodOutputFormat(Analisis) },
+    system: "Analizas respuestas habladas (transcritas por voz, pueden tener errores) a una encuesta. Identifica cada tema del que habla la persona y qué opina de él. Usa temas propios de lo que dice, no una lista genérica. No inventes nada que la persona no haya dicho. La dirección es lo que opina hoy: si compara con antes, eso va en la tendencia. Lo que cuenta en broma o riéndose no es una queja. Si usa ironía, interpreta lo que quiere decir y no lo literal.",
+    messages: [{ role: "user", content: `Pregunta: ${pregunta}\n\nRespuesta transcrita:\n${texto}` }],
+  });
+  if (!r.parsed_output) throw new Error(`analizar sin salida (stop_reason=${r.stop_reason})`);
+  return r.parsed_output;
+}
+
+const Topicos = z.object({
+  topicos: z.array(z.object({
+    id: z.string().describe("Id corto estable, p. ej. k1. Reutiliza el id de un tópico existente si sigue siendo el mismo"),
+    nombre: z.string().describe("De qué se habla, 1 a 4 palabras, sin valoración (no 'comida mala' sino 'comida')"),
+    descripcion: z.string().describe("Una oración: qué entra en este tópico"),
+  })),
+  asignacion: z.array(z.object({ tema: z.string().describe("id del tema"), topico: z.string().describe("id del tópico") })),
+});
+
+// shortcut: one LLM call regroups every tema of the poll, like agrupar; fine up to a few hundred temas, switch to embeddings + clustering beyond that.
+export async function normalizarTemas(
+  claude: Anthropic, pregunta: string, topicos: { id: string; nombre: string; descripcion: string }[],
+  temas: { id: string; tema: string; cita: string }[], m: Modelo = MODELO_ANALISIS,
+) {
+  const r = await claude.messages.parse({
+    model: m.model,
+    max_tokens: 16000,
+    output_config: { effort: m.effort, format: zodOutputFormat(Topicos) },
+    system: "Agrupas en tópicos los temas que mencionaron las personas al responder una encuesta. Un tópico es de qué se habla, no qué se opina: posturas opuestas sobre lo mismo van al mismo tópico. Cada tema va a exactamente un tópico. " +
+      "Con muchas respuestas apunta a entre 12 y 18 tópicos; con pocas, menos. Antes de crear un tópico nuevo revisa si alguno existente responde la misma pregunta. Separa problemas que se arreglan de forma distinta o que arregla otra persona, aunque ocurran en el mismo lugar. Cada tema va al tópico de lo que trata, no al de su consecuencia. Un tópico de una sola persona solo vale si es algo concreto y distinto del resto. Las valoraciones globales van a un tópico de valoración general, sin mezclar ahí temas específicos. " +
+      "Mantén estables los tópicos existentes: reutiliza su id y nombre salvo que ya no calcen.",
+    messages: [{ role: "user", content: JSON.stringify({ pregunta, topicos_existentes: topicos, temas }) }],
+  });
+  if (!r.parsed_output) throw new Error(`normalizar sin salida (stop_reason=${r.stop_reason})`);
+  return r.parsed_output;
+}
