@@ -2,9 +2,10 @@ import Anthropic from "@anthropic-ai/sdk";
 import { v } from "convex/values";
 import { internalAction } from "./_generated/server";
 import { internal } from "./_generated/api";
-import { agruparFrases, analizarRespuesta, extraerFrases, normalizarTemas } from "./extraccion";
+import { agruparFrases, analizarRespuesta, asignarFrases, asignarTemas, extraerFrases, normalizarTemas } from "./extraccion";
 
-const claude = () => new Anthropic(); // reads ANTHROPIC_API_KEY (+ ANTHROPIC_BASE_URL for the hack proxy) from the Convex env
+// maxRetries: the hack proxy caps concurrent requests (429) and asignar runs one call per answer in parallel.
+const claude = () => new Anthropic({ maxRetries: 6 }); // reads ANTHROPIC_API_KEY (+ ANTHROPIC_BASE_URL for the hack proxy) from the Convex env
 
 // Server-side STT through OpenRouter (OPENROUTER_API_KEY in the Convex env), then the usual extraction.
 const STT_MODEL = "openai/whisper-large-v3-turbo"; // ~$0.0002/min
@@ -90,5 +91,27 @@ export const normalizar = internalAction({
     if (!d || !d.temas.length) return;
     const out = await normalizarTemas(claude(), d.pregunta, d.topicos, d.temas);
     await ctx.runMutation(internal.encuestas.guardarTopicos, { encuestaId, ...out });
+  },
+});
+
+// After the poll converges (see UMBRAL_CONVERGENCIA in encuestas.ts) each answer only assigns its own items to the
+// existing groups: no debounce, and answers run in parallel. Without respuestaId it sweeps every pending item.
+export const asignar = internalAction({
+  args: { encuestaId: v.id("encuestas"), respuestaId: v.optional(v.id("respuestas")) },
+  handler: async (ctx, args) => {
+    const d = await ctx.runQuery(internal.encuestas.leerParaAsignar, args);
+    if (!d || !d.frases.length) return;
+    const out = await asignarFrases(claude(), d.pregunta, d.temas, d.frases);
+    await ctx.runMutation(internal.encuestas.guardarAsignacion, { encuestaId: args.encuestaId, ...out });
+  },
+});
+
+export const asignarTopicos = internalAction({
+  args: { encuestaId: v.id("encuestas"), respuestaId: v.optional(v.id("respuestas")) },
+  handler: async (ctx, args) => {
+    const d = await ctx.runQuery(internal.encuestas.leerParaAsignarTopicos, args);
+    if (!d || !d.temas.length) return;
+    const out = await asignarTemas(claude(), d.pregunta, d.topicos, d.temas);
+    await ctx.runMutation(internal.encuestas.guardarAsignacionTopicos, { encuestaId: args.encuestaId, ...out });
   },
 });

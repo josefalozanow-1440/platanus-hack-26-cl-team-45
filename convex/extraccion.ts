@@ -121,3 +121,52 @@ export async function normalizarTemas(
   if (!r.parsed_output) throw new Error(`normalizar sin salida (stop_reason=${r.stop_reason})`);
   return r.parsed_output;
 }
+
+// ---------- después de converger: solo asignar lo nuevo (umbral y por qué en encuestas.ts) ----------
+
+const NUEVO = "Solo si un ítem no calza en ninguno de verdad, crea un grupo nuevo para él (con un id que empiece con 'nuevo'); no cambies ni renombres los existentes.";
+
+const TemasNuevos = z.object({
+  nuevos: z.array(z.object({
+    id: z.string(), nombre: z.string().describe("Máx. 6 palabras, que diga la postura"), resumen: z.string().describe("Una oración"),
+    x: z.number().describe("-3 a 3, cerca de los temas parecidos"), y: z.number().describe("-3 a 3"),
+  })).describe("Solo los temas nuevos; casi siempre vacío"),
+  asignacion: z.array(z.object({ frase: z.string().describe("id de la frase"), tema: z.string().describe("id del tema") })),
+});
+
+export async function asignarFrases(
+  claude: Anthropic, pregunta: string, temas: { id: string; nombre: string; resumen: string; x: number; y: number }[],
+  frases: { id: string; texto: string }[], m: Modelo = MODELO_AGRUPAR,
+) {
+  const r = await claude.messages.parse({
+    model: m.model,
+    max_tokens: 4000,
+    output_config: { effort: m.effort, format: zodOutputFormat(TemasNuevos) },
+    system: `Asignas frases nuevas de una encuesta a los temas que ya existen, por postura. Cada frase va a exactamente un tema. ${NUEVO}`,
+    messages: [{ role: "user", content: JSON.stringify({ pregunta, temas, frases }) }],
+  });
+  if (!r.parsed_output) throw new Error(`asignar frases sin salida (stop_reason=${r.stop_reason})`);
+  return r.parsed_output;
+}
+
+const TopicosNuevos = z.object({
+  nuevos: z.array(z.object({
+    id: z.string(), nombre: z.string().describe("De qué se habla, 1 a 4 palabras, sin valoración"), descripcion: z.string().describe("Una oración"),
+  })).describe("Solo los tópicos nuevos; casi siempre vacío"),
+  asignacion: z.array(z.object({ tema: z.string().describe("id del tema"), topico: z.string().describe("id del tópico") })),
+});
+
+export async function asignarTemas(
+  claude: Anthropic, pregunta: string, topicos: { id: string; nombre: string; descripcion: string }[],
+  temas: { id: string; tema: string; cita: string }[], m: Modelo = MODELO_TOPICOS,
+) {
+  const r = await claude.messages.parse({
+    model: m.model,
+    max_tokens: 4000,
+    output_config: { effort: m.effort, format: zodOutputFormat(TopicosNuevos) },
+    system: `Asignas temas nuevos que mencionaron personas en una encuesta a los tópicos que ya existen. Un tópico es de qué se habla, no qué se opina. Cada tema va a exactamente un tópico. ${NUEVO}`,
+    messages: [{ role: "user", content: JSON.stringify({ pregunta, topicos, temas }) }],
+  });
+  if (!r.parsed_output) throw new Error(`asignar temas sin salida (stop_reason=${r.stop_reason})`);
+  return r.parsed_output;
+}

@@ -19,6 +19,7 @@ La conclusión corta es que un LLM que lee la respuesta completa y arma sus prop
 | Guardar el análisis de Haiku solo en una fila por respuesta | En la app | `analizar` en Convex, al lado de extraer |
 | Normalizar temas libres en tópicos comunes de la encuesta | En la app, con Haiku low | Sin una regla de granularidad, Haiku arma 34 tópicos y Opus 11, y un juez a ciegas propone 16. Con la regla de 12 a 18, Haiku low arma 18 a 20 en ~8,5 s |
 | Agrupar las frases del mapa con Haiku low en vez de Opus low | En la app, sin eval de calidad | Baja de ~16 s a ~8 s el tiempo hasta que la respuesta aparece en el mapa |
+| Dejar de reagrupar desde la respuesta 10 y solo asignar lo nuevo | En la app | Los grupos convergen hacia la respuesta 8 y después reagrupar solo rota ~10%. Asignar es una llamada chica por respuesta y corre en paralelo |
 
 ## 1. Sentimiento por columnas con respuesta conocida
 
@@ -112,6 +113,19 @@ Después de esta medición, agrupar y normalizar pasaron a Haiku low por velocid
 | agrupar, Opus low / Haiku low | ~16 s / ~8 s |
 | normalizar, Haiku medium / Haiku low | ~30 s / ~8,5 s |
 
+## 6. ¿Desde cuándo deja de servir reagrupar todo?
+
+[convergencia.ts](hackaton/convergencia.ts), resultados en [CONVERGENCIA.md](hackaton/CONVERGENCIA.md).
+
+Con las 25 respuestas sintéticas de Edo (unas 200 palabras cada una) corrimos agrupar y normalizar como en la app, reagrupando todo con cada respuesta, en orden original e inverso. En cada paso contamos los grupos, los grupos nuevos y la rotación: qué porcentaje de lo ya agrupado cambia de grupo.
+
+- **Agrupar** llega a 8 temas hacia la respuesta 6 a 8 en los dos órdenes, y casi no crea temas nuevos después. La rotación se queda en torno al 10% hasta la respuesta 25, así que reagrupar más tarde solo baraja.
+- **Normalizar** llega a unos 18 tópicos hacia la respuesta 7 u 8. Después oscila (un salto a 26 que vuelve a 19) y suma algún tópico de cola cada tanto, con una rotación de entre 5% y 12%.
+
+Conclusión: converge cerca de la respuesta 8. La app reagrupa todo hasta la respuesta 9 y, desde la 10, cada respuesta solo asigna sus ítems a los grupos existentes, creando uno nuevo solo si de verdad no calza. No evaluamos la calidad de la asignación contra el reagrupamiento completo.
+
+Al correrlo con 50 llamadas a la vez, el proxy de la hackatón respondió 429 por exceso de llamadas concurrentes. Por eso el cliente de la app reintenta hasta 6 veces.
+
 ## Lo que no medimos
 
 - Todos los datasets los escribió un modelo de Claude, y Claude también clasifica y juzga. Eso puede favorecer a Claude.
@@ -130,6 +144,8 @@ node evals/sentimiento/pipeline.ts      # pipeline de la app sobre el dataset de
 node evals/hackaton/correr.ts           # pipeline y Haiku solo sobre la hackatón: LECTURA.md
 node evals/hackaton/normalizar.ts       # tópicos con Haiku y Opus: NORMALIZACION.md
 node evals/hackaton/costo.ts            # tokens y costo por paso: COSTO.md
+node evals/hackaton/latencia.ts         # tiempo de una llamada de cada paso
+node evals/hackaton/convergencia.ts     # desde qué respuesta convergen los grupos: CONVERGENCIA.md
 ```
 
 Los pasos con subagentes de [sentimiento/](sentimiento/) (generar el dataset, `claude_solo`, alinear y juzgar) están en la sección "Cómo correrlo" de [PLAN.md](sentimiento/PLAN.md).

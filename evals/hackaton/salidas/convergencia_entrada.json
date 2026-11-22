@@ -1,0 +1,1267 @@
+{
+  "e01": {
+    "frases": [
+      {
+        "id": "e01_f1",
+        "texto": "Llegó con miedo a su primera hackathon, pero no fue así"
+      },
+      {
+        "id": "e01_f2",
+        "texto": "El equipo formado en el momento se unió muy rápido"
+      },
+      {
+        "id": "e01_f3",
+        "texto": "Los mentores fueron lo mejor: crítica dura pero útil"
+      },
+      {
+        "id": "e01_f4",
+        "texto": "Faltó un lugar adecuado para dormir, afectando su pitch"
+      },
+      {
+        "id": "e01_f5",
+        "texto": "Volvería sin dudar, sugiere sala oscura con colchonetas"
+      }
+    ],
+    "temas": [
+      {
+        "id": "e01_t1",
+        "tema": "primera hackathon",
+        "cita": "Para mí fue la primera hackathon y la verdad llegué con harto susto"
+      },
+      {
+        "id": "e01_t2",
+        "tema": "equipo",
+        "cita": "a las dos horas ya estábamos peleando por la idea como si fuéramos amigos de años"
+      },
+      {
+        "id": "e01_t3",
+        "tema": "mentores",
+        "cita": "Lo que más me gustó fueron los mentores"
+      },
+      {
+        "id": "e01_t4",
+        "tema": "retroalimentación del proyecto",
+        "cita": "Dolió, pero tenía razón, y lo que presentamos al final era otra cosa bastante mejor"
+      },
+      {
+        "id": "e01_t5",
+        "tema": "lugar para dormir",
+        "cita": "No había un lugar decente para dormir, terminé tirada en un puf al lado de un parlante"
+      },
+      {
+        "id": "e01_t6",
+        "tema": "duración del evento",
+        "cita": "si van a ser treinta y seis horas tienen que pensar en eso"
+      },
+      {
+        "id": "e01_t7",
+        "tema": "ganas de volver",
+        "cita": "Igual volvería, sin pensarlo"
+      }
+    ]
+  },
+  "e02": {
+    "frases": [
+      {
+        "id": "e02_f1",
+        "texto": "La organización fue buena: wifi estable y comida puntual"
+      },
+      {
+        "id": "e02_f2",
+        "texto": "El jurado dedicó muy poco tiempo a evaluar cada proyecto"
+      },
+      {
+        "id": "e02_f3",
+        "texto": "Se premia la presentación por sobre lo construido"
+      },
+      {
+        "id": "e02_f4",
+        "texto": "El criterio técnico se evaluó sin revisar el código"
+      },
+      {
+        "id": "e02_f5",
+        "texto": "Propone ronda técnica previa de diez minutos por equipo"
+      }
+    ],
+    "temas": [
+      {
+        "id": "e02_t1",
+        "tema": "organización del evento",
+        "cita": "esta estuvo bien organizada, eso hay que decirlo"
+      },
+      {
+        "id": "e02_t2",
+        "tema": "wifi y comida",
+        "cita": "El wifi aguantó, que es lo primero que se cae siempre, y la comida llegó a la hora"
+      },
+      {
+        "id": "e02_t3",
+        "tema": "tiempo del jurado",
+        "cita": "el jurado nos vio tres minutos. Tres minutos. En tres minutos no alcanzas a mostrar lo difícil"
+      },
+      {
+        "id": "e02_t4",
+        "tema": "evaluación técnica",
+        "cita": "nadie abrió el código, nadie preguntó cómo estaba hecho"
+      }
+    ]
+  },
+  "e03": {
+    "frases": [
+      {
+        "id": "e03_f1",
+        "texto": "Como diseñadora, suele sentirse de adorno en hackathons"
+      },
+      {
+        "id": "e03_f2",
+        "texto": "Con agentes de código, el cuello de botella es decidir qué construir"
+      },
+      {
+        "id": "e03_f3",
+        "texto": "Por primera vez su diseño fue la base del proyecto"
+      },
+      {
+        "id": "e03_f4",
+        "texto": "La rúbrica no evalúa usabilidad ni comprensión del producto"
+      },
+      {
+        "id": "e03_f5",
+        "texto": "Duda si agregar criterio de diseño; llegarán más diseñadores"
+      }
+    ],
+    "temas": [
+      {
+        "id": "e03_t1",
+        "tema": "rol del diseño en el hackathon",
+        "cita": "Por primera vez sentí que mi trabajo era el plano y no la decoración del final"
+      },
+      {
+        "id": "e03_t2",
+        "tema": "rúbrica de evaluación",
+        "cita": "la rúbrica no lo reconoce"
+      },
+      {
+        "id": "e03_t3",
+        "tema": "comprensión del producto por el jurado",
+        "cita": "nadie del jurado entendió porque la interfaz era un terminal"
+      },
+      {
+        "id": "e03_t4",
+        "tema": "llegada de más diseñadores",
+        "cita": "el próximo año van a llegar más diseñadores"
+      }
+    ]
+  },
+  "e04": {
+    "frases": [
+      {
+        "id": "e04_f1",
+        "texto": "Experiencia increíble con compañeros de la universidad"
+      },
+      {
+        "id": "e04_f2",
+        "texto": "Aprendió mucho en muy poco tiempo"
+      },
+      {
+        "id": "e04_f3",
+        "texto": "Se acabaron los créditos y quedaron detenidos en pleno avance"
+      },
+      {
+        "id": "e04_f4",
+        "texto": "La competencia dependió del dinero de cada equipo para tokens"
+      },
+      {
+        "id": "e04_f5",
+        "texto": "Pide aclarar y avisar cuánto duran los créditos"
+      }
+    ],
+    "temas": [
+      {
+        "id": "e04_t1",
+        "tema": "experiencia de aprendizaje",
+        "cita": "lo pasamos increíble... Nunca había aprendido tanto en tan poco tiempo"
+      },
+      {
+        "id": "e04_t2",
+        "tema": "créditos para modelos",
+        "cita": "se nos acabaron el sábado como a las seis de la tarde, justo cuando estábamos más metidos"
+      },
+      {
+        "id": "e04_t3",
+        "tema": "equidad de la competencia",
+        "cita": "la competencia terminó dependiendo de cuánta plata tenía cada equipo para gastar en tokens"
+      }
+    ]
+  },
+  "e05": {
+    "frases": [
+      {
+        "id": "e05_f1",
+        "texto": "La hackathon fue excelente y la gente se queja demasiado"
+      },
+      {
+        "id": "e05_f2",
+        "texto": "Mentores, comida y acceso a inversionistas son muy valiosos"
+      },
+      {
+        "id": "e05_f3",
+        "texto": "La incomodidad es parte de la gracia, como emprender"
+      },
+      {
+        "id": "e05_f4",
+        "texto": "Sin ganar, obtuvo contactos con inversionistas y un socio técnico"
+      },
+      {
+        "id": "e05_f5",
+        "texto": "El cierre fue brusco; faltó tiempo para conocer otros equipos"
+      }
+    ],
+    "temas": [
+      {
+        "id": "e05_t1",
+        "tema": "organización de la hackathon",
+        "cita": "La hackathon estuvo excelente"
+      },
+      {
+        "id": "e05_t2",
+        "tema": "quejas de otros participantes",
+        "cita": "la gente se queja demasiado"
+      },
+      {
+        "id": "e05_t3",
+        "tema": "presión y ambiente incómodo",
+        "cita": "La gracia es justamente que sea incómoda"
+      },
+      {
+        "id": "e05_t4",
+        "tema": "mentores y feedback",
+        "cita": "mentores que cobran carísimo en la vida real dándote feedback gratis"
+      },
+      {
+        "id": "e05_t5",
+        "tema": "conexiones con inversionistas y equipo",
+        "cita": "que vale mucho más que el premio"
+      },
+      {
+        "id": "e05_t6",
+        "tema": "cierre del evento",
+        "cita": "Todo termina muy brusco"
+      }
+    ]
+  },
+  "e06": {
+    "frases": [
+      {
+        "id": "e06_f1",
+        "texto": "Valora que exista un track de hardware"
+      },
+      {
+        "id": "e06_f2",
+        "texto": "Hardware compite en desventaja con el mismo tiempo que software"
+      },
+      {
+        "id": "e06_f3",
+        "texto": "Perdieron tres horas por un sensor quemado sin repuesto"
+      },
+      {
+        "id": "e06_f4",
+        "texto": "Mesa de componentes insuficiente favoreció a quienes trajeron materiales"
+      },
+      {
+        "id": "e06_f5",
+        "texto": "Propone publicar lista de componentes antes y tener pañol de repuestos"
+      }
+    ],
+    "temas": [
+      {
+        "id": "e06_t1",
+        "tema": "existencia del track de hardware",
+        "cita": "que exista el track ya es harto, porque casi ninguna hackathon acá lo tiene"
+      },
+      {
+        "id": "e06_t2",
+        "tema": "mismo tiempo que software",
+        "cita": "competir en hardware con las mismas treinta y seis horas que los de software es otra cosa"
+      },
+      {
+        "id": "e06_t3",
+        "tema": "falta de repuestos",
+        "cita": "No había repuesto, no había tienda abierta cerca, y perdimos tres horas esperando"
+      },
+      {
+        "id": "e06_t4",
+        "tema": "mesa de componentes",
+        "cita": "Tampoco había mucho en la mesa de componentes. Había placas, cables y algunos sensores básicos, pero nada de motores ni baterías decentes"
+      },
+      {
+        "id": "e06_t5",
+        "tema": "ventaja por materiales propios",
+        "cita": "El que llegó con su propia caja de cosas partió con ventaja"
+      },
+      {
+        "id": "e06_t6",
+        "tema": "reacción del jurado",
+        "cita": "cuando el aparato funcionó frente al jurado, la reacción fue otra"
+      }
+    ]
+  },
+  "e07": {
+    "frases": [
+      {
+        "id": "e07_f1",
+        "texto": "Mentores dieron indicaciones opuestas sobre el track del equipo"
+      },
+      {
+        "id": "e07_f2",
+        "texto": "La tabla de casos frontera ayudaba, pero se interpretaba distinto"
+      },
+      {
+        "id": "e07_f3",
+        "texto": "Perdieron unas seis horas discutiendo el cambio de track"
+      },
+      {
+        "id": "e07_f4",
+        "texto": "Propone cerrar el track el viernes con una sola autoridad"
+      },
+      {
+        "id": "e07_f5",
+        "texto": "Logística buena, aunque la música nocturna era algo fuerte"
+      }
+    ],
+    "temas": [
+      {
+        "id": "e07_t1",
+        "tema": "cambio de track",
+        "cita": "nos costó caro"
+      },
+      {
+        "id": "e07_t2",
+        "tema": "criterios de asignación de tracks",
+        "cita": "cada mentor la interpretaba a su manera"
+      },
+      {
+        "id": "e07_t3",
+        "tema": "tiempo perdido en discusión de track",
+        "cita": "Perdimos fácil seis horas en esa discusión"
+      },
+      {
+        "id": "e07_t4",
+        "tema": "tabla de casos frontera",
+        "cita": "esa tabla ayudaba"
+      },
+      {
+        "id": "e07_t5",
+        "tema": "logística",
+        "cita": "La comida estuvo bien, el lugar era cómodo"
+      },
+      {
+        "id": "e07_t6",
+        "tema": "música de noche",
+        "cita": "la música un poco fuerte de noche"
+      }
+    ]
+  },
+  "e08": {
+    "frases": [
+      {
+        "id": "e08_f1",
+        "texto": "Viajar desde Concepción fue costoso pero valió la pena"
+      },
+      {
+        "id": "e08_f2",
+        "texto": "Equipos de Santiago ya se conocían; ellos no conocían a nadie"
+      },
+      {
+        "id": "e08_f3",
+        "texto": "Ser solo tres se notó, sobre todo en la madrugada"
+      },
+      {
+        "id": "e08_f4",
+        "texto": "Piden evento en regiones o ayuda para el pasaje"
+      },
+      {
+        "id": "e08_f5",
+        "texto": "Sugieren canal para armar equipos antes del evento"
+      }
+    ],
+    "temas": [
+      {
+        "id": "e08_t1",
+        "tema": "experiencia general del evento",
+        "cita": "Valió la pena, no me arrepiento."
+      },
+      {
+        "id": "e08_t2",
+        "tema": "costo de viajar desde regiones",
+        "cita": "mi opinión viene con ese costo encima"
+      },
+      {
+        "id": "e08_t3",
+        "tema": "equipos de Santiago y conocidos",
+        "cita": "casi todos los equipos eran de Santiago y que muchos se conocían de antes"
+      },
+      {
+        "id": "e08_t4",
+        "tema": "armar equipos antes del evento",
+        "cita": "Cuando buscamos un cuarto integrante el viernes, la gente ya venía con su equipo armado hace semanas."
+      },
+      {
+        "id": "e08_t5",
+        "tema": "ayuda para el pasaje",
+        "cita": "o por lo menos una ayuda para el pasaje"
+      }
+    ]
+  },
+  "e09": {
+    "frases": [
+      {
+        "id": "e09_f1",
+        "texto": "La mayoría de proyectos eran interfaces sobre una llamada a un modelo"
+      },
+      {
+        "id": "e09_f2",
+        "texto": "Muchos proyectos ya existían como productos; nadie investigó antes"
+      },
+      {
+        "id": "e09_f3",
+        "texto": "Investigar reveló que su idea existía, pero mejoró el resultado"
+      },
+      {
+        "id": "e09_f4",
+        "texto": "Duda sobre cómo se evalúa la originalidad sin revisar antecedentes"
+      },
+      {
+        "id": "e09_f5",
+        "texto": "Propone exigir una lámina sobre lo existente y la diferenciación"
+      }
+    ],
+    "temas": [
+      {
+        "id": "e09_t1",
+        "tema": "proyectos repetitivos",
+        "cita": "la gran mayoría de los proyectos eran, en la práctica, lo mismo: una interfaz bonita encima de una llamada a un modelo"
+      },
+      {
+        "id": "e09_t2",
+        "tema": "originalidad de proyectos",
+        "cita": "Nadie buscó antes de construir."
+      },
+      {
+        "id": "e09_t3",
+        "tema": "criterio de originalidad",
+        "cita": "el criterio de originalidad vale quince por ciento y no sé cómo se evalúa si nadie revisa los antecedentes"
+      },
+      {
+        "id": "e09_t4",
+        "tema": "tiempo para investigar",
+        "cita": "treinta y seis horas no dan para una revisión bibliográfica"
+      },
+      {
+        "id": "e09_t5",
+        "tema": "nivel de los proyectos",
+        "cita": "Fuera de eso, el nivel me pareció alto."
+      }
+    ]
+  },
+  "e10": {
+    "frases": [
+      {
+        "id": "e10_f1",
+        "texto": "Lo pasó bien: comió rico, conoció gente y programó mucho"
+      },
+      {
+        "id": "e10_f2",
+        "texto": "Logró su objetivo de aprender herramientas nuevas"
+      },
+      {
+        "id": "e10_f3",
+        "texto": "El aire acondicionado causó frío extremo de noche y calor de tarde"
+      },
+      {
+        "id": "e10_f4",
+        "texto": "El café se acabó en la madrugada, cuando más se necesitaba"
+      },
+      {
+        "id": "e10_f5",
+        "texto": "No opina sobre jurado, tracks ni rúbrica por no ir a competir"
+      }
+    ],
+    "temas": [
+      {
+        "id": "e10_t1",
+        "tema": "experiencia general",
+        "cita": "Yo la verdad lo pasé bien"
+      },
+      {
+        "id": "e10_t2",
+        "tema": "comida",
+        "cita": "Comí rico"
+      },
+      {
+        "id": "e10_t3",
+        "tema": "aprendizaje con herramientas",
+        "cita": "aprender a usar un par de herramientas que no había tocado. Eso lo logré."
+      },
+      {
+        "id": "e10_t4",
+        "tema": "organización",
+        "cita": "supongo que sí. No me fijé mucho."
+      },
+      {
+        "id": "e10_t5",
+        "tema": "temperatura del lugar",
+        "cita": "En la noche hacía un frío tremendo... en la tarde del sábado... un calor insoportable"
+      },
+      {
+        "id": "e10_t6",
+        "tema": "café",
+        "cita": "el café se acabó como a las cuatro de la mañana... Esas tres horas fueron largas."
+      }
+    ]
+  },
+  "e11": {
+    "frases": [
+      {
+        "id": "e11_f1",
+        "texto": "Asistir con hijos chicos exigió coordinar todo un fin de semana"
+      },
+      {
+        "id": "e11_f2",
+        "texto": "Ausentarse por un hijo enfermo lo dejó fuera del equipo"
+      },
+      {
+        "id": "e11_f3",
+        "texto": "El formato de 36 horas excluye a personas con responsabilidades"
+      },
+      {
+        "id": "e11_f4",
+        "texto": "Faltan participantes mayores y con más experiencia"
+      },
+      {
+        "id": "e11_f5",
+        "texto": "Propone integrantes remotos, dos sábados o espacio para niños"
+      }
+    ],
+    "temas": [
+      {
+        "id": "e11_t1",
+        "tema": "formato de 36 horas",
+        "cita": "el formato asume que puedes desaparecer treinta y seis horas seguidas de tu vida"
+      },
+      {
+        "id": "e11_t2",
+        "tema": "cuidado de hijos y conciliación",
+        "cita": "tuve que coordinar a mi mamá y a mi pareja por un fin de semana entero"
+      },
+      {
+        "id": "e11_t3",
+        "tema": "sentirse fuera del equipo",
+        "cita": "Me sentí fuera, no por culpa de ellos"
+      },
+      {
+        "id": "e11_t4",
+        "tema": "falta de diversidad de edad",
+        "cita": "casi todos tenían menos de treinta"
+      },
+      {
+        "id": "e11_t5",
+        "tema": "apoyo para asistentes con hijos",
+        "cita": "o algo tan simple como un espacio para niños unas horas"
+      }
+    ]
+  },
+  "e12": {
+    "frases": [
+      {
+        "id": "e12_f1",
+        "texto": "Coordinar agentes en un canal fue mágico al inicio"
+      },
+      {
+        "id": "e12_f2",
+        "texto": "A las diez horas los agentes generaron caos y contradicciones"
+      },
+      {
+        "id": "e12_f3",
+        "texto": "Los agentes necesitan un marco claro y una fuente de verdad"
+      },
+      {
+        "id": "e12_f4",
+        "texto": "Se debería evaluar el criterio, no la velocidad de programar"
+      },
+      {
+        "id": "e12_f5",
+        "texto": "El formato no cambió; piden discutirlo con participantes"
+      }
+    ],
+    "temas": [
+      {
+        "id": "e12_t1",
+        "tema": "coordinación de agentes en equipo",
+        "cita": "Al principio fue mágico... Como a las diez horas se volvió un desastre."
+      },
+      {
+        "id": "e12_t2",
+        "tema": "formato de evaluación de la hackathon",
+        "cita": "el formato es el mismo de hace cinco años y el trabajo cambió por completo"
+      },
+      {
+        "id": "e12_t3",
+        "tema": "premiar la velocidad de programación",
+        "cita": "Antes se premiaba al que programaba más rápido. Ahora eso no tiene sentido."
+      }
+    ]
+  },
+  "e13": {
+    "frases": [
+      {
+        "id": "e13_f1",
+        "texto": "Fue bien recibida aunque no sabe programar"
+      },
+      {
+        "id": "e13_f2",
+        "texto": "Vocabulario técnico y charlas dificultaron entender lo que pasaba"
+      },
+      {
+        "id": "e13_f3",
+        "texto": "Se perdió el aviso de entrega por usar Discord"
+      },
+      {
+        "id": "e13_f4",
+        "texto": "Su aporte legal fue real pero no se evalúa"
+      },
+      {
+        "id": "e13_f5",
+        "texto": "Pide claridad sobre perfiles no técnicos, bienvenida y avisos por micrófono"
+      }
+    ],
+    "temas": [
+      {
+        "id": "e13_t1",
+        "tema": "recepción del equipo",
+        "cita": "me recibieron muy bien. Nadie me miró raro por no saber código"
+      },
+      {
+        "id": "e13_t2",
+        "tema": "vocabulario en inglés y siglas",
+        "cita": "Todo el vocabulario es en inglés o en siglas"
+      },
+      {
+        "id": "e13_t3",
+        "tema": "charlas iniciales",
+        "cita": "las charlas del principio partían de que ya sabías qué era cada cosa"
+      },
+      {
+        "id": "e13_t4",
+        "tema": "canal de discord",
+        "cita": "la información importante llegaba por un canal de Discord que yo no había usado nunca"
+      },
+      {
+        "id": "e13_t5",
+        "tema": "aviso de hora de entrega",
+        "cita": "Me perdí el aviso de la hora de entrega"
+      },
+      {
+        "id": "e13_t6",
+        "tema": "reconocimiento de su aporte",
+        "cita": "Pero eso no aparece en ninguna parte de la evaluación"
+      },
+      {
+        "id": "e13_t7",
+        "tema": "perfil no técnico",
+        "cita": "Me pregunto si a la organización le interesa que venga gente como yo, de otras profesiones"
+      }
+    ]
+  },
+  "e14": {
+    "frases": [
+      {
+        "id": "e14_f1",
+        "texto": "Llegar a la final no impide señalar problemas del formato"
+      },
+      {
+        "id": "e14_f2",
+        "texto": "En la primera ronda los jueces usaron el producto y funcionó"
+      },
+      {
+        "id": "e14_f3",
+        "texto": "El wifi saturado del auditorio arruinó la demo en vivo"
+      },
+      {
+        "id": "e14_f4",
+        "texto": "El formato de la final castiga proyectos multiusuario"
+      },
+      {
+        "id": "e14_f5",
+        "texto": "Proponen red dedicada o que los jueces usen el producto"
+      }
+    ],
+    "temas": [
+      {
+        "id": "e14_t1",
+        "tema": "formato de la final",
+        "cita": "el formato de la final castiga cierto tipo de proyectos y favorece a otros"
+      },
+      {
+        "id": "e14_t2",
+        "tema": "wifi del auditorio",
+        "cita": "El wifi del auditorio era otro, estaba saturado con trescientas personas, y la mitad del público no logró conectarse"
+      },
+      {
+        "id": "e14_t3",
+        "tema": "demo en la mesa de la primera ronda",
+        "cita": "En la mesa, frente a los jueces de la primera ronda, funcionó perfecto"
+      }
+    ]
+  },
+  "e15": {
+    "frases": [
+      {
+        "id": "e15_f1",
+        "texto": "El nivel de los equipos subió muchísimo respecto de otros años"
+      },
+      {
+        "id": "e15_f2",
+        "texto": "Los mentores no estaban coordinados y daban consejos contradictorios"
+      },
+      {
+        "id": "e15_f3",
+        "texto": "No conocían los criterios del jurado; aconsejaban por intuición"
+      },
+      {
+        "id": "e15_f4",
+        "texto": "Propone reunión previa con jueces y registro de consejos por equipo"
+      },
+      {
+        "id": "e15_f5",
+        "texto": "Avanzaron más quienes decidieron rápido, no los más técnicos"
+      }
+    ],
+    "temas": [
+      {
+        "id": "e15_t1",
+        "tema": "nivel de los equipos",
+        "cita": "el nivel subió muchísimo respecto de otros años"
+      },
+      {
+        "id": "e15_t2",
+        "tema": "coordinación de mentores",
+        "cita": "los mentores no estábamos coordinados. No teníamos una pauta común"
+      },
+      {
+        "id": "e15_t3",
+        "tema": "criterios del jurado",
+        "cita": "no sabíamos bien cómo iba a evaluar el jurado, entonces nuestros consejos eran intuición"
+      },
+      {
+        "id": "e15_t4",
+        "tema": "indecisión de los equipos",
+        "cita": "cambiaron de idea tres veces y llegaron al domingo sin nada que mostrar"
+      }
+    ]
+  },
+  "e16": {
+    "frases": [
+      {
+        "id": "e16_f1",
+        "texto": "La opción vegetariana fue insuficiente y se acabó rápido"
+      },
+      {
+        "id": "e16_f2",
+        "texto": "Tuvo que pagar delivery con su propio dinero"
+      },
+      {
+        "id": "e16_f3",
+        "texto": "Un compañero celíaco no pudo comer nada"
+      },
+      {
+        "id": "e16_f4",
+        "texto": "Preguntaron restricciones alimentarias en la inscripción pero no usaron el dato"
+      },
+      {
+        "id": "e16_f5",
+        "texto": "Valora los snacks con fruta y el desayuno del domingo"
+      }
+    ],
+    "temas": [
+      {
+        "id": "e16_t1",
+        "tema": "opciones vegetarianas",
+        "cita": "la opción vegetariana se acabó en diez minutos, porque todos sacaban de esa también"
+      },
+      {
+        "id": "e16_t2",
+        "tema": "comida del sábado",
+        "cita": "El sábado al almuerzo me tocó una ensalada sola. A la cena, lo mismo. Terminé pidiendo delivery con mi plata dos veces."
+      },
+      {
+        "id": "e16_t3",
+        "tema": "restricciones en formulario",
+        "cita": "Si lo preguntan y después no lo usan, mejor no lo pregunten"
+      },
+      {
+        "id": "e16_t4",
+        "tema": "snacks de madrugada",
+        "cita": "Los snacks de la madrugada estaban buenos, había fruta, eso se agradece"
+      },
+      {
+        "id": "e16_t5",
+        "tema": "desayuno del domingo",
+        "cita": "el desayuno del domingo fue lo mejor del fin de semana"
+      },
+      {
+        "id": "e16_t6",
+        "tema": "evaluación y tracks",
+        "cita": "no tengo una opinión formada"
+      },
+      {
+        "id": "e16_t7",
+        "tema": "resultado de mi equipo",
+        "cita": "Mi equipo llegó hasta donde llegó y me parece justo"
+      }
+    ]
+  },
+  "e17": {
+    "frases": [
+      {
+        "id": "e17_f1",
+        "texto": "Esta vez participó en la construcción desde el principio"
+      },
+      {
+        "id": "e17_f2",
+        "texto": "Las herramientas actuales le permitieron construir pantallas sola"
+      },
+      {
+        "id": "e17_f3",
+        "texto": "El ambiente sigue siendo muy masculino"
+      },
+      {
+        "id": "e17_f4",
+        "texto": "Pocas mujeres en la final y en el jurado"
+      },
+      {
+        "id": "e17_f5",
+        "texto": "Faltó un contacto de organización visible ante comentarios incómodos"
+      }
+    ],
+    "temas": [
+      {
+        "id": "e17_t1",
+        "tema": "participación desde el inicio",
+        "cita": "Esta vez me metí desde el principio y nadie me sacó."
+      },
+      {
+        "id": "e17_t2",
+        "tema": "herramientas para armar pantallas",
+        "cita": "con las herramientas de ahora yo misma pude armar pantallas que funcionaban"
+      },
+      {
+        "id": "e17_t3",
+        "tema": "equipo",
+        "cita": "Parte fue el equipo, que era buena gente."
+      },
+      {
+        "id": "e17_t4",
+        "tema": "ambiente de hombres",
+        "cita": "Lo que no cambió es el ambiente. Sigue siendo un espacio muy de hombres."
+      },
+      {
+        "id": "e17_t5",
+        "tema": "comentarios incómodos de otro equipo",
+        "cita": "hubo un par de comentarios de otro equipo que me incomodaron"
+      },
+      {
+        "id": "e17_t6",
+        "tema": "falta de a quién acudir",
+        "cita": "No había nadie de la organización identificable a esa hora."
+      }
+    ]
+  },
+  "e18": {
+    "frases": [
+      {
+        "id": "e18_f1",
+        "texto": "Satisfecho: confirmó que se puede prototipar en un fin de semana"
+      },
+      {
+        "id": "e18_f2",
+        "texto": "Auspiciadores no plantearon problemas reales, solo stands y poleras"
+      },
+      {
+        "id": "e18_f3",
+        "texto": "Muchos equipos inventaron problemas inexistentes y repetidos"
+      },
+      {
+        "id": "e18_f4",
+        "texto": "Propone track opcional con desafíos concretos de empresas"
+      },
+      {
+        "id": "e18_f5",
+        "texto": "Pondría dinero y una persona dedicada si existiera esa opción"
+      }
+    ],
+    "temas": [
+      {
+        "id": "e18_t1",
+        "tema": "validación de negocio",
+        "cita": "me voy con la respuesta, así que estoy satisfecho"
+      },
+      {
+        "id": "e18_t2",
+        "tema": "prototipado rápido",
+        "cita": "Se puede. Eso me sirve más que cualquier premio."
+      },
+      {
+        "id": "e18_t3",
+        "tema": "auspiciadores sin problemas reales",
+        "cita": "ninguno puso un problema real sobre la mesa"
+      },
+      {
+        "id": "e18_t4",
+        "tema": "problemas inventados por equipos",
+        "cita": "Todos los equipos inventaron su problema, y muchos inventaron problemas que no existen"
+      },
+      {
+        "id": "e18_t5",
+        "tema": "desafíos concretos de empresas",
+        "cita": "Si las empresas que auspician trajeran desafíos concretos, con datos y con alguien disponible para responder preguntas, los proyectos tendrían un cliente desde "
+      },
+      {
+        "id": "e18_t6",
+        "tema": "track opcional de desafíos",
+        "cita": "Podría ser opcional, un track más"
+      }
+    ]
+  },
+  "e19": {
+    "frases": [
+      {
+        "id": "e19_f1",
+        "texto": "El equipo no alcanzó a entregar su proyecto"
+      },
+      {
+        "id": "e19_f2",
+        "texto": "Cambiaron de idea tres veces, incluso por consejo de mentor"
+      },
+      {
+        "id": "e19_f3",
+        "texto": "No se siente mal; aprendió más con los cambios"
+      },
+      {
+        "id": "e19_f4",
+        "texto": "Propone un espacio para equipos que no entregaron"
+      },
+      {
+        "id": "e19_f5",
+        "texto": "Duda si tiene sentido, la hackathon es para entregar"
+      }
+    ],
+    "temas": [
+      {
+        "id": "e19_t1",
+        "tema": "cambios de idea",
+        "cita": "Aprendí más en esos tres cambios que si hubiéramos terminado la primera idea"
+      },
+      {
+        "id": "e19_t2",
+        "tema": "no entregar",
+        "cita": "para la hackathon somos un equipo que no entregó, un cero"
+      },
+      {
+        "id": "e19_t3",
+        "tema": "reconocimiento a equipos sin entrega",
+        "cita": "Yo habría escuchado con gusto a los otros que tampoco terminaron"
+      },
+      {
+        "id": "e19_t4",
+        "tema": "criterio de entrega",
+        "cita": "una hackathon es para entregar, y si no entregaste, no entregaste"
+      }
+    ]
+  },
+  "e20": {
+    "frases": [
+      {
+        "id": "e20_f1",
+        "texto": "Prácticas de seguridad en la hackathon serían incidentes en un trabajo"
+      },
+      {
+        "id": "e20_f2",
+        "texto": "Bot compartido con un token permitía suplantar a participantes"
+      },
+      {
+        "id": "e20_f3",
+        "texto": "Contradicción entre track de seguridad con IA y práctica real"
+      },
+      {
+        "id": "e20_f4",
+        "texto": "Inquieta no saber si alguien vigilaba los riesgos"
+      },
+      {
+        "id": "e20_f5",
+        "texto": "Sugiere avisar rotar claves y evitar secretos compartidos"
+      }
+    ],
+    "temas": [
+      {
+        "id": "e20_t1",
+        "tema": "seguridad de claves en la hackathon",
+        "cita": "Equipos pegando claves de acceso en canales abiertos donde había cientos de personas."
+      },
+      {
+        "id": "e20_t2",
+        "tema": "bot con token compartido",
+        "cita": "Un bot compartido con un solo token que permitía a cualquiera publicar con el nombre y la foto de otro participante."
+      },
+      {
+        "id": "e20_t3",
+        "tema": "track de seguridad con IA",
+        "cita": "Pero había un track entero de seguridad con IA, y al lado la práctica real del evento era un desastre."
+      },
+      {
+        "id": "e20_t4",
+        "tema": "supervisión de la organización",
+        "cita": "Aunque tampoco sé si alguien lo estaba mirando, y eso es justamente lo que me inquieta."
+      }
+    ]
+  },
+  "e21": {
+    "frases": [
+      {
+        "id": "e21_f1",
+        "texto": "La dinámica para armar equipos fue muy corta y ruidosa"
+      },
+      {
+        "id": "e21_f2",
+        "texto": "Quienes llegaron sin idea quedaron desplazados al formar grupos"
+      },
+      {
+        "id": "e21_f3",
+        "texto": "Su equipo de sobrantes fue lo mejor que le pasó"
+      },
+      {
+        "id": "e21_f4",
+        "texto": "Sin idea previa escucharon a todos y entregaron demo estable"
+      },
+      {
+        "id": "e21_f5",
+        "texto": "Propone una hora completa y mesas por interés, aunque duda"
+      }
+    ],
+    "temas": [
+      {
+        "id": "e21_t1",
+        "tema": "dinámica de armado de equipos",
+        "cita": "La dinámica de armado de equipos estuvo mal hecha"
+      },
+      {
+        "id": "e21_t2",
+        "tema": "resultado con el equipo",
+        "cita": "fue lo mejor que me pudo pasar"
+      },
+      {
+        "id": "e21_t3",
+        "tema": "demo del proyecto",
+        "cita": "un juez nos dijo que éramos de los pocos con una demo que no se cayó"
+      }
+    ]
+  },
+  "e22": {
+    "frases": [
+      {
+        "id": "e22_f1",
+        "texto": "Las hackathons se vuelven eventos de marketing, no de construcción"
+      },
+      {
+        "id": "e22_f2",
+        "texto": "Charlas de auspiciadores quitaron casi dos horas de programación"
+      },
+      {
+        "id": "e22_f3",
+        "texto": "Propone charlas opcionales en otra sala y empezar antes"
+      },
+      {
+        "id": "e22_f4",
+        "texto": "Inquietud por el uso de datos por parte de auspiciadores"
+      },
+      {
+        "id": "e22_f5",
+        "texto": "Reconoce el esfuerzo de los organizadores; critica el modelo"
+      }
+    ],
+    "temas": [
+      {
+        "id": "e22_t1",
+        "tema": "exceso de marketing",
+        "cita": "se están convirtiendo en un evento de marketing y cada vez menos en un lugar para construir"
+      },
+      {
+        "id": "e22_t2",
+        "tema": "charlas de auspiciadores",
+        "cita": "casi dos horas escuchando a gente vender su producto"
+      },
+      {
+        "id": "e22_t3",
+        "tema": "fotos para redes sociales",
+        "cita": "pasaban a sacarte fotos para redes sociales mientras estabas tratando de arreglar un error"
+      },
+      {
+        "id": "e22_t4",
+        "tema": "ceremonia de premiación",
+        "cita": "La ceremonia duró más que la ronda de evaluación"
+      },
+      {
+        "id": "e22_t5",
+        "tema": "uso de datos por auspiciadores",
+        "cita": "me pregunto qué hacen los auspiciadores con nuestros datos, porque para entrar firmamos algo que nadie leyó"
+      },
+      {
+        "id": "e22_t6",
+        "tema": "trabajo de los organizadores",
+        "cita": "los organizadores trabajaron como locos y eso se notó"
+      }
+    ]
+  },
+  "e23": {
+    "frases": [
+      {
+        "id": "e23_f1",
+        "texto": "Valoran que la rúbrica con pesos se publicara desde el inicio"
+      },
+      {
+        "id": "e23_f2",
+        "texto": "Los criterios no explicaban qué significaba cada puntaje"
+      },
+      {
+        "id": "e23_f3",
+        "texto": "Ambición y ejecución se contraponen sin prioridad clara"
+      },
+      {
+        "id": "e23_f4",
+        "texto": "No recibieron puntaje ni comentarios tras no clasificar"
+      },
+      {
+        "id": "e23_f5",
+        "texto": "Piden al menos el puntaje por criterio para mejorar"
+      }
+    ],
+    "temas": [
+      {
+        "id": "e23_t1",
+        "tema": "publicación de la rúbrica",
+        "cita": "Estaba publicada desde el principio, con los pesos, y eso es buenísimo"
+      },
+      {
+        "id": "e23_t2",
+        "tema": "claridad de los criterios",
+        "cita": "Pero qué significa un cinco en ambición, nadie lo dijo"
+      },
+      {
+        "id": "e23_t3",
+        "tema": "equilibrio ambición y ejecución",
+        "cita": "ambición y ejecución tiran para lados opuestos y valen lo mismo"
+      },
+      {
+        "id": "e23_t4",
+        "tema": "retroalimentación de resultados",
+        "cita": "Al final no recibimos ningún puntaje ni comentario, solo supimos que no pasamos"
+      },
+      {
+        "id": "e23_t5",
+        "tema": "organización del evento",
+        "cita": "la organización estuvo impecable"
+      }
+    ]
+  },
+  "e24": {
+    "frases": [
+      {
+        "id": "e24_f1",
+        "texto": "La mejor hackathon en la que ha participado"
+      },
+      {
+        "id": "e24_f2",
+        "texto": "Ganaron por fijar la idea temprano y no cambiarla"
+      },
+      {
+        "id": "e24_f3",
+        "texto": "Sintieron miedo al ver proyectos más vistosos"
+      },
+      {
+        "id": "e24_f4",
+        "texto": "Prototipo funcional temprano y mucho ensayo del pitch"
+      },
+      {
+        "id": "e24_f5",
+        "texto": "Proyectos superiores perdieron por fallas al presentar"
+      }
+    ],
+    "temas": [
+      {
+        "id": "e24_t1",
+        "tema": "ambiente del evento",
+        "cita": "Para mí fue la mejor hackathon en la que he estado. El lugar, la gente"
+      },
+      {
+        "id": "e24_t2",
+        "tema": "decisión temprana de la idea",
+        "cita": "decidimos la idea el viernes a las once de la noche y no la tocamos más"
+      },
+      {
+        "id": "e24_t3",
+        "tema": "ensayo del pitch",
+        "cita": "Ensayamos el pitch como diez veces."
+      },
+      {
+        "id": "e24_t4",
+        "tema": "formato de evaluación del jurado",
+        "cita": "No sé si eso es un defecto del formato o es parte del juego"
+      },
+      {
+        "id": "e24_t5",
+        "tema": "proyectos de otros equipos",
+        "cita": "Vi por lo menos dos proyectos en mi track que eran técnicamente superiores al nuestro. Uno tuvo un problema de conexión"
+      }
+    ]
+  },
+  "e25": {
+    "frases": [
+      {
+        "id": "e25_f1",
+        "texto": "Proyecto real para un trámite estatal funcionó y fue felicitado"
+      },
+      {
+        "id": "e25_f2",
+        "texto": "Los proyectos quedan abandonados después de la hackathon"
+      },
+      {
+        "id": "e25_f3",
+        "texto": "No existe un lugar para ver los proyectos de otros equipos"
+      },
+      {
+        "id": "e25_f4",
+        "texto": "Propone galería pública con todos los proyectos, no solo ganadores"
+      },
+      {
+        "id": "e25_f5",
+        "texto": "Sugiere seguimiento a tres meses para equipos que quieran continuar"
+      }
+    ],
+    "temas": [
+      {
+        "id": "e25_t1",
+        "tema": "proyecto del equipo",
+        "cita": "Quedó andando, lo probamos con datos inventados y funcionaba. El jurado nos felicitó."
+      },
+      {
+        "id": "e25_t2",
+        "tema": "continuidad de los proyectos",
+        "cita": "ese proyecto se queda en un repositorio que nadie va a abrir nunca más"
+      },
+      {
+        "id": "e25_t3",
+        "tema": "visibilidad de otros proyectos",
+        "cita": "Ni siquiera hay un lugar donde ver qué hicieron los demás equipos."
+      }
+    ]
+  }
+}

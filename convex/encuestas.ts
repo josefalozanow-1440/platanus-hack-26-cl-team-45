@@ -55,8 +55,9 @@ export const borrarRespuesta = mutation({
     for (const a of await ctx.db.query("analisis").withIndex("by_respuesta", q => q.eq("respuestaId", respuestaId)).collect()) await ctx.db.delete(a._id);
     if (r.audioId) await ctx.storage.delete(r.audioId);
     await ctx.db.delete(respuestaId);
-    await pedirAgrupar(ctx, r.encuestaId);
-    await pedirNormalizar(ctx, r.encuestaId);
+    // Once converged the groups stay; an emptied group just stops showing (n = 0).
+    if (!(await convergio(ctx, r.encuestaId, "frases"))) await pedirAgrupar(ctx, r.encuestaId);
+    if (!(await convergio(ctx, r.encuestaId, "analisis"))) await pedirNormalizar(ctx, r.encuestaId);
   },
 });
 
@@ -212,6 +213,18 @@ export const topicos = query({
 
 // ---------- pipeline internals (used by procesar.ts) ----------
 
+// With the 25 synthetic answers from Edo, agrupar settles at ~8 temas by answer 6-8 and normalizar at ~18 tópicos by
+// answer 7-8; after that a full regroup adds no groups and only reshuffles ~10% of what was already grouped
+// (evals/hackaton/CONVERGENCIA.md). Up to this many answers we regroup everything; from the next one on, each answer
+// only assigns its own items to the existing groups (procesar.asignar / asignarTopicos).
+export const UMBRAL_CONVERGENCIA = 9; // converges at ~8, +1 margin
+
+async function convergio(ctx: { db: any }, encuestaId: Id<"encuestas">, tabla: "frases" | "analisis") {
+  const filas = await ctx.db.query(tabla).withIndex("by_encuesta", (q: any) => q.eq("encuestaId", encuestaId)).collect();
+  const grupos = await ctx.db.query(tabla === "frases" ? "temas" : "topicos").withIndex("by_encuesta", (q: any) => q.eq("encuestaId", encuestaId)).first();
+  return !!grupos && new Set(filas.map((f: { respuestaId: string }) => f.respuestaId)).size > UMBRAL_CONVERGENCIA;
+}
+
 export async function pedirAgrupar(ctx: { db: any; scheduler: any }, encuestaId: Id<"encuestas">) {
   const token = Date.now();
   await ctx.db.patch(encuestaId, { agruparPedido: token });
@@ -243,7 +256,8 @@ export const guardarFrases = internalMutation({
     for (const f of await ctx.db.query("frases").withIndex("by_respuesta", q => q.eq("respuestaId", respuestaId)).collect()) await ctx.db.delete(f._id);
     for (const f of frases) await ctx.db.insert("frases", { ...f, encuestaId: r.encuestaId, respuestaId, intensidad: Math.max(0, Math.min(1, f.intensidad)) });
     await ctx.db.patch(respuestaId, { estado: "listo" });
-    await pedirAgrupar(ctx, r.encuestaId);
+    if (await convergio(ctx, r.encuestaId, "frases")) await ctx.scheduler.runAfter(0, internal.procesar.asignar, { encuestaId: r.encuestaId, respuestaId });
+    else await pedirAgrupar(ctx, r.encuestaId);
   },
 });
 
@@ -288,6 +302,8 @@ export const guardarTemas = internalMutation({
       if (t && tids.has(t)) await ctx.db.patch(f._id, { temaId: t });
       // Frases added after this grouping started keep their old tema; the regroup they scheduled will place them.
     }
+    // The last full regroup can land after the poll converged: sweep whatever it left without a valid tema.
+    if (await convergio(ctx, encuestaId, "frases")) await ctx.scheduler.runAfter(0, internal.procesar.asignar, { encuestaId });
   },
 });
 
@@ -303,7 +319,8 @@ export const guardarAnalisis = internalMutation({
     if (!r) return; // deleted while processing
     for (const x of await ctx.db.query("analisis").withIndex("by_respuesta", q => q.eq("respuestaId", respuestaId)).collect()) await ctx.db.delete(x._id);
     await ctx.db.insert("analisis", { encuestaId: r.encuestaId, respuestaId, ...a });
-    await pedirNormalizar(ctx, r.encuestaId);
+    if (await convergio(ctx, r.encuestaId, "analisis")) await ctx.scheduler.runAfter(0, internal.procesar.asignarTopicos, { encuestaId: r.encuestaId, respuestaId });
+    else await pedirNormalizar(ctx, r.encuestaId);
   },
 });
 
@@ -341,6 +358,104 @@ export const guardarTopicos = internalMutation({
         return k && tids.has(k) ? { ...t, topicoId: k } : t;
       });
       await ctx.db.patch(an._id, { temas });
+    }
+    if (await convergio(ctx, encuestaId, "analisis")) await ctx.scheduler.runAfter(0, internal.procesar.asignarTopicos, { encuestaId });
+  },
+});
+
+
+// ---------- after convergence: assign only the new items ----------
+
+// New groups get a server-side id so two answers assigning in parallel can't collide on the LLM's "nuevo1".
+const idNuevo = (id: string) => `${id}-${Date.now().toString(36)}${Math.random().toString(36).slice(2, 5)}`;
+
+export const leerParaAsignar = internalQuery({
+  args: { encuestaId: v.id("encuestas"), respuestaId: v.optional(v.id("respuestas")) },
+  handler: async (ctx, { encuestaId, respuestaId }) => {
+    const e = await ctx.db.get(encuestaId);
+    if (!e) return null;
+    const temas = await ctx.db.query("temas").withIndex("by_encuesta", q => q.eq("encuestaId", encuestaId)).collect();
+    const tids = new Set(temas.map(t => t.tid));
+    const fs = respuestaId
+      ? await ctx.db.query("frases").withIndex("by_respuesta", q => q.eq("respuestaId", respuestaId)).collect()
+      : await ctx.db.query("frases").withIndex("by_encuesta", q => q.eq("encuestaId", encuestaId)).collect();
+    return {
+      pregunta: e.pregunta,
+      temas: temas.map(t => ({ id: t.tid, nombre: t.nombre, resumen: t.resumen, x: t.x, y: t.y })),
+      frases: fs.filter(f => !f.temaId || !tids.has(f.temaId)).map(f => ({ id: f._id as string, texto: f.texto })),
+    };
+  },
+});
+
+export const guardarAsignacion = internalMutation({
+  args: {
+    encuestaId: v.id("encuestas"),
+    nuevos: v.array(v.object({ id: v.string(), nombre: v.string(), resumen: v.string(), x: v.number(), y: v.number() })),
+    asignacion: v.array(v.object({ frase: v.string(), tema: v.string() })),
+  },
+  handler: async (ctx, { encuestaId, nuevos, asignacion }) => {
+    const ids = new Map<string, string>();
+    for (const t of nuevos) {
+      const tid = idNuevo(t.id);
+      ids.set(t.id, tid);
+      await ctx.db.insert("temas", { encuestaId, tid, nombre: t.nombre, resumen: t.resumen, x: t.x, y: t.y });
+    }
+    const tids = new Set((await ctx.db.query("temas").withIndex("by_encuesta", q => q.eq("encuestaId", encuestaId)).collect()).map(t => t.tid));
+    for (const { frase, tema } of asignacion) {
+      const fid = ctx.db.normalizeId("frases", frase);
+      const f = fid && await ctx.db.get(fid);
+      const tid = ids.get(tema) ?? tema;
+      if (f && f.encuestaId === encuestaId && tids.has(tid)) await ctx.db.patch(f._id, { temaId: tid });
+    }
+  },
+});
+
+// Tema ids are "<analisisId>:<index>", same as leerParaNormalizar.
+export const leerParaAsignarTopicos = internalQuery({
+  args: { encuestaId: v.id("encuestas"), respuestaId: v.optional(v.id("respuestas")) },
+  handler: async (ctx, { encuestaId, respuestaId }) => {
+    const e = await ctx.db.get(encuestaId);
+    if (!e) return null;
+    const ks = await ctx.db.query("topicos").withIndex("by_encuesta", q => q.eq("encuestaId", encuestaId)).collect();
+    const kids = new Set(ks.map(k => k.tid));
+    const as = respuestaId
+      ? await ctx.db.query("analisis").withIndex("by_respuesta", q => q.eq("respuestaId", respuestaId)).collect()
+      : await ctx.db.query("analisis").withIndex("by_encuesta", q => q.eq("encuestaId", encuestaId)).collect();
+    return {
+      pregunta: e.pregunta,
+      topicos: ks.map(k => ({ id: k.tid, nombre: k.nombre, descripcion: k.descripcion })),
+      temas: as.flatMap(a => a.temas.flatMap((t, i) => !t.topicoId || !kids.has(t.topicoId) ? [{ id: `${a._id}:${i}`, tema: t.tema, cita: t.cita.slice(0, 160) }] : [])),
+    };
+  },
+});
+
+export const guardarAsignacionTopicos = internalMutation({
+  args: {
+    encuestaId: v.id("encuestas"),
+    nuevos: v.array(v.object({ id: v.string(), nombre: v.string(), descripcion: v.string() })),
+    asignacion: v.array(v.object({ tema: v.string(), topico: v.string() })),
+  },
+  handler: async (ctx, { encuestaId, nuevos, asignacion }) => {
+    const ids = new Map<string, string>();
+    for (const k of nuevos) {
+      const tid = idNuevo(k.id);
+      ids.set(k.id, tid);
+      await ctx.db.insert("topicos", { encuestaId, tid, nombre: k.nombre, descripcion: k.descripcion });
+    }
+    const kids = new Set((await ctx.db.query("topicos").withIndex("by_encuesta", q => q.eq("encuestaId", encuestaId)).collect()).map(k => k.tid));
+    const porAnalisis = new Map<string, Map<number, string>>();
+    for (const { tema, topico } of asignacion) {
+      const [aid, i] = tema.split(":");
+      const k = ids.get(topico) ?? topico;
+      if (!kids.has(k)) continue;
+      if (!porAnalisis.has(aid)) porAnalisis.set(aid, new Map());
+      porAnalisis.get(aid)!.set(Number(i), k);
+    }
+    for (const [aid, mapa] of porAnalisis) {
+      const id = ctx.db.normalizeId("analisis", aid);
+      const an = id && await ctx.db.get(id);
+      if (!an || an.encuestaId !== encuestaId) continue;
+      await ctx.db.patch(an._id, { temas: an.temas.map((t, i) => mapa.has(i) ? { ...t, topicoId: mapa.get(i) } : t) });
     }
   },
 });

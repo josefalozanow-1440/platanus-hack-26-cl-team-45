@@ -7,7 +7,7 @@
 3. **Se lee de dos formas a la vez.**
    - Para el mapa: se sacan de 1 a 5 ideas clave, cada una con su cita textual, la emoción y qué tan fuerte la dice.
    - Para contar: se anota cada tema que toca la persona y qué opina de cada uno (a favor, en contra o mixto), con cuánta fuerza, si dice que mejoró o empeoró y si propone algo.
-4. **Se junta con el resto del grupo.** Con cada respuesta nueva se reordena todo. Las ideas se agrupan por postura y forman el mapa en vivo ("sueldo bajo" y "sueldo mejorado" quedan como grupos distintos). Los temas se juntan en tópicos de qué se habla ("sueldo"), para contar cuántos están a favor y en contra de cada cosa.
+4. **Se junta con el resto del grupo.** Con las primeras 9 respuestas se reordena todo cada vez; desde la 10 los grupos ya están armados y cada respuesta nueva solo se suma al grupo que le corresponde, al tiro y en paralelo con las demás. Las ideas se agrupan por postura y forman el mapa en vivo ("sueldo bajo" y "sueldo mejorado" quedan como grupos distintos). Los temas se juntan en tópicos de qué se habla ("sueldo"), para contar cuántos están a favor y en contra de cada cosa.
 5. **Sale.** La pantalla se actualiza sola con el mapa y cuánta gente hay en cada grupo. Los conteos por tópico, las propuestas y las emociones ya se guardan, pero falta la pantalla que los muestre.
 
 Por ejemplo, alguien dice "la comida bien, pero el café se acabó a las cuatro de la mañana y nadie lo repuso". En el mapa cae en el grupo de la comida. En los tópicos queda como comida: mixto, con la propuesta "reponer el café". Con texto, la respuesta aparece en el mapa en unos 15 segundos.
@@ -58,6 +58,8 @@ La persona abre la encuesta por su slug (`/<slug>`) y responde desde la web, con
 
 `agrupar` manda en **una sola llamada** todas las frases de la encuesta junto con los temas que ya existen. Haiku devuelve entre 2 y 8 temas, cada uno con un nombre que dice la postura (no solo el tópico), un resumen de una oración y coordenadas x e y entre -3 y 3, donde los temas parecidos quedan cerca. También devuelve a qué tema va cada frase. Para que el mapa no salte en cada vuelta, se le pide reutilizar los ids de los temas que sigan calzando. `guardarTemas` reemplaza los temas y anota el tema de cada frase.
 
+**Desde la respuesta 10 ya no se reagrupa.** Con las 25 respuestas sintéticas de Edo, los temas se estabilizan en unos 8 hacia la respuesta 6 a 8. Después, reagrupar todo no suma temas y solo cambia de grupo cerca del 10% de lo que ya estaba agrupado ([evals/hackaton/CONVERGENCIA.md](evals/hackaton/CONVERGENCIA.md)). Por eso `UMBRAL_CONVERGENCIA` es 9: converge en 8, más uno de margen. Desde la respuesta 10, `guardarFrases` agenda `asignar` de inmediato, sin la espera de 1,5 segundos. `asignar` le pasa a Haiku solo las frases de esa respuesta y los temas existentes, y cada frase va a un tema existente; solo si de verdad no calza en ninguno se crea un tema nuevo, sin tocar los demás. Cada respuesta asigna por su cuenta, así que varias corren en paralelo. Si el último reagrupamiento completo termina después de cruzar el umbral, al final barre las frases que quedaron sin tema.
+
 ### 5. Analizar la respuesta completa (Haiku 5.5, effort medium)
 
 `analizar` corre en paralelo con `extraer`. Le manda a Haiku la pregunta y la transcripción completa, y Haiku devuelve los temas que la persona toca, con nombres propios de lo que dice y no de una lista genérica. Para cada tema trae:
@@ -74,6 +76,8 @@ Para la respuesta completa trae además la emoción que domina y la mejora concr
 Cada respuesta nombra los temas a su manera ("equipo", "compañeros de equipo", "equipo de trabajo"), así que para contarlos hay que juntarlos. `normalizar` usa el mismo token de 1,5 segundos que `agrupar`, y en una sola llamada recibe todos los temas libres de todas las respuestas de la encuesta, más los tópicos que ya existen. Devuelve el diccionario completo de tópicos y a qué tópico va cada tema.
 
 Un tópico es de qué se habla, no qué se opina: "cobrar por usar el quincho" y "no cobrar" van al mismo tópico con direcciones opuestas. No hay una lista previa; los tópicos salen de las respuestas, así que funciona con cualquier pregunta. El prompt pide entre 12 y 18 tópicos cuando hay muchas respuestas y separar problemas que se arreglan de forma distinta. `guardarTopicos` reemplaza los tópicos de la encuesta y anota en cada tema de `analisis` su `topicoId`.
+
+Con el mismo umbral, desde la respuesta 10 `asignarTopicos` solo asigna los temas de la respuesta nueva a los tópicos existentes. Los tópicos se estabilizan en unos 18 hacia la respuesta 7 u 8, y después siguen apareciendo algunos de cola, que se crean como tópicos nuevos.
 
 ### 7. Lo que sale
 
@@ -97,7 +101,7 @@ Medido con una llamada por paso y una encuesta de 15 respuestas ([evals/hackaton
 | agrupar (Haiku low, 72 frases) | ~8 s |
 | **Total para una respuesta de texto** | **~15 s** |
 
-Con audio se suma la transcripción, que no medimos. La frase aparece en el mapa recién cuando agrupar le asigna tema. Agrupar devuelve la asignación de todas las frases, así que tarda más a medida que crece la encuesta. Con Opus low tardaba unos 16 s; por eso lo pasamos a Haiku.
+Con audio se suma la transcripción, que no medimos. La frase aparece en el mapa recién cuando agrupar le asigna tema. Desde la respuesta 10, en vez de la espera y el agrupar completo corre `asignar`, una llamada chica con solo las frases nuevas, así que el tiempo deja de crecer con la encuesta (no lo medimos). Agrupar devuelve la asignación de todas las frases, así que tarda más a medida que crece la encuesta. Con Opus low tardaba unos 16 s; por eso lo pasamos a Haiku.
 
 Analizar (~6 s) y normalizar (~8,5 s con Haiku low; ~30 s con medium) corren aparte y no frenan el mapa.
 
@@ -148,3 +152,4 @@ Con agrupar y normalizar en Haiku low, el total debería quedar bajo US$ 0,02 po
 | Opus para normalizar | Haiku | Opus casi duplicaba el costo total por respuesta (US$ 0,094 contra 0,053) |
 | Normalizar con Haiku medium | Haiku low | Con la regla de rango, low arma 18 a 20 tópicos en ~8,5 s; medium tardaba ~30 s con 15 respuestas |
 | Agrupar con Opus low | Haiku low | Agrupar define cuándo aparece la respuesta en el mapa: Haiku low tarda ~8 s contra ~16 s y arma temas parecidos, aunque a veces junta dos (por ejemplo infraestructura y comida). Medido solo en tiempo, sin eval de calidad |
+| Reagrupar todo con cada respuesta | Reagrupar hasta la respuesta 9 y después solo asignar | Los grupos convergen hacia la respuesta 8; después reagrupar solo rota ~10% de lo agrupado y hace que cada llamada crezca con la encuesta. Asignar es una llamada chica por respuesta, en paralelo |
