@@ -59,5 +59,6 @@ Diferencia vs lo que ya existe: Pol.is y Talk to the City son texto y web; esto 
 - 21-nov 23:15: sin QR; el link wa.me se comparte por el Discord del hackatón. Lanes asignadas (Kaina, Gonzalo, Diego).
 - 21-nov ~23:45: datos sintéticos de Edo en `data/respuestas-sinteticas.json` (25 respuestas sobre la experiencia en la hackathon, campos id/participante/texto; `texto` = transcripción ronda 1). Rotular como sintéticos en la demo.
 - 21-nov 23:30: nombre Audem (Cadem + audio). jsonc y project-description.md llenos; deploy-url pendiente (Diego).
+- 22-nov: el análisis lo hace Claude leyendo la respuesta completa, sin Jev ni grillas fijas. Evals, técnicas descartadas y costo por respuesta en `evals/README.md`.
 
 ## Lo que dijeron mentores/jueces
