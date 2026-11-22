@@ -73,3 +73,15 @@ Claude corre con `claude -p` sobre la suscripción, no con API key. Cada llamada
 - 15 respuestas son pocas: diferencias de 1 o 2 celdas son ruido.
 - El alineador puede ser más o menos estricto y eso mueve la cobertura de las condiciones inducidas.
 - No medimos sarcasmo ni tono de voz, que se pierden al transcribir.
+
+## Hallazgos (corrida del 21-11-2026)
+
+Detalle en [resultados/RESULTADOS.md](resultados/RESULTADOS.md).
+
+- `claude_solo` gana con los tres modelos: 97% de celdas exactas con Opus y 93% con Sonnet y Haiku. Puede estar inflado, porque Claude escribió el dataset (ver límites).
+- `claude_respuestas_jev` empata o casi empata a `claude_solo`: 93% con Sonnet y 87% con Opus y Haiku. Inducir columnas mirando las respuestas recupera entre 90% y 100% de las columnas de referencia.
+- `claude_pregunta_jev` es la peor (63% a 72%). Mirando solo la pregunta, Claude propone columnas razonables que no son las que la gente después menciona.
+- `jev_columnas_sabidas` da entre 85% y 87%, y la variación es de una celda en corridas con la misma entrada. Sus errores son sobre todo falsos positivos de mención en temas vecinos, más algunos errores de un nivel de intensidad.
+- Ninguna condición invirtió el signo en ninguna celda.
+- El modelo de Claude pesa poco: Haiku queda a 4 puntos de Opus en `claude_solo` y empata en `claude_respuestas_jev`.
+- Jev responde las 15 respuestas en alrededor de 1 segundo. Las condiciones con Claude tardan entre 10 y 30 segundos. Cada modelo usó unos 90k tokens de entrada de Jev en 45 requests.

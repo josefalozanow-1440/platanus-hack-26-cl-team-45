@@ -1,0 +1,341 @@
+{
+  "condicion": "claude_solo",
+  "modelo_claude": "haiku",
+  "columnas": {
+    "p1_jefatura": {
+      "comunicacion": "Qué tan clara y frecuente es la comunicación con la jefatura",
+      "reconocimiento": "Si la jefatura reconoce y valora el trabajo bien hecho",
+      "autonomia": "Cuánta confianza y libertad da la jefatura para decidir, o si microgestiona",
+      "feedback_desarrollo": "Si la jefatura da retroalimentación y apoya el crecimiento profesional"
+    },
+    "p2_carga": {
+      "volumen_trabajo": "La cantidad de trabajo asignado y si alcanza el tiempo para hacerlo",
+      "horarios": "La flexibilidad de horarios, el trabajo remoto y las horas extra",
+      "bienestar": "El estrés, el cansancio y la salud física o mental de la persona",
+      "apoyo_empresa": "Las políticas o beneficios de la empresa para conciliar trabajo y vida personal"
+    },
+    "p3_remuneracion": {
+      "sueldo": "El monto del sueldo y si alcanza para vivir",
+      "beneficios": "Los beneficios no monetarios o complementarios: seguro, aguinaldos, días libres, convenios",
+      "transparencia": "Qué tan claros son los criterios para aumentos y bandas salariales",
+      "comparacion_mercado": "Cómo se compara la remuneración con lo que pagan otras empresas"
+    },
+    "p4_crecimiento": {
+      "capacitacion": "Los cursos, capacitaciones y oportunidades de aprender que ofrece la empresa",
+      "ascensos": "Las oportunidades de ascenso y si los criterios para ascender son justos",
+      "plan_carrera": "Qué tan clara es la ruta de carrera y los pasos para avanzar",
+      "mentoria": "Si hay personas que guían, enseñan o acompañan el desarrollo"
+    },
+    "p5_equipo": {
+      "companerismo": "La relación y el buen trato entre compañeros del mismo equipo",
+      "colaboracion_areas": "Qué tan fácil es trabajar y coordinarse con otras áreas",
+      "manejo_conflictos": "Cómo se manejan los conflictos: si se conversan y resuelven, o se evitan y escalan",
+      "herramientas": "Las herramientas y reuniones que se usan para coordinarse: software, canales, rituales"
+    }
+  },
+  "alineacion": {
+    "p1_jefatura": {
+      "comunicacion": "comunicacion",
+      "reconocimiento": "reconocimiento",
+      "autonomia": "autonomia",
+      "feedback_desarrollo": "feedback_desarrollo"
+    },
+    "p2_carga": {
+      "volumen_trabajo": "volumen_trabajo",
+      "horarios": "horarios",
+      "bienestar": "bienestar",
+      "apoyo_empresa": "apoyo_empresa"
+    },
+    "p3_remuneracion": {
+      "sueldo": "sueldo",
+      "beneficios": "beneficios",
+      "transparencia": "transparencia",
+      "comparacion_mercado": "comparacion_mercado"
+    },
+    "p4_crecimiento": {
+      "capacitacion": "capacitacion",
+      "ascensos": "ascensos",
+      "plan_carrera": "plan_carrera",
+      "mentoria": "mentoria"
+    },
+    "p5_equipo": {
+      "companerismo": "companerismo",
+      "colaboracion_areas": "colaboracion_areas",
+      "manejo_conflictos": "manejo_conflictos",
+      "herramientas": "herramientas"
+    }
+  },
+  "items": {
+    "p1_jefatura_r1": {
+      "comunicacion": {
+        "menciona": true,
+        "valor": -2
+      },
+      "reconocimiento": {
+        "menciona": true,
+        "valor": -1
+      },
+      "autonomia": {
+        "menciona": false,
+        "valor": null
+      },
+      "feedback_desarrollo": {
+        "menciona": true,
+        "valor": -2
+      }
+    },
+    "p1_jefatura_r2": {
+      "comunicacion": {
+        "menciona": true,
+        "valor": 1
+      },
+      "reconocimiento": {
+        "menciona": true,
+        "valor": 2
+      },
+      "autonomia": {
+        "menciona": true,
+        "valor": -1
+      },
+      "feedback_desarrollo": {
+        "menciona": false,
+        "valor": null
+      }
+    },
+    "p1_jefatura_r3": {
+      "comunicacion": {
+        "menciona": true,
+        "valor": 0
+      },
+      "reconocimiento": {
+        "menciona": false,
+        "valor": null
+      },
+      "autonomia": {
+        "menciona": true,
+        "valor": 2
+      },
+      "feedback_desarrollo": {
+        "menciona": true,
+        "valor": 1
+      }
+    },
+    "p2_carga_r1": {
+      "volumen_trabajo": {
+        "menciona": true,
+        "valor": -2
+      },
+      "horarios": {
+        "menciona": true,
+        "valor": -2
+      },
+      "bienestar": {
+        "menciona": true,
+        "valor": -1
+      },
+      "apoyo_empresa": {
+        "menciona": true,
+        "valor": -2
+      }
+    },
+    "p2_carga_r2": {
+      "volumen_trabajo": {
+        "menciona": true,
+        "valor": 0
+      },
+      "horarios": {
+        "menciona": true,
+        "valor": 2
+      },
+      "bienestar": {
+        "menciona": true,
+        "valor": 1
+      },
+      "apoyo_empresa": {
+        "menciona": true,
+        "valor": 1
+      }
+    },
+    "p2_carga_r3": {
+      "volumen_trabajo": {
+        "menciona": true,
+        "valor": -1
+      },
+      "horarios": {
+        "menciona": false,
+        "valor": null
+      },
+      "bienestar": {
+        "menciona": false,
+        "valor": null
+      },
+      "apoyo_empresa": {
+        "menciona": true,
+        "valor": -2
+      }
+    },
+    "p3_remuneracion_r1": {
+      "sueldo": {
+        "menciona": true,
+        "valor": -1
+      },
+      "beneficios": {
+        "menciona": true,
+        "valor": 2
+      },
+      "transparencia": {
+        "menciona": true,
+        "valor": -2
+      },
+      "comparacion_mercado": {
+        "menciona": false,
+        "valor": null
+      }
+    },
+    "p3_remuneracion_r2": {
+      "sueldo": {
+        "menciona": true,
+        "valor": 1
+      },
+      "beneficios": {
+        "menciona": false,
+        "valor": null
+      },
+      "transparencia": {
+        "menciona": true,
+        "valor": -1
+      },
+      "comparacion_mercado": {
+        "menciona": true,
+        "valor": 1
+      }
+    },
+    "p3_remuneracion_r3": {
+      "sueldo": {
+        "menciona": true,
+        "valor": -2
+      },
+      "beneficios": {
+        "menciona": true,
+        "valor": -1
+      },
+      "transparencia": {
+        "menciona": false,
+        "valor": null
+      },
+      "comparacion_mercado": {
+        "menciona": true,
+        "valor": -2
+      }
+    },
+    "p4_crecimiento_r1": {
+      "capacitacion": {
+        "menciona": true,
+        "valor": 2
+      },
+      "ascensos": {
+        "menciona": true,
+        "valor": -1
+      },
+      "plan_carrera": {
+        "menciona": true,
+        "valor": -1
+      },
+      "mentoria": {
+        "menciona": true,
+        "valor": 1
+      }
+    },
+    "p4_crecimiento_r2": {
+      "capacitacion": {
+        "menciona": false,
+        "valor": null
+      },
+      "ascensos": {
+        "menciona": true,
+        "valor": -2
+      },
+      "plan_carrera": {
+        "menciona": true,
+        "valor": -2
+      },
+      "mentoria": {
+        "menciona": false,
+        "valor": null
+      }
+    },
+    "p4_crecimiento_r3": {
+      "capacitacion": {
+        "menciona": true,
+        "valor": 0
+      },
+      "ascensos": {
+        "menciona": true,
+        "valor": 1
+      },
+      "plan_carrera": {
+        "menciona": true,
+        "valor": 1
+      },
+      "mentoria": {
+        "menciona": true,
+        "valor": 2
+      }
+    },
+    "p5_equipo_r1": {
+      "companerismo": {
+        "menciona": true,
+        "valor": 2
+      },
+      "colaboracion_areas": {
+        "menciona": true,
+        "valor": -2
+      },
+      "manejo_conflictos": {
+        "menciona": false,
+        "valor": null
+      },
+      "herramientas": {
+        "menciona": true,
+        "valor": -1
+      }
+    },
+    "p5_equipo_r2": {
+      "companerismo": {
+        "menciona": true,
+        "valor": 1
+      },
+      "colaboracion_areas": {
+        "menciona": true,
+        "valor": 0
+      },
+      "manejo_conflictos": {
+        "menciona": true,
+        "valor": -1
+      },
+      "herramientas": {
+        "menciona": false,
+        "valor": null
+      }
+    },
+    "p5_equipo_r3": {
+      "companerismo": {
+        "menciona": true,
+        "valor": 0
+      },
+      "colaboracion_areas": {
+        "menciona": false,
+        "valor": null
+      },
+      "manejo_conflictos": {
+        "menciona": true,
+        "valor": -2
+      },
+      "herramientas": {
+        "menciona": true,
+        "valor": 1
+      }
+    }
+  },
+  "segundos": 12.0
+}

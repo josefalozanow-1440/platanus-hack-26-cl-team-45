@@ -1,0 +1,1081 @@
+{
+  "condicion": "claude_respuestas_jev",
+  "modelo_claude": "opus",
+  "columnas": {
+    "p1_jefatura": {
+      "comunicacion": "Qué tan bien y a tiempo la jefatura informa los cambios, responde los mensajes y mantiene espacios de reunión con el equipo.",
+      "reconocimiento": "Qué tanto la jefatura nota el trabajo bien hecho y lo valora de forma concreta y visible.",
+      "autonomia": "Qué tanto la jefatura confía en el criterio de la persona y la deja decidir sin revisar ni aprobar cada cosa.",
+      "desarrollo_feedback": "Qué tanto la jefatura apoya el crecimiento profesional con conversaciones sobre desempeño, retroalimentación concreta y apoyo para capacitarse o avanzar."
+    },
+    "p2_carga": {
+      "volumen_carga_trabajo": "Si el volumen de tareas, metas o casos se puede abordar con el tiempo y la dotación disponibles.",
+      "horarios_horas_extra": "Si la persona puede salir a su hora, si hay horas extra, si se pagan o compensan y si la llaman fuera de su turno.",
+      "flexibilidad_horaria_remota": "Si la persona puede trabajar desde casa o ajustar su horario y sus turnos según lo que necesite en su vida personal.",
+      "bienestar_desconexion": "Cómo el trabajo afecta el cansancio, el sueño, el estrés, la salud y la capacidad de desconectarse fuera del horario.",
+      "beneficios_politicas_conciliacion": "Si existen, se conocen y se aplican de forma justa las políticas y beneficios formales de la empresa para la vida personal, como días libres, permisos, seguros o sala cuna."
+    },
+    "p3_remuneracion": {
+      "suficiencia_sueldo": "Si el sueldo alcanza para cubrir los gastos del mes (arriendo, dividendo, colegio, cuentas) y permite ahorrar o vivir con holgura.",
+      "competitividad_mercado": "Cómo se compara el sueldo con lo que pagan otras empresas por un cargo similar, según ofertas, headhunters o conocidos.",
+      "criterios_aumentos": "Claridad y equidad de los criterios para subir el sueldo: bandas salariales, peso de la evaluación de desempeño y diferencias entre personas del mismo cargo.",
+      "seguro_aguinaldos": "Valor de los beneficios de salud y monetarios, como el seguro complementario, los aguinaldos de fiestas patrias y navidad y las gift cards.",
+      "tiempo_libre": "Valor de los beneficios de tiempo libre, como el día de cumpleaños, los días administrativos y la tarde libre de los viernes.",
+      "convenios": "Utilidad de los convenios con terceros, como gimnasio, óptica o caja de compensación."
+    },
+    "p4_crecimiento": {
+      "capacitacion_formal": "Cursos, plataformas de aprendizaje, diplomados y apoyo económico o de tiempo que da la empresa para formarse.",
+      "apoyo_jefatura_y_pares": "Cuánto le enseñan, acompañan y orientan su jefatura y sus compañeros en el día a día.",
+      "claridad_ruta_de_carrera": "Si existe y se conoce un mapa de cargos con requisitos claros para pasar al siguiente nivel.",
+      "transparencia_ascensos": "Si los ascensos se deciden por mérito, con criterios explicados y retroalimentación, o por cercanía o pituto con las jefaturas.",
+      "disponibilidad_de_vacantes": "Cuántos cargos se abren para crecer internamente, incluido el estancamiento en el mismo cargo y la contratación de gente externa para puestos superiores.",
+      "intencion_de_permanencia": "Si sus oportunidades de crecimiento le hacen querer quedarse en la empresa o buscar trabajo afuera."
+    },
+    "p5_equipo": {
+      "relacion_equipo": "Trato, confianza, respeto, ayuda y buena onda entre los compañeros del propio equipo, incluido cómo reciben e integran a los recién llegados.",
+      "colaboracion_otras_areas": "Disposición, rapidez y claridad de responsables cuando hay que pedir algo o coordinarse con otras áreas de la empresa.",
+      "manejo_conflictos": "Cómo se tratan los roces y desacuerdos entre personas: si se conversan de frente o se guardan, se escalan a la jefatura o quedan sin resolver.",
+      "herramientas_y_reuniones": "Utilidad de los sistemas, canales (Teams, correo, WhatsApp, CRM, SAP, tickets) y reuniones de coordinación para ordenar el trabajo y no perder información."
+    }
+  },
+  "alineacion": {
+    "p1_jefatura": {
+      "comunicacion": "comunicacion",
+      "reconocimiento": "reconocimiento",
+      "autonomia": "autonomia",
+      "feedback_desarrollo": "desarrollo_feedback"
+    },
+    "p2_carga": {
+      "volumen_trabajo": "volumen_carga_trabajo",
+      "horarios": "flexibilidad_horaria_remota",
+      "bienestar": "bienestar_desconexion",
+      "apoyo_empresa": "beneficios_politicas_conciliacion"
+    },
+    "p3_remuneracion": {
+      "sueldo": "suficiencia_sueldo",
+      "beneficios": null,
+      "transparencia": "criterios_aumentos",
+      "comparacion_mercado": "competitividad_mercado"
+    },
+    "p4_crecimiento": {
+      "capacitacion": "capacitacion_formal",
+      "ascensos": "transparencia_ascensos",
+      "plan_carrera": "claridad_ruta_de_carrera",
+      "mentoria": "apoyo_jefatura_y_pares"
+    },
+    "p5_equipo": {
+      "companerismo": "relacion_equipo",
+      "colaboracion_areas": "colaboracion_otras_areas",
+      "manejo_conflictos": "manejo_conflictos",
+      "herramientas": "herramientas_y_reuniones"
+    }
+  },
+  "items": {
+    "p1_jefatura_r1": {
+      "comunicacion": {
+        "menciona": true,
+        "valor": -2,
+        "noul": 0.99,
+        "score": 0.06,
+        "probabilidades": {
+          "0": 0.94,
+          "1": 0.06,
+          "2": 0.0,
+          "3": 0.0,
+          "4": 0.0
+        }
+      },
+      "reconocimiento": {
+        "menciona": true,
+        "valor": -1,
+        "noul": 0.98,
+        "score": 0.91,
+        "probabilidades": {
+          "0": 0.1,
+          "1": 0.9,
+          "2": 0.0,
+          "3": 0.0,
+          "4": 0.0
+        }
+      },
+      "autonomia": {
+        "menciona": false,
+        "valor": null,
+        "noul": 0.11,
+        "score": 1.19,
+        "probabilidades": {
+          "0": 0.21,
+          "1": 0.41,
+          "2": 0.38,
+          "3": 0.0,
+          "4": 0.0
+        }
+      },
+      "desarrollo_feedback": {
+        "menciona": true,
+        "valor": -2,
+        "noul": 0.99,
+        "score": 0.0,
+        "probabilidades": {
+          "0": 1.0,
+          "1": 0.0,
+          "2": 0.0,
+          "3": 0.0,
+          "4": 0.0
+        }
+      }
+    },
+    "p1_jefatura_r2": {
+      "comunicacion": {
+        "menciona": true,
+        "valor": 1,
+        "noul": 0.99,
+        "score": 3.0,
+        "probabilidades": {
+          "0": 0.0,
+          "1": 0.0,
+          "2": 0.02,
+          "3": 0.96,
+          "4": 0.02
+        }
+      },
+      "reconocimiento": {
+        "menciona": true,
+        "valor": 2,
+        "noul": 0.99,
+        "score": 3.97,
+        "probabilidades": {
+          "0": 0.0,
+          "1": 0.0,
+          "2": 0.0,
+          "3": 0.03,
+          "4": 0.97
+        }
+      },
+      "autonomia": {
+        "menciona": true,
+        "valor": -1,
+        "noul": 0.99,
+        "score": 1.05,
+        "probabilidades": {
+          "0": 0.0,
+          "1": 0.96,
+          "2": 0.04,
+          "3": 0.0,
+          "4": 0.0
+        }
+      },
+      "desarrollo_feedback": {
+        "menciona": true,
+        "valor": 1,
+        "noul": 0.63,
+        "score": 2.5,
+        "probabilidades": {
+          "0": 0.0,
+          "1": 0.07,
+          "2": 0.39,
+          "3": 0.52,
+          "4": 0.02
+        }
+      }
+    },
+    "p1_jefatura_r3": {
+      "comunicacion": {
+        "menciona": true,
+        "valor": 0,
+        "noul": 0.98,
+        "score": 1.99,
+        "probabilidades": {
+          "0": 0.0,
+          "1": 0.02,
+          "2": 0.96,
+          "3": 0.02,
+          "4": 0.0
+        }
+      },
+      "reconocimiento": {
+        "menciona": false,
+        "valor": null,
+        "noul": 0.45,
+        "score": 2.92,
+        "probabilidades": {
+          "0": 0.0,
+          "1": 0.04,
+          "2": 0.27,
+          "3": 0.42,
+          "4": 0.27
+        }
+      },
+      "autonomia": {
+        "menciona": true,
+        "valor": 2,
+        "noul": 0.99,
+        "score": 4.0,
+        "probabilidades": {
+          "0": 0.0,
+          "1": 0.0,
+          "2": 0.0,
+          "3": 0.0,
+          "4": 1.0
+        }
+      },
+      "desarrollo_feedback": {
+        "menciona": true,
+        "valor": 1,
+        "noul": 0.99,
+        "score": 3.06,
+        "probabilidades": {
+          "0": 0.0,
+          "1": 0.0,
+          "2": 0.0,
+          "3": 0.93,
+          "4": 0.07
+        }
+      }
+    },
+    "p2_carga_r1": {
+      "volumen_carga_trabajo": {
+        "menciona": true,
+        "valor": -2,
+        "noul": 0.98,
+        "score": 0.02,
+        "probabilidades": {
+          "0": 0.98,
+          "1": 0.02,
+          "2": 0.0,
+          "3": 0.0,
+          "4": 0.0
+        }
+      },
+      "horarios_horas_extra": {
+        "menciona": true,
+        "valor": -2,
+        "noul": 0.99,
+        "score": 0.02,
+        "probabilidades": {
+          "0": 0.99,
+          "1": 0.01,
+          "2": 0.0,
+          "3": 0.0,
+          "4": 0.0
+        }
+      },
+      "flexibilidad_horaria_remota": {
+        "menciona": true,
+        "valor": -2,
+        "noul": 0.99,
+        "score": 0.03,
+        "probabilidades": {
+          "0": 0.97,
+          "1": 0.03,
+          "2": 0.0,
+          "3": 0.0,
+          "4": 0.0
+        }
+      },
+      "bienestar_desconexion": {
+        "menciona": true,
+        "valor": -1,
+        "noul": 0.99,
+        "score": 0.69,
+        "probabilidades": {
+          "0": 0.31,
+          "1": 0.69,
+          "2": 0.0,
+          "3": 0.0,
+          "4": 0.0
+        }
+      },
+      "beneficios_politicas_conciliacion": {
+        "menciona": true,
+        "valor": -2,
+        "noul": 0.71,
+        "score": 0.15,
+        "probabilidades": {
+          "0": 0.85,
+          "1": 0.15,
+          "2": 0.0,
+          "3": 0.0,
+          "4": 0.0
+        }
+      }
+    },
+    "p2_carga_r2": {
+      "volumen_carga_trabajo": {
+        "menciona": true,
+        "valor": 0,
+        "noul": 0.97,
+        "score": 2.06,
+        "probabilidades": {
+          "0": 0.0,
+          "1": 0.0,
+          "2": 0.94,
+          "3": 0.06,
+          "4": 0.0
+        }
+      },
+      "horarios_horas_extra": {
+        "menciona": true,
+        "valor": 2,
+        "noul": 0.96,
+        "score": 3.87,
+        "probabilidades": {
+          "0": 0.0,
+          "1": 0.0,
+          "2": 0.0,
+          "3": 0.12,
+          "4": 0.88
+        }
+      },
+      "flexibilidad_horaria_remota": {
+        "menciona": true,
+        "valor": 2,
+        "noul": 0.99,
+        "score": 3.98,
+        "probabilidades": {
+          "0": 0.0,
+          "1": 0.0,
+          "2": 0.0,
+          "3": 0.02,
+          "4": 0.98
+        }
+      },
+      "bienestar_desconexion": {
+        "menciona": true,
+        "valor": 1,
+        "noul": 0.98,
+        "score": 3.05,
+        "probabilidades": {
+          "0": 0.0,
+          "1": 0.0,
+          "2": 0.06,
+          "3": 0.83,
+          "4": 0.11
+        }
+      },
+      "beneficios_politicas_conciliacion": {
+        "menciona": true,
+        "valor": 1,
+        "noul": 0.97,
+        "score": 3.36,
+        "probabilidades": {
+          "0": 0.0,
+          "1": 0.0,
+          "2": 0.01,
+          "3": 0.62,
+          "4": 0.37
+        }
+      }
+    },
+    "p2_carga_r3": {
+      "volumen_carga_trabajo": {
+        "menciona": true,
+        "valor": -1,
+        "noul": 0.97,
+        "score": 1.08,
+        "probabilidades": {
+          "0": 0.01,
+          "1": 0.92,
+          "2": 0.07,
+          "3": 0.0,
+          "4": 0.0
+        }
+      },
+      "horarios_horas_extra": {
+        "menciona": false,
+        "valor": null,
+        "noul": 0.07,
+        "score": 1.53,
+        "probabilidades": {
+          "0": 0.14,
+          "1": 0.2,
+          "2": 0.66,
+          "3": 0.0,
+          "4": 0.0
+        }
+      },
+      "flexibilidad_horaria_remota": {
+        "menciona": false,
+        "valor": null,
+        "noul": 0.12,
+        "score": 0.32,
+        "probabilidades": {
+          "0": 0.77,
+          "1": 0.15,
+          "2": 0.08,
+          "3": 0.0,
+          "4": 0.0
+        }
+      },
+      "bienestar_desconexion": {
+        "menciona": false,
+        "valor": null,
+        "noul": 0.41,
+        "score": 0.76,
+        "probabilidades": {
+          "0": 0.27,
+          "1": 0.71,
+          "2": 0.02,
+          "3": 0.0,
+          "4": 0.0
+        }
+      },
+      "beneficios_politicas_conciliacion": {
+        "menciona": true,
+        "valor": -2,
+        "noul": 0.98,
+        "score": 0.01,
+        "probabilidades": {
+          "0": 1.0,
+          "1": 0.0,
+          "2": 0.0,
+          "3": 0.0,
+          "4": 0.0
+        }
+      }
+    },
+    "p3_remuneracion_r1": {
+      "suficiencia_sueldo": {
+        "menciona": true,
+        "valor": -1,
+        "noul": 0.98,
+        "score": 1.09,
+        "probabilidades": {
+          "0": 0.0,
+          "1": 0.92,
+          "2": 0.08,
+          "3": 0.0,
+          "4": 0.0
+        }
+      },
+      "competitividad_mercado": {
+        "menciona": false,
+        "valor": null,
+        "noul": 0.04,
+        "score": 1.46,
+        "probabilidades": {
+          "0": 0.01,
+          "1": 0.52,
+          "2": 0.47,
+          "3": 0.0,
+          "4": 0.0
+        }
+      },
+      "criterios_aumentos": {
+        "menciona": true,
+        "valor": -2,
+        "noul": 0.99,
+        "score": 0.0,
+        "probabilidades": {
+          "0": 1.0,
+          "1": 0.0,
+          "2": 0.0,
+          "3": 0.0,
+          "4": 0.0
+        }
+      },
+      "seguro_aguinaldos": {
+        "menciona": true,
+        "valor": 2,
+        "noul": 0.99,
+        "score": 3.99,
+        "probabilidades": {
+          "0": 0.0,
+          "1": 0.0,
+          "2": 0.0,
+          "3": 0.0,
+          "4": 1.0
+        }
+      },
+      "tiempo_libre": {
+        "menciona": true,
+        "valor": 2,
+        "noul": 0.99,
+        "score": 3.99,
+        "probabilidades": {
+          "0": 0.0,
+          "1": 0.0,
+          "2": 0.0,
+          "3": 0.01,
+          "4": 0.99
+        }
+      },
+      "convenios": {
+        "menciona": true,
+        "valor": 2,
+        "noul": 0.99,
+        "score": 3.97,
+        "probabilidades": {
+          "0": 0.0,
+          "1": 0.0,
+          "2": 0.0,
+          "3": 0.03,
+          "4": 0.97
+        }
+      }
+    },
+    "p3_remuneracion_r2": {
+      "suficiencia_sueldo": {
+        "menciona": true,
+        "valor": 1,
+        "noul": 0.99,
+        "score": 2.99,
+        "probabilidades": {
+          "0": 0.0,
+          "1": 0.0,
+          "2": 0.01,
+          "3": 0.99,
+          "4": 0.0
+        }
+      },
+      "competitividad_mercado": {
+        "menciona": true,
+        "valor": 1,
+        "noul": 0.99,
+        "score": 2.69,
+        "probabilidades": {
+          "0": 0.0,
+          "1": 0.0,
+          "2": 0.31,
+          "3": 0.69,
+          "4": 0.0
+        }
+      },
+      "criterios_aumentos": {
+        "menciona": true,
+        "valor": -1,
+        "noul": 0.99,
+        "score": 1.46,
+        "probabilidades": {
+          "0": 0.0,
+          "1": 0.54,
+          "2": 0.46,
+          "3": 0.0,
+          "4": 0.0
+        }
+      },
+      "seguro_aguinaldos": {
+        "menciona": false,
+        "valor": null,
+        "noul": 0.19,
+        "score": 2.49,
+        "probabilidades": {
+          "0": 0.0,
+          "1": 0.01,
+          "2": 0.5,
+          "3": 0.49,
+          "4": 0.0
+        }
+      },
+      "tiempo_libre": {
+        "menciona": false,
+        "valor": null,
+        "noul": 0.02,
+        "score": 2.0,
+        "probabilidades": {
+          "0": 0.0,
+          "1": 0.0,
+          "2": 1.0,
+          "3": 0.0,
+          "4": 0.0
+        }
+      },
+      "convenios": {
+        "menciona": false,
+        "valor": null,
+        "noul": 0.02,
+        "score": 2.0,
+        "probabilidades": {
+          "0": 0.0,
+          "1": 0.0,
+          "2": 1.0,
+          "3": 0.0,
+          "4": 0.0
+        }
+      }
+    },
+    "p3_remuneracion_r3": {
+      "suficiencia_sueldo": {
+        "menciona": true,
+        "valor": -2,
+        "noul": 0.98,
+        "score": 0.0,
+        "probabilidades": {
+          "0": 1.0,
+          "1": 0.0,
+          "2": 0.0,
+          "3": 0.0,
+          "4": 0.0
+        }
+      },
+      "competitividad_mercado": {
+        "menciona": true,
+        "valor": -2,
+        "noul": 0.98,
+        "score": 0.0,
+        "probabilidades": {
+          "0": 1.0,
+          "1": 0.0,
+          "2": 0.0,
+          "3": 0.0,
+          "4": 0.0
+        }
+      },
+      "criterios_aumentos": {
+        "menciona": false,
+        "valor": null,
+        "noul": 0.13,
+        "score": 0.36,
+        "probabilidades": {
+          "0": 0.73,
+          "1": 0.19,
+          "2": 0.08,
+          "3": 0.0,
+          "4": 0.0
+        }
+      },
+      "seguro_aguinaldos": {
+        "menciona": true,
+        "valor": -1,
+        "noul": 0.96,
+        "score": 1.06,
+        "probabilidades": {
+          "0": 0.01,
+          "1": 0.92,
+          "2": 0.07,
+          "3": 0.0,
+          "4": 0.0
+        }
+      },
+      "tiempo_libre": {
+        "menciona": true,
+        "valor": -1,
+        "noul": 0.89,
+        "score": 1.21,
+        "probabilidades": {
+          "0": 0.01,
+          "1": 0.77,
+          "2": 0.21,
+          "3": 0.01,
+          "4": 0.0
+        }
+      },
+      "convenios": {
+        "menciona": true,
+        "valor": -1,
+        "noul": 0.95,
+        "score": 0.93,
+        "probabilidades": {
+          "0": 0.1,
+          "1": 0.88,
+          "2": 0.02,
+          "3": 0.0,
+          "4": 0.0
+        }
+      }
+    },
+    "p4_crecimiento_r1": {
+      "capacitacion_formal": {
+        "menciona": true,
+        "valor": 2,
+        "noul": 0.99,
+        "score": 3.94,
+        "probabilidades": {
+          "0": 0.0,
+          "1": 0.0,
+          "2": 0.0,
+          "3": 0.05,
+          "4": 0.95
+        }
+      },
+      "apoyo_jefatura_y_pares": {
+        "menciona": true,
+        "valor": 1,
+        "noul": 0.99,
+        "score": 3.12,
+        "probabilidades": {
+          "0": 0.0,
+          "1": 0.0,
+          "2": 0.02,
+          "3": 0.84,
+          "4": 0.14
+        }
+      },
+      "claridad_ruta_de_carrera": {
+        "menciona": true,
+        "valor": -1,
+        "noul": 0.59,
+        "score": 0.88,
+        "probabilidades": {
+          "0": 0.13,
+          "1": 0.86,
+          "2": 0.01,
+          "3": 0.0,
+          "4": 0.0
+        }
+      },
+      "transparencia_ascensos": {
+        "menciona": true,
+        "valor": -1,
+        "noul": 0.99,
+        "score": 0.82,
+        "probabilidades": {
+          "0": 0.18,
+          "1": 0.82,
+          "2": 0.0,
+          "3": 0.0,
+          "4": 0.0
+        }
+      },
+      "disponibilidad_de_vacantes": {
+        "menciona": true,
+        "valor": -1,
+        "noul": 0.92,
+        "score": 0.98,
+        "probabilidades": {
+          "0": 0.03,
+          "1": 0.96,
+          "2": 0.01,
+          "3": 0.0,
+          "4": 0.0
+        }
+      },
+      "intencion_de_permanencia": {
+        "menciona": true,
+        "valor": -1,
+        "noul": 0.95,
+        "score": 1.23,
+        "probabilidades": {
+          "0": 0.0,
+          "1": 0.77,
+          "2": 0.23,
+          "3": 0.0,
+          "4": 0.0
+        }
+      }
+    },
+    "p4_crecimiento_r2": {
+      "capacitacion_formal": {
+        "menciona": false,
+        "valor": null,
+        "noul": 0.04,
+        "score": 1.37,
+        "probabilidades": {
+          "0": 0.25,
+          "1": 0.14,
+          "2": 0.61,
+          "3": 0.0,
+          "4": 0.0
+        }
+      },
+      "apoyo_jefatura_y_pares": {
+        "menciona": false,
+        "valor": null,
+        "noul": 0.15,
+        "score": 0.6,
+        "probabilidades": {
+          "0": 0.65,
+          "1": 0.12,
+          "2": 0.23,
+          "3": 0.0,
+          "4": 0.0
+        }
+      },
+      "claridad_ruta_de_carrera": {
+        "menciona": true,
+        "valor": -2,
+        "noul": 0.97,
+        "score": 0.03,
+        "probabilidades": {
+          "0": 0.99,
+          "1": 0.01,
+          "2": 0.0,
+          "3": 0.0,
+          "4": 0.0
+        }
+      },
+      "transparencia_ascensos": {
+        "menciona": true,
+        "valor": -2,
+        "noul": 0.99,
+        "score": 0.0,
+        "probabilidades": {
+          "0": 1.0,
+          "1": 0.0,
+          "2": 0.0,
+          "3": 0.0,
+          "4": 0.0
+        }
+      },
+      "disponibilidad_de_vacantes": {
+        "menciona": true,
+        "valor": -2,
+        "noul": 0.99,
+        "score": 0.0,
+        "probabilidades": {
+          "0": 1.0,
+          "1": 0.0,
+          "2": 0.0,
+          "3": 0.0,
+          "4": 0.0
+        }
+      },
+      "intencion_de_permanencia": {
+        "menciona": true,
+        "valor": -2,
+        "noul": 0.98,
+        "score": 0.0,
+        "probabilidades": {
+          "0": 1.0,
+          "1": 0.0,
+          "2": 0.0,
+          "3": 0.0,
+          "4": 0.0
+        }
+      }
+    },
+    "p4_crecimiento_r3": {
+      "capacitacion_formal": {
+        "menciona": true,
+        "valor": 0,
+        "noul": 0.99,
+        "score": 1.84,
+        "probabilidades": {
+          "0": 0.0,
+          "1": 0.16,
+          "2": 0.83,
+          "3": 0.01,
+          "4": 0.0
+        }
+      },
+      "apoyo_jefatura_y_pares": {
+        "menciona": true,
+        "valor": 2,
+        "noul": 0.99,
+        "score": 4.0,
+        "probabilidades": {
+          "0": 0.0,
+          "1": 0.0,
+          "2": 0.0,
+          "3": 0.0,
+          "4": 1.0
+        }
+      },
+      "claridad_ruta_de_carrera": {
+        "menciona": true,
+        "valor": 1,
+        "noul": 0.98,
+        "score": 2.82,
+        "probabilidades": {
+          "0": 0.0,
+          "1": 0.0,
+          "2": 0.17,
+          "3": 0.83,
+          "4": 0.0
+        }
+      },
+      "transparencia_ascensos": {
+        "menciona": true,
+        "valor": 1,
+        "noul": 0.98,
+        "score": 3.08,
+        "probabilidades": {
+          "0": 0.0,
+          "1": 0.0,
+          "2": 0.01,
+          "3": 0.9,
+          "4": 0.09
+        }
+      },
+      "disponibilidad_de_vacantes": {
+        "menciona": false,
+        "valor": null,
+        "noul": 0.44,
+        "score": 2.66,
+        "probabilidades": {
+          "0": 0.0,
+          "1": 0.0,
+          "2": 0.34,
+          "3": 0.65,
+          "4": 0.01
+        }
+      },
+      "intencion_de_permanencia": {
+        "menciona": false,
+        "valor": null,
+        "noul": 0.27,
+        "score": 3.14,
+        "probabilidades": {
+          "0": 0.0,
+          "1": 0.0,
+          "2": 0.07,
+          "3": 0.72,
+          "4": 0.21
+        }
+      }
+    },
+    "p5_equipo_r1": {
+      "relacion_equipo": {
+        "menciona": true,
+        "valor": 2,
+        "noul": 0.99,
+        "score": 4.0,
+        "probabilidades": {
+          "0": 0.0,
+          "1": 0.0,
+          "2": 0.0,
+          "3": 0.0,
+          "4": 1.0
+        }
+      },
+      "colaboracion_otras_areas": {
+        "menciona": true,
+        "valor": -2,
+        "noul": 0.99,
+        "score": 0.0,
+        "probabilidades": {
+          "0": 1.0,
+          "1": 0.0,
+          "2": 0.0,
+          "3": 0.0,
+          "4": 0.0
+        }
+      },
+      "manejo_conflictos": {
+        "menciona": false,
+        "valor": null,
+        "noul": 0.22,
+        "score": 1.19,
+        "probabilidades": {
+          "0": 0.26,
+          "1": 0.33,
+          "2": 0.38,
+          "3": 0.02,
+          "4": 0.01
+        }
+      },
+      "herramientas_y_reuniones": {
+        "menciona": true,
+        "valor": -1,
+        "noul": 0.98,
+        "score": 0.89,
+        "probabilidades": {
+          "0": 0.11,
+          "1": 0.88,
+          "2": 0.01,
+          "3": 0.0,
+          "4": 0.0
+        }
+      }
+    },
+    "p5_equipo_r2": {
+      "relacion_equipo": {
+        "menciona": true,
+        "valor": 1,
+        "noul": 0.98,
+        "score": 3.03,
+        "probabilidades": {
+          "0": 0.0,
+          "1": 0.0,
+          "2": 0.0,
+          "3": 0.97,
+          "4": 0.03
+        }
+      },
+      "colaboracion_otras_areas": {
+        "menciona": true,
+        "valor": 0,
+        "noul": 0.98,
+        "score": 1.6,
+        "probabilidades": {
+          "0": 0.0,
+          "1": 0.4,
+          "2": 0.6,
+          "3": 0.0,
+          "4": 0.0
+        }
+      },
+      "manejo_conflictos": {
+        "menciona": true,
+        "valor": -1,
+        "noul": 0.99,
+        "score": 0.82,
+        "probabilidades": {
+          "0": 0.18,
+          "1": 0.82,
+          "2": 0.0,
+          "3": 0.0,
+          "4": 0.0
+        }
+      },
+      "herramientas_y_reuniones": {
+        "menciona": false,
+        "valor": null,
+        "noul": 0.06,
+        "score": 1.85,
+        "probabilidades": {
+          "0": 0.01,
+          "1": 0.14,
+          "2": 0.85,
+          "3": 0.0,
+          "4": 0.0
+        }
+      }
+    },
+    "p5_equipo_r3": {
+      "relacion_equipo": {
+        "menciona": true,
+        "valor": -2,
+        "noul": 0.98,
+        "score": 0.58,
+        "probabilidades": {
+          "0": 0.55,
+          "1": 0.32,
+          "2": 0.13,
+          "3": 0.0,
+          "4": 0.0
+        }
+      },
+      "colaboracion_otras_areas": {
+        "menciona": true,
+        "valor": -2,
+        "noul": 0.82,
+        "score": 0.36,
+        "probabilidades": {
+          "0": 0.79,
+          "1": 0.08,
+          "2": 0.11,
+          "3": 0.02,
+          "4": 0.0
+        }
+      },
+      "manejo_conflictos": {
+        "menciona": true,
+        "valor": -2,
+        "noul": 0.99,
+        "score": 0.0,
+        "probabilidades": {
+          "0": 1.0,
+          "1": 0.0,
+          "2": 0.0,
+          "3": 0.0,
+          "4": 0.0
+        }
+      },
+      "herramientas_y_reuniones": {
+        "menciona": true,
+        "valor": 1,
+        "noul": 0.98,
+        "score": 2.98,
+        "probabilidades": {
+          "0": 0.0,
+          "1": 0.0,
+          "2": 0.05,
+          "3": 0.92,
+          "4": 0.03
+        }
+      }
+    }
+  },
+  "segundos": 21.5
+}

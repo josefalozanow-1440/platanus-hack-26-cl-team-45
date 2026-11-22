@@ -10,6 +10,7 @@ Claude corre con `claude -p` (usa la suscripción, no API key). Jev necesita TYP
 import argparse
 import json
 import os
+import ssl
 import subprocess
 import tempfile
 import threading
@@ -34,6 +35,8 @@ TIPO_TEXTO = ("Transcripción automática de una respuesta hablada (audio de has
               "Puede tener muletillas y errores de transcripción.")
 _claude_slots = threading.Semaphore(8)  # procesos `claude -p` simultáneos
 TOKENS_JEV, _tokens_lock = [0], threading.Lock()  # tokens de entrada de Jev en esta corrida
+# El Python de python.org en macOS no trae certificados raíz; el bundle del sistema sí.
+SSL = ssl.create_default_context(cafile="/etc/ssl/cert.pem" if os.path.exists("/etc/ssl/cert.pem") else None)
 
 
 def claude(prompt, schema, modelo, sistema):
@@ -64,7 +67,7 @@ def jev(state, questions):
                  "Content-Type": "application/json"})
     for intento in range(5):
         try:
-            with urllib.request.urlopen(req, timeout=120) as r:
+            with urllib.request.urlopen(req, timeout=120, context=SSL) as r:
                 return json.loads(r.read())
         except urllib.error.HTTPError as e:
             if e.code != 429 or intento == 4:
