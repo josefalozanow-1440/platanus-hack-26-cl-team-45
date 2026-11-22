@@ -1,22 +1,22 @@
 # Audem
 
-**La encuesta que se responde con un audio de WhatsApp y le devuelve a cada uno lo que dijo el resto del grupo.**
+**Encuestas de opinión que se responden con un audio, como en WhatsApp, y muestran lo que piensa la gente en un mapa, no en un porcentaje.**
 
 ## El problema
 
-Los grupos grandes, como un comité de vivienda, una junta de vecinos o un curso, se coordinan por WhatsApp. Cuando hay que decidir algo, llegan decenas de audios que nadie alcanza a escuchar enteros, y las encuestas de formulario dejan fuera justo lo importante: el porqué, el tono y lo que a la gente le preocupa de verdad.
+Encuestas como Cadem o Criteria reducen cada opinión a sí, no o una alternativa cerrada. Pero una opinión rara vez cabe en una casilla: apoya una parte, le preocupa otra y propone algo distinto. El matiz y el porqué se pierden.
 
 ## Cómo funciona
 
-1. **Pregunta por WhatsApp.** Audem envía una pregunta y cada persona responde con un audio, sin instalar nada ni crear una cuenta.
-2. **De audio a frases.** Cada audio se transcribe y se resume en frases clave, cada una con su cita textual, su emoción y su intensidad.
-3. **Mapa en vivo.** Las frases se agrupan por similitud en un mapa que se actualiza a medida que llegan respuestas: qué temas aparecen, cuánta gente está en cada uno y con qué emoción.
-4. **Segunda ronda cruzada.** Un agente le escribe a cada persona con lo que dijo el grupo que piensa distinto y le pregunta qué le respondería. Las nuevas respuestas muestran qué ideas aceptan ambos lados.
+1. **Pregunta abierta.** Audem hace una pregunta y cada persona responde con un audio, como ya habla por WhatsApp, sin instalar nada.
+2. **De audio a postura.** Cada audio se transcribe y se lee entero: qué temas toca, si está a favor, en contra o en una posición mixta, con cuánta fuerza, con qué emoción y qué propone, siempre con su cita textual.
+3. **Mapa en vivo.** Las ideas se agrupan por postura en un mapa que se actualiza con cada respuesta: qué voces aparecen, cuánta gente hay en cada una y qué tan cerca están entre sí.
+4. **Categorías que nadie fijó.** No hay alternativas fijadas de antemano: los temas y posturas salen de lo que dice la gente y se reordenan con cada respuesta, así que la representación se ajusta a la pregunta.
 
 ## Por qué es multiplayer
 
-Con una sola persona no hay mapa, ni grupos, ni contraparte. La pregunta que recibe cada uno en la segunda ronda depende de lo que dijeron los demás, así que Audem mejora con cada persona que responde.
+Con una sola persona no hay mapa ni posturas que comparar. Cada respuesta cambia cómo se agrupan las demás, así que el retrato de lo que piensa la ciudadanía se vuelve más fino con cada voz que se suma.
 
 ## Stack
 
-WhatsApp vía Kapso · transcripción de voz · LLM para extraer frases, emoción y escribir la segunda ronda · embeddings y clustering para el mapa · panel web en vivo.
+Web con micrófono o texto para responder · Whisper para transcribir · Claude (Opus y Haiku) para extraer posturas y agrupar el mapa · Convex con queries en vivo · React.

@@ -121,6 +121,7 @@ Con agrupar y normalizar en Haiku low, el total debería quedar bajo US$ 0,02 po
 - **Viernes 21, de 14:00 a 18:00: Comité.** Un copiloto para comités de vivienda que postulan a un DS49 colectivo. Quedaron un estado de producto, el mapa de leyes y decretos, las pantallas del Figma, una base con FastAPI, Postgres y Next.js, y una propuesta de canal por WhatsApp con Kapso.
 - **Viernes 21, 22:34: reset.** Volvimos el repo al estado inicial y escribimos [AGENTS.md](AGENTS.md) para que los agentes cambien sin miedo y sin código legacy.
 - **Viernes 21, 23:00: Audem.** Giro a una encuesta multiplayer: cada uno responde con un audio, se arma un mapa en vivo de lo que piensa el grupo y en una segunda ronda cada persona recibe lo que dijo el que piensa distinto. Del Comité quedó la idea de un grupo grande que se coordina por WhatsApp.
+- **Domingo 22: encuestas de opinión.** El pitch se enfoca en reemplazar las respuestas discretas de encuestas como Cadem o Criteria por opiniones continuas: cada persona responde con un audio y el mapa muestra posturas que salen de lo que dice la gente. La segunda ronda cruzada sale del pitch.
 
 ### Stack
 

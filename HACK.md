@@ -19,17 +19,19 @@ Diego lee `GET /api/mapa` → `{pregunta, clusters: [...], frases: [...], respue
 Canal: WhatsApp vía Kapso (webhook entrante + envío) · Backend: FastAPI + Postgres · STT: el que ya tenga key el equipo (español chileno) · LLM: Claude para extracción y nombres de clusters · Embeddings + UMAP + k-means para el mapa · Front: Next.js, pantalla en vivo que consulta cada 2-3 s · Deploy: Render (URL: pendiente)
 
 ## Idea
-One-liner (borrador): Para grupos grandes que ya se coordinan por WhatsApp (ej. un comité de vivienda), Audem que convierte sus audios en un mapa en vivo de lo que piensa el grupo y le devuelve a cada uno lo que dijeron los demás, porque en un chat de 100 personas nadie escucha 100 audios.
+One-liner: Encuestas de opinión que se responden con un audio y muestran lo que piensa la gente en un mapa, no en un porcentaje.
 
-Demo en 3 frases (borrador):
-1. A y B abren el link wa.me, responden la pregunta con un audio de WhatsApp y en ~15 s su frase aparece en un cluster en la pantalla grande.
-2. Cuando hay suficientes respuestas, cada uno recibe por WhatsApp la postura del cluster opuesto ("otros dicen X, ¿qué les responderías?").
-3. A responde con otro audio y en pantalla se ve el puente: qué frases aceptan ambos lados.
+Problema: encuestas como Cadem o Criteria reducen cada opinión a sí, no o una alternativa cerrada. Una opinión rara vez cabe en una casilla: apoya una parte, le preocupa otra y propone algo distinto.
 
-Forma: asincrónico por rondas · personas + agente (mediador que escribe la ronda 2) · N mínimo: ~6 para que existan clusters
-Por qué es peor con una sola persona: no hay clusters ni ronda 2; la pregunta que te llega depende de lo que dijeron los demás.
-Elemento técnico difícil: pipeline audio → texto → frases + emoción → clusters en vivo, y ronda 2 personalizada generada desde el cluster opuesto de cada persona.
-Diferencia vs lo que ya existe: Pol.is y Talk to the City son texto y web; esto es voz por WhatsApp (donde ya está el grupo) y cierra el ciclo devolviéndole a cada uno lo que dijo el otro lado.
+Demo en 3 frases:
+1. La sala escanea el QR y responde una pregunta abierta con un audio, como en WhatsApp (hoy se responde en la web con micrófono o texto).
+2. En segundos su respuesta aparece en el mapa en vivo, agrupada por postura, con su cita, emoción e intensidad.
+3. Con cada respuesta los temas y posturas se reordenan: las categorías salen de lo que dice la gente, no de alternativas fijadas de antemano.
+
+Por qué es peor con una sola persona: no hay mapa ni posturas que comparar. Cada respuesta cambia cómo se agrupan las demás, así que el retrato se vuelve más fino con cada voz.
+Elemento técnico difícil: pipeline audio → texto → posturas por tema (dirección, intensidad, tendencia, propuesta) → mapa en vivo con categorías que emergen de las respuestas.
+Diferencia vs lo que ya existe: Cadem y Criteria miden con respuestas discretas; Pol.is y Talk to the City son texto y web. Audem mide opinión continua desde la voz.
+Proyección (solo pitch, por decidir): que el sistema también elija la mejor forma de visualizar las posturas a medida que crecen las respuestas. No va en la descripción de la entrega.
 
 ## Estado compartido
 | Entidad | Quién escribe | Quién ve | Notas |
@@ -62,8 +64,9 @@ Diferencia vs lo que ya existe: Pol.is y Talk to the City son texto y web; esto 
 - 22-nov: el análisis lo hace Claude leyendo la respuesta completa, sin Jev ni grillas fijas. Evals, técnicas descartadas y costo por respuesta en `evals/README.md`.
 - 22-nov: al lado de extraer (Opus low) y agrupar corre `analizar` (Haiku medium, una fila en `analisis` por respuesta con temas libres, dirección, intensidad, tendencia, emoción y propuesta) y `normalizar` (junta esos temas en `topicos` neutros de la encuesta). Cuesta ~0,3 ¢ más por respuesta.
 - 22-nov: agrupar y normalizar pasan a Haiku low para que el mapa se actualice más rápido (~15 s desde que entra un texto, antes ~22 s). Sin eval de calidad, solo tiempos (`evals/hackaton/latencia.ts`).
+- 22-nov: pitch y descripción de la entrega reenfocados en encuestas de opinión con respuestas continuas, como alternativa a Cadem y Criteria. La ronda 2 cruzada sale de la descripción y del pitch. Se dice "un audio, como en WhatsApp", porque hoy se responde en la web.
 
 ## Pendientes
-- **Visualizar los tópicos.** La query `encuestas.topicos({ slug })` ya entrega, por tópico, personas, cuántas positivas, negativas, mixtas y neutras, cuántas dicen que mejoró o empeoró, y las citas por persona; además la lista de propuestas y las emociones. Falta decidir cómo se ve (barras por tópico al lado del mapa, lista de propuestas) y usarlo para la ronda 2: a quien está negativo en un tópico, mostrarle la cita de alguien positivo en el mismo tópico.
+- **Visualizar los tópicos.** La query `encuestas.topicos({ slug })` ya entrega, por tópico, personas, cuántas positivas, negativas, mixtas y neutras, cuántas dicen que mejoró o empeoró, y las citas por persona; además la lista de propuestas y las emociones. Falta decidir cómo se ve (barras por tópico al lado del mapa, lista de propuestas).
 
 ## Lo que dijeron mentores/jueces
