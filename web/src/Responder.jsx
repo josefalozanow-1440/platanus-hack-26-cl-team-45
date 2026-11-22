@@ -9,6 +9,8 @@ const ESTADO = { transcribiendo: 'transcribiendo…', procesando: 'procesando…
 // Anonymous participant id, kept in this browser only.
 const YO = (() => { try { return (localStorage.audem_id ||= crypto.randomUUID()); } catch { return crypto.randomUUID(); } })();
 
+const GRACIAS = <>¡Gracias! <a href={`/${SLUG}/panel`}>Mira lo que dijo el grupo</a></>;
+
 function Responder() {
   const encuesta = useQuery(api.encuestas.actual, { slug: SLUG });
   const mias = useQuery(api.encuestas.mias, encuesta ? { encuestaId: encuesta._id, participante: YO } : 'skip') ?? [];
@@ -55,14 +57,14 @@ function Responder() {
       if (!r.ok) throw new Error('Error: No se pudo subir el audio');
       const { storageId } = await r.json();
       await responderAudio({ encuestaId: encuesta._id, participante: YO, audioId: storageId });
-      setEstado('¡Gracias! Mira la pantalla.');
+      setEstado(GRACIAS);
     } catch (e) { setEstado(mensaje(e)); }
     setOcupado(false);
   }
 
   async function enviarTexto() {
     setOcupado(true); setEstado('Enviando…');
-    try { await responder({ encuestaId: encuesta._id, participante: YO, texto }); setTexto(''); setEstado('¡Gracias! Mira la pantalla.'); }
+    try { await responder({ encuestaId: encuesta._id, participante: YO, texto }); setTexto(''); setEstado(GRACIAS); }
     catch (e) { setEstado(mensaje(e)); }
     setOcupado(false);
   }
