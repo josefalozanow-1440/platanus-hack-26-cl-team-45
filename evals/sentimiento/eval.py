@@ -9,6 +9,9 @@ no puedan leer preguntas.json ni dataset.json (las respuestas correctas).
   python3 eval.py importar-dataset DIR     # dataset.json + DIR/clasificar/{preguntas,respuestas}.json
   python3 eval.py jev DIR                  # corre Jev, importa claude_solo, escribe DIR/alinear/tareas.json
   python3 eval.py importar-alineacion DIR  # lee DIR/alinear/alineacion.json
+  node pipeline.ts                         # pipeline de la app con Haiku y Opus: resultados/*/pipeline_crudo.json
+  python3 eval.py tareas-pipeline DIR      # DIR/alinear_pipeline/tareas.json (temas de la app -> referencia)
+  python3 eval.py importar-pipeline DIR    # lee DIR/alinear_pipeline/alineacion.json: resultados/*/pipeline_app.json
   python3 eval.py puntuar                  # resultados/RESULTADOS.md y COLUMNAS.md
   python3 eval.py entradas-juicio DIR      # DIR/juzgar/S*.md (corridas a ciegas)
   python3 eval.py importar-juicio DIR      # resultados/JUICIO.md
@@ -33,7 +36,7 @@ DIM_R = PREG["dimensiones_respuesta"]
 DATASET = AQUI / "dataset.json"
 RES = AQUI / "resultados"
 MODELOS = ["opus", "sonnet", "haiku"]
-CONDICIONES = ["claude_solo", "claude_respuestas_jev", "claude_pregunta_jev", "jev_columnas_sabidas"]
+CONDICIONES = ["claude_solo", "claude_respuestas_jev", "claude_pregunta_jev", "jev_columnas_sabidas", "pipeline_app"]
 TIPO_TEXTO = ("Transcripción automática de una respuesta hablada (audio de hasta 3 minutos). "
               "Puede tener muletillas y errores de transcripción.")
 TOKENS_JEV, _lock = [0], threading.Lock()
@@ -242,6 +245,91 @@ def cmd_importar_alineacion(a):
     print("alineación importada")
 
 
+# ---------- pipeline de la app ----------
+# La app no tiene columnas: saca frases (emoción 0-1 de una lista de 22) y las agrupa en temas de postura.
+# Para puntuarla, un alineador manda cada tema a cero o más destinos: columnas de referencia, riesgo_fuga o propone
+# (varios temas pueden ir a la misma columna, porque un tema es una postura, y un tema puede cubrir dos columnas). Después, por respuesta:
+# dirección = polaridad de las emociones de sus frases en esa columna (la misma división POS/NEG de web/src/comun.js),
+# intensidad = la mayor intensidad, y tendencia = no_dice, porque la app no la extrae.
+
+POS = {"alegria", "entusiasmo", "gratitud", "orgullo", "alivio", "esperanza", "satisfaccion", "confianza"}
+NEG = {"frustracion", "cansancio", "enojo", "rabia", "preocupacion", "decepcion", "tristeza", "miedo", "molestia", "angustia"}
+# De las 22 emociones de la app a las 6 del eval; las que no calzan (sorpresa, curiosidad, duda) quedan como calma.
+A_EMOCION = {**dict.fromkeys(["frustracion", "enojo", "rabia", "molestia"], "frustracion"),
+             **dict.fromkeys(["cansancio", "decepcion", "tristeza"], "resignacion"),
+             **dict.fromkeys(["preocupacion", "miedo", "angustia"], "ansiedad"),
+             **dict.fromkeys(["entusiasmo", "alegria", "orgullo", "esperanza"], "entusiasmo"),
+             **dict.fromkeys(["gratitud", "alivio", "satisfaccion", "confianza"], "gratitud")}
+PSEUDO = {"riesgo_fuga": DIM_R["riesgo_fuga"], "propone": DIM_R["propone"]}
+MODELOS_PIPELINE = ["haiku", "opus"]
+
+
+def direccion_de(emociones):
+    pos, neg = any(e in POS for e in emociones), any(e in NEG for e in emociones)
+    return "mixto" if pos and neg else "positivo" if pos else "negativo" if neg else "neutro"
+
+
+def intensidad_de(x):
+    return "leve" if x < 0.4 else "moderada" if x < 0.7 else "fuerte"
+
+
+def cmd_tareas_pipeline(a):
+    tareas = {}
+    for m in MODELOS_PIPELINE:
+        crudo = leer(RES / m / "pipeline_crudo.json")["preguntas"]
+        for pid, p in crudo.items():
+            tareas[f"{m}|{pid}"] = {"pregunta": PREGUNTAS[pid]["texto"], "destinos": {**PREGUNTAS[pid]["columnas"], **PSEUDO},
+                                    "temas": {t["id"]: f"{t['nombre']}: {t['resumen']}" for t in p["temas"]}}
+    ciegas = {f"T{i + 1}": t for i, t in enumerate(tareas.values())}
+    escribir(Path(a.dir) / "alinear_pipeline" / "tareas.json", ciegas)
+    escribir(RES / "alineacion_pipeline_mapa.json", dict(zip(ciegas, tareas)))
+    print(f"{len(ciegas)} tareas en {a.dir}/alinear_pipeline/tareas.json")
+
+
+def cmd_importar_pipeline(a):
+    dataset, mapa = leer(DATASET), leer(RES / "alineacion_pipeline_mapa.json")
+    salida, tareas = leer(Path(a.dir) / "alinear_pipeline" / "alineacion.json"), leer(Path(a.dir) / "alinear_pipeline" / "tareas.json")
+    destino = {}  # (modelo, pid) -> {tema: [destinos]}
+    for t, clave in mapa.items():
+        m, pid = clave.split("|")
+        validos = tareas[t]["destinos"]
+        destino[(m, pid)] = {tid: [d for d in salida[t].get(tid) or [] if d in validos] for tid in tareas[t]["temas"]}
+    for m in MODELOS_PIPELINE:
+        crudo = leer(RES / m / "pipeline_crudo.json")
+        cols, ali, items = {}, {}, {}
+        for it in dataset:
+            iid, pid = it["id"], it["pregunta_id"]
+            p, dest = crudo["preguntas"][pid], destino[(m, pid)]
+            tema_de = {x["frase"]: x["tema"] for x in p["asignacion"]}
+            mias = [f for f in p["frases"] if f["respuesta_id"] == iid]
+            por_destino = {}
+            for f in mias:
+                for d in dest.get(tema_de.get(f["id"]), []):
+                    por_destino.setdefault(d, []).append(f)
+            ref = PREGUNTAS[pid]["columnas"]
+            con_tema = {d for ds in dest.values() for d in ds if d in ref}
+            extras = {t["id"]: f"{t['nombre']}: {t['resumen']}" for t in p["temas"] if not dest[t["id"]]}
+            cols[iid] = {**{g: ref[g] for g in con_tema}, **extras}
+            ali[iid] = {g: (g if g in con_tema else None) for g in ref}
+            temas = {}
+            for g in con_tema:
+                fs = por_destino.get(g, [])
+                d = direccion_de([f["emocion"] for f in fs])
+                temas[g] = {"menciona": bool(fs), "direccion": d, "tendencia": "no_dice",
+                            "intensidad": intensidad_de(max(f["intensidad"] for f in fs)) if fs and d in ("positivo", "negativo") else None}
+            for tid in extras:
+                fs = [f for f in mias if tema_de.get(f["id"]) == tid]
+                temas[tid] = {"menciona": bool(fs), "direccion": direccion_de([f["emocion"] for f in fs]), "intensidad": None,
+                              "tendencia": "no_dice"}
+            fuerte = max(mias, key=lambda f: f["intensidad"])
+            items[iid] = {"temas": temas, "riesgo_fuga": bool(por_destino.get("riesgo_fuga")),
+                          "propone": bool(por_destino.get("propone")),
+                          "emocion": A_EMOCION.get(fuerte["emocion"], "calma"), "frases": mias}
+        escribir(RES / m / "pipeline_app.json", {"condicion": "pipeline_app", "modelo": m, "model": crudo["model"],
+                                                 "effort": crudo["effort"], "columnas": cols, "alineacion": ali, "items": items})
+    print("pipeline importado")
+
+
 # ---------- puntuar ----------
 
 def corridas_existentes():
@@ -255,7 +343,7 @@ def pred_tema(r, iid, g):
 
 
 def metricas(r, dataset):
-    n = {k: [0, 0] for k in ("direccion", "intensidad", "tendencia", "completa", "riesgo", "emocion", "propone")}
+    n = {k: [0, 0] for k in ("direccion", "intensidad", "tendencia", "completa", "sin_tendencia", "riesgo", "emocion", "propone")}
     tp = fp = fn = invertidos = dudosos = mencionadas = con_pareja = extras = 0
     for it in dataset:
         iid, ali, pr = it["id"], r["alineacion"][it["id"]], r["items"][it["id"]]
@@ -279,6 +367,8 @@ def metricas(r, dataset):
             n["completa"][0] += (gv is None and p is None) or bool(
                 gv and p and gd == pd and gv["intensidad"] == p["intensidad"] and gv["tendencia"] == p["tendencia"])
             n["completa"][1] += 1
+            n["sin_tendencia"][0] += (gv is None and p is None) or bool(gv and p and gd == pd and gv["intensidad"] == p["intensidad"])
+            n["sin_tendencia"][1] += 1
             invertidos += {gd, pd} == {"positivo", "negativo"}
             ind = ali[g]
             q = r["items"][iid]["temas"].get(ind) if ind else None
@@ -299,16 +389,17 @@ def pct(x):
 def cmd_puntuar(_):
     dataset = leer(DATASET)
     L = ["# Resultados", "", f"{len(dataset)} respuestas, 60 celdas (respuesta × tema de referencia). "
-         "Ver PLAN.md para qué mide cada métrica.", "",
-         "| Modelo | Condición | Celda completa | Dirección | Intensidad | Tendencia | F1 mención | Signo invertido | "
+         "Ver PLAN.md para qué mide cada métrica. «Celda sin tendencia» es la celda completa sin exigir tendencia, "
+         "porque pipeline_app no la extrae.", "",
+         "| Modelo | Condición | Celda completa | Celda sin tendencia | Dirección | Intensidad | Tendencia | F1 mención | Signo invertido | "
          "Riesgo de fuga | Emoción | Propone | Cobertura | Extras por respuesta | Nouls dudosos |",
-         "|---|---|---|---|---|---|---|---|---|---|---|---|---|---|"]
+         "|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|"]
     for m, c in corridas_existentes():
         x = metricas(leer(RES / m / f"{c}.json"), dataset)
-        L.append(f"| {m} | {c} | {pct(x['completa'])} | {pct(x['direccion'])} | {pct(x['intensidad'])} | "
+        L.append(f"| {m} | {c} | {pct(x['completa'])} | {pct(x['sin_tendencia'])} | {pct(x['direccion'])} | {pct(x['intensidad'])} | "
                  f"{pct(x['tendencia'])} | {x['f1_mencion']:.2f} | {x['invertidos']} | {pct(x['riesgo'])} | "
                  f"{pct(x['emocion'])} | {pct(x['propone'])} | {pct(x['cobertura'])} | {x['extras']:.1f} | "
-                 f"{x['dudosos'] if c != 'claude_solo' else '-'} |")
+                 f"{x['dudosos'] if c not in ('claude_solo', 'pipeline_app') else '-'} |")
     uso = RES / "jev_uso.json"
     if uso.exists():
         u = leer(uso)
@@ -405,6 +496,7 @@ if __name__ == "__main__":
     sub = ap.add_subparsers(required=True)
     for nombre, f in (("entradas-generar", cmd_entradas_generar), ("importar-dataset", cmd_importar_dataset),
                       ("jev", cmd_jev), ("importar-alineacion", cmd_importar_alineacion),
+                      ("tareas-pipeline", cmd_tareas_pipeline), ("importar-pipeline", cmd_importar_pipeline),
                       ("entradas-juicio", cmd_entradas_juicio), ("importar-juicio", cmd_importar_juicio)):
         s = sub.add_parser(nombre)
         s.add_argument("dir")

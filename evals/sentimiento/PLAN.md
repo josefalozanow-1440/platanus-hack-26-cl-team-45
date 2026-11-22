@@ -104,4 +104,26 @@ Celda completa: dirección, intensidad y tendencia correctas a la vez.
 - Ningún sistema invirtió una opinión.
 - Gasto: 14 subagentes con unos 900k tokens en total (el juez, el más caro, 138k), por la suscripción de Claude Code. Jev: 105 requests en 1,7 segundos, 331k tokens de entrada.
 
-Ojo: el pipeline de la app (`convex/procesar.ts`) no usa columnas. Extrae frases con emoción e intensidad y las agrupa en temas de postura. Este eval mide la variante con columnas; para validar la app hace falta un eval de ese pipeline.
+## Pipeline de la app (corrida del 22-11-2026)
+
+`pipeline_app` corre el código real de la app (`convex/extraccion.ts`, mismos prompts y schemas) con [pipeline.ts](pipeline.ts). Las respuestas de cada pregunta entran de a una, como en la app: extraer frases y reagrupar con los temas que ya existen. Se probó Haiku 5.5 con effort medium y Opus 5.5 con effort low, que es lo que corre la app hoy.
+
+La app no tiene columnas, así que para puntuarla:
+
+- Un subagente Opus sin contexto manda cada tema a cero o más destinos: columnas de referencia, `riesgo_fuga` o `propone`. Varios temas pueden ir a la misma columna porque cada tema es una postura ("sueldo bajo" y "sueldo mejorado").
+- La dirección de cada celda sale de la polaridad de las emociones de las frases (la división POS/NEG de `web/src/comun.js`). La intensidad es la mayor de esas frases (menos de 0,4 es leve, menos de 0,7 moderada).
+- La tendencia queda siempre en `no_dice`, porque la app no la extrae. Por eso se agregó «Celda sin tendencia».
+- La emoción de la respuesta es la de su frase más intensa, traducida de 22 a 6 emociones.
+
+| | Celda completa | Celda sin tendencia | Dirección | Intensidad | Riesgo de fuga | Propone | Emoción |
+|---|---|---|---|---|---|---|---|
+| `claude_solo` · Haiku | 90% | 92% | 95% | 94% | 100% | 100% | 100% |
+| `pipeline_app` · Haiku medium | 23% | 58% | 75% | 64% | 100% | 67% | 40% |
+| `pipeline_app` · Opus low | 27% | 65% | 80% | 70% | 87% | 73% | 47% |
+
+- La celda completa se cae por diseño: la app no extrae tendencia. Sin exigirla, queda entre 58% y 65%, más cerca de las condiciones con Jev que de `claude_solo`.
+- Ve los temas: F1 de mención entre 0,92 y 0,93 y cobertura de 100%. Ningún sistema invirtió una opinión.
+- Los errores de dirección son sobre todo negativo contra mixto. Basta una frase positiva dentro de un tema negativo para que la celda salga mixta. También pierde opiniones neutras, porque solo saca de 1 a 5 ideas por respuesta.
+- La emoción baja es en buena parte culpa de la traducción: la frase más intensa suele ser la positiva, y resignación contra frustración no tiene equivalente limpio en la lista de 22.
+- Opus low le gana a Haiku medium por 5 a 7 puntos en casi todo, salvo riesgo de fuga. Con 15 respuestas, eso es apenas 3 o 4 celdas.
+- No hubo juicio cualitativo a ciegas de estas corridas.

@@ -1,0 +1,1431 @@
+{
+  "model": "claude-opus-5-5",
+  "effort": "low",
+  "preguntas": {
+    "p1_jefatura": {
+      "frases": [
+        {
+          "id": "p1_jefatura_r1_f1",
+          "respuesta_id": "p1_jefatura_r1",
+          "texto": "La comunicación con la jefatura empeoró mucho",
+          "cita": "la comunicación está mal, está bien mal y lo digo en serio",
+          "emocion": "frustracion",
+          "intensidad": 0.8,
+          "conceptos": [
+            "comunicación",
+            "jefatura"
+          ]
+        },
+        {
+          "id": "p1_jefatura_r1_f2",
+          "respuesta_id": "p1_jefatura_r1",
+          "texto": "Se eliminaron las reuniones semanales de planificación",
+          "cita": "Eso se murió, el año pasado se dejó de hacer y nunca más",
+          "emocion": "decepcion",
+          "intensidad": 0.6,
+          "conceptos": [
+            "comunicación",
+            "reuniones"
+          ]
+        },
+        {
+          "id": "p1_jefatura_r1_f3",
+          "respuesta_id": "p1_jefatura_r1",
+          "texto": "Cambios no avisados provocaron trabajo perdido y falta de respuesta",
+          "cita": "cambiaron el formato del informe para gerencia y nadie me avisó, yo lo hice como siempre, dos días de trabajo",
+          "emocion": "enojo",
+          "intensidad": 0.75,
+          "conceptos": [
+            "comunicación",
+            "trabajo perdido"
+          ]
+        },
+        {
+          "id": "p1_jefatura_r1_f4",
+          "respuesta_id": "p1_jefatura_r1",
+          "texto": "Reconocimiento parcial: valora resultados, ignora el esfuerzo extra",
+          "cita": "cuando uno se saca la mugre quedándose hasta tarde para la auditoría eso como que se da por hecho",
+          "emocion": "molestia",
+          "intensidad": 0.5,
+          "conceptos": [
+            "reconocimiento"
+          ]
+        },
+        {
+          "id": "p1_jefatura_r1_f5",
+          "respuesta_id": "p1_jefatura_r1",
+          "texto": "Sin conversaciones de desarrollo; evalúa considerar otras opciones laborales",
+          "cita": "nunca en cuatro años he tenido una conversación de cómo voy... yo la verdad estoy mirando otras opciones",
+          "emocion": "cansancio",
+          "intensidad": 0.85,
+          "conceptos": [
+            "desarrollo",
+            "rotación"
+          ]
+        },
+        {
+          "id": "p1_jefatura_r2_f1",
+          "respuesta_id": "p1_jefatura_r2",
+          "texto": "El jefe reconoce públicamente y de forma genuina los logros",
+          "cita": "él reconoce lo que uno hace y no de la boca para afuera",
+          "emocion": "gratitud",
+          "intensidad": 0.9,
+          "conceptos": [
+            "reconocimiento"
+          ]
+        },
+        {
+          "id": "p1_jefatura_r2_f2",
+          "respuesta_id": "p1_jefatura_r2",
+          "texto": "El jefe celebra los logros de todo el equipo",
+          "cita": "cuando alguien hace algo bien él lo dice, lo celebra",
+          "emocion": "alegria",
+          "intensidad": 0.7,
+          "conceptos": [
+            "reconocimiento",
+            "equipo"
+          ]
+        },
+        {
+          "id": "p1_jefatura_r2_f3",
+          "respuesta_id": "p1_jefatura_r2",
+          "texto": "La comunicación costó al inicio pero ha mejorado bastante",
+          "cita": "eso ha ido mejorando harto, ahora tenemos un chat del equipo donde él avisa todo",
+          "emocion": "alivio",
+          "intensidad": 0.6,
+          "conceptos": [
+            "comunicación"
+          ]
+        },
+        {
+          "id": "p1_jefatura_r2_f4",
+          "respuesta_id": "p1_jefatura_r2",
+          "texto": "Consultar cada descuento al jefe hace perder tiempo con clientes",
+          "cita": "aunque sea un tres por ciento igual quiere que se lo consulte antes",
+          "emocion": "molestia",
+          "intensidad": 0.4,
+          "conceptos": [
+            "autonomía",
+            "descuentos"
+          ]
+        },
+        {
+          "id": "p1_jefatura_r2_f5",
+          "respuesta_id": "p1_jefatura_r2",
+          "texto": "Propone un margen de descuento autónomo de hasta cinco por ciento",
+          "cita": "que se defina un margen de descuento que uno pueda dar sola, no sé, hasta un cinco por ciento",
+          "emocion": "esperanza",
+          "intensidad": 0.6,
+          "conceptos": [
+            "autonomía",
+            "descuentos"
+          ]
+        },
+        {
+          "id": "p1_jefatura_r3_f1",
+          "respuesta_id": "p1_jefatura_r3",
+          "texto": "La jefa confía de verdad y da autonomía real",
+          "cita": "ella confía en uno, o sea de verdad",
+          "emocion": "gratitud",
+          "intensidad": 0.8,
+          "conceptos": [
+            "confianza",
+            "autonomía"
+          ]
+        },
+        {
+          "id": "p1_jefatura_r3_f2",
+          "respuesta_id": "p1_jefatura_r3",
+          "texto": "No hay microgestión, a diferencia de jefes anteriores",
+          "cita": "he tenido jefes antes que te preguntan cada dos horas en qué vas y acá nunca ha sido así",
+          "emocion": "satisfaccion",
+          "intensidad": 0.7,
+          "conceptos": [
+            "autonomía"
+          ]
+        },
+        {
+          "id": "p1_jefatura_r3_f3",
+          "respuesta_id": "p1_jefatura_r3",
+          "texto": "Las revisiones de código explican el porqué y enseñan",
+          "cita": "te deja comentarios buenos, te explica el por qué, y de eso he aprendido harto",
+          "emocion": "satisfaccion",
+          "intensidad": 0.6,
+          "conceptos": [
+            "desarrollo profesional"
+          ]
+        },
+        {
+          "id": "p1_jefatura_r3_f4",
+          "respuesta_id": "p1_jefatura_r3",
+          "texto": "Las one on one perdieron foco en desarrollo por sobrecarga",
+          "cita": "las one on one se volvieron más de estado del sprint... y la parte de desarrollo quedó medio botada",
+          "emocion": "decepcion",
+          "intensidad": 0.5,
+          "conceptos": [
+            "desarrollo profesional",
+            "carga laboral"
+          ]
+        },
+        {
+          "id": "p1_jefatura_r3_f5",
+          "respuesta_id": "p1_jefatura_r3",
+          "texto": "Propone una one on one mensual solo de desarrollo, institucionalizada",
+          "cita": "una al mes digamos, sea solo para hablar de desarrollo, sin tocar el sprint para nada",
+          "emocion": "esperanza",
+          "intensidad": 0.6,
+          "conceptos": [
+            "desarrollo profesional"
+          ]
+        }
+      ],
+      "temas": [
+        {
+          "id": "t1",
+          "nombre": "Comunicación con jefatura se deterioró",
+          "resumen": "La comunicación empeoró, se eliminaron reuniones y hubo cambios sin aviso.",
+          "x": -2,
+          "y": 1
+        },
+        {
+          "id": "t2",
+          "nombre": "Falta reconocimiento y desarrollo profesional",
+          "resumen": "Reconocimiento parcial y conversaciones de desarrollo ausentes o desplazadas por sobrecarga.",
+          "x": -1.5,
+          "y": -1
+        },
+        {
+          "id": "t3",
+          "nombre": "Jefe reconoce y comunica cada vez mejor",
+          "resumen": "La jefatura reconoce logros genuinamente y la comunicación ha mejorado.",
+          "x": 2,
+          "y": 1
+        },
+        {
+          "id": "t4",
+          "nombre": "Pedir más autonomía en descuentos",
+          "resumen": "Consultar cada descuento quita tiempo; se propone un margen autónomo.",
+          "x": 0,
+          "y": -2.5
+        },
+        {
+          "id": "t5",
+          "nombre": "Jefa confía, da autonomía y enseña",
+          "resumen": "Confianza real, sin microgestión y revisiones que enseñan.",
+          "x": 2,
+          "y": -1
+        }
+      ],
+      "asignacion": [
+        {
+          "frase": "p1_jefatura_r1_f1",
+          "tema": "t1"
+        },
+        {
+          "frase": "p1_jefatura_r1_f2",
+          "tema": "t1"
+        },
+        {
+          "frase": "p1_jefatura_r1_f3",
+          "tema": "t1"
+        },
+        {
+          "frase": "p1_jefatura_r1_f4",
+          "tema": "t2"
+        },
+        {
+          "frase": "p1_jefatura_r1_f5",
+          "tema": "t2"
+        },
+        {
+          "frase": "p1_jefatura_r2_f1",
+          "tema": "t3"
+        },
+        {
+          "frase": "p1_jefatura_r2_f2",
+          "tema": "t3"
+        },
+        {
+          "frase": "p1_jefatura_r2_f3",
+          "tema": "t3"
+        },
+        {
+          "frase": "p1_jefatura_r2_f4",
+          "tema": "t4"
+        },
+        {
+          "frase": "p1_jefatura_r2_f5",
+          "tema": "t4"
+        },
+        {
+          "frase": "p1_jefatura_r3_f1",
+          "tema": "t5"
+        },
+        {
+          "frase": "p1_jefatura_r3_f2",
+          "tema": "t5"
+        },
+        {
+          "frase": "p1_jefatura_r3_f3",
+          "tema": "t5"
+        },
+        {
+          "frase": "p1_jefatura_r3_f4",
+          "tema": "t2"
+        },
+        {
+          "frase": "p1_jefatura_r3_f5",
+          "tema": "t2"
+        }
+      ]
+    },
+    "p2_carga": {
+      "frases": [
+        {
+          "id": "p2_carga_r1_f1",
+          "respuesta_id": "p2_carga_r1",
+          "texto": "La carga aumentó: menos personal y más camiones despachados",
+          "cita": "Ahora somos once porque se fueron tres y no los repusieron, y estamos despachando más de cien",
+          "emocion": "frustracion",
+          "intensidad": 0.8,
+          "conceptos": [
+            "carga laboral",
+            "dotación"
+          ]
+        },
+        {
+          "id": "p2_carga_r1_f2",
+          "respuesta_id": "p2_carga_r1",
+          "texto": "Horarios extensos e inflexibles, siempre ha sido así",
+          "cita": "dice el contrato a las cuatro y media pero eso es mentira, yo salgo a las siete ocho de la noche",
+          "emocion": "molestia",
+          "intensidad": 0.7,
+          "conceptos": [
+            "horarios",
+            "flexibilidad"
+          ]
+        },
+        {
+          "id": "p2_carga_r1_f3",
+          "respuesta_id": "p2_carga_r1",
+          "texto": "El trabajo afecta su sueño y su salud física",
+          "cita": "Ya no duermo bien, me despierto a las tres pensando en el despacho",
+          "emocion": "angustia",
+          "intensidad": 0.8,
+          "conceptos": [
+            "salud",
+            "cansancio"
+          ]
+        },
+        {
+          "id": "p2_carga_r1_f4",
+          "respuesta_id": "p2_carga_r1",
+          "texto": "Perdió energía para su vida familiar",
+          "cita": "ahora llego y me tiro en el sillón, no tengo ganas de nada",
+          "emocion": "tristeza",
+          "intensidad": 0.75,
+          "conceptos": [
+            "vida personal",
+            "cansancio"
+          ]
+        },
+        {
+          "id": "p2_carga_r1_f5",
+          "respuesta_id": "p2_carga_r1",
+          "texto": "Ha reclamado sin resultados y evalúa cambiarse de empresa",
+          "cita": "He dicho esto mismo en otras encuestas, al jefe de operaciones, y todo sigue igual o peor",
+          "emocion": "decepcion",
+          "intensidad": 0.85,
+          "conceptos": [
+            "renuncia",
+            "escucha"
+          ]
+        },
+        {
+          "id": "p2_carga_r2_f1",
+          "respuesta_id": "p2_carga_r2",
+          "texto": "Agradece mucho la flexibilidad horaria y el trabajo híbrido",
+          "cita": "Lo que yo agradezco un montón es la flexibilidad",
+          "emocion": "gratitud",
+          "intensidad": 0.9,
+          "conceptos": [
+            "flexibilidad",
+            "trabajo híbrido"
+          ]
+        },
+        {
+          "id": "p2_carga_r2_f2",
+          "respuesta_id": "p2_carga_r2",
+          "texto": "La flexibilidad le cambió la vida y no quiere volver atrás",
+          "cita": "De verdad es otra vida, otra vida, no me imagino volver a lo de antes",
+          "emocion": "alivio",
+          "intensidad": 0.9,
+          "conceptos": [
+            "flexibilidad",
+            "conciliación familiar"
+          ]
+        },
+        {
+          "id": "p2_carga_r2_f3",
+          "respuesta_id": "p2_carga_r2",
+          "texto": "Mejoró su bienestar: menos dolores de cabeza y volvió al yoga",
+          "cita": "Ahora estoy bastante más tranquila, hasta volví a hacer yoga los miércoles",
+          "emocion": "satisfaccion",
+          "intensidad": 0.8,
+          "conceptos": [
+            "bienestar"
+          ]
+        },
+        {
+          "id": "p2_carga_r2_f4",
+          "respuesta_id": "p2_carga_r2",
+          "texto": "Beneficios familiares insuficientes en vacaciones de invierno y sala cuna",
+          "cita": "no hay nada para las vacaciones de invierno por ejemplo, que son dos semanas y uno queda colgando",
+          "emocion": "frustracion",
+          "intensidad": 0.6,
+          "conceptos": [
+            "beneficios familiares",
+            "vacaciones invierno"
+          ]
+        },
+        {
+          "id": "p2_carga_r2_f5",
+          "respuesta_id": "p2_carga_r2",
+          "texto": "Propone convenio con talleres o campamentos invernales con copago",
+          "cita": "un convenio con algún taller o campamento para los hijos de los trabajadores, aunque sea con co pago",
+          "emocion": "esperanza",
+          "intensidad": 0.6,
+          "conceptos": [
+            "vacaciones invierno",
+            "beneficios familiares"
+          ]
+        },
+        {
+          "id": "p2_carga_r3_f1",
+          "respuesta_id": "p2_carga_r3",
+          "texto": "La meta de llamadas y correos es inalcanzable",
+          "cita": "Nos ponen una meta de cuarenta y cinco llamadas por turno más los correos que llegan a la bandeja, y la verdad no alcanza",
+          "emocion": "frustracion",
+          "intensidad": 0.6,
+          "conceptos": [
+            "carga laboral",
+            "metas"
+          ]
+        },
+        {
+          "id": "p2_carga_r3_f2",
+          "respuesta_id": "p2_carga_r3",
+          "texto": "No hay claridad sobre cómo priorizar teléfono o correo",
+          "cita": "uno no sabe bien si priorizar el teléfono o el correo",
+          "emocion": "duda",
+          "intensidad": 0.5,
+          "conceptos": [
+            "metas",
+            "supervisión"
+          ]
+        },
+        {
+          "id": "p2_carga_r3_f3",
+          "respuesta_id": "p2_carga_r3",
+          "texto": "La empresa no ofrece apoyo a padres más allá de la ley",
+          "cita": "la respuesta fue lo que dice la ley y nada más. Ni un día más",
+          "emocion": "decepcion",
+          "intensidad": 0.75,
+          "conceptos": [
+            "beneficios",
+            "paternidad"
+          ]
+        },
+        {
+          "id": "p2_carga_r3_f4",
+          "respuesta_id": "p2_carga_r3",
+          "texto": "Faltan beneficios familiares como jardín o seguro complementario",
+          "cita": "no hay un convenio con jardín, no hay un seguro complementario que uno pueda usar para la familia",
+          "emocion": "molestia",
+          "intensidad": 0.65,
+          "conceptos": [
+            "beneficios",
+            "vida personal"
+          ]
+        },
+        {
+          "id": "p2_carga_r3_f5",
+          "respuesta_id": "p2_carga_r3",
+          "texto": "Teme enfrentar el nacimiento sin apoyo y con la meta encima",
+          "cita": "Me da susto la verdad, porque no sé cómo lo voy a hacer con la meta encima y sin nada de ayuda",
+          "emocion": "miedo",
+          "intensidad": 0.8,
+          "conceptos": [
+            "paternidad",
+            "carga laboral"
+          ]
+        }
+      ],
+      "temas": [
+        {
+          "id": "t1",
+          "nombre": "Carga creciente y horarios rígidos",
+          "resumen": "La carga aumenta con menos personal, horarios extensos y metas inalcanzables.",
+          "x": -2,
+          "y": 1
+        },
+        {
+          "id": "t2",
+          "nombre": "Trabajo daña salud y familia",
+          "resumen": "El trabajo afecta el sueño, la salud y la energía para la familia.",
+          "x": -1.5,
+          "y": -0.5
+        },
+        {
+          "id": "t3",
+          "nombre": "Reclamos ignorados, considera irse",
+          "resumen": "Los reclamos no tienen resultado y se evalúa cambiarse de empresa.",
+          "x": -2.5,
+          "y": -1.5
+        },
+        {
+          "id": "t4",
+          "nombre": "Flexibilidad híbrida mejora bienestar",
+          "resumen": "La flexibilidad horaria y el trabajo híbrido mejoraron la vida y la salud.",
+          "x": 2.5,
+          "y": 1.5
+        },
+        {
+          "id": "t5",
+          "nombre": "Faltan beneficios familiares, propone convenios",
+          "resumen": "Los beneficios para padres son insuficientes y se proponen convenios y apoyos adicionales.",
+          "x": 1,
+          "y": -2
+        },
+        {
+          "id": "t6",
+          "nombre": "Prioridades poco claras entre canales",
+          "resumen": "No hay claridad sobre cómo priorizar teléfono o correo.",
+          "x": -0.5,
+          "y": 2
+        }
+      ],
+      "asignacion": [
+        {
+          "frase": "p2_carga_r1_f1",
+          "tema": "t1"
+        },
+        {
+          "frase": "p2_carga_r1_f2",
+          "tema": "t1"
+        },
+        {
+          "frase": "p2_carga_r1_f3",
+          "tema": "t2"
+        },
+        {
+          "frase": "p2_carga_r1_f4",
+          "tema": "t2"
+        },
+        {
+          "frase": "p2_carga_r1_f5",
+          "tema": "t3"
+        },
+        {
+          "frase": "p2_carga_r2_f1",
+          "tema": "t4"
+        },
+        {
+          "frase": "p2_carga_r2_f2",
+          "tema": "t4"
+        },
+        {
+          "frase": "p2_carga_r2_f3",
+          "tema": "t4"
+        },
+        {
+          "frase": "p2_carga_r2_f4",
+          "tema": "t5"
+        },
+        {
+          "frase": "p2_carga_r2_f5",
+          "tema": "t5"
+        },
+        {
+          "frase": "p2_carga_r3_f1",
+          "tema": "t1"
+        },
+        {
+          "frase": "p2_carga_r3_f2",
+          "tema": "t6"
+        },
+        {
+          "frase": "p2_carga_r3_f3",
+          "tema": "t5"
+        },
+        {
+          "frase": "p2_carga_r3_f4",
+          "tema": "t5"
+        },
+        {
+          "frase": "p2_carga_r3_f5",
+          "tema": "t5"
+        }
+      ]
+    },
+    "p3_remuneracion": {
+      "frases": [
+        {
+          "id": "p3_remuneracion_r1_f1",
+          "respuesta_id": "p3_remuneracion_r1",
+          "texto": "El sueldo es algo bajo y alcanza justo",
+          "cita": "el sueldo es un poco bajo para lo que hago, nada dramático, alcanza pero justo",
+          "emocion": "molestia",
+          "intensidad": 0.4,
+          "conceptos": [
+            "sueldo"
+          ]
+        },
+        {
+          "id": "p3_remuneracion_r1_f2",
+          "respuesta_id": "p3_remuneracion_r1",
+          "texto": "Los beneficios son excelentes y lo más valorado",
+          "cita": "los beneficios son buenísimos, de verdad... es lo que más valoro de estar acá",
+          "emocion": "gratitud",
+          "intensidad": 0.8,
+          "conceptos": [
+            "beneficios",
+            "seguro salud"
+          ]
+        },
+        {
+          "id": "p3_remuneracion_r1_f3",
+          "respuesta_id": "p3_remuneracion_r1",
+          "texto": "Los aumentos son opacos y sin explicación ni evaluación",
+          "cita": "Pero qué evaluación si a mí nadie me evaluó. Eso me da rabia",
+          "emocion": "rabia",
+          "intensidad": 0.85,
+          "conceptos": [
+            "aumentos",
+            "transparencia"
+          ]
+        },
+        {
+          "id": "p3_remuneracion_r1_f4",
+          "respuesta_id": "p3_remuneracion_r1",
+          "texto": "Propone publicar bandas salariales y criterios de ascenso",
+          "cita": "que publiquen las bandas salariales por cargo, aunque sea internamente, y que digan cuáles son los criterios",
+          "emocion": "esperanza",
+          "intensidad": 0.6,
+          "conceptos": [
+            "bandas salariales",
+            "transparencia"
+          ]
+        },
+        {
+          "id": "p3_remuneracion_r1_f5",
+          "respuesta_id": "p3_remuneracion_r1",
+          "texto": "Considera irse si no mejora la claridad salarial",
+          "cita": "si eso no cambia, honestamente no sé si voy a seguir acá el próximo año",
+          "emocion": "cansancio",
+          "intensidad": 0.75,
+          "conceptos": [
+            "permanencia",
+            "sueldo"
+          ]
+        },
+        {
+          "id": "p3_remuneracion_r2_f1",
+          "respuesta_id": "p3_remuneracion_r2",
+          "texto": "El sueldo ha mejorado y ahora alcanza para ahorrar",
+          "cita": "ahora estoy tranquilo, me alcanza bien, puedo ahorrar algo. Ha mejorado eso es así",
+          "emocion": "satisfaccion",
+          "intensidad": 0.7,
+          "conceptos": [
+            "sueldo",
+            "evolución salarial"
+          ]
+        },
+        {
+          "id": "p3_remuneracion_r2_f2",
+          "respuesta_id": "p3_remuneracion_r2",
+          "texto": "Los aumentos ahora se deciden con una matriz comprensible",
+          "cita": "Ahora hay una matrís, te evalúan en tres o cuatro ejes y según eso cae un porcentaje, y eso está bien",
+          "emocion": "satisfaccion",
+          "intensidad": 0.6,
+          "conceptos": [
+            "aumentos",
+            "evaluación"
+          ]
+        },
+        {
+          "id": "p3_remuneracion_r2_f3",
+          "respuesta_id": "p3_remuneracion_r2",
+          "texto": "Las bandas salariales no son transparentes",
+          "cita": "las bandas no las conoce nadie, o sea yo sé en qué tramo estoy pero no sé cuál es el techo",
+          "emocion": "molestia",
+          "intensidad": 0.5,
+          "conceptos": [
+            "bandas salariales",
+            "transparencia"
+          ]
+        },
+        {
+          "id": "p3_remuneracion_r2_f4",
+          "respuesta_id": "p3_remuneracion_r2",
+          "texto": "Le cuesta explicar a su equipo las diferencias de aumentos",
+          "cita": "es difícil explicarles por qué uno sube más que otro cuando yo mismo no tengo toda la información",
+          "emocion": "frustracion",
+          "intensidad": 0.5,
+          "conceptos": [
+            "transparencia",
+            "equipo"
+          ]
+        },
+        {
+          "id": "p3_remuneracion_r2_f5",
+          "respuesta_id": "p3_remuneracion_r2",
+          "texto": "El sueldo es competitivo frente al mercado",
+          "cita": "comparado con lo que se paga afuera, por lo que he visto, estamos bien, un poco arriba quizás",
+          "emocion": "confianza",
+          "intensidad": 0.5,
+          "conceptos": [
+            "sueldo",
+            "mercado"
+          ]
+        },
+        {
+          "id": "p3_remuneracion_r3_f1",
+          "respuesta_id": "p3_remuneracion_r3",
+          "texto": "El sueldo ya no alcanza por el alza del costo de vida",
+          "cita": "a mitad de mes ya estoy pidiendo prestado o pasando la tarjeta",
+          "emocion": "angustia",
+          "intensidad": 0.9,
+          "conceptos": [
+            "sueldo",
+            "costo de vida"
+          ]
+        },
+        {
+          "id": "p3_remuneracion_r3_f2",
+          "respuesta_id": "p3_remuneracion_r3",
+          "texto": "Aguinaldo y caja de Navidad son beneficios valorados",
+          "cita": "Está el aguinaldo de septiembre, que es bueno, y la caja de navidad que siempre ha sido buena",
+          "emocion": "satisfaccion",
+          "intensidad": 0.5,
+          "conceptos": [
+            "beneficios"
+          ]
+        },
+        {
+          "id": "p3_remuneracion_r3_f3",
+          "respuesta_id": "p3_remuneracion_r3",
+          "texto": "Seguro de salud insuficiente y comida del casino mala",
+          "cita": "el seguro de salud cubre poco... la comida es mala",
+          "emocion": "molestia",
+          "intensidad": 0.6,
+          "conceptos": [
+            "beneficios",
+            "salud"
+          ]
+        },
+        {
+          "id": "p3_remuneracion_r3_f4",
+          "respuesta_id": "p3_remuneracion_r3",
+          "texto": "Sueldo muy por debajo de otras empresas similares",
+          "cita": "Mi cuñado hace exactamente lo mismo que yo... y gana como doscientos mil pesos más",
+          "emocion": "rabia",
+          "intensidad": 0.85,
+          "conceptos": [
+            "sueldo",
+            "comparación"
+          ]
+        },
+        {
+          "id": "p3_remuneracion_r3_f5",
+          "respuesta_id": "p3_remuneracion_r3",
+          "texto": "Sin esperanza de cambio, evalúa irse pese a su antigüedad",
+          "cita": "ya no espero nada... estoy viendo si mi cuñado me consigue algo allá en Buin",
+          "emocion": "decepcion",
+          "intensidad": 0.8,
+          "conceptos": [
+            "rotación",
+            "comparación"
+          ]
+        }
+      ],
+      "temas": [
+        {
+          "id": "t1",
+          "nombre": "Sueldo bajo que no alcanza",
+          "resumen": "El sueldo es bajo, alcanza justo o ya no alcanza y está bajo el mercado.",
+          "x": -2,
+          "y": 1
+        },
+        {
+          "id": "t4",
+          "nombre": "Sueldo mejorado y competitivo",
+          "resumen": "El sueldo ha mejorado, permite ahorrar y es competitivo.",
+          "x": 2,
+          "y": 1
+        },
+        {
+          "id": "t2",
+          "nombre": "Beneficios excelentes y muy valorados",
+          "resumen": "Los beneficios como aguinaldo y caja de Navidad son lo más valorado.",
+          "x": 2,
+          "y": -1
+        },
+        {
+          "id": "t7",
+          "nombre": "Beneficios de salud y casino insuficientes",
+          "resumen": "El seguro de salud es insuficiente y la comida del casino es mala.",
+          "x": 0,
+          "y": -2
+        },
+        {
+          "id": "t3",
+          "nombre": "Falta transparencia en aumentos salariales",
+          "resumen": "Aumentos y bandas son opacos y difíciles de explicar, aunque hay avances con una matriz.",
+          "x": -1,
+          "y": -1
+        },
+        {
+          "id": "t5",
+          "nombre": "Publicar bandas y criterios claros",
+          "resumen": "Se propone publicar bandas salariales y criterios de ascenso.",
+          "x": -0.5,
+          "y": -0.2
+        },
+        {
+          "id": "t6",
+          "nombre": "Dispuesto a irse sin claridad",
+          "resumen": "Consideran irse si no mejora la situación salarial.",
+          "x": -2.5,
+          "y": 0
+        }
+      ],
+      "asignacion": [
+        {
+          "frase": "p3_remuneracion_r1_f1",
+          "tema": "t1"
+        },
+        {
+          "frase": "p3_remuneracion_r1_f2",
+          "tema": "t2"
+        },
+        {
+          "frase": "p3_remuneracion_r1_f3",
+          "tema": "t3"
+        },
+        {
+          "frase": "p3_remuneracion_r1_f4",
+          "tema": "t5"
+        },
+        {
+          "frase": "p3_remuneracion_r1_f5",
+          "tema": "t6"
+        },
+        {
+          "frase": "p3_remuneracion_r2_f1",
+          "tema": "t4"
+        },
+        {
+          "frase": "p3_remuneracion_r2_f2",
+          "tema": "t3"
+        },
+        {
+          "frase": "p3_remuneracion_r2_f3",
+          "tema": "t3"
+        },
+        {
+          "frase": "p3_remuneracion_r2_f4",
+          "tema": "t3"
+        },
+        {
+          "frase": "p3_remuneracion_r2_f5",
+          "tema": "t4"
+        },
+        {
+          "frase": "p3_remuneracion_r3_f1",
+          "tema": "t1"
+        },
+        {
+          "frase": "p3_remuneracion_r3_f2",
+          "tema": "t2"
+        },
+        {
+          "frase": "p3_remuneracion_r3_f3",
+          "tema": "t7"
+        },
+        {
+          "frase": "p3_remuneracion_r3_f4",
+          "tema": "t1"
+        },
+        {
+          "frase": "p3_remuneracion_r3_f5",
+          "tema": "t6"
+        }
+      ]
+    },
+    "p4_crecimiento": {
+      "frases": [
+        {
+          "id": "p4_crecimiento_r1_f1",
+          "respuesta_id": "p4_crecimiento_r1",
+          "texto": "Gran satisfacción con las nuevas oportunidades de capacitación",
+          "cita": "con el tema de aprender estoy feliz, feliz",
+          "emocion": "alegria",
+          "intensidad": 0.9,
+          "conceptos": [
+            "capacitación"
+          ]
+        },
+        {
+          "id": "p4_crecimiento_r1_f2",
+          "respuesta_id": "p4_crecimiento_r1",
+          "texto": "Presupuesto de capacitación permitió cursos certificados y talleres",
+          "cita": "abrieron un presupuesto de capacitación por persona y yo hice un curso de Google Ads certificado",
+          "emocion": "satisfaccion",
+          "intensidad": 0.8,
+          "conceptos": [
+            "capacitación",
+            "presupuesto"
+          ]
+        },
+        {
+          "id": "p4_crecimiento_r1_f3",
+          "respuesta_id": "p4_crecimiento_r1",
+          "texto": "Valora los almuerzos de aprendizaje y el apoyo informal de su coordinadora",
+          "cita": "la Paula, que es la coordinadora digital, me ha ayudado harto",
+          "emocion": "gratitud",
+          "intensidad": 0.7,
+          "conceptos": [
+            "mentoría",
+            "aprendizaje"
+          ]
+        },
+        {
+          "id": "p4_crecimiento_r1_f4",
+          "respuesta_id": "p4_crecimiento_r1",
+          "texto": "Los ascensos no se concursan y se asignan por cercanía",
+          "cita": "Los pocos cargos que se abren casi nunca se concursan, se los pasan a alguien",
+          "emocion": "frustracion",
+          "intensidad": 0.7,
+          "conceptos": [
+            "ascensos",
+            "transparencia"
+          ]
+        },
+        {
+          "id": "p4_crecimiento_r1_f5",
+          "respuesta_id": "p4_crecimiento_r1",
+          "texto": "Percibe injusticia al no considerar a compañeros con experiencia",
+          "cita": "No me parece muy justo la verdad, porque hay gente en el equipo que lleva tres, cuatro años haciendo la pega bien",
+          "emocion": "molestia",
+          "intensidad": 0.6,
+          "conceptos": [
+            "ascensos",
+            "justicia"
+          ]
+        },
+        {
+          "id": "p4_crecimiento_r2_f1",
+          "respuesta_id": "p4_crecimiento_r2",
+          "texto": "Siete años estancado en el mismo cargo sin ascender",
+          "cita": "Siete años en el mismo cargo, eso ya te dice todo cachai.",
+          "emocion": "frustracion",
+          "intensidad": 0.8,
+          "conceptos": [
+            "estancamiento",
+            "ascenso"
+          ]
+        },
+        {
+          "id": "p4_crecimiento_r2_f2",
+          "respuesta_id": "p4_crecimiento_r2",
+          "texto": "Las jefaturas ahora se cubren con gente externa",
+          "cita": "Los últimos tres años cada vez que se abre un cargo de jefatura traen a alguien de afuera.",
+          "emocion": "molestia",
+          "intensidad": 0.8,
+          "conceptos": [
+            "contratación externa",
+            "ascenso"
+          ]
+        },
+        {
+          "id": "p4_crecimiento_r2_f3",
+          "respuesta_id": "p4_crecimiento_r2",
+          "texto": "Jefe externo con menos experiencia tuvo que ser capacitado por él",
+          "cita": "yo le tuve que explicar cómo funcionaba el sistema de tiquets las primeras semanas. Imagínate lo que se siente eso.",
+          "emocion": "enojo",
+          "intensidad": 0.8,
+          "conceptos": [
+            "contratación externa",
+            "reconocimiento"
+          ]
+        },
+        {
+          "id": "p4_crecimiento_r2_f4",
+          "respuesta_id": "p4_crecimiento_r2",
+          "texto": "No existen requisitos claros ni escritos para ascender",
+          "cita": "No hay nada escrito, no hay una lista de requisitos, nada. Le he preguntado a tres jefes distintos y cada uno me dice una cosa diferente",
+          "emocion": "frustracion",
+          "intensidad": 0.75,
+          "conceptos": [
+            "requisitos",
+            "transparencia"
+          ]
+        },
+        {
+          "id": "p4_crecimiento_r2_f5",
+          "respuesta_id": "p4_crecimiento_r2",
+          "texto": "Propone documentar niveles y publicar cargos internamente primero",
+          "cita": "que los cargos de jefatura se publiquen primero adentro antes de buscar afuera. Eso no cuesta nada.",
+          "emocion": "decepcion",
+          "intensidad": 0.6,
+          "conceptos": [
+            "requisitos",
+            "contratación externa"
+          ]
+        },
+        {
+          "id": "p4_crecimiento_r3_f1",
+          "respuesta_id": "p4_crecimiento_r3",
+          "texto": "Su mentor senior la apoya con paciencia y dedicación",
+          "cita": "cuando me equivoco no me hace sentir tonta, me dice ya veamos dónde se fue",
+          "emocion": "gratitud",
+          "intensidad": 0.9,
+          "conceptos": [
+            "mentoría",
+            "apoyo equipo"
+          ]
+        },
+        {
+          "id": "p4_crecimiento_r3_f2",
+          "respuesta_id": "p4_crecimiento_r3",
+          "texto": "El equipo siempre está dispuesto a ayudar y responder preguntas",
+          "cita": "nunca he sentido que moleste preguntando",
+          "emocion": "confianza",
+          "intensidad": 0.7,
+          "conceptos": [
+            "apoyo equipo"
+          ]
+        },
+        {
+          "id": "p4_crecimiento_r3_f3",
+          "respuesta_id": "p4_crecimiento_r3",
+          "texto": "La ruta de carrera se aclaró recién en la evaluación de seis meses",
+          "cita": "Cuando entré nadie me explicó mucho... Y eso ahora lo tengo mucho más claro, sé lo que viene",
+          "emocion": "satisfaccion",
+          "intensidad": 0.6,
+          "conceptos": [
+            "plan carrera",
+            "inducción"
+          ]
+        },
+        {
+          "id": "p4_crecimiento_r3_f4",
+          "respuesta_id": "p4_crecimiento_r3",
+          "texto": "Ascensos posibles, pero limitados por cupos de presupuesto",
+          "cita": "la dejaron esperando porque no había cupo en el presupuesto, y eso no depende de uno",
+          "emocion": "preocupacion",
+          "intensidad": 0.5,
+          "conceptos": [
+            "ascensos",
+            "presupuesto"
+          ]
+        },
+        {
+          "id": "p4_crecimiento_r3_f5",
+          "respuesta_id": "p4_crecimiento_r3",
+          "texto": "Se siente motivada, aprendiendo mucho y contenta en la empresa",
+          "cita": "siento que estoy aprendiendo un montón y que tengo con quién. Estoy contenta de estar aquí",
+          "emocion": "entusiasmo",
+          "intensidad": 0.8,
+          "conceptos": [
+            "aprendizaje",
+            "motivación"
+          ]
+        }
+      ],
+      "temas": [
+        {
+          "id": "t1",
+          "nombre": "Capacitación valorada como oportunidad de crecimiento",
+          "resumen": "Valoran los cursos, talleres y espacios de aprendizaje financiados por la empresa.",
+          "x": 2,
+          "y": 1.5
+        },
+        {
+          "id": "t5",
+          "nombre": "Mentoría y apoyo del equipo motivan",
+          "resumen": "El acompañamiento de mentores, coordinadoras y compañeros genera motivación y aprendizaje.",
+          "x": 2.3,
+          "y": -0.5
+        },
+        {
+          "id": "t2",
+          "nombre": "Ascensos poco transparentes e injustos",
+          "resumen": "Los ascensos no se concursan, se asignan por cercanía, sin requisitos claros, y generan estancamiento.",
+          "x": -2,
+          "y": 0.5
+        },
+        {
+          "id": "t3",
+          "nombre": "Jefaturas externas bloquean el crecimiento interno",
+          "resumen": "Las jefaturas se cubren con personas externas menos experimentadas, cerrando el camino interno.",
+          "x": -2.5,
+          "y": -1
+        },
+        {
+          "id": "t4",
+          "nombre": "Proponen carrera documentada y concursos internos",
+          "resumen": "Piden niveles documentados, rutas claras desde el inicio y publicar cargos internamente primero.",
+          "x": -0.5,
+          "y": -2
+        },
+        {
+          "id": "t6",
+          "nombre": "Ascensos posibles pero limitados por presupuesto",
+          "resumen": "Existen oportunidades de ascenso, pero restringidas por cupos presupuestarios.",
+          "x": 0,
+          "y": 0.5
+        }
+      ],
+      "asignacion": [
+        {
+          "frase": "p4_crecimiento_r1_f1",
+          "tema": "t1"
+        },
+        {
+          "frase": "p4_crecimiento_r1_f2",
+          "tema": "t1"
+        },
+        {
+          "frase": "p4_crecimiento_r1_f3",
+          "tema": "t5"
+        },
+        {
+          "frase": "p4_crecimiento_r1_f4",
+          "tema": "t2"
+        },
+        {
+          "frase": "p4_crecimiento_r1_f5",
+          "tema": "t2"
+        },
+        {
+          "frase": "p4_crecimiento_r2_f1",
+          "tema": "t2"
+        },
+        {
+          "frase": "p4_crecimiento_r2_f2",
+          "tema": "t3"
+        },
+        {
+          "frase": "p4_crecimiento_r2_f3",
+          "tema": "t3"
+        },
+        {
+          "frase": "p4_crecimiento_r2_f4",
+          "tema": "t2"
+        },
+        {
+          "frase": "p4_crecimiento_r2_f5",
+          "tema": "t4"
+        },
+        {
+          "frase": "p4_crecimiento_r3_f1",
+          "tema": "t5"
+        },
+        {
+          "frase": "p4_crecimiento_r3_f2",
+          "tema": "t5"
+        },
+        {
+          "frase": "p4_crecimiento_r3_f3",
+          "tema": "t4"
+        },
+        {
+          "frase": "p4_crecimiento_r3_f4",
+          "tema": "t6"
+        },
+        {
+          "frase": "p4_crecimiento_r3_f5",
+          "tema": "t5"
+        }
+      ]
+    },
+    "p5_equipo": {
+      "frases": [
+        {
+          "id": "p5_equipo_r1_f1",
+          "respuesta_id": "p5_equipo_r1",
+          "texto": "El equipo propio es excelente y muy solidario",
+          "cita": "mi equipo es lo mejor que tiene esta pega, lejos. Somos seis y nos llevamos increíble",
+          "emocion": "orgullo",
+          "intensidad": 0.9,
+          "conceptos": [
+            "equipo",
+            "compañerismo"
+          ]
+        },
+        {
+          "id": "p5_equipo_r1_f2",
+          "respuesta_id": "p5_equipo_r1",
+          "texto": "La colaboración con mantenimiento y compras empeoró tras la reorganización",
+          "cita": "con las otras áreas es un desastre, y cada vez peor... desde que reorganizaron las gerencias",
+          "emocion": "frustracion",
+          "intensidad": 0.85,
+          "conceptos": [
+            "otras áreas",
+            "reorganización"
+          ]
+        },
+        {
+          "id": "p5_equipo_r1_f3",
+          "respuesta_id": "p5_equipo_r1",
+          "texto": "La falta de aviso causó medio día de línea detenida",
+          "cita": "paramos una línea completa medio día porque compras no pidió un repuesto... y nadie nos avisó",
+          "emocion": "enojo",
+          "intensidad": 0.8,
+          "conceptos": [
+            "comunicación",
+            "otras áreas"
+          ]
+        },
+        {
+          "id": "p5_equipo_r1_f4",
+          "respuesta_id": "p5_equipo_r1",
+          "texto": "Herramientas dispersas y reunión semanal improductiva",
+          "cita": "nunca sabes dónde está la información actualizada... cada área lee su reporte y nadie se compromete a nada",
+          "emocion": "molestia",
+          "intensidad": 0.7,
+          "conceptos": [
+            "herramientas",
+            "reuniones"
+          ]
+        },
+        {
+          "id": "p5_equipo_r1_f5",
+          "respuesta_id": "p5_equipo_r1",
+          "texto": "Propone tablero único compartido y reunión breve de bloqueos",
+          "cita": "un tablero único compartido entre planificación, mantenimiento y compras... una de veinte minutos de pie",
+          "emocion": "esperanza",
+          "intensidad": 0.65,
+          "conceptos": [
+            "herramientas",
+            "reuniones"
+          ]
+        },
+        {
+          "id": "p5_equipo_r2_f1",
+          "respuesta_id": "p5_equipo_r2",
+          "texto": "El equipo se volvió más unido con los años",
+          "cita": "con los años se ha ido armando un grupo más unido, ahora nos cubrimos cuando alguien sale de vacaciones",
+          "emocion": "orgullo",
+          "intensidad": 0.6,
+          "conceptos": [
+            "equipo",
+            "compañerismo"
+          ]
+        },
+        {
+          "id": "p5_equipo_r2_f2",
+          "respuesta_id": "p5_equipo_r2",
+          "texto": "El equipo se apoyó solidariamente ante la enfermedad de una compañera",
+          "cita": "entre todas nos repartimos sus procesos sin que tuviera que pedirlo. Eso hace cuatro años no habría pasado",
+          "emocion": "gratitud",
+          "intensidad": 0.6,
+          "conceptos": [
+            "compañerismo",
+            "apoyo"
+          ]
+        },
+        {
+          "id": "p5_equipo_r2_f3",
+          "respuesta_id": "p5_equipo_r2",
+          "texto": "Buena colaboración con finanzas, que responde rápido",
+          "cita": "Con finanzas trabajamos bien, cuando hay que cerrar remuneraciones ellos responden rápido",
+          "emocion": "satisfaccion",
+          "intensidad": 0.5,
+          "conceptos": [
+            "colaboración",
+            "finanzas"
+          ]
+        },
+        {
+          "id": "p5_equipo_r2_f4",
+          "respuesta_id": "p5_equipo_r2",
+          "texto": "Operaciones tarda en entregar información y hay que insistir",
+          "cita": "a veces pasa una semana y hay que pedirlo varias veces",
+          "emocion": "frustracion",
+          "intensidad": 0.4,
+          "conceptos": [
+            "colaboración",
+            "operaciones"
+          ]
+        },
+        {
+          "id": "p5_equipo_r2_f5",
+          "respuesta_id": "p5_equipo_r2",
+          "texto": "Los roces no se conversan y afectan el trato después",
+          "cita": "Nadie lo conversa directamente, queda ahí, y a veces se nota un poco en el trato después",
+          "emocion": "preocupacion",
+          "intensidad": 0.3,
+          "conceptos": [
+            "conflictos",
+            "comunicación"
+          ]
+        },
+        {
+          "id": "p5_equipo_r3_f1",
+          "respuesta_id": "p5_equipo_r3",
+          "texto": "El equipo está dividido entre compañeros solidarios y un grupo competitivo",
+          "cita": "hay gente súper buena onda... Pero también hay un grupito que es más competitivo, que no te pasa ni la hora",
+          "emocion": "neutral",
+          "intensidad": 0.4,
+          "conceptos": [
+            "compañerismo",
+            "competencia interna"
+          ]
+        },
+        {
+          "id": "p5_equipo_r3_f2",
+          "respuesta_id": "p5_equipo_r3",
+          "texto": "El jefe nuevo no resuelve los conflictos entre vendedores",
+          "cita": "Ahora con el jefe nuevo nadie se hace cargo",
+          "emocion": "frustracion",
+          "intensidad": 0.7,
+          "conceptos": [
+            "gestión conflictos",
+            "jefatura"
+          ]
+        },
+        {
+          "id": "p5_equipo_r3_f3",
+          "respuesta_id": "p5_equipo_r3",
+          "texto": "Una pelea sin resolver dejó el ambiente pésimo",
+          "cita": "Hasta hoy no se hablan y el ambiente quedó pésimo",
+          "emocion": "decepcion",
+          "intensidad": 0.6,
+          "conceptos": [
+            "gestión conflictos",
+            "clima laboral"
+          ]
+        },
+        {
+          "id": "p5_equipo_r3_f4",
+          "respuesta_id": "p5_equipo_r3",
+          "texto": "Teme verse involucrado en un conflicto que nadie resuelva",
+          "cita": "me tiene nervioso que me pase lo mismo, que de repente me acusen de algo y nadie lo resuelva",
+          "emocion": "preocupacion",
+          "intensidad": 0.8,
+          "conceptos": [
+            "gestión conflictos",
+            "incertidumbre"
+          ]
+        },
+        {
+          "id": "p5_equipo_r3_f5",
+          "respuesta_id": "p5_equipo_r3",
+          "texto": "La nueva aplicación y reuniones más ordenadas mejoraron el trabajo",
+          "cita": "ahora tenemos una aplicación en el celular... Eso está mejor que antes",
+          "emocion": "satisfaccion",
+          "intensidad": 0.6,
+          "conceptos": [
+            "herramientas",
+            "reuniones"
+          ]
+        }
+      ],
+      "temas": [
+        {
+          "id": "t1",
+          "nombre": "Equipo propio excelente y solidario",
+          "resumen": "El equipo propio es unido y se apoya solidariamente.",
+          "x": -2,
+          "y": 2
+        },
+        {
+          "id": "t2",
+          "nombre": "Colaboración entre áreas desigual, causa demoras",
+          "resumen": "Algunas áreas colaboran bien y otras tardan o no avisan, generando demoras.",
+          "x": 2,
+          "y": 1
+        },
+        {
+          "id": "t3",
+          "nombre": "Herramientas y reuniones ineficientes, proponen unificar",
+          "resumen": "Herramientas dispersas y reuniones improductivas; se proponen o valoran mejoras de orden.",
+          "x": 2,
+          "y": -2
+        },
+        {
+          "id": "t4",
+          "nombre": "Conflictos no resueltos dañan el ambiente",
+          "resumen": "Roces y peleas sin conversar ni resolver, también por falta de gestión del jefe, deterioran el trato y dividen al equipo.",
+          "x": -2,
+          "y": -2
+        }
+      ],
+      "asignacion": [
+        {
+          "frase": "p5_equipo_r1_f1",
+          "tema": "t1"
+        },
+        {
+          "frase": "p5_equipo_r1_f2",
+          "tema": "t2"
+        },
+        {
+          "frase": "p5_equipo_r1_f3",
+          "tema": "t2"
+        },
+        {
+          "frase": "p5_equipo_r1_f4",
+          "tema": "t3"
+        },
+        {
+          "frase": "p5_equipo_r1_f5",
+          "tema": "t3"
+        },
+        {
+          "frase": "p5_equipo_r2_f1",
+          "tema": "t1"
+        },
+        {
+          "frase": "p5_equipo_r2_f2",
+          "tema": "t1"
+        },
+        {
+          "frase": "p5_equipo_r2_f3",
+          "tema": "t2"
+        },
+        {
+          "frase": "p5_equipo_r2_f4",
+          "tema": "t2"
+        },
+        {
+          "frase": "p5_equipo_r2_f5",
+          "tema": "t4"
+        },
+        {
+          "frase": "p5_equipo_r3_f1",
+          "tema": "t4"
+        },
+        {
+          "frase": "p5_equipo_r3_f2",
+          "tema": "t4"
+        },
+        {
+          "frase": "p5_equipo_r3_f3",
+          "tema": "t4"
+        },
+        {
+          "frase": "p5_equipo_r3_f4",
+          "tema": "t4"
+        },
+        {
+          "frase": "p5_equipo_r3_f5",
+          "tema": "t3"
+        }
+      ]
+    }
+  }
+}
