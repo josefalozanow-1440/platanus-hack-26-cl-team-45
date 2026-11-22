@@ -57,6 +57,7 @@ Diferencia vs lo que ya existe: Pol.is y Talk to the City son texto y web; esto 
 ## Decisiones (con hora)
 - 21-nov 23:00: propuesta de giro multiplayer (ronda 2 cruzada + pantalla en vivo). Pendiente de confirmar por el equipo.
 - 21-nov 23:15: sin QR; el link wa.me se comparte por el Discord del hackatón. Lanes asignadas (Kaina, Gonzalo, Diego).
+- 21-nov ~23:45: datos sintéticos de Edo en `data/respuestas-sinteticas.json` (25 respuestas sobre la experiencia en la hackathon, campos id/participante/texto; `texto` = transcripción ronda 1). Rotular como sintéticos en la demo.
 - 21-nov 23:30: nombre Audem (Cadem + audio). jsonc y project-description.md llenos; deploy-url pendiente (Diego).
 
 ## Lo que dijeron mentores/jueces
