@@ -11,7 +11,7 @@ Versión navegable, con vistas en vivo: https://claude.ai/artifact/2T9s87Ro77sCA
 | `tokens.json` | Todos los tokens: color (temas Claro y Noche), tipografía, espaciado, radios, sombras |
 | `tokens.css` | Los mismos tokens como variables CSS, generados desde `tokens.json` |
 | `audem-ds.css` | Estilos de los componentes (carga Outfit y Poppins desde Google Fonts) |
-| `audem-ds.js` | Los 11 componentes como script clásico de React 18: expone `window.Audem` |
+| `audem-ds.js` | Los 11 componentes (más `Entrada`) como script clásico de React 18: expone `window.Audem` |
 | `audem-ds.d.ts` | Las props de cada componente |
 | `audem-simbolo.svg` | El símbolo de la marca |
 | `demo.html` | Todos los componentes en una página, con botón Claro/Noche |
@@ -70,12 +70,12 @@ Audem es escucha ciudadana por WhatsApp: cada persona habla dos minutos y su voz
 - Espaciado en pasos de `esp-1` a `esp-16`. Mucho aire: entre secciones `esp-12`; alrededor del Orbe `esp-16`.
 - Tres formas, nada más: **rectángulos rectos** (`radio-0`) para los botones, **esquinas apenas suaves** (`radio-sm`) para paneles y la ventana del mapa, y **píldoras y círculos** (`radio-pildora`) para todo lo que es un valor o un estado.
 - Sin bordes de tarjeta: lo que separa es el cambio de `lienzo` a `rubor`. Un panel no lleva sombra.
-- Una sola sombra fuerte por pantalla, `sombra-flota`, cuando la ventana del mapa flota sobre el halo. Los tiradores y el botón de grabar usan `sombra-tirador`.
+- Una sola sombra fuerte por pantalla, `sombra-flota`, cuando la ventana del mapa flota sobre el halo. Los tiradores y el botón de grabar usan `sombra-tirador`. La barra para preguntar usa `sombra-suave`.
 - La Onda separa la presentación del detalle, una vez por página.
 
 ### Movimiento
 
-- Lo único que se mueve solo es el Orbe: un giro lento del color (26 s) y una respiración (7 s, ida y vuelta). Todo lo demás se mueve solo cuando alguien lo toca: 200 ms, `ease-out`. La excepción es la Escena: al abrir el agente, el Orbe se corre y el panel entra en 400 ms.
+- Lo único que se mueve solo es el Orbe: un giro lento del color (26 s) y una respiración (7 s, ida y vuelta). Todo lo demás se mueve solo cuando alguien lo toca: 200 ms, `ease-out`. La excepción es la Escena: al preguntar, el Orbe se corre en 500 ms y la conversación sube en 450 ms. Mientras el agente responde, el Orbe gira más rápido.
 - Cuando entra una voz nueva, el Orbe cambia de forma hacia la rama que creció. No hay confeti ni contadores que saltan.
 - Con `prefers-reduced-motion`, el Orbe queda quieto.
 
@@ -90,7 +90,7 @@ Audem es escucha ciudadana por WhatsApp: cada persona habla dos minutos y su voz
 
 - Una idea por pantalla, centrada en el Orbe o en una cifra. El texto acompaña a un costado, alineado a la izquierda.
 - En el mapa: el Orbe a la izquierda sobre `rubor`, y a la derecha un Panel `hondo` con las Perillas de margen y la lista de Ramas.
-- Para preguntarle al mapa: la Escena. El Orbe al centro; al activar el agente, el Orbe se corre a la izquierda y el Agente entra a la derecha en `rubor-hondo`, a 380px. El Orbe nunca se tapa.
+- Para preguntarle al mapa: la Escena, minimalista. En reposo, el Orbe al centro, un saludo en dos tonos y una sola barra para preguntar. Al preguntar, el Orbe se corre a la izquierda y la conversación aparece a la derecha, sin panel ni caja. Nada más en pantalla: ni etiquetas alrededor del Orbe ni menús.
 - En láminas: fondo `lienzo`, el bloque de marca o una cifra grande, y el Orbe o el halo como imagen. Menos de veinte palabras por lámina.
 
 ## El agente
@@ -102,7 +102,7 @@ El agente sirve para consultar y diagnosticar lo que dijo la gente. No es un clo
 - **Si no sabe, lo dice y ofrece preguntar:** «Nadie habló de estacionamientos todavía, así que no lo voy a adivinar», con el botón «Preguntarlo por WhatsApp».
 - **Dos modos.** *Consultar* habla de lo que opina la gente. *Diagnosticar* habla de la muestra: quién falta frente al Censo, qué audios se transcribieron con baja confianza, qué rama tiene un margen demasiado grande. Los hallazgos llevan Pastilla «Bien», «Revisar» o «Dato».
 - **Tono:** el mismo tuteo corto del resto. Frases de una idea. Sin «¡Excelente pregunta!» ni emoji.
-- **Forma:** la pregunta de quien consulta va en una burbuja `tinta`; la respuesta del agente va sin burbuja, sobre `rubor-hondo`, con las citas en tarjetas `lienzo`. Su avatar es un Orbe en miniatura, el único otro lugar donde aparece el degradado.
+- **Forma:** minimalista. La pregunta de quien consulta va en una burbuja `rubor-hondo` a la derecha; la respuesta va sin burbuja, en `display` liviano a 22px, y las citas son texto plano con su fuente debajo. Sin paneles ni tarjetas. La barra para preguntar es una píldora con un Orbe en miniatura, el único otro lugar donde aparece el degradado.
 
 ## Iconografía
 
@@ -194,6 +194,8 @@ La voz colectiva como un objeto vivo: una forma iridiscente que cada rama empuja
 - `ramas`: `{ etiqueta, detalle, peso, estado }`. `peso` va de 0 a 1 (normalmente el respaldo de esa rama dividido por el de la mayor); `detalle` es la cifra corta bajo la etiqueta; `estado` cambia el tirador (relleno coral = validada, trazo lila = minoritaria).
 - `tamano`: ancho de la forma en px (360); el SVG se adapta al ancho de su contenedor.
 - `animado={false}`: lo deja quieto (para capturas). También se detiene solo con `prefers-reduced-motion`.
+- `minimal`: solo la forma y su órbita, sin radios, tiradores ni etiquetas. Es el Orbe de la Escena.
+- `pensando`: el color gira más rápido (5 s) mientras el agente responde.
 - `descripcion`: lo que debe oír un lector de pantalla; escribe la conclusión, no la forma.
 
 Funciona mejor con seis ramas, en `rubor`, con `esp-16` de aire. Uno por pantalla. Es el único lugar donde viven `turquesa`, `oro`, `lila` y el degradado: no los saques de aquí.
@@ -211,33 +213,38 @@ Sin sombra y sin borde: el color de fondo ya lo separa. No metas un Panel dentro
 
 ### Agente
 
-Un chat para consultar y diagnosticar lo que dijo la gente: responde solo con las voces reales, las cita y dice con cuántas cuenta.
+La conversación con el agente, sin caja: texto sobre el fondo, para consultar y diagnosticar lo que dijo la gente. Responde solo con voces reales, las cita y dice con cuántas cuenta.
 
 - `mensajes`: la conversación. Cada uno es `{ de: 'persona', texto }` o `{ de: 'agente', texto, citas, ramas, diagnostico, accion, base }`.
+  - `texto`: la respuesta, en `display` liviano a 22px. Una o dos frases.
   - `citas`: `{ texto, fuente }`, palabras textuales de una voz (`Voz 214 · audio · Villa Los Aromos`).
   - `ramas`: props de Rama, para mostrar respaldo y margen.
   - `diagnostico`: `{ etiqueta, valor, estado }` con estado `ok` («Bien»), `alerta` («Revisar») o `info` («Dato»).
-  - `accion`: `{ etiqueta, onClick }`, un botón de contorno (por ejemplo «Preguntarlo por WhatsApp»).
+  - `accion`: `{ etiqueta, onClick }`, un enlace coral (por ejemplo «Preguntarlo por WhatsApp»).
   - `base`: de dónde sale la respuesta, en una línea al pie.
 - `onEnviar(texto, modo)`: se llama al enviar; el modo es `consultar` o `diagnosticar`.
-- `pensando`: `true` o un texto («Leyendo 482 voces…») mientras llega la respuesta.
-- `sugerencias`: una lista, o `{ consultar: [...], diagnosticar: [...] }`.
-- `onCerrar`: muestra la × de cierre. `modos={false}` quita el selector. `titulo`, `subtitulo`, `modoInicial`.
+- `pensando`: `true` o un texto («Leyendo 482 voces…») mientras llega la respuesta. Bloquea el envío.
+- `sugerencias`: una lista, o `{ consultar: [...], diagnosticar: [...] }`. Van en una fila sobre la barra.
+- `onCerrar`: muestra la píldora «× Cerrar». `modos={false}` quita los modos. `avatar={false}` quita el mini Orbe de la barra.
 
-Ocupa el alto de su contenedor: dale un alto fijo (580px junto al mapa). Va en `rubor-hondo`, nunca encima del Orbe.
+Ocupa el alto de su contenedor: dale un alto fijo. Va directo sobre `lienzo`, sin panel ni borde. La persona pregunta en una burbuja `rubor-hondo` a la derecha; el agente responde a la izquierda sin burbuja.
 
 Reglas del agente: no inventa. Si nadie habló de algo, lo dice y ofrece preguntarlo por WhatsApp. Cada afirmación lleva su número de voces, y una cifra lleva su margen. Cita textual, sin corregir a la gente. En modo diagnóstico habla de la muestra (quién falta, qué audios se entendieron mal, qué rama tiene poco respaldo), no de las opiniones.
 
+`Entrada` (la barra para preguntar) también se exporta sola: `onEnviar(texto)`, `placeholder`, `deshabilitado`, `pensando`, `avatar`.
+
 ### Escena
 
-El mapa con el agente al lado: el Orbe vive al centro de la superficie `rubor` y, al tocar «Pregúntale al mapa», se corre a la izquierda y el Agente entra a la derecha.
+La pantalla del agente en web, minimalista: en reposo, el Orbe al centro con un saludo, una sola barra para preguntar y unas pocas sugerencias. Al preguntar, el Orbe se corre a la izquierda y la conversación aparece a la derecha.
 
-- `ramas`, `tamano`, `descripcion`, `animado`: van directo al Orbe.
-- `responder(texto, modo)`: devuelve (o promete) el mensaje del agente, con la forma de un mensaje de Agente sin `de`. Si falla, la Escena muestra «No pude leer las voces ahora».
-- `agente`: props extra para el Agente (`sugerencias`, `titulo`, `modoInicial`).
-- `mensajes`: conversación inicial. `abierto`: empieza con el agente abierto. `alto`: alto en px (580). `etiquetaActivar`: el texto del botón.
+- `ramas`, `descripcion`, `animado`: van al Orbe, que aquí se dibuja en modo `minimal` (solo la forma y su órbita, sin etiquetas).
+- `saludo` y `pregunta`: el título en dos tonos. `saludo` va liviano en `tinta-suave` («Hola, equipo de Ñuñoa»); `pregunta`, en `tinta` («¿Qué quieres saber de lo que dijo la gente?»).
+- `pie`: una línea con la base de datos («482 voces sobre la plaza»). Bajo el título en reposo, bajo el Orbe al conversar.
+- `responder(texto, modo)`: devuelve (o promete) el mensaje del agente, con la forma de un mensaje de Agente sin `de`. Mientras responde, el Orbe gira más rápido. Si falla, la Escena muestra «No pude leer las voces ahora».
+- `agente`: props extra para el Agente (`sugerencias`, `modoInicial`). Las sugerencias de `consultar` también se muestran en reposo.
+- `mensajes`, `abierto`, `alto` (680), `etiquetaActivar` (el texto de la barra).
 
-La transición dura 400 ms y no ocurre con `prefers-reduced-motion`. Bajo 720px de ancho, el agente baja y queda debajo del Orbe. Una Escena por pantalla.
+Sin paneles, sin bordes de caja, sin etiquetas alrededor del Orbe: el fondo es `lienzo` con el halo del Orbe, y lo único que se toca es la barra. Bajo 760px, la conversación baja y el Orbe queda chico arriba. Las transiciones duran 450–500 ms y no ocurren con `prefers-reduced-motion`.
 
 ## Logo
 

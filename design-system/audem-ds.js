@@ -126,11 +126,11 @@
   function Orbe(p) {
     var id = useUid();
     var S = p.tamano || 360, ramas = p.ramas && p.ramas.length ? p.ramas : [{}, {}, {}, {}, {}, {}];
-    var n = ramas.length, padX = Math.round(S * 0.42), W = S + padX * 2, H = Math.round(S * 1.12);
-    var cx0 = W / 2, cy0 = H / 2, rad = function (a) { return (a - 90) * Math.PI / 180; };
+    var min = !!p.minimal, n = ramas.length, padX = min ? 0 : Math.round(S * 0.42), W = S + padX * 2, H = min ? S : Math.round(S * 1.12);
+    var cx0 = W / 2, cy0 = H / 2, k = min ? 1.22 : 1, rad = function (a) { return (a - 90) * Math.PI / 180; };
     var nodos = ramas.map(function (r, i) {
       var ang = i * 360 / n, peso = r.peso == null ? 0.5 : Math.max(0, Math.min(1, r.peso));
-      var rr = S * 0.21 * (0.8 + 0.75 * peso);
+      var rr = S * 0.21 * k * (0.8 + 0.75 * peso);
       return { ang: ang, rr: rr, x: cx0 + rr * Math.cos(rad(ang)), y: cy0 + rr * Math.sin(rad(ang)), r: r };
     });
     var pts = [];
@@ -139,22 +139,23 @@
       pts.push([nd.x, nd.y]);
       pts.push([cx0 + rm * Math.cos(rad(am)), cy0 + rm * Math.sin(rad(am))]);
     });
-    var d = curva(pts), orig = cx0 + 'px ' + cy0 + 'px', blur = S * 0.055;
-    var rLin = S * 0.43, rEtq = S * 0.47, rOrb = S * 0.37;
-    var mancha = function (k, x, y, rx, ry) { return h('ellipse', { key: k, className: 'au-orbe-' + k.replace(/[0-9]/g, ''), cx: cx0 + x * S, cy: cy0 + y * S, rx: rx * S, ry: ry * S }); };
-    return h('svg', { className: cx('au-orbe', p.animado === false && 'is-quieto', p.className), viewBox: '0 0 ' + W + ' ' + H, role: 'img', 'aria-label': p.descripcion || ('Mapa de ' + n + ' ramas') },
+    var d = curva(pts), orig = cx0 + 'px ' + cy0 + 'px', blur = S * k * 0.055;
+    var rLin = S * 0.43, rEtq = S * 0.47, rOrb = min ? S * 0.42 : S * 0.37;
+    var esc = k;
+    var mancha = function (k, x, y, rx, ry) { return h('ellipse', { key: k, className: 'au-orbe-' + k.replace(/[0-9]/g, ''), cx: cx0 + x * S * esc, cy: cy0 + y * S * esc, rx: rx * S * esc, ry: ry * S * esc }); };
+    return h('svg', { className: cx('au-orbe', min && 'is-minimal', p.pensando && 'is-pensando', p.animado === false && 'is-quieto', p.className), viewBox: '0 0 ' + W + ' ' + H, role: 'img', 'aria-label': p.descripcion || ('Mapa de ' + n + ' ramas') },
       h('defs', null,
         h('clipPath', { id: id + 'c' }, h('path', { d: d })),
         h('filter', { id: id + 'b', x: '-50%', y: '-50%', width: '200%', height: '200%' }, h('feGaussianBlur', { stdDeviation: f2(blur) })),
         h('filter', { id: id + 'h', x: '-50%', y: '-50%', width: '200%', height: '200%' }, h('feGaussianBlur', { stdDeviation: f2(S * 0.07) })),
-        h('radialGradient', { id: id + 'g', gradientUnits: 'userSpaceOnUse', cx: f2(cx0 - S * 0.03), cy: f2(cy0 - S * 0.02), r: f2(S * 0.33) },
+        h('radialGradient', { id: id + 'g', gradientUnits: 'userSpaceOnUse', cx: f2(cx0 - S * k * 0.03), cy: f2(cy0 - S * k * 0.02), r: f2(S * k * 0.33) },
           h('stop', { offset: '0', style: { stopColor: 'var(--turquesa)' } }),
           h('stop', { offset: '0.3', style: { stopColor: 'var(--turquesa)' } }),
           h('stop', { offset: '0.62', style: { stopColor: 'var(--coral)' } }),
           h('stop', { offset: '0.86', style: { stopColor: 'var(--coral)' } }),
           h('stop', { offset: '1', style: { stopColor: 'var(--oro)' } }))),
       h('circle', { className: 'au-orbe-orbita', cx: cx0, cy: cy0, r: rOrb }),
-      nodos.map(function (nd, i) {
+      min ? null : nodos.map(function (nd, i) {
         var e = [cx0 + rLin * Math.cos(rad(nd.ang)), cy0 + rLin * Math.sin(rad(nd.ang))];
         return h('line', { key: 'l' + i, className: 'au-orbe-radio', x1: f2(cx0 + S * 0.08 * Math.cos(rad(nd.ang))), y1: f2(cy0 + S * 0.08 * Math.sin(rad(nd.ang))), x2: f2(e[0]), y2: f2(e[1]) });
       }),
@@ -168,7 +169,7 @@
             mancha('lila', 0.12, -0.12, 0.07, 0.05),
             mancha('oro', -0.15, 0.12, 0.06, 0.035),
             mancha('brillo', -0.06, -0.15, 0.08, 0.03)))),
-      nodos.map(function (nd, i) {
+      min ? null : nodos.map(function (nd, i) {
         var r = nd.r, est = r.estado || 'provisional';
         var c = Math.cos(rad(nd.ang)), sn = Math.sin(rad(nd.ang));
         var ex = cx0 + rEtq * c, ey = cy0 + rEtq * sn;
@@ -193,71 +194,72 @@
 
   /* ---------- Agente ---------- */
   var DIAG = { ok: ['turquesa', 'Bien'], alerta: ['coral', 'Revisar'], info: ['neutro', 'Dato'] };
+  function Mini(p) { return h('span', { className: cx('au-mini', p.pensando && 'is-pensando'), 'aria-hidden': 'true' }); }
+  function Entrada(p) {
+    var id = useUid(), st = R.useState('');
+    function enviar() { var t = st[0].trim(); if (!t || p.deshabilitado) return; if (p.onEnviar) p.onEnviar(t); st[1](''); }
+    return h('form', { className: cx('au-entrada', p.className), onSubmit: function (e) { e.preventDefault(); enviar(); } },
+      p.avatar === false ? null : h(Mini, { pensando: p.pensando }),
+      h('label', { className: 'au-oculto', htmlFor: id }, p.etiqueta || 'Tu pregunta'),
+      h('input', { id: id, type: 'text', autoComplete: 'off', value: st[0], placeholder: p.placeholder || 'Pregúntale al mapa…', onChange: function (e) { st[1](e.target.value); } }),
+      h('button', { type: 'submit', className: 'au-entrada-enviar', 'aria-label': 'Enviar', disabled: !st[0].trim() || !!p.deshabilitado },
+        h('svg', { width: 16, height: 16, viewBox: '0 0 16 16', 'aria-hidden': 'true' },
+          h('path', { d: 'M3 8h9.5M8.5 4 12.5 8l-4 4', fill: 'none', stroke: 'currentColor', strokeWidth: 1.6, strokeLinecap: 'round', strokeLinejoin: 'round' }))));
+  }
+  function Sugerencias(p) {
+    if (!p.items || !p.items.length) return null;
+    return h('div', { className: cx('au-sug', p.className), role: 'group', 'aria-label': 'Preguntas sugeridas' },
+      p.items.map(function (s) { return h('button', { key: s, type: 'button', className: 'au-sug-chip', onClick: function () { p.onElegir(s); } }, s); }));
+  }
   function MensajeAgente(m) {
     return h('div', { className: 'au-ag-msg' },
-      m.texto ? h('p', null, m.texto) : null,
+      m.texto ? h('p', { className: 'au-ag-texto' }, m.texto) : null,
       m.ramas && m.ramas.length ? h('div', { className: 'au-ag-ramas' }, m.ramas.map(function (r, i) { return h(Rama, Object.assign({ key: i }, r)); })) : null,
       m.citas && m.citas.length ? h('div', { className: 'au-ag-citas' }, m.citas.map(function (c, i) {
         return h('figure', { key: i, className: 'au-ag-cita' }, h('blockquote', null, '«' + c.texto + '»'), c.fuente ? h('figcaption', null, c.fuente) : null);
       })) : null,
-      m.diagnostico && m.diagnostico.length ? h('div', { className: 'au-ag-diag' }, m.diagnostico.map(function (d, i) {
+      m.diagnostico && m.diagnostico.length ? h('dl', { className: 'au-ag-diag' }, m.diagnostico.map(function (d, i) {
         var t = DIAG[d.estado] || DIAG.info;
         return h('div', { key: i, className: 'au-ag-diag-fila' },
-          h('span', { className: 'au-ag-diag-etq' }, d.etiqueta),
-          h('span', { className: 'au-ag-diag-val' }, d.valor),
-          h(Pastilla, { tono: t[0] }, t[1]));
+          h('dt', null, d.etiqueta),
+          h('dd', { className: 'au-ag-diag-val' }, d.valor),
+          h('dd', null, h(Pastilla, { tono: t[0] }, t[1])));
       })) : null,
-      m.accion ? h(Boton, { variante: 'contorno', className: 'au-ag-accion', onClick: m.accion.onClick }, m.accion.etiqueta) : null,
+      m.accion ? h('button', { type: 'button', className: 'au-ag-accion', onClick: m.accion.onClick }, m.accion.etiqueta, h('span', { 'aria-hidden': 'true' }, ' →')) : null,
       m.base ? h('p', { className: 'au-ag-base' }, m.base) : null);
   }
   function Agente(p) {
-    var id = useUid();
-    var txt = R.useState(''), modo = R.useState(p.modoInicial || 'consultar');
-    var lista = R.useRef(null);
+    var modo = R.useState(p.modoInicial || 'consultar'), lista = R.useRef(null);
     var n = (p.mensajes || []).length;
     R.useEffect(function () { var el = lista.current; if (el) el.scrollTop = el.scrollHeight; }, [n, !!p.pensando]);
-    function enviar(t) {
-      t = (t || '').trim();
-      if (!t || p.pensando) return;
-      if (p.onEnviar) p.onEnviar(t, modo[0]);
-      txt[1]('');
-    }
+    function enviar(t) { if (!p.pensando && p.onEnviar) p.onEnviar(t, modo[0]); }
     var sug = p.sugerencias ? (Array.isArray(p.sugerencias) ? p.sugerencias : (p.sugerencias[modo[0]] || [])) : [];
-    return h('aside', { className: cx('au-ag', p.className), 'aria-label': p.titulo || 'Agente de Audem' },
+    return h('section', { className: cx('au-ag', p.className), 'aria-label': p.titulo || 'Agente de Audem' },
       h('header', { className: 'au-ag-cab' },
-        h('div', { className: 'au-ag-id' },
-          h('span', { className: 'au-ag-avatar', 'aria-hidden': 'true' }),
-          h('div', null,
-            h('p', { className: 'au-ag-nombre' }, p.titulo || 'Agente de Audem'),
-            h('p', { className: 'au-ag-sub' }, p.subtitulo || 'Responde solo con lo que dijo la gente'))),
-        p.onCerrar ? h('button', { type: 'button', className: 'au-ag-cerrar', 'aria-label': 'Cerrar el agente', onClick: p.onCerrar }, '×') : null),
-      p.modos === false ? null : h(Selector, { className: 'au-ag-modo', etiqueta: null, valor: modo[0], onChange: modo[1],
-        opciones: [{ valor: 'consultar', etiqueta: 'Consultar' }, { valor: 'diagnosticar', etiqueta: 'Diagnosticar' }] }),
+        p.modos === false ? h('span') : h('div', { className: 'au-ag-modos', role: 'group', 'aria-label': 'Modo del agente' },
+          [['consultar', 'Consultar'], ['diagnosticar', 'Diagnosticar']].map(function (m) {
+            return h('button', { key: m[0], type: 'button', className: 'au-ag-modo', 'aria-pressed': modo[0] === m[0], onClick: function () { modo[1](m[0]); } }, m[1]);
+          })),
+        p.onCerrar ? h('button', { type: 'button', className: 'au-cerrar', onClick: p.onCerrar }, h('span', { 'aria-hidden': 'true' }, '×'), 'Cerrar') : null),
       h('div', { className: 'au-ag-lista', ref: lista, role: 'log', 'aria-live': 'polite' },
         n === 0 && !p.pensando ? h('p', { className: 'au-ag-vacio' }, modo[0] === 'diagnosticar'
-          ? 'Revisa la calidad de las voces: quién falta, qué audios se entendieron mal, qué rama tiene poco respaldo.'
-          : 'Pregunta qué dijo la gente. Te respondo con sus palabras y con cuántas voces lo dicen.') : null,
+          ? 'Revisa la muestra: quién falta, qué audios se entendieron mal, qué rama tiene poco respaldo.'
+          : 'Pregunta qué dijo la gente. Respondo con sus palabras y con cuántas voces lo dicen.') : null,
         (p.mensajes || []).map(function (m, i) {
           return m.de === 'persona' ? h('p', { key: i, className: 'au-ag-yo' }, m.texto) : h(MensajeAgente, Object.assign({ key: i }, m));
         }),
         p.pensando ? h('p', { className: 'au-ag-pensando' }, p.pensando === true ? 'Leyendo las voces…' : p.pensando) : null),
-      sug.length && !p.pensando ? h('div', { className: 'au-ag-sug', role: 'group', 'aria-label': 'Preguntas sugeridas' }, sug.map(function (s) {
-        return h('button', { key: s, type: 'button', className: 'au-ag-chip', onClick: function () { enviar(s); } }, s);
-      })) : null,
-      h('form', { className: 'au-ag-form', onSubmit: function (e) { e.preventDefault(); enviar(txt[0]); } },
-        h('label', { className: 'au-oculto', htmlFor: id + 'q' }, 'Tu pregunta'),
-        h('textarea', { id: id + 'q', rows: 1, value: txt[0],
-          placeholder: modo[0] === 'diagnosticar' ? '¿Hay sesgo por edad?' : 'Pregunta sobre lo que dijo la gente',
-          onChange: function (e) { txt[1](e.target.value); },
-          onKeyDown: function (e) { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); enviar(txt[0]); } } }),
-        h('button', { type: 'submit', className: 'au-ag-enviar', 'aria-label': 'Enviar', disabled: !txt[0].trim() || !!p.pensando }, '→')));
+      p.pensando ? null : h(Sugerencias, { items: sug, onElegir: enviar }),
+      h(Entrada, { onEnviar: enviar, deshabilitado: !!p.pensando, pensando: !!p.pensando, avatar: p.avatar,
+        placeholder: modo[0] === 'diagnosticar' ? '¿Hay sesgo por edad?' : 'Pregunta sobre lo que dijo la gente…' }));
   }
 
-  /* ---------- Escena: el Orbe al centro y el agente al lado ---------- */
+  /* ---------- Escena: el Orbe al centro; al preguntar, el agente al lado ---------- */
   function Escena(p) {
     var ab = R.useState(!!p.abierto);
     var msgs = R.useState(p.mensajes || []), pens = R.useState(false);
     function enviar(t, modo) {
+      ab[1](true);
       msgs[1](function (prev) { return prev.concat([{ de: 'persona', texto: t }]); });
       if (!p.responder) return;
       pens[1](true);
@@ -269,16 +271,24 @@
         msgs[1](function (prev) { return prev.concat([{ de: 'agente', texto: 'No pude leer las voces ahora. Vuelve a preguntar en un momento.' }]); });
       });
     }
-    return h('div', { className: cx('au-escena', ab[0] && 'is-abierta', p.className), style: p.alto ? { '--alto-escena': p.alto + 'px' } : null },
-      h('div', { className: 'au-escena-grid' },
-        h('div', { className: 'au-escena-orbe' },
-          h(Orbe, { ramas: p.ramas, tamano: p.tamano, descripcion: p.descripcion, animado: p.animado }),
-          ab[0] ? null : h('button', { type: 'button', className: 'au-escena-activar', 'aria-expanded': false, onClick: function () { ab[1](true); } },
-            h('span', { className: 'au-ag-avatar', 'aria-hidden': 'true' }), p.etiquetaActivar || 'Pregúntale al mapa')),
-        ab[0] ? h(Agente, Object.assign({}, p.agente, { mensajes: msgs[0], pensando: pens[0], onEnviar: enviar, onCerrar: function () { ab[1](false); } })) : null));
+    var s = p.agente && p.agente.sugerencias, sugIni = s ? (Array.isArray(s) ? s : (s.consultar || [])) : [];
+    return h('div', { className: cx('au-escena', ab[0] ? 'is-abierta' : 'is-reposo', p.className), style: p.alto ? { '--alto-escena': p.alto + 'px' } : null },
+      h('div', { className: 'au-escena-orbe' },
+        h('div', { className: 'au-escena-halo', 'aria-hidden': 'true' }),
+        h(Orbe, { ramas: p.ramas, tamano: 320, minimal: true, pensando: pens[0], descripcion: p.descripcion, animado: p.animado }),
+        ab[0] && p.pie ? h('p', { className: 'au-escena-pie' }, p.pie) : null),
+      ab[0]
+        ? h(Agente, Object.assign({}, p.agente, { className: 'au-escena-chat', mensajes: msgs[0], pensando: pens[0], onEnviar: enviar, onCerrar: function () { ab[1](false); } }))
+        : h('div', { className: 'au-escena-intro' },
+            h('h2', { className: 'au-escena-titulo' },
+              h('span', { className: 'au-escena-saludo' }, p.saludo || 'Hola'),
+              h('span', null, p.pregunta || '¿Qué quieres saber de lo que dijo la gente?')),
+            p.pie ? h('p', { className: 'au-escena-sub' }, p.pie) : null,
+            h(Entrada, { onEnviar: function (t) { enviar(t, 'consultar'); }, placeholder: p.etiquetaActivar || 'Pregúntale al mapa…' }),
+            h(Sugerencias, { items: sugIni, onElegir: function (t) { enviar(t, 'consultar'); } })));
   }
 
   var C = window;
   C.Audem = C.Audem || {};
-  Object.assign(C.Audem, { Marca: Marca, Onda: Onda, Boton: Boton, Selector: Selector, Pastilla: Pastilla, Perilla: Perilla, Rama: Rama, Orbe: Orbe, Panel: Panel, Agente: Agente, Escena: Escena, Simbolo: Simbolo, margen: margen, cifra: cifra });
+  Object.assign(C.Audem, { Marca: Marca, Onda: Onda, Boton: Boton, Selector: Selector, Pastilla: Pastilla, Perilla: Perilla, Rama: Rama, Orbe: Orbe, Panel: Panel, Agente: Agente, Escena: Escena, Entrada: Entrada, Simbolo: Simbolo, margen: margen, cifra: cifra });
 })();
