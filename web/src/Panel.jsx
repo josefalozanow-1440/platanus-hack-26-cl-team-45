@@ -1,12 +1,36 @@
 import { memo, useEffect, useRef } from 'react';
 import { useQuery } from 'convex/react';
 import { api } from '../../convex/_generated/api';
-import { arrancar, conEncuesta } from './convex.jsx';
+import { arrancar, SLUG } from './convex.jsx';
+import { plural } from './comun.js';
 import { montar } from './panel-dibujo.js';
 import './panel.css';
 
+// Landing (/): the latest polls, newest first.
+function Portada() {
+  const encuestas = useQuery(api.encuestas.listar);
+  return (
+    <div className="portada">
+      <header><h1>Audem</h1></header>
+      <main>
+        {encuestas?.slice(0, 12).map(e => (
+          <section key={e._id}>
+            <h2>{e.pregunta}</h2>
+            <p className="meta">{e.abierta ? 'abierta' : 'cerrada'} · {plural(e.personas, 'persona', 'personas')} · {new Date(e._creationTime).toLocaleDateString('es-CL')}</p>
+            <div className="acciones">
+              <a className="boton" href={`/${e.slug}/panel`}>Panel en vivo</a>
+              {e.abierta && <a className="boton" href={`/${e.slug}`}>Responder</a>}
+            </div>
+          </section>
+        ))}
+        {encuestas?.length === 0 && <p className="meta">Todavía no hay encuestas.</p>}
+      </main>
+    </div>
+  );
+}
+
 function Panel() {
-  const d = useQuery(api.encuestas.mapa, conEncuesta());
+  const d = useQuery(api.encuestas.mapa, { slug: SLUG });
   const dibujo = useRef(null);
   useEffect(() => { dibujo.current = montar(); return () => dibujo.current.desmontar(); }, []);
   useEffect(() => { if (d !== undefined) dibujo.current.recibir(d); }, [d]);
@@ -19,9 +43,8 @@ const Lienzo = memo(() => (
     <div className="app">
       <header>
         <h1 id="pregunta">Audem</h1>
-        <span className="badge" id="badge" hidden>Datos sintéticos</span>
-        <div className="total"><span className="num" id="total">0</span><span>personas respondieron</span></div>
-        <a className="boton" href={'flujo.html' + location.search}>Ver flujo</a>
+        <div className="total"><span className="num" id="total">0</span><span>personas</span></div>
+        <a className="boton" href={`/${SLUG}/flujo`}>Ver flujo</a>
       </header>
       <main>
         <section id="mapa">
@@ -52,14 +75,13 @@ const Lienzo = memo(() => (
               <span className="clave"><svg width="30" height="14" aria-hidden="true"><circle cx="4" cy="7" r="3.5" fill="var(--muted)" /><circle cx="21" cy="7" r="7" fill="var(--muted)" /></svg>frase: color = tono, tamaño = intensidad</span>
               <span className="clave solo-temas">área del círculo = n.º de frases</span>
               <span className="clave"><svg width="16" height="16" aria-hidden="true"><circle cx="8" cy="8" r="6.5" fill="none" stroke="var(--ink)" strokeWidth="2" /></svg>últimas 2 frases</span>
-              <span className="clave">clic en un tema para ver sus frases</span>
               <span className="metodo" id="metodo"></span>
             </figcaption>
           </figure>
         </section>
         <aside>
           <section>
-            <h2>Temas por número de personas</h2>
+            <h2>Temas</h2>
             <div id="temas"></div>
           </section>
           <section id="detalle"></section>
@@ -70,4 +92,4 @@ const Lienzo = memo(() => (
   </>
 ));
 
-arrancar(Panel);
+arrancar(SLUG ? Panel : Portada);

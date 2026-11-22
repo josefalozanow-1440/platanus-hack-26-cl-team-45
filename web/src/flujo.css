@@ -1,5 +1,5 @@
-header { display: flex; align-items: flex-end; gap: var(--s5); padding: var(--s4) var(--s6) var(--s3); flex-wrap: wrap; }
-h1 { margin: 0; font-size: clamp(var(--t3), 2.6vw, var(--t5)); font-weight: 600; line-height: 1.15; letter-spacing: -0.015em; flex: 1 1 260px; }
+header { display: flex; align-items: center; gap: var(--s5); padding: var(--s4) var(--s6) var(--s3); flex-wrap: wrap; }
+h1 { margin: 0; font-size: clamp(var(--t3), 2.6vw, var(--t5)); font-weight: 600; line-height: 1.15; letter-spacing: -0.015em; flex: 1 1 100%; }
 nav { display: flex; gap: var(--s2); }
 main { padding: 0 var(--s6) var(--s6); }
 section { background: var(--surface); border: 1px solid var(--edge); border-radius: 12px; padding: var(--s4) var(--s5); overflow-x: auto; }

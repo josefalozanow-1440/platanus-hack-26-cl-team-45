@@ -6,12 +6,11 @@ export function montar() {
   const X = { r: 0, rf: 350, f: 640, c: 960, t: 1300 }; // column anchors
   const $ = id => document.getElementById(id), svg = $('flujo'), tip = $('tip');
   svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
-  let ultimo = '', primera = true, apiOk = false;
+  let ultimo = '', primera = true;
 
-  async function recibir(d) {
-    if (d) { apiOk = true; $('badge').hidden = true; }
-    else if (apiOk || ultimo) return; // never flip to mock mid-session
-    else { d = await (await fetch('mapa-mock.json')).json(); $('badge').hidden = false; }
+  // null = no poll with this slug.
+  function recibir(d) {
+    if (!d) { $('pregunta').textContent = 'No existe esta encuesta'; return; }
     const s = JSON.stringify(d);
     if (s !== ultimo) { ultimo = s; render(d); }
   }
@@ -138,7 +137,7 @@ export function montar() {
       primera = false;
       svg.querySelectorAll('.col').forEach((g, i) => setTimeout(() => g.classList.remove('oculta'), 80 + 220 * i));
     }
-    $('metodo').textContent = `Casos: ${total} personas · ${frases.length} frases · ${conceptos.length} conceptos · ${temas.length} temas. Frases, emoción y conceptos extraídos por LLM desde cada audio transcrito; temas agrupados por LLM. % sobre el total de personas.`;
+    $('metodo').textContent = `Casos: ${plural(total, 'persona', 'personas')} · frases, emoción, conceptos y temas por LLM · % sobre el total de personas`;
   }
 
   // Hover: highlight every mark sharing a frase with the hovered one.

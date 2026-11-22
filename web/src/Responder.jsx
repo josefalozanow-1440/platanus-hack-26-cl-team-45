@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useMutation, useQuery } from 'convex/react';
 import { api } from '../../convex/_generated/api';
-import { arrancar, conEncuesta, mensaje } from './convex.jsx';
+import { arrancar, mensaje, SLUG } from './convex.jsx';
 import './responder.css';
 
 const MAX_S = 180;
@@ -10,7 +10,7 @@ const ESTADO = { transcribiendo: 'transcribiendo…', procesando: 'procesando…
 const YO = (() => { try { return (localStorage.audem_id ||= crypto.randomUUID()); } catch { return crypto.randomUUID(); } })();
 
 function Responder() {
-  const encuesta = useQuery(api.encuestas.actual, conEncuesta());
+  const encuesta = useQuery(api.encuestas.actual, { slug: SLUG });
   const mias = useQuery(api.encuestas.mias, encuesta ? { encuestaId: encuesta._id, participante: YO } : 'skip') ?? [];
   const urlSubida = useMutation(api.encuestas.urlSubida);
   const responderAudio = useMutation(api.encuestas.responderAudio);
@@ -68,14 +68,14 @@ function Responder() {
 
   return (
     <main>
-      <span className="marca">Audem · tu respuesta es anónima</span>
-      <h1>{encuesta === undefined ? 'Cargando pregunta…' : encuesta ? encuesta.pregunta : 'No hay ninguna encuesta abierta'}</h1>
+      <span className="marca">Respuesta anónima</span>
+      <h1>{encuesta === undefined ? 'Cargando pregunta…' : encuesta ? encuesta.pregunta : 'No existe esta encuesta'}</h1>
       <button id="mic" aria-pressed={grabando} disabled={!puedeGrabar || (!grabando && ocupado)} onClick={grabando ? parar : grabar}>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3" /><path d="M5 11a7 7 0 0 0 14 0M12 18v3" /></svg>
         <span>{grabando ? `Enviar · ${Math.floor(segundos / 60)}:${String(segundos % 60).padStart(2, '0')}` : 'Hablar'}</span>
       </button>
-      <p className="nota">Toca el micrófono, responde hablando y vuelve a tocarlo para enviar (máx. 3 min). ¿No puedes hablar? Escribe abajo.</p>
-      <textarea value={texto} onChange={e => setTexto(e.target.value)} placeholder="O escribe tu respuesta" />
+      <p className="nota">Toca para hablar y otra vez para enviar · máx. 3 min</p>
+      <textarea value={texto} onChange={e => setTexto(e.target.value)} placeholder="O escribe tu respuesta" aria-label="Tu respuesta" />
       <div className="fila">
         <button id="enviar" disabled={!abierta || grabando || ocupado || texto.trim().length < 3} onClick={enviarTexto}>Enviar respuesta</button>
         <p id="estado" role="status">{encuesta && !encuesta.abierta ? 'Esta encuesta ya cerró.' : estado}</p>

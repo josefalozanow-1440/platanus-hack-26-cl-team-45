@@ -1,5 +1,5 @@
 import { v } from "convex/values";
-import { internalMutation, internalQuery, mutation, query } from "./_generated/server";
+import { internalMutation, internalQuery, mutation, query, type QueryCtx } from "./_generated/server";
 import { internal } from "./_generated/api";
 import type { Id } from "./_generated/dataModel";
 
@@ -16,13 +16,24 @@ export const esAdmin = query({
 
 // ---------- admin ----------
 
+// "¿Qué te pareció la hack?" -> "que-te-parecio-la-hack". crear() adds -2, -3… if taken.
+function slugDe(pregunta: string) {
+  const base = pregunta.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 32).replace(/-+$/, "");
+  return base || "encuesta";
+}
+
 export const crear = mutation({
   args: { clave: v.string(), pregunta: v.string() },
   handler: async (ctx, { clave, pregunta }) => {
     exigirAdmin(clave);
     const p = pregunta.trim();
     if (!p) throw new Error("La pregunta está vacía");
-    return await ctx.db.insert("encuestas", { pregunta: p.slice(0, 300), abierta: true });
+    const base = slugDe(p);
+    let slug = base;
+    for (let i = 2; await ctx.db.query("encuestas").withIndex("by_slug", q => q.eq("slug", slug)).first(); i++) slug = `${base}-${i}`;
+    await ctx.db.insert("encuestas", { pregunta: p.slice(0, 300), slug, abierta: true });
+    return slug;
   },
 });
 
@@ -80,13 +91,11 @@ export const respuestas = query({
 
 // ---------- participants (anonymous) ----------
 
-// The poll to answer: the one in the link, else the newest open one.
+const porSlug = (ctx: QueryCtx, slug: string) => ctx.db.query("encuestas").withIndex("by_slug", q => q.eq("slug", slug)).unique();
+
 export const actual = query({
-  args: { encuestaId: v.optional(v.id("encuestas")) },
-  handler: async (ctx, { encuestaId }) => {
-    if (encuestaId) return await ctx.db.get(encuestaId);
-    return (await ctx.db.query("encuestas").order("desc").collect()).find(e => e.abierta) ?? null;
-  },
+  args: { slug: v.string() },
+  handler: (ctx, { slug }) => porSlug(ctx, slug),
 });
 
 export const responder = mutation({
@@ -130,9 +139,9 @@ export const mias = query({
 // ---------- live map: same shape the panels used to poll from /api/mapa ----------
 
 export const mapa = query({
-  args: { encuestaId: v.optional(v.id("encuestas")) },
-  handler: async (ctx, { encuestaId }) => {
-    const e = encuestaId ? await ctx.db.get(encuestaId) : (await ctx.db.query("encuestas").order("desc").first());
+  args: { slug: v.string() },
+  handler: async (ctx, { slug }) => {
+    const e = await porSlug(ctx, slug);
     if (!e) return null;
     const rs = await ctx.db.query("respuestas").withIndex("by_encuesta", q => q.eq("encuestaId", e._id)).collect();
     const fs = await ctx.db.query("frases").withIndex("by_encuesta", q => q.eq("encuestaId", e._id)).collect();

@@ -7,7 +7,7 @@ import './admin.css';
 
 const guardar = (k, v) => { try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch {} };
 const leer = k => { try { return localStorage.getItem(k); } catch { return null; } };
-const urlDe = (pag, id) => new URL(`${pag}?e=${id}`, location.href).href;
+const urlDe = (slug, vista = '') => `${location.origin}/${slug}${vista && '/' + vista}`;
 const fallo = e => alert(mensaje(e));
 
 function Admin() {
@@ -22,7 +22,7 @@ function Login({ error, entrar }) {
   const [k, setK] = useState('');
   return (
     <section id="login">
-      <h2>Admin de Audem</h2>
+      <h2>Audem admin</h2>
       <form onSubmit={e => { e.preventDefault(); entrar(k); }}>
         <input type="password" placeholder="Clave de admin" autoComplete="current-password" required value={k} onChange={e => setK(e.target.value)} />
         <button className="primario">Entrar</button>
@@ -38,12 +38,12 @@ function Tablero({ clave, salir }) {
   const [sel, setSel] = useState(leer('audem_sel'));
   const [pregunta, setPregunta] = useState('');
   const elegir = id => { setSel(id); guardar('audem_sel', id); };
-  const e = encuestas.find(x => x._id === sel);
+  const e = encuestas.find(x => x.slug === sel);
 
   return (
     <div id="app">
       <header>
-        <h1>Audem · admin</h1>
+        <h1>Audem admin</h1>
         <button onClick={salir}>Salir</button>
       </header>
       <main>
@@ -63,7 +63,7 @@ function Tablero({ clave, salir }) {
             <ul>
               {encuestas.map(x => (
                 <li key={x._id}>
-                  <button className="enc" aria-current={x._id === sel} onClick={() => elegir(x._id)}>
+                  <button className="enc" aria-current={x.slug === sel} onClick={() => elegir(x.slug)}>
                     <span>{x.pregunta}</span>
                     <span className="meta">{x.abierta ? 'abierta' : 'cerrada'} · {plural(x.personas, 'persona', 'personas')} · {plural(x.respuestas, 'respuesta', 'respuestas')}</span>
                   </button>
@@ -86,8 +86,8 @@ function Detalle({ e, clave }) {
   const borrar = useMutation(api.encuestas.borrarRespuesta);
   const [copiado, setCopiado] = useState(false);
   const qr = useRef(null);
-  const link = urlDe('responder.html', e._id);
-  // QRCode is the qrcodejs global loaded in admin.html.
+  const link = urlDe(e.slug);
+  // QRCode is the qrcodejs global loaded in index.html.
   useEffect(() => { qr.current.innerHTML = ''; new window.QRCode(qr.current, { text: link, width: 180, height: 180 }); }, [link]);
 
   const ESTADO = { transcribiendo: 'transcribiendo…', procesando: 'procesando…', listo: 'procesada', error: 'error al procesar' };
@@ -96,19 +96,17 @@ function Detalle({ e, clave }) {
       <h2>{e.pregunta}</h2>
       <div className="acciones">
         <button onClick={() => abrirCerrar({ clave, encuestaId: e._id, abierta: !e.abierta }).catch(fallo)}>{e.abierta ? 'Cerrar encuesta' : 'Reabrir encuesta'}</button>
-        <a className="boton" href={urlDe('index.html', e._id)} target="_blank">Panel en vivo</a>
-        <a className="boton" href={urlDe('flujo.html', e._id)} target="_blank">Flujo</a>
-        <a className="boton" href={link} target="_blank">Responder</a>
+        <a className="boton" href={urlDe(e.slug, 'panel')} target="_blank">Panel en vivo</a>
+        <a className="boton" href={urlDe(e.slug, 'flujo')} target="_blank">Flujo</a>
       </div>
       <div className="qr">
         <div id="qr" ref={qr}></div>
         <div>
-          <p className="meta">Link para responder con el micrófono</p>
-          <p id="link">{link}</p>
+          <a id="link" href={link} target="_blank">{link}</a>
           <button onClick={() => navigator.clipboard.writeText(link).then(() => setCopiado(true))}>{copiado ? 'Copiado' : 'Copiar link'}</button>
         </div>
       </div>
-      <h2>Respuestas en vivo</h2>
+      <h2>Respuestas <span className="meta">{respuestas.length}</span></h2>
       <ul>
         {respuestas.map(r => (
           <li key={r._id} className="resp">

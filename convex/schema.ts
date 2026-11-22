@@ -4,10 +4,11 @@ import { v } from "convex/values";
 export default defineSchema({
   encuestas: defineTable({
     pregunta: v.string(),
+    slug: v.string(), // URL key: /<slug>
     abierta: v.boolean(),
     // Debounce token: only the latest scheduled regroup runs.
     agruparPedido: v.optional(v.number()),
-  }),
+  }).index("by_slug", ["slug"]),
   respuestas: defineTable({
     encuestaId: v.id("encuestas"),
     participante: v.string(), // anonymous id from the participant's browser

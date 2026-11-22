@@ -36,7 +36,6 @@ Toda pantalla o gráfico de Audem sigue esto. Si algo nuevo no calza, se cambia 
 - Porcentajes solo sobre el total de personas (como una encuesta), siempre con «Casos: n» al pie. Dentro de un tema se muestran conteos (`1 pos · 0 neu · 5 neg`): con n chico los porcentajes engañan.
 - Personas ≠ frases. Una persona aporta 1 a 5 frases. Cada número dice cuál de las dos cuenta.
 - Debajo de cada figura va una nota de método con el n total y cómo se agrupó.
-- Datos sintéticos rotulados siempre con la etiqueta «Datos sintéticos».
 
 ## Dos vistas, mismos datos
 - **Panel en vivo** (`web/src/Panel.jsx` + `panel-dibujo.js`): para la pantalla grande. Controlable con línea de tiempo, filtro de tono y detalle por tema. Dos vistas: **Red** (personas → frases → temas, con física; por defecto) y **Temas** (grilla de círculos, la más fácil de leer).

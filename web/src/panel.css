@@ -1,5 +1,5 @@
-header { display: flex; align-items: flex-end; gap: var(--s5); padding: var(--s4) var(--s6) var(--s3); flex-wrap: wrap; }
-h1 { margin: 0; font-size: clamp(var(--t3), 2.6vw, var(--t5)); font-weight: 600; line-height: 1.15; letter-spacing: -0.015em; flex: 1 1 260px; }
+header { display: flex; align-items: center; gap: var(--s5); padding: var(--s4) var(--s6) var(--s3); flex-wrap: wrap; }
+h1 { margin: 0; font-size: clamp(var(--t3), 2.6vw, var(--t5)); font-weight: 600; line-height: 1.15; letter-spacing: -0.015em; flex: 1 1 100%; }
 .total { display: flex; align-items: baseline; gap: var(--s2); }
 .total .num { font-size: var(--t5); font-weight: 500; line-height: 1; }
 .total span:last-child { color: var(--ink-2); }
@@ -7,7 +7,7 @@ main { display: grid; grid-template-columns: minmax(0, 1fr) minmax(320px, 400px)
 section { background: var(--surface); border: 1px solid var(--edge); border-radius: 12px; padding: var(--s4) var(--s5); }
 h2 { margin: 0 0 var(--s3); font-size: var(--t1); font-weight: 600; }
 /* Toolbar: playback on the left, tone filter on the right */
-.barra-ctl { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s3) var(--s5); padding-bottom: var(--s3); border-bottom: 1px solid var(--line); margin-bottom: var(--s2); }
+.barra-ctl { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: var(--s3) var(--s5); padding-bottom: var(--s3); border-bottom: 1px solid var(--line); margin-bottom: var(--s2); }
 .tiempo { display: flex; align-items: center; gap: var(--s3); flex: 1 1 360px; }
 .tiempo input { flex: 1; accent-color: var(--ink); min-width: 120px; }
 .tiempo .num { font-size: var(--t-1); color: var(--ink-2); white-space: nowrap; min-width: 13ch; }
@@ -90,3 +90,9 @@ figure[data-vista="red"] #svg, figure[data-vista="red"] .solo-temas, figure[data
   main { grid-template-columns: minmax(0, 1fr); }
   aside { max-height: none; }
 }
+/* Landing: grid of poll cards */
+.portada main { max-width: 1200px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 360px)); justify-content: center; align-items: start; text-align: center; }
+.portada h2 { line-height: 1.3; }
+.portada .meta { margin: 0 0 var(--s3); font-size: var(--t-1); color: var(--ink-2); font-family: var(--mono); }
+.portada .acciones { display: flex; justify-content: center; gap: var(--s2); flex-wrap: wrap; }
+@media (max-width: 600px) { .portada header, .portada main { padding-left: var(--s4); padding-right: var(--s4); } }

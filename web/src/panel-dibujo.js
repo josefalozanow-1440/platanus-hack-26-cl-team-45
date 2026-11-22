@@ -9,20 +9,11 @@ export function montar() {
   svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
 
   // View state. `cursor` = how many respuestas are shown, in arrival order.
-  const st = { datos: null, orden: [], cursor: 0, jugando: false, envivo: false, tonos: new Set(['pos', 'neu', 'neg']), sel: null, vista: 'red' };
+  const st = { datos: null, orden: [], cursor: 0, jugando: false, envivo: true, tonos: new Set(['pos', 'neu', 'neg']), sel: null, vista: 'red' };
   const visto = new Set();
-  let apiOk = false;
-
-  // Convex data arrives from the React component. Synthetic data only if no poll exists yet.
-  async function recibir(d) {
-    if (d) {
-      if (!apiOk) { apiOk = true; st.envivo = true; st.jugando = false; $('badge').hidden = true; }
-      return cargar(d);
-    }
-    if (apiOk || st.datos) return; // never flip to mock mid-session
-    st.jugando = true; // synthetic session starts playing from zero
-    cargar(await (await fetch('mapa-mock.json')).json());
-    $('badge').hidden = false;
+  // Convex data arrives from the React component; null = no poll with this slug.
+  function recibir(d) {
+    if (d) cargar(d); else $('pregunta').textContent = 'No existe esta encuesta';
   }
 
   function cargar(d) {
@@ -105,7 +96,7 @@ export function montar() {
     $('play').setAttribute('aria-label', st.jugando ? 'Pausar' : 'Reproducir');
     $('icono').setAttribute('d', st.jugando ? 'M3 1.5h3v11H3zM8 1.5h3v11H8z' : 'M3 1.5v11l9-5.5z');
     document.querySelectorAll('.filtro button').forEach(b => b.setAttribute('aria-pressed', st.tonos.has(b.dataset.tono)));
-    $('metodo').textContent = `n = ${plural(frases.length, 'frase', 'frases')} de ${plural(personas, 'persona', 'personas')} · frases extraídas por LLM de cada audio · temas agrupados por LLM · tono derivado de la emoción detectada`;
+    $('metodo').textContent = `n = ${plural(frases.length, 'frase', 'frases')} · frases, temas y tono por LLM`;
     const recientes = new Set(frases.slice(-N_ULTIMAS).map(f => f.id));
 
     // Map: one <g> per cluster, keyed by id so CSS transitions animate moves instead of redrawing.
@@ -307,7 +298,7 @@ export function montar() {
 
   function textoNodo(n) {
     const q = n.q;
-    if (q.tipo === 'tema') return `<b>${esc(q.g.nombre)}</b><br><span>${plural(q.g.personas, 'persona', 'personas')} · ${plural(q.g.frases.length, 'frase', 'frases')} · clic para ver</span>`;
+    if (q.tipo === 'tema') return `<b>${esc(q.g.nombre)}</b><br><span>${plural(q.g.personas, 'persona', 'personas')} · ${plural(q.g.frases.length, 'frase', 'frases')}</span>`;
     if (q.tipo === 'frase') return `<q>${esc(q.f.cita || q.f.texto)}</q><span>${esc(q.f.emocion)} (${NOMBRE_TONO[tono(q.f.emocion)]}) · intensidad <span class="num">${(q.f.intensidad ?? 0).toFixed(2)}</span></span>`;
     return `<b>Una persona</b><br><span>${plural(n.frases, 'frase', 'frases')} en ${plural(n.temas, 'tema', 'temas')}${n.temas > 1 ? ' · une temas' : ''}</span>`;
   }
