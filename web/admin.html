@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Audem admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="comun.css">
+<style>
+header { display: flex; align-items: center; gap: var(--s4); padding: var(--s4) var(--s6); border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+header h1 { margin: 0; font-size: var(--t1); font-weight: 600; flex: 1; }
+main { display: grid; grid-template-columns: minmax(280px, 380px) minmax(0, 1fr); gap: var(--s5); padding: var(--s5) var(--s6); }
+@media (max-width: 820px) { main { grid-template-columns: 1fr; padding: var(--s4); } header { padding: var(--s4); } }
+section { background: var(--surface); border: 1px solid var(--edge); border-radius: 12px; padding: var(--s4) var(--s5); }
+h2 { margin: 0 0 var(--s3); font-size: var(--t0); font-weight: 600; }
+form { display: flex; gap: var(--s2); flex-wrap: wrap; }
+input, textarea { font: inherit; color: inherit; background: var(--surface-2); border: 1px solid var(--edge); border-radius: 8px; padding: var(--s2) var(--s3); min-height: 36px; flex: 1 1 200px; }
+.primario { background: var(--ink); color: var(--page); border-color: transparent; font-weight: 500; }
+ul { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s2); }
+.enc { text-align: left; width: 100%; display: grid; gap: var(--s1); padding: var(--s3); }
+.enc[aria-current="true"] { border-color: var(--ink); }
+.meta { font-size: var(--t-1); color: var(--ink-2); font-family: var(--mono); }
+#detalle h2 { font-size: var(--t2); line-height: 1.2; }
+.acciones { display: flex; gap: var(--s2); flex-wrap: wrap; margin: var(--s3) 0 var(--s4); }
+.qr { display: flex; gap: var(--s5); align-items: center; flex-wrap: wrap; margin-bottom: var(--s5); }
+#qr { background: #fcfcfb; padding: var(--s3); border-radius: 8px; line-height: 0; }
+#link { font-family: var(--mono); font-size: var(--t-1); word-break: break-all; }
+.resp { border: 1px solid var(--edge); border-radius: 8px; padding: var(--s3); display: grid; gap: var(--s2); }
+.resp p { margin: 0; }
+.resp .fila { display: flex; gap: var(--s2); align-items: center; flex-wrap: wrap; }
+.estado-procesando { color: var(--ink-2); } .estado-error { color: var(--neg); }
+#login { max-width: 360px; margin: 15vh auto; }
+#error { color: var(--neg); font-size: var(--t-1); }
+[hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<section id="login">
+  <h2>Admin de Audem</h2>
+  <form id="f-login"><input id="clave" type="password" placeholder="Clave de admin" autocomplete="current-password" required><button class="primario">Entrar</button></form>
+  <p id="error" role="alert"></p>
+</section>
+
+<div id="app" hidden>
+<header>
+  <h1>Audem · admin</h1>
+  <button id="salir">Salir</button>
+</header>
+<main>
+  <aside>
+    <section>
+      <h2>Nueva encuesta</h2>
+      <form id="f-crear"><input id="pregunta" placeholder="¿Qué le quieres preguntar al grupo?" required maxlength="300"><button class="primario">Crear</button></form>
+    </section>
+    <section style="margin-top: var(--s4)">
+      <h2>Encuestas</h2>
+      <ul id="lista"></ul>
+    </section>
+  </aside>
+  <section id="detalle"><p class="meta">Crea o elige una encuesta.</p></section>
+</main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/convex@1.51.0/dist/browser.bundle.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="convex.js"></script>
+<script src="comun.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const guardar = (k, v) => { try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch {} };
+const leer = k => { try { return localStorage.getItem(k); } catch { return null; } };
+let clave = leer('audem_admin') || '', sel = leer('audem_sel'), encuestas = [], quitarResp;
+const urlDe = (pag, id) => new URL(`${pag}?e=${id}`, location.href).href;
+const fallo = e => alert((e.message.match(/Error: (.*)/) || [, e.message])[1].split('\n')[0]);
+
+async function entrar(k) {
+  if (!(await cvx.query(api.encuestas.esAdmin, { clave: k }))) { $('error').textContent = 'Clave incorrecta.'; return; }
+  clave = k; guardar('audem_admin', k);
+  $('login').hidden = true; $('app').hidden = false;
+  cvx.onUpdate(api.encuestas.listar, {}, es => { encuestas = es; pintarLista(); pintarDetalle(); });
+}
+$('f-login').addEventListener('submit', e => { e.preventDefault(); entrar($('clave').value); });
+$('salir').addEventListener('click', () => { guardar('audem_admin', null); location.reload(); });
+if (clave) entrar(clave);
+
+$('f-crear').addEventListener('submit', async e => {
+  e.preventDefault();
+  try { elegir(await cvx.mutation(api.encuestas.crear, { clave, pregunta: $('pregunta').value })); $('pregunta').value = ''; }
+  catch (err) { fallo(err); }
+});
+
+function elegir(id) { sel = id; guardar('audem_sel', id); pintarLista(); pintarDetalle(true); }
+
+function pintarLista() {
+  $('lista').innerHTML = encuestas.map(e => `<li><button class="enc" data-id="${e._id}" aria-current="${e._id === sel}">
+    <span>${esc(e.pregunta)}</span>
+    <span class="meta">${e.abierta ? 'abierta' : 'cerrada'} · ${plural(e.personas, 'persona', 'personas')} · ${plural(e.respuestas, 'respuesta', 'respuestas')}</span>
+  </button></li>`).join('') || '<li class="meta">Todavía no hay encuestas.</li>';
+}
+$('lista').addEventListener('click', e => { const b = e.target.closest('[data-id]'); if (b) elegir(b.dataset.id); });
+
+let pintada = null;
+function pintarDetalle(forzar) {
+  const e = encuestas.find(x => x._id === sel);
+  if (!e) return;
+  const link = urlDe('responder.html', e._id);
+  if (forzar || pintada !== e._id) {
+    pintada = e._id;
+    $('detalle').innerHTML = `<h2>${esc(e.pregunta)}</h2>
+      <div class="acciones">
+        <button id="abrir"></button>
+        <a class="boton" href="${urlDe('index.html', e._id)}" target="_blank">Panel en vivo</a>
+        <a class="boton" href="${urlDe('flujo.html', e._id)}" target="_blank">Flujo</a>
+        <a class="boton" href="${link}" target="_blank">Responder</a>
+      </div>
+      <div class="qr"><div id="qr"></div><div><p class="meta">Link para responder con el micrófono</p><p id="link">${esc(link)}</p><button id="copiar">Copiar link</button></div></div>
+      <h2>Respuestas en vivo</h2><ul id="resp"></ul>`;
+    new QRCode($('qr'), { text: link, width: 180, height: 180 });
+    $('copiar').onclick = () => navigator.clipboard.writeText(link).then(() => { $('copiar').textContent = 'Copiado'; });
+    $('abrir').onclick = () => cvx.mutation(api.encuestas.abrirCerrar, { clave, encuestaId: e._id, abierta: !encuestas.find(x => x._id === e._id).abierta }).catch(fallo);
+    quitarResp?.();
+    quitarResp = cvx.onUpdate(api.encuestas.respuestas, { encuestaId: e._id }, pintarRespuestas);
+  }
+  $('abrir').textContent = e.abierta ? 'Cerrar encuesta' : 'Reabrir encuesta';
+}
+
+function pintarRespuestas(rs) {
+  const ESTADO = { procesando: 'procesando…', listo: 'procesada', error: 'error al procesar' };
+  $('resp').innerHTML = rs.map(r => `<li class="resp">
+    <p>${esc(r.texto)}</p>
+    <div class="fila"><span class="meta estado-${r.estado}">${ESTADO[r.estado]} · ${new Date(r._creationTime).toLocaleTimeString('es-CL')}</span>
+      <button data-re="${r._id}">Reprocesar</button><button data-borrar="${r._id}">Borrar</button></div>
+  </li>`).join('') || '<li class="meta">Aún no llegan respuestas.</li>';
+}
+$('detalle').addEventListener('click', e => {
+  const b = e.target.closest('[data-re],[data-borrar]');
+  if (!b) return;
+  if (b.dataset.re) cvx.mutation(api.encuestas.reprocesar, { clave, respuestaId: b.dataset.re }).catch(fallo);
+  else cvx.mutation(api.encuestas.borrarRespuesta, { clave, respuestaId: b.dataset.borrar }).catch(fallo);
+});
+</script>
+</body>
+</html>

@@ -109,7 +109,7 @@ figure[data-vista="red"] #svg, figure[data-vista="red"] .solo-temas, figure[data
   <h1 id="pregunta">Audem</h1>
   <span class="badge" id="badge" hidden>Datos sintéticos</span>
   <div class="total"><span class="num" id="total">0</span><span>personas respondieron</span></div>
-  <a class="boton" href="flujo.html">Ver flujo</a>
+  <a class="boton" href="flujo.html" data-keep>Ver flujo</a>
 </header>
 <main>
   <section id="mapa">
@@ -155,9 +155,11 @@ figure[data-vista="red"] #svg, figure[data-vista="red"] .solo-temas, figure[data
 </main>
 </div>
 <div id="tip" role="tooltip"></div>
+<script src="https://cdn.jsdelivr.net/npm/convex@1.51.0/dist/browser.bundle.js"></script>
+<script src="convex.js"></script>
 <script src="comun.js"></script>
 <script>
-const W = 1100, H = 780, POLL_MS = 2500, PLAY_MS = 1200, N_ULTIMAS = 2;
+const W = 1100, H = 780, PLAY_MS = 1200, N_ULTIMAS = 2;
 const NS = 'http://www.w3.org/2000/svg';
 const $ = id => document.getElementById(id);
 const svg = $('svg'), tip = $('tip');
@@ -168,21 +170,17 @@ const st = { datos: null, orden: [], cursor: 0, jugando: false, envivo: false, t
 const visto = new Set();
 let apiOk = false;
 
-async function poll() {
-  try {
-    const r = await fetch('/api/mapa', { cache: 'no-store' });
-    if (!r.ok) throw new Error(r.status);
-    const d = await r.json();
+// Live subscription: Convex pushes the map on every change. Synthetic data only if no poll exists yet.
+cvx.onUpdate(api.encuestas.mapa, conEncuesta(), async d => {
+  if (d) {
     if (!apiOk) { apiOk = true; st.envivo = true; st.jugando = false; $('badge').hidden = true; }
-    cargar(d);
-  } catch (e) {
-    // Fall back to synthetic data only if the API never answered, so the demo never flips to mock mid-session.
-    if (apiOk || st.datos) return;
-    st.jugando = true; // synthetic session starts playing from zero
-    cargar(await (await fetch('mapa-mock.json')).json());
-    $('badge').hidden = false;
+    return cargar(d);
   }
-}
+  if (apiOk || st.datos) return; // never flip to mock mid-session
+  st.jugando = true; // synthetic session starts playing from zero
+  cargar(await (await fetch('mapa-mock.json')).json());
+  $('badge').hidden = false;
+});
 
 function cargar(d) {
   st.datos = d;
@@ -499,7 +497,6 @@ document.addEventListener('keydown', e => {
 });
 
 setInterval(avanzar, PLAY_MS);
-(async function bucle() { await poll(); setTimeout(bucle, POLL_MS); })();
 </script>
 </body>
 </html>

@@ -52,7 +52,7 @@ g.n { cursor: pointer; transition: opacity .2s ease-out; }
 <header>
   <h1 id="pregunta">Audem</h1>
   <span class="badge" id="badge" hidden>Datos sintéticos</span>
-  <nav><a class="boton" href="index.html">Panel en vivo</a></nav>
+  <nav><a class="boton" href="index.html" data-keep>Panel en vivo</a></nav>
 </header>
 <main>
   <section>
@@ -72,27 +72,23 @@ g.n { cursor: pointer; transition: opacity .2s ease-out; }
   </section>
 </main>
 <div id="tip" role="tooltip"></div>
+<script src="https://cdn.jsdelivr.net/npm/convex@1.51.0/dist/browser.bundle.js"></script>
+<script src="convex.js"></script>
 <script src="comun.js"></script>
 <script>
-const W = 1600, H = 1000, TOP = 90, BOT = 20, POLL_MS = 2500, MAX_CONC = 18;
+const W = 1600, H = 1000, TOP = 90, BOT = 20, MAX_CONC = 18;
 const X = { r: 0, rf: 350, f: 640, c: 960, t: 1300 }; // column anchors
 const $ = id => document.getElementById(id), svg = $('flujo'), tip = $('tip');
 svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
 let ultimo = '', primera = true, apiOk = false;
 
-async function poll() {
-  let d;
-  try {
-    const r = await fetch('/api/mapa', { cache: 'no-store' });
-    if (!r.ok) throw new Error(r.status);
-    d = await r.json(); apiOk = true; $('badge').hidden = true;
-  } catch (e) {
-    if (apiOk || ultimo) return; // never flip to mock mid-session
-    d = await (await fetch('mapa-mock.json')).json(); $('badge').hidden = false;
-  }
+cvx.onUpdate(api.encuestas.mapa, conEncuesta(), async d => {
+  if (d) { apiOk = true; $('badge').hidden = true; }
+  else if (apiOk || ultimo) return; // never flip to mock mid-session
+  else { d = await (await fetch('mapa-mock.json')).json(); $('badge').hidden = false; }
   const s = JSON.stringify(d);
   if (s !== ultimo) { ultimo = s; render(d); }
-}
+});
 
 // Evenly spread n items over the drawable height.
 const repartir = n => i => TOP + (H - TOP - BOT) * (i + 0.5) / Math.max(n, 1);
@@ -230,7 +226,6 @@ svg.addEventListener('pointerover', e => {
 svg.addEventListener('pointermove', e => { tip.style.left = Math.min(e.clientX + 14, innerWidth - 340) + 'px'; tip.style.top = e.clientY + 14 + 'px'; });
 svg.addEventListener('pointerout', e => { if (!e.relatedTarget?.closest?.('g.n')) { svg.classList.remove('foco'); tip.style.opacity = 0; } });
 
-poll(); setInterval(poll, POLL_MS);
 </script>
 </body>
 </html>

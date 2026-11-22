@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Responder Audem</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="comun.css">
+<style>
+main { max-width: 560px; margin: 0 auto; padding: var(--s6) var(--s4); display: grid; gap: var(--s5); }
+.marca { font-size: var(--t-1); color: var(--muted); font-family: var(--mono); }
+h1 { margin: 0; font-size: var(--t3); font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; }
+#mic { justify-self: center; width: 160px; height: 160px; border-radius: 50%; border: 1px solid var(--edge); background: var(--surface-2); flex-direction: column; justify-content: center; font-weight: 500; transition: transform .2s var(--ease); }
+#mic svg { width: 48px; height: 48px; }
+#mic[aria-pressed="true"] { background: var(--neg); color: #fcfcfb; border-color: transparent; transform: scale(1.04); }
+#mic:disabled { opacity: .4; cursor: not-allowed; }
+textarea { width: 100%; min-height: 160px; font: inherit; color: inherit; background: var(--surface); border: 1px solid var(--edge); border-radius: 12px; padding: var(--s3) var(--s4); resize: vertical; }
+textarea::placeholder { color: var(--muted); }
+.fila { display: flex; gap: var(--s3); align-items: center; flex-wrap: wrap; }
+#enviar { background: var(--ink); color: var(--page); border-color: transparent; font-weight: 500; padding: var(--s2) var(--s5); }
+#enviar:disabled { opacity: .4; cursor: not-allowed; }
+.nota { color: var(--ink-2); font-size: var(--t-1); margin: 0; }
+#estado { min-height: 1.5em; margin: 0; }
+ul { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s2); }
+li { background: var(--surface); border: 1px solid var(--edge); border-radius: 12px; padding: var(--s3) var(--s4); font-size: var(--t-1); color: var(--ink-2); }
+li b { color: var(--ink); font-weight: 500; }
+</style>
+</head>
+<body>
+<main>
+  <span class="marca">Audem · tu respuesta es anónima</span>
+  <h1 id="pregunta">Cargando pregunta…</h1>
+  <button id="mic" aria-pressed="false" disabled>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>
+    <span id="mic-txt">Hablar</span>
+  </button>
+  <p class="nota" id="ayuda">Toca el micrófono, responde hablando y vuelve a tocarlo para terminar. Puedes corregir el texto antes de enviar.</p>
+  <textarea id="texto" placeholder="Aquí aparece lo que dices. También puedes escribir."></textarea>
+  <div class="fila">
+    <button id="enviar" disabled>Enviar respuesta</button>
+    <p id="estado" role="status"></p>
+  </div>
+  <ul id="mias" aria-label="Tus respuestas"></ul>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/convex@1.51.0/dist/browser.bundle.js"></script>
+<script src="convex.js"></script>
+<script src="comun.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const yo = (() => { try { return localStorage.audem_id ||= crypto.randomUUID(); } catch { return crypto.randomUUID(); } })();
+let encuesta = null, base = '', grabando = false;
+
+cvx.onUpdate(api.encuestas.actual, conEncuesta(), e => {
+  encuesta = e;
+  $('pregunta').textContent = e ? e.pregunta : 'No hay ninguna encuesta abierta';
+  if (e && !e.abierta) $('estado').textContent = 'Esta encuesta ya cerró.';
+  listo();
+  if (e) suscribirMias(e._id);
+});
+
+let quitarMias;
+function suscribirMias(id) {
+  quitarMias?.();
+  quitarMias = cvx.onUpdate(api.encuestas.mias, { encuestaId: id, participante: yo }, rs => {
+    const ESTADO = { procesando: 'procesando…', listo: 'en el mapa', error: 'no se pudo procesar' };
+    $('mias').innerHTML = rs.map(r => `<li><b>${ESTADO[r.estado]}</b> · ${esc(r.texto.slice(0, 140))}${r.texto.length > 140 ? '…' : ''}</li>`).join('');
+  });
+}
+
+const listo = () => {
+  const ok = !!(encuesta && encuesta.abierta);
+  $('enviar').disabled = !ok || grabando || $('texto').value.trim().length < 3;
+  $('mic').disabled = !ok || !SR;
+};
+$('texto').addEventListener('input', listo);
+
+// Speech-to-text in the browser (Chrome, Edge, Safari).
+// shortcut: Web Speech API, no audio stored server-side; swap for server STT (record + upload) if browser support bites.
+const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+if (!SR) $('ayuda').textContent = 'Este navegador no transcribe voz. Escribe tu respuesta o abre la página en Chrome o Safari.';
+let rec;
+function empezar() {
+  rec = new SR();
+  rec.lang = 'es-CL'; rec.continuous = true; rec.interimResults = true;
+  base = $('texto').value.trim();
+  rec.onresult = ev => {
+    let fin = '', tmp = '';
+    for (const r of ev.results) (r.isFinal ? (fin += r[0].transcript + ' ') : (tmp += r[0].transcript));
+    $('texto').value = [base, fin.trim(), tmp].filter(Boolean).join(' ');
+  };
+  rec.onerror = ev => { if (ev.error === 'not-allowed') { parar(); $('estado').textContent = 'Sin permiso de micrófono.'; } };
+  // Browsers stop after a pause; restart while the user is still recording.
+  rec.onend = () => { if (grabando) empezar(); };
+  rec.start();
+}
+function parar() { grabando = false; rec?.stop(); $('mic').setAttribute('aria-pressed', 'false'); $('mic-txt').textContent = 'Hablar'; listo(); }
+$('mic').addEventListener('click', () => {
+  if (grabando) return parar();
+  grabando = true; $('mic').setAttribute('aria-pressed', 'true'); $('mic-txt').textContent = 'Terminar'; $('estado').textContent = ''; listo();
+  empezar();
+});
+
+$('enviar').addEventListener('click', async () => {
+  $('enviar').disabled = true; $('estado').textContent = 'Enviando…';
+  try {
+    await cvx.mutation(api.encuestas.responder, { encuestaId: encuesta._id, participante: yo, texto: $('texto').value });
+    $('texto').value = ''; $('estado').textContent = '¡Gracias! Mira la pantalla.';
+  } catch (e) {
+    $('estado').textContent = (e.message.match(/Error: (.*)/) || [, 'No se pudo enviar'])[1].split('\n')[0];
+  }
+  listo();
+});
+</script>
+</body>
+</html>
