@@ -10,6 +10,7 @@ Claude corre con `claude -p` (usa la suscripción, no API key). Jev necesita TYP
 import argparse
 import json
 import os
+import re
 import ssl
 import subprocess
 import tempfile
@@ -334,6 +335,117 @@ def cmd_puntuar(_):
     print((RES / "RESULTADOS.md").read_text())
 
 
+# ---------- juzgar (cualitativo, Opus a ciegas) ----------
+
+def texto_valor(v):
+    return "no lo menciona" if v is None else f"{v:+d} ({ESCALA[str(v)].split(':')[0]})"
+
+
+def comparacion(r, dataset):
+    """Texto con transcripción, esperado y obtenido por respuesta, sin nombrar condición ni modelo."""
+    bloques = []
+    for pid, p in PREGUNTAS.items():
+        ali, cols = r["alineacion"][pid], r["columnas"][pid]
+        usadas = {v for v in ali.values() if v}
+        b = [f"## Pregunta: {p['texto']}", "", "Columnas que usó el sistema y a qué columna de referencia corresponden:"]
+        b += [f"- {g} ({p['columnas'][g]}) → " + (f"{ali[g]}: {cols[ali[g]]}" if ali[g] else "ninguna; el sistema no midió este tema")
+              for g in p["columnas"]]
+        b += [f"- Columna extra del sistema, sin pareja: {c}: {d}" for c, d in cols.items() if c not in usadas]
+        for it in (x for x in dataset if x["pregunta_id"] == pid):
+            preds = r["items"][it["id"]]
+            b += ["", f"### {it['id']}", "", "Transcripción:", it["respuesta"], "",
+                  "| Columna de referencia | Esperado | Obtenido |", "|---|---|---|"]
+            for g, gv in it["gold"].items():
+                pr = preds[ali[g]] if ali[g] else {"menciona": False, "valor": None}
+                b.append(f"| {g} | {texto_valor(gv)} | {texto_valor(pr['valor'] if pr['menciona'] else None)} |")
+            extra = [f"{c}: {texto_valor(preds[c]['valor'] if preds[c]['menciona'] else None)}"
+                     for c in cols if c not in usadas]
+            if extra:
+                b.append("Columnas extra: " + "; ".join(extra))
+        bloques.append("\n".join(b))
+    return "\n\n".join(bloques)
+
+
+SCHEMA_JUICIO = {"type": "object", "properties": {
+    "veredicto": {"type": "string", "enum": ["Excelente", "Bueno", "Aceptable", "Insuficiente"]},
+    "errores": {"type": "array", "items": {"type": "object", "properties": {
+        "respuesta": {"type": "string"}, "columna": {"type": "string"},
+        "tipo": {"type": "string", "enum": ["grave", "menor", "defendible"]},
+        "explicacion": {"type": "string"}}, "required": ["respuesta", "columna", "tipo", "explicacion"]}},
+    "fortalezas": {"type": "string"}, "debilidades": {"type": "string"},
+    "confiaria_para_un_informe": {"type": "boolean"}, "resumen": {"type": "string"}},
+    "required": ["veredicto", "errores", "fortalezas", "debilidades", "confiaria_para_un_informe", "resumen"]}
+
+
+def juzgar_corrida(r, dataset):
+    prompt = f"""Un sistema analizó respuestas habladas a una encuesta de clima laboral. Para cada respuesta y cada tema dijo si la persona habla del tema y qué opina, en una escala de -2 (lo critica con fuerza) a +2 (lo elogia con entusiasmo).
+
+Juzga la calidad de este sistema como lo haría un analista de personas que va a usar el resultado en un informe. No calcules porcentajes. Lee cada transcripción y, para cada diferencia entre lo esperado y lo obtenido, decide:
+- grave: cambia la conclusión del informe (opinión al revés, inventa o pierde un tema importante).
+- menor: misma dirección, distinta intensidad, o un tema tocado de pasada.
+- defendible: leyendo la transcripción, lo obtenido es tan razonable como lo esperado.
+
+Si el sistema no midió un tema de referencia o agregó columnas extra, júzgalo según si un informe con esas columnas sería útil igual.
+
+{comparacion(r, dataset)}"""
+    return claude(prompt, SCHEMA_JUICIO, MODELO_FIJO, "Eres un analista de personas exigente que revisa la calidad de análisis de encuestas.")
+
+
+def cmd_juzgar(_):
+    dataset = json.loads(DATASET.read_text())
+    # jev_columnas_sabidas no usa Claude: se juzga una sola vez
+    corridas = [("opus", "jev_columnas_sabidas")] + [(m, c) for m in ("opus", "sonnet", "haiku")
+                                                     for c in CONDICIONES if c != "jev_columnas_sabidas"]
+    corridas = [(m, c) for m, c in corridas if (RES / m / f"{c}.json").exists()]
+    with ThreadPoolExecutor(len(corridas)) as pool:
+        juicios = list(pool.map(lambda mc: juzgar_corrida(json.loads((RES / mc[0] / f"{mc[1]}.json").read_text()),
+                                                         dataset), corridas))
+    ciegos = {f"S{i + 1}": j for i, j in enumerate(juicios)}
+    final = claude(
+        "Estos son juicios cualitativos de distintos sistemas que clasificaron las mismas 15 respuestas de encuesta. "
+        "Ordénalos del mejor al peor para usar su resultado en un informe real, sin calcular porcentajes. "
+        "Para cada uno da su puesto, una frase con el porqué y si lo usarías. Cierra con una conclusión de 2 o 3 oraciones.\n\n"
+        + json.dumps(ciegos, ensure_ascii=False, indent=1),
+        {"type": "object", "properties": {
+            "ranking": {"type": "array", "items": {"type": "object", "properties": {
+                "sistema": {"type": "string", "enum": list(ciegos)}, "puesto": {"type": "integer"},
+                "porque": {"type": "string"}, "lo_usaria": {"type": "boolean"}},
+                "required": ["sistema", "puesto", "porque", "lo_usaria"]}},
+            "conclusion": {"type": "string"}}, "required": ["ranking", "conclusion"]},
+        MODELO_FIJO, "Eres un analista de personas exigente que revisa la calidad de análisis de encuestas.")
+    nombre = {f"S{i + 1}": (f"{c} (sin Claude)" if c == "jev_columnas_sabidas" else f"{c} · Claude {m}")
+              for i, (m, c) in enumerate(corridas)}
+    (RES / "juicio.json").write_text(json.dumps({"corridas": nombre, "juicios": ciegos, "final": final},
+                                                ensure_ascii=False, indent=2) + "\n")
+    escribir_juicio()
+
+
+def escribir_juicio():
+    data = json.loads((RES / "juicio.json").read_text())
+    nombre, ciegos, final = data["corridas"], data["juicios"], data["final"]
+    # el juez escribe con etiquetas ciegas (S1, S2...); en el informe van los nombres reales
+    def nombrar(t):
+        return re.sub(r"\bS(\d+)\b", lambda m: f"«{nombre.get(m.group(0), m.group(0))}»", t)
+    lineas = ["# Juicio cualitativo", "",
+              f"Opus (effort medium) leyó cada transcripción y comparó lo esperado con lo obtenido, sin saber qué "
+              "condición ni qué modelo estaba juzgando. No usa porcentajes. Ver `eval.py juzgar`.", "",
+              "| Puesto | Sistema | Veredicto | ¿Lo usaría? | Errores graves | Errores menores | Defendibles | Por qué |",
+              "|---|---|---|---|---|---|---|---|"]
+    for f in sorted(final["ranking"], key=lambda x: x["puesto"]):
+        j = ciegos[f["sistema"]]
+        n = {t: sum(e["tipo"] == t for e in j["errores"]) for t in ("grave", "menor", "defendible")}
+        lineas.append(f"| {f['puesto']} | {nombre[f['sistema']]} | {j['veredicto']} | {'Sí' if f['lo_usaria'] else 'No'} | "
+                      f"{n['grave']} | {n['menor']} | {n['defendible']} | {nombrar(f['porque'])} |")
+    lineas += ["", f"**Conclusión:** {nombrar(final['conclusion'])}", ""]
+    for s, j in ciegos.items():
+        lineas += [f"## {nombre[s]}", "", nombrar(j["resumen"]), "", f"- A favor: {nombrar(j['fortalezas'])}",
+                   f"- En contra: {nombrar(j['debilidades'])}", ""]
+        lineas += [f"- [{e['tipo']}] {e['respuesta']} / {e['columna']}: {nombrar(e['explicacion'])}" for e in j["errores"]]
+        lineas.append("")
+    (RES / "JUICIO.md").write_text("\n".join(lineas) + "\n")
+    print((RES / "JUICIO.md").read_text())
+
+
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     sub = ap.add_subparsers(required=True)
@@ -343,5 +455,6 @@ if __name__ == "__main__":
     c.add_argument("--forzar", action="store_true")
     c.set_defaults(f=cmd_correr)
     sub.add_parser("puntuar").set_defaults(f=cmd_puntuar)
+    sub.add_parser("juzgar").set_defaults(f=cmd_juzgar)
     a = ap.parse_args()
     a.f(a)

@@ -85,3 +85,9 @@ Detalle en [resultados/RESULTADOS.md](resultados/RESULTADOS.md).
 - Ninguna condición invirtió el signo en ninguna celda.
 - El modelo de Claude pesa poco: Haiku queda a 4 puntos de Opus en `claude_solo` y empata en `claude_respuestas_jev`.
 - Jev responde las 15 respuestas en alrededor de 1 segundo. Las condiciones con Claude tardan entre 10 y 30 segundos. Cada modelo usó unos 90k tokens de entrada de Jev en 45 requests.
+
+## Juicio cualitativo
+
+`python3 eval.py juzgar` le pide a Opus que lea cada transcripción y compare lo esperado con lo obtenido, sin porcentajes y sin saber qué condición ni qué modelo está juzgando. Clasifica cada diferencia como grave, menor o defendible, y al final ordena los sistemas. Resultado en [resultados/JUICIO.md](resultados/JUICIO.md).
+
+El orden de arriba coincide con los números: `claude_solo` primero y `claude_pregunta_jev` último. La diferencia está en el medio: el juez castiga más los temas inventados que las celdas exactas, y por eso deja `claude_respuestas_jev` con Opus y `jev_columnas_sabidas` como "Aceptable, no lo usaría".
