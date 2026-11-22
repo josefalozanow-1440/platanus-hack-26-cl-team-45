@@ -41,6 +41,7 @@ export const borrarRespuesta = mutation({
     const r = await ctx.db.get(respuestaId);
     if (!r) return;
     for (const f of await ctx.db.query("frases").withIndex("by_respuesta", q => q.eq("respuestaId", respuestaId)).collect()) await ctx.db.delete(f._id);
+    if (r.audioId) await ctx.storage.delete(r.audioId);
     await ctx.db.delete(respuestaId);
     await pedirAgrupar(ctx, r.encuestaId);
   },
@@ -50,8 +51,11 @@ export const reprocesar = mutation({
   args: { clave: v.string(), respuestaId: v.id("respuestas") },
   handler: async (ctx, { clave, respuestaId }) => {
     exigirAdmin(clave);
-    await ctx.db.patch(respuestaId, { estado: "procesando" });
-    await ctx.scheduler.runAfter(0, internal.procesar.extraer, { respuestaId });
+    const r = await ctx.db.get(respuestaId);
+    if (!r) return;
+    const transcribir = !!r.audioId && !r.texto;
+    await ctx.db.patch(respuestaId, { estado: transcribir ? "transcribiendo" : "procesando" });
+    await ctx.scheduler.runAfter(0, transcribir ? internal.procesar.transcribir : internal.procesar.extraer, { respuestaId });
   },
 });
 
@@ -68,8 +72,10 @@ export const listar = query({
 
 export const respuestas = query({
   args: { encuestaId: v.id("encuestas") },
-  handler: async (ctx, { encuestaId }) =>
-    ctx.db.query("respuestas").withIndex("by_encuesta", q => q.eq("encuestaId", encuestaId)).order("desc").collect(),
+  handler: async (ctx, { encuestaId }) => {
+    const rs = await ctx.db.query("respuestas").withIndex("by_encuesta", q => q.eq("encuestaId", encuestaId)).order("desc").collect();
+    return Promise.all(rs.map(async r => ({ ...r, audioUrl: r.audioId ? await ctx.storage.getUrl(r.audioId) : null })));
+  },
 });
 
 // ---------- participants (anonymous) ----------
@@ -93,6 +99,23 @@ export const responder = mutation({
     if (t.length > 6000 || participante.length > 64) throw new Error("La respuesta es demasiado larga");
     const respuestaId = await ctx.db.insert("respuestas", { encuestaId, participante, texto: t, estado: "procesando" });
     await ctx.scheduler.runAfter(0, internal.procesar.extraer, { respuestaId });
+    return respuestaId;
+  },
+});
+
+export const urlSubida = mutation({ args: {}, handler: ctx => ctx.storage.generateUploadUrl() });
+
+export const responderAudio = mutation({
+  args: { encuestaId: v.id("encuestas"), participante: v.string(), audioId: v.id("_storage") },
+  handler: async (ctx, { encuestaId, participante, audioId }) => {
+    const e = await ctx.db.get(encuestaId);
+    const meta = await ctx.db.system.get(audioId);
+    if (!e || !e.abierta || !meta || meta.size > 20_000_000 || participante.length > 64) {
+      await ctx.storage.delete(audioId);
+      throw new Error(!e || !e.abierta ? "La encuesta está cerrada" : "El audio no es válido o es demasiado largo");
+    }
+    const respuestaId = await ctx.db.insert("respuestas", { encuestaId, participante, texto: "", audioId, estado: "transcribiendo" });
+    await ctx.scheduler.runAfter(0, internal.procesar.transcribir, { respuestaId });
     return respuestaId;
   },
 });
@@ -131,7 +154,7 @@ export const mapa = query({
         id: f._id, respuesta_id: f.respuestaId, texto: f.texto, cita: f.cita, emocion: f.emocion,
         intensidad: f.intensidad, cluster_id: f.temaId, conceptos: f.conceptos,
       })),
-      respuestas: rs.map(r => ({ id: r._id, texto: r.texto })),
+      respuestas: rs.filter(r => r.texto).map(r => ({ id: r._id, texto: r.texto })),
     };
   },
 });
@@ -164,6 +187,15 @@ export const guardarFrases = internalMutation({
     for (const f of frases) await ctx.db.insert("frases", { ...f, encuestaId: r.encuestaId, respuestaId, intensidad: Math.max(0, Math.min(1, f.intensidad)) });
     await ctx.db.patch(respuestaId, { estado: "listo" });
     await pedirAgrupar(ctx, r.encuestaId);
+  },
+});
+
+export const guardarTexto = internalMutation({
+  args: { respuestaId: v.id("respuestas"), texto: v.string() },
+  handler: async (ctx, { respuestaId, texto }) => {
+    if (!(await ctx.db.get(respuestaId))) return false;
+    await ctx.db.patch(respuestaId, { texto, estado: "procesando" });
+    return true;
   },
 });
 

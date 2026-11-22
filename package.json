@@ -3,11 +3,19 @@
   "private": true,
   "scripts": {
     "dev": "convex dev",
-    "web": "npx -y serve web -l 5173"
+    "web": "vite",
+    "build": "vite build"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^1.12.0",
     "convex": "^1.29.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
     "zod": "^4.6.7"
-  }
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.3.0",
+    "vite": "^8.3.8"
+  },
+  "type": "module"
 }

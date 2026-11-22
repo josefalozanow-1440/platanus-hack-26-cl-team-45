@@ -11,8 +11,9 @@ export default defineSchema({
   respuestas: defineTable({
     encuestaId: v.id("encuestas"),
     participante: v.string(), // anonymous id from the participant's browser
-    texto: v.string(),
-    estado: v.union(v.literal("procesando"), v.literal("listo"), v.literal("error")),
+    texto: v.string(), // "" until the audio is transcribed
+    audioId: v.optional(v.id("_storage")),
+    estado: v.union(v.literal("transcribiendo"), v.literal("procesando"), v.literal("listo"), v.literal("error")),
   }).index("by_encuesta", ["encuestaId"]),
   frases: defineTable({
     encuestaId: v.id("encuestas"),
