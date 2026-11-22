@@ -17,6 +17,7 @@ function Responder() {
   const responder = useMutation(api.encuestas.responder);
 
   const [texto, setTexto] = useState('');
+  const [escribir, setEscribir] = useState(false);
   const [estado, setEstado] = useState('');
   const [grabando, setGrabando] = useState(false);
   const [segundos, setSegundos] = useState(0);
@@ -70,15 +71,16 @@ function Responder() {
     <main>
       <span className="marca">Respuesta anónima</span>
       <h1>{encuesta === undefined ? 'Cargando pregunta…' : encuesta ? encuesta.pregunta : 'No existe esta encuesta'}</h1>
-      <textarea value={texto} onChange={e => setTexto(e.target.value)} placeholder="Escribe tu respuesta" aria-label="Tu respuesta" />
       <button id="mic" aria-pressed={grabando} disabled={!puedeGrabar || (!grabando && ocupado)} onClick={grabando ? parar : grabar}>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3" /><path d="M5 11a7 7 0 0 0 14 0M12 18v3" /></svg>
         <span>{grabando ? `Enviar · ${Math.floor(segundos / 60)}:${String(segundos % 60).padStart(2, '0')}` : 'Hablar'}</span>
       </button>
-      <div className="fila">
+      <button id="escribir" aria-expanded={escribir} aria-controls="texto" onClick={() => setEscribir(!escribir)}>{escribir ? 'Ocultar texto' : 'Prefiero escribir'}</button>
+      {escribir && <>
+        <textarea id="texto" autoFocus value={texto} onChange={e => setTexto(e.target.value)} placeholder="Escribe tu respuesta" aria-label="Tu respuesta" />
         <button id="enviar" disabled={!abierta || grabando || ocupado || texto.trim().length < 3} onClick={enviarTexto}>Enviar respuesta</button>
-        <p id="estado" role="status">{encuesta && !encuesta.abierta ? 'Esta encuesta ya cerró.' : estado}</p>
-      </div>
+      </>}
+      <p id="estado" role="status">{encuesta && !encuesta.abierta ? 'Esta encuesta ya cerró.' : estado}</p>
       <ul aria-label="Tus respuestas">
         {mias.map(r => (
           <li key={r._id}><b>{ESTADO[r.estado]}</b> · {r.texto ? r.texto.slice(0, 140) + (r.texto.length > 140 ? '…' : '') : 'audio'}</li>

@@ -7,8 +7,8 @@ h1 { margin: 0; font-size: var(--t3); font-weight: 600; line-height: 1.2; letter
 #mic:disabled { opacity: .4; cursor: not-allowed; }
 textarea { width: 100%; min-height: 160px; font: inherit; color: inherit; background: var(--surface); border: 1px solid var(--edge); border-radius: 12px; padding: var(--s3) var(--s4); resize: vertical; }
 textarea::placeholder { color: var(--muted); }
-.fila { display: flex; justify-content: center; gap: var(--s3); align-items: center; flex-wrap: wrap; }
-#enviar { background: var(--ink); color: var(--page); border-color: transparent; font-weight: 500; padding: var(--s2) var(--s5); }
+#escribir { justify-self: center; border-color: transparent; color: var(--ink-2); text-decoration: underline; text-underline-offset: 3px; }
+#enviar { justify-self: center; background: var(--ink); color: var(--page); border-color: transparent; font-weight: 500; padding: var(--s2) var(--s5); }
 #enviar:disabled { opacity: .4; cursor: not-allowed; }
 #estado { min-height: 1.5em; margin: 0; }
 ul { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s2); }
