@@ -1,4 +1,4 @@
-main { max-width: 560px; text-align: center; padding: var(--s6) var(--s4); display: grid; gap: var(--s5); }
+main { max-width: 560px; margin: 0 auto; text-align: center; padding: var(--s6) var(--s4); display: grid; gap: var(--s5); }
 .marca { font-size: var(--t-1); color: var(--muted); font-family: var(--mono); }
 h1 { margin: 0; font-size: var(--t3); font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; }
 #mic { justify-self: center; width: 160px; height: 160px; border-radius: 50%; border: 1px solid var(--edge); background: var(--surface-2); flex-direction: column; justify-content: center; font-weight: 500; transition: transform .2s var(--ease); }
