@@ -4,7 +4,7 @@
 //   set -a; . ./.env; set +a; node evals/hackaton/correr.ts
 import Anthropic from "@anthropic-ai/sdk";
 import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
-import { agruparFrases, analizarRespuesta, extraerFrases, MODELO } from "../../convex/extraccion.ts";
+import { agruparFrases, analizarRespuesta, extraerFrases, MODELO, MODELO_AGRUPAR } from "../../convex/extraccion.ts";
 
 const aqui = new URL(".", import.meta.url).pathname;
 const PREGUNTA = "¿Cómo ha sido tu experiencia en la Platanus Hack hasta ahora?";
@@ -21,7 +21,7 @@ async function pipeline() {
     agrupado = await agruparFrases(claude, PREGUNTA, agrupado.temas.map(t => ({ id: t.id, nombre: t.nombre })),
       frases.map(f => ({ id: f.id, texto: f.texto })));
   }
-  return { model: MODELO.model, effort: MODELO.effort, frases, ...agrupado };
+  return { model: `extraer ${MODELO.model} ${MODELO.effort}, agrupar ${MODELO_AGRUPAR.model} ${MODELO_AGRUPAR.effort}`, effort: "", frases, ...agrupado };
 }
 
 // ---------- Haiku solo: el análisis por respuesta de la app (convex/extraccion.ts) ----------

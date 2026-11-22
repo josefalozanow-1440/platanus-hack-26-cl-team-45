@@ -5,6 +5,8 @@ import { zodOutputFormat } from "@anthropic-ai/sdk/helpers/zod";
 import { z } from "zod";
 
 export const MODELO = { model: "claude-opus-5-5", effort: "low" } as const;
+// Agrupar corre con cada respuesta y define cuándo aparece en el mapa: Haiku low tarda ~8 s con 15 respuestas, Opus low ~16 s.
+export const MODELO_AGRUPAR = { model: "claude-haiku-5-5", effort: "low" } as const;
 type Modelo = { model: string; effort: "low" | "medium" | "high" | "xhigh" | "max" };
 
 // Closed list shared with web/comun.js (POS/NEG); anything else renders as neutral.
@@ -47,7 +49,7 @@ export async function extraerFrases(claude: Anthropic, pregunta: string, texto: 
 }
 
 export async function agruparFrases(
-  claude: Anthropic, pregunta: string, temas: { id: string; nombre: string }[], frases: { id: string; texto: string }[], m: Modelo = MODELO,
+  claude: Anthropic, pregunta: string, temas: { id: string; nombre: string }[], frases: { id: string; texto: string }[], m: Modelo = MODELO_AGRUPAR,
 ) {
   const r = await claude.messages.parse({
     model: m.model,
@@ -66,6 +68,8 @@ export async function agruparFrases(
 // contra 65% del pipeline de frases, por ~0,06 ¢ por respuesta. Ver evals/README.md.
 
 export const MODELO_ANALISIS = { model: "claude-haiku-5-5", effort: "medium" } as const;
+// Haiku low normaliza en ~8 s con 15 respuestas (medium tarda ~30 s) y respeta igual el rango de tópicos. Ver evals/hackaton/latencia.ts.
+export const MODELO_TOPICOS = { model: "claude-haiku-5-5", effort: "low" } as const;
 
 const Analisis = z.object({
   temas: z.array(z.object({
@@ -103,7 +107,7 @@ const Topicos = z.object({
 // shortcut: one LLM call regroups every tema of the poll, like agrupar; fine up to a few hundred temas, switch to embeddings + clustering beyond that.
 export async function normalizarTemas(
   claude: Anthropic, pregunta: string, topicos: { id: string; nombre: string; descripcion: string }[],
-  temas: { id: string; tema: string; cita: string }[], m: Modelo = MODELO_ANALISIS,
+  temas: { id: string; tema: string; cita: string }[], m: Modelo = MODELO_TOPICOS,
 ) {
   const r = await claude.messages.parse({
     model: m.model,

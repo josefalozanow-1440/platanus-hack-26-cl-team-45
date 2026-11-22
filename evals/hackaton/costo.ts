@@ -42,7 +42,7 @@ for (const r of respuestas) {
   s.temas.forEach((t, i) => temas.push({ id: `${r.id}_t${i + 1}`, tema: t.tema, cita: t.cita.slice(0, 160) }));
   const [a, nh, no] = await Promise.all([
     agruparFrases(c.agrupar, PREGUNTA, agrupado.temas.map(t => ({ id: t.id, nombre: t.nombre })), frases),
-    normalizar({ model: "claude-haiku-5-5", effort: "medium" }, topH, temas, c.normHaiku),
+    normalizar({ model: "claude-haiku-5-5", effort: "low" }, topH, temas, c.normHaiku),
     normalizar({ model: "claude-opus-5-5", effort: "low" }, topO, temas, c.normOpus),
   ]);
   agrupado = a; topH = nh.topicos; topO = no.topicos;

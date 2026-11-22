@@ -16,8 +16,9 @@ La conclusión corta es que un LLM que lee la respuesta completa y arma sus prop
 | Entrenar un modelo propio | Descartada sin probar | Solo conviene con muchos datos etiquetados, y no los tenemos |
 | Pipeline actual de la app: frases con emoción (Opus low) agrupadas en temas de postura | Se queda para el mapa | El mapa se lee bien, pero mide peor por persona: 65% de celdas sin exigir tendencia, contra 92% de Haiku solo |
 | Deducir la dirección de una opinión a partir de la emoción de la frase | Descartada | Confunde negativo con mixto: basta una frase positiva dentro de un tema negativo |
-| Guardar el análisis de Haiku solo en una fila por respuesta | Propuesta | Agrega dirección, tendencia y propuestas por 0,06 ¢ por respuesta |
-| Normalizar temas libres en tópicos comunes de la encuesta | En prueba | Sin una regla de granularidad, Haiku arma 34 tópicos y Opus 11. Un juez a ciegas propone 16 |
+| Guardar el análisis de Haiku solo en una fila por respuesta | En la app | `analizar` en Convex, al lado de extraer |
+| Normalizar temas libres en tópicos comunes de la encuesta | En la app, con Haiku low | Sin una regla de granularidad, Haiku arma 34 tópicos y Opus 11, y un juez a ciegas propone 16. Con la regla de 12 a 18, Haiku low arma 18 a 20 en ~8,5 s |
+| Agrupar las frases del mapa con Haiku low en vez de Opus low | En la app, sin eval de calidad | Baja de ~16 s a ~8 s el tiempo hasta que la respuesta aparece en el mapa |
 
 ## 1. Sentimiento por columnas con respuesta conocida
 
@@ -83,7 +84,7 @@ El normalizador funciona igual que `agrupar` en la app, pero agrupa por tópico 
 
 Un subagente Opus juzgó a ciegas los dos sistemas contra las 15 respuestas. Propuso 16 tópicos y prefirió la base de Opus, partiendo sus tópicos mezclados. Para los dos sugirió una regla de entre 12 y 18 tópicos que separe lo que se arregla distinto o lo arregla otra persona. También detectó un error que comparten los dos y que viene del análisis por respuesta: la dirección debe ser la opinión de hoy, lo del año pasado es tendencia y lo que se cuenta en broma no es negativo.
 
-Esta técnica todavía no está lista. El paso siguiente es agregar esa regla al prompt y repetir la prueba.
+Esa regla quedó en el prompt de la app. Con ella, en una prueba rápida de tiempo, Haiku low armó entre 18 y 20 tópicos y Haiku medium entre 15 y 16, pero no repetimos el juicio a ciegas: [NORMALIZACION.md](hackaton/NORMALIZACION.md) y el juicio son de la versión sin regla. La app normaliza con Haiku low porque tarda ~8,5 s contra ~30 s.
 
 ## 5. Costo por respuesta
 
@@ -101,6 +102,15 @@ Esta técnica todavía no está lista. El paso siguiente es agregar esa regla al
 - Agregar Haiku solo cuesta 0,06 ¢ por respuesta, el 1% de lo que ya se gasta.
 - Normalizar con Haiku suma 0,24 ¢. Normalizar con Opus casi duplica el costo total.
 - La transcripción (Whisper por OpenRouter, unos US$ 0,0002 por minuto) no está incluida.
+
+Después de esta medición, agrupar y normalizar pasaron a Haiku low por velocidad ([latencia.ts](hackaton/latencia.ts)). No volvimos a medir el costo, pero agrupar con Opus era la mayor parte, así que el total debería bajar a menos de US$ 0,02 por respuesta.
+
+| Paso, con 15 respuestas | Tiempo de una llamada |
+|---|---|
+| extraer, Opus low (450 palabras) | ~5 s |
+| analizar, Haiku medium (450 palabras) | ~6 s |
+| agrupar, Opus low / Haiku low | ~16 s / ~8 s |
+| normalizar, Haiku medium / Haiku low | ~30 s / ~8,5 s |
 
 ## Lo que no medimos
 

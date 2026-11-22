@@ -60,7 +60,8 @@ Diferencia vs lo que ya existe: Pol.is y Talk to the City son texto y web; esto 
 - 21-nov ~23:45: datos sintéticos de Edo en `data/respuestas-sinteticas.json` (25 respuestas sobre la experiencia en la hackathon, campos id/participante/texto; `texto` = transcripción ronda 1). Rotular como sintéticos en la demo.
 - 21-nov 23:30: nombre Audem (Cadem + audio). jsonc y project-description.md llenos; deploy-url pendiente (Diego).
 - 22-nov: el análisis lo hace Claude leyendo la respuesta completa, sin Jev ni grillas fijas. Evals, técnicas descartadas y costo por respuesta en `evals/README.md`.
-- 22-nov: al lado de extraer/agrupar (Opus low, sin cambios) corre `analizar` (Haiku medium, una fila en `analisis` por respuesta con temas libres, dirección, intensidad, tendencia, emoción y propuesta) y `normalizar` (junta esos temas en `topicos` neutros de la encuesta). Cuesta ~0,3 ¢ más por respuesta.
+- 22-nov: al lado de extraer (Opus low) y agrupar corre `analizar` (Haiku medium, una fila en `analisis` por respuesta con temas libres, dirección, intensidad, tendencia, emoción y propuesta) y `normalizar` (junta esos temas en `topicos` neutros de la encuesta). Cuesta ~0,3 ¢ más por respuesta.
+- 22-nov: agrupar y normalizar pasan a Haiku low para que el mapa se actualice más rápido (~15 s desde que entra un texto, antes ~22 s). Sin eval de calidad, solo tiempos (`evals/hackaton/latencia.ts`).
 
 ## Pendientes
 - **Visualizar los tópicos.** La query `encuestas.topicos({ slug })` ya entrega, por tópico, personas, cuántas positivas, negativas, mixtas y neutras, cuántas dicen que mejoró o empeoró, y las citas por persona; además la lista de propuestas y las emociones. Falta decidir cómo se ve (barras por tópico al lado del mapa, lista de propuestas) y usarlo para la ronda 2: a quien está negativo en un tópico, mostrarle la cita de alguien positivo en el mismo tópico.

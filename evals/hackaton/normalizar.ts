@@ -14,7 +14,7 @@ const solo: Record<string, { temas: Tema[]; emocion: string; propone: string | n
   JSON.parse(readFileSync(aqui + "salidas/haiku_solo.json", "utf8")).respuestas;
 const ids = Object.keys(solo).sort();
 const CONFIGS = [
-  { nombre: "haiku", model: "claude-haiku-5-5", effort: "medium" },
+  { nombre: "haiku", model: "claude-haiku-5-5", effort: "low" },
   { nombre: "opus", model: "claude-opus-5-5", effort: "low" },
 ] as const;
 const claude = new Anthropic();
