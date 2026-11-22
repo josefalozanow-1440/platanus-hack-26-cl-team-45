@@ -2,67 +2,195 @@
   "condicion": "claude_solo",
   "modelo_claude": "haiku",
   "columnas": {
-    "p1_jefatura": {
-      "comunicacion": "Qué tan clara y frecuente es la comunicación con la jefatura",
-      "reconocimiento": "Si la jefatura reconoce y valora el trabajo bien hecho",
-      "autonomia": "Cuánta confianza y libertad da la jefatura para decidir, o si microgestiona",
-      "feedback_desarrollo": "Si la jefatura da retroalimentación y apoya el crecimiento profesional"
+    "p1_jefatura_r1": {
+      "comunicacion": "No hay comunicación con la jefatura: se entera de cambios por otros, los correos y chats no tienen respuesta y las reuniones de equipo se suspendieron hace unos ocho meses.",
+      "reconocimiento": "El reconocimiento es escaso y superficial (agradecimientos generales o un mensaje grupal), y no siente que su esfuerzo extra sea valorado.",
+      "retroalimentacion_desempeno": "Casi no recibe retroalimentación sobre su desempeño: en cuatro años hubo una única evaluación breve, obligada por RRHH, sin indicaciones de mejora.",
+      "desarrollo_carrera": "Se siente estancada: no tiene apoyo ni orientación de la jefatura para crecer, su petición de un diplomado quedó sin respuesta y considera esto lo más grave.",
+      "trato_personal": "El trato personal no es malo ni hostil, aunque tampoco transmite un interés marcado por el equipo."
     },
-    "p2_carga": {
-      "volumen_trabajo": "La cantidad de trabajo asignado y si alcanza el tiempo para hacerlo",
-      "horarios": "La flexibilidad de horarios, el trabajo remoto y las horas extra",
-      "bienestar": "El estrés, el cansancio y la salud física o mental de la persona",
-      "apoyo_empresa": "Las políticas o beneficios de la empresa para conciliar trabajo y vida personal"
+    "p1_jefatura_r2": {
+      "relacion_general": "Describe la relación con su jefa como buena en general, aunque con algunos matices.",
+      "reconocimiento": "Valora mucho que su jefa reconozca públicamente y ante gerencia los buenos resultados, lo que la motiva y la hace sentir valorada.",
+      "comunicacion": "Considera que la comunicación es buena, con reunión semanal fija y respuestas rápidas, aunque a veces la jefa queda inaccesible por reuniones con gerencia.",
+      "control_y_autonomia": "Le cansa que la jefa revise cada cotización, pida permiso incluso para descuentos del 2% y quiera copia en todos los correos; desearía más confianza en su criterio, aunque entiende el motivo."
     },
-    "p3_remuneracion": {
-      "sueldo": "El monto del sueldo y si alcanza para vivir",
-      "beneficios": "Los beneficios no monetarios o complementarios: seguro, aguinaldos, días libres, convenios",
-      "transparencia": "Qué tan claros son los criterios para aumentos y bandas salariales",
-      "comparacion_mercado": "Cómo se compara la remuneración con lo que pagan otras empresas"
+    "p1_jefatura_r3": {
+      "relacion_general": "Describe la relación con Rodrigo como 'buena', sin entusiasmo especial, y destaca sobre todo la libertad que le da.",
+      "autonomia": "Valora muy positivamente que Rodrigo no supervise de cerca, confíe en su criterio para elegir arquitectura y librerías, y lo haga sentir adulto, en contraste con su jefe anterior.",
+      "comunicacion": "Considera la comunicación mixta: las dailies funcionan y Rodrigo responde rápido, pero los cambios de prioridades llegan tarde o por otros canales en vez de por él.",
+      "desarrollo_profesional": "Ve positivamente el apoyo al crecimiento (uno a uno, tareas de devops, curso de Kubernetes pagado), aunque sin un plan de carrera formal y con uno a uno irregulares.",
+      "retroalimentacion_tecnica": "Valora que Rodrigo comente los pull requests con explicaciones concretas sobre por qué haría las cosas de otra manera, en lugar de solo aprobar."
     },
-    "p4_crecimiento": {
-      "capacitacion": "Los cursos, capacitaciones y oportunidades de aprender que ofrece la empresa",
-      "ascensos": "Las oportunidades de ascenso y si los criterios para ascender son justos",
-      "plan_carrera": "Qué tan clara es la ruta de carrera y los pasos para avanzar",
-      "mentoria": "Si hay personas que guían, enseñan o acompañan el desarrollo"
+    "p2_carga_r1": {
+      "carga_trabajo": "Cargo con una carga excesiva porque quedaron dos supervisores en lugar de cuatro para cubrir el mismo trabajo, más despachos por los clientes nuevos y pendientes que no alcanza a hacer.",
+      "horarios_y_horas_extra": "Describe una jornada que nunca termina a la hora, horas extra que muchas veces no se registran y llamados sin aviso fuera de turno, como un domingo a las seis de la mañana.",
+      "flexibilidad_y_permisos": "Considera que no hay flexibilidad para trabajar en remoto con tareas administrativas ni para pedir cambios de turno por motivos personales como ir al médico, lo que se vuelve una negociación difícil con el jefe.",
+      "desconexion_y_bienestar": "Reconoce que está más cansado, duerme mal, le cuesta desconectarse al llegar a casa y su pareja nota irritabilidad, aunque no se considera colapsado."
     },
-    "p5_equipo": {
-      "companerismo": "La relación y el buen trato entre compañeros del mismo equipo",
-      "colaboracion_areas": "Qué tan fácil es trabajar y coordinarse con otras áreas",
-      "manejo_conflictos": "Cómo se manejan los conflictos: si se conversan y resuelven, o se evitan y escalan",
-      "herramientas": "Las herramientas y reuniones que se usan para coordinarse: software, canales, rituales"
+    "p2_carga_r2": {
+      "carga_trabajo": "La carga varía según la época: hay semanas con esprint apretado y otras tranquilas que se compensan, por lo que la considera normal, ni colapsada ni con tiempo de sobra.",
+      "flexibilidad_trabajo": "Valora muchísimo poder trabajar desde casa tres días a la semana (le pone un 7), lo que le permite atender a sus hijos sin que nadie le pregunte nada.",
+      "horas_extra_desconexion": "Casi no hay horas extra, y cuando se extendió por el lanzamiento se lo compensaron con una tarde libre; lo compara muy favorablemente con su trabajo anterior, donde se quedaba hasta las nueve sin reconocimiento.",
+      "bienestar_personal": "Se siente bien en general, con cansancio normal por tener dos hijos pequeños, y considera que el trabajo no le está afectando la salud; el insomnio que tenía antes desapareció.",
+      "beneficios": "Le parecen buenos beneficios como el día libre de cumpleaños, la tarde libre por actos escolares y el seguro complementario, aunque cree que no todos los conocen."
+    },
+    "p2_carga_r3": {
+      "carga_trabajo": "La carga es alta: la meta de unos 60 casos diarios se cumple la mayoría de días, pero se atrasa los lunes o con caídas del sistema y promociones, y la meta parece calculada como si todos los casos fueran fáciles, aunque se puede llevar.",
+      "beneficios_vida_personal": "No existen beneficios concretos para la vida personal (día libre de cumpleaños, bono de escolaridad, sala cuna), y el tema lleva ocho meses 'en evaluación', lo que describe como una situación muy mala que hay que arreglar urgente.",
+      "gestion_solicitudes_personales": "No hay protocolo ni política para necesidades personales urgentes: le descontaron un día al acompañar a su esposa en una operación, nadie de RRHH lo contactó y el resultado depende de la buena o mala voluntad del supervisor, lo que percibe como una lotería.",
+      "discurso_familia_empresa": "La empresa habla de 'familia' en la inducción, pero en la práctica el mensaje que recibe es que la vida personal es problema del trabajador, lo que contrasta negativamente con la realidad."
+    },
+    "p3_remuneracion_r1": {
+      "beneficios_sociales": "Valora muy positivamente los beneficios: el seguro complementario que cubrió casi toda una operación, los aguinaldos y gift card que siempre llegan, los días libres y los convenios (gimnasio, óptica).",
+      "sueldo_base": "El sueldo alcanza para vivir sin pasar hambre, pero deja a la persona justa a fin de mes, sin holgura para ahorrar ni para gustos, por lo que le gustaría ganar un poco más.",
+      "politica_aumentos": "Critica con fuerza que nadie sabe cómo funcionan los aumentos: no hay criterios ni bandas claras, la política de compensaciones nunca llega y el aumento de un compañero con el mismo cargo no tiene explicación.",
+      "desconfianza_y_permanencia": "Siente una desconfianza fuerte por la falta de transparencia en los aumentos, lo que la desmotiva a hacer más trabajo y es lo que más la hace pensar en irse de la empresa."
+    },
+    "p3_remuneracion_r2": {
+      "salario_general": "El sueldo le alcanza bien para vivir y ahorrar, aunque algunos meses (como marzo) son más apretados; en general llega bien a fin de mes.",
+      "comparacion_mercado": "Las ofertas externas que recibió son parecidas o algo menores, y sus ex compañeros en consultoras están en niveles similares o un poco peores, lo que le resulta tranquilizador.",
+      "bandas_salariales": "Valora que se publicaran las bandas salariales porque antes todo era a ojo, pero no queda claro cómo se pasa de un tramo al siguiente.",
+      "criterios_aumentos": "Los aumentos dependen de criterios poco claros: la evaluación de desempeño cuenta pero no se sabe cuánto, y a un colega no le subieron sin que nadie supiera explicarle por qué.",
+      "permanencia_por_remuneracion": "Se quedaría en la empresa en parte por la remuneración, sintiéndose bien pagado aunque no excelente."
+    },
+    "p3_remuneracion_r3": {
+      "nivel_sueldo": "El sueldo no alcanza para vivir: tiene que pagar cuentas con tarjeta y pedir avances tras diez años en la empresa.",
+      "competitividad_salarial": "Otras plantas del sector pagan unos 200 mil pesos más por el mismo trabajo, lo que hace que se vayan operarios experimentados.",
+      "seguro_complementario": "Valora el seguro complementario, que le devolvió parte de los gastos de la operación de su hija.",
+      "otros_beneficios": "Considera escasos el aguinaldo de fiestas patrias, el medio día por cumpleaños y los convenios, que en su mayoría son créditos que aumentan la deuda."
+    },
+    "p4_crecimiento_r1": {
+      "formacion_aprendizaje": "Valora muchísimo el acceso a cursos en la plataforma, el apoyo para pagar la mitad de un diplomado y la salida anticipada los jueves para ir a clases, y dice que es lo mejor del trabajo.",
+      "apoyo_jefatura_companeros": "Reconoce que su jefa y un diseñador le enseñan y responden sus consultas con paciencia, aunque no hay tiempo fijo para ello por la carga de trabajo.",
+      "criterios_ascensos": "Considera poco transparente la forma de otorgar ascensos, porque el puesto de analista se dio sin explicación clara y con sensación de influencia personal, y además hay muy pocos cupos al año."
+    },
+    "p4_crecimiento_r2": {
+      "claridad_ruta_crecimiento": "No ve un camino definido para pasar de técnico a un siguiente nivel: lleva siete años con el mismo cargo y, al preguntar en las evaluaciones, solo recibe respuestas vagas.",
+      "criterios_y_transparencia_ascensos": "Los ascensos se deciden de forma opaca y con favoritismo: no hay entrevistas ni feedback, el cargo de coordinador fue para un amigo del gerente y se contrató a alguien externo para supervisor sin aviso.",
+      "retencion_de_talento": "La falta de crecimiento está haciendo que se vaya gente buena de la empresa, y el propio entrevistado ya está mirando oportunidades afuera."
+    },
+    "p4_crecimiento_r3": {
+      "jefatura_carolina": "Su jefa Carolina le explicó el cierre mensual paso a paso desde la primera semana, con una revisión didáctica de las planillas, y lo considera lo mejor de su experiencia laboral.",
+      "apoyo_felipe_senior": "Felipe, el senior del equipo, le dedica tiempo cada vez que consulta dudas y le ha enseñado modelos de flujo que no vio en la universidad.",
+      "reuniones_de_desarrollo": "La reunión cada dos semanas para conversar qué quiere aprender y hacia dónde va le ha parecido increíble.",
+      "mapa_de_cargos": "El mapa de cargos del área (analista junior, analista senior y lo que se espera en cada uno) le resulta bastante claro, aunque algunos criterios son de juicio.",
+      "criterios_de_ascenso": "Percibe que el ascenso de una compañera se hizo de forma conversada y por resultados, lo que considera justo.",
+      "plazos_de_ascenso": "Los plazos para ascender no son claros y no sabe exactamente cuándo le podría tocar.",
+      "cursos_y_formacion": "Los cursos online son mixtos: el de Excel avanzado fue bueno, pero los de liderazgo le parecen muy genéricos y el de FP quedó postergado para el próximo año por presupuesto."
+    },
+    "p5_equipo_r1": {
+      "equipo_operaciones": "El equipo de operaciones es muy bueno: se ayudan entre sí, hay buen trato y respeto, y la persona dice que se queda por el equipo.",
+      "colaboracion_otras_areas": "La colaboración con comercial, mantención y planificación es muy deficiente: las respuestas llegan tarde, nadie sabe quién es responsable de qué y coordinar cuesta más tiempo que el trabajo mismo.",
+      "herramientas_informacion": "Las herramientas de trabajo no ayudan: la información está repartida entre TIMS, correo, WhatsApp, tickets y excels paralelos, y no se sabe dónde queda lo acordado.",
+      "reunion_coordinacion_lunes": "La reunión de coordinación de los lunes sirve en parte, pero es larga y se gasta en temas que podrían enviarse por correo."
+    },
+    "p5_equipo_r2": {
+      "trato_y_confianza_equipo": "El trato con el equipo es respetuoso y hay confianza por los años de trabajo juntos, aunque no es perfecto y hay días de tensión.",
+      "apoyo_mutuo_equipo": "Los compañeros se cubren entre sí ante problemas personales o salidas anticipadas y ayudan espontáneamente cuando alguien tiene carga de trabajo.",
+      "colaboracion_finanzas": "La colaboración con el área de Finanzas funciona bien y existe disposición a responder las solicitudes.",
+      "colaboracion_operaciones": "La coordinación con Operaciones es complicada por los tiempos de entrega de datos, que a veces llegan tarde o incompletos, aunque se entiende la presión de producción.",
+      "manejo_de_roces": "Los conflictos no se conversan directamente, se escalan a la jefatura, que a menudo no los resuelve; es lo que más habría que trabajar, aunque ella intenta mejorar en eso."
+    },
+    "p5_equipo_r3": {
+      "ambiente_equipo": "El ambiente con el equipo es mixto: hay buena onda con algunos compañeros que ayudan con datos de clientes y muestrarios, pero con otros no tanto.",
+      "trato_a_nuevos": "Un grupo de compañeros con más antigüedad se cierra y a veces hace comentarios pesados a los recién llegados, a quienes saludan de reojo.",
+      "gestion_de_roces": "Los roces entre compañeros no se conversan ni se resuelven: la jefatura derivó el caso del conflicto por clientes de Maipú al mismo personal sin intervenir, y la gente acumula molestias hasta explotar, lo que describe como un ambiente muy tóxico.",
+      "aplicacion_crm": "La aplicación CRM funciona bien y ordenó el trabajo (pedidos, visitas y carga desde el celular), aunque se queda pegada cuando se cae la señal en terreno.",
+      "reunion_semanal_lunes": "La reunión semanal de los lunes por Teams es corta, sirve para revisar las metas y no es una lata.",
+      "grupo_whatsapp": "El grupo de WhatsApp ayuda a avisar cosas rápidas, aunque hay demasiados stickers."
     }
   },
   "alineacion": {
-    "p1_jefatura": {
+    "p1_jefatura_r1": {
       "comunicacion": "comunicacion",
       "reconocimiento": "reconocimiento",
+      "autonomia": null,
+      "feedback_desarrollo": "retroalimentacion_desempeno"
+    },
+    "p1_jefatura_r2": {
+      "comunicacion": "comunicacion",
+      "reconocimiento": "reconocimiento",
+      "autonomia": "control_y_autonomia",
+      "feedback_desarrollo": null
+    },
+    "p1_jefatura_r3": {
+      "comunicacion": "comunicacion",
+      "reconocimiento": null,
       "autonomia": "autonomia",
-      "feedback_desarrollo": "feedback_desarrollo"
+      "feedback_desarrollo": "desarrollo_profesional"
     },
-    "p2_carga": {
-      "volumen_trabajo": "volumen_trabajo",
-      "horarios": "horarios",
-      "bienestar": "bienestar",
-      "apoyo_empresa": "apoyo_empresa"
+    "p2_carga_r1": {
+      "volumen_trabajo": "carga_trabajo",
+      "horarios": "horarios_y_horas_extra",
+      "bienestar": "desconexion_y_bienestar",
+      "apoyo_empresa": null
     },
-    "p3_remuneracion": {
-      "sueldo": "sueldo",
-      "beneficios": "beneficios",
-      "transparencia": "transparencia",
+    "p2_carga_r2": {
+      "volumen_trabajo": "carga_trabajo",
+      "horarios": "flexibilidad_trabajo",
+      "bienestar": "bienestar_personal",
+      "apoyo_empresa": "beneficios"
+    },
+    "p2_carga_r3": {
+      "volumen_trabajo": "carga_trabajo",
+      "horarios": null,
+      "bienestar": null,
+      "apoyo_empresa": "beneficios_vida_personal"
+    },
+    "p3_remuneracion_r1": {
+      "sueldo": "sueldo_base",
+      "beneficios": "beneficios_sociales",
+      "transparencia": "politica_aumentos",
+      "comparacion_mercado": null
+    },
+    "p3_remuneracion_r2": {
+      "sueldo": "salario_general",
+      "beneficios": null,
+      "transparencia": "criterios_aumentos",
       "comparacion_mercado": "comparacion_mercado"
     },
-    "p4_crecimiento": {
-      "capacitacion": "capacitacion",
-      "ascensos": "ascensos",
-      "plan_carrera": "plan_carrera",
-      "mentoria": "mentoria"
+    "p3_remuneracion_r3": {
+      "sueldo": "nivel_sueldo",
+      "beneficios": "otros_beneficios",
+      "transparencia": null,
+      "comparacion_mercado": "competitividad_salarial"
     },
-    "p5_equipo": {
-      "companerismo": "companerismo",
-      "colaboracion_areas": "colaboracion_areas",
-      "manejo_conflictos": "manejo_conflictos",
-      "herramientas": "herramientas"
+    "p4_crecimiento_r1": {
+      "capacitacion": "formacion_aprendizaje",
+      "ascensos": "criterios_ascensos",
+      "plan_carrera": null,
+      "mentoria": "apoyo_jefatura_companeros"
+    },
+    "p4_crecimiento_r2": {
+      "capacitacion": null,
+      "ascensos": "criterios_y_transparencia_ascensos",
+      "plan_carrera": "claridad_ruta_crecimiento",
+      "mentoria": null
+    },
+    "p4_crecimiento_r3": {
+      "capacitacion": "cursos_y_formacion",
+      "ascensos": "criterios_de_ascenso",
+      "plan_carrera": "mapa_de_cargos",
+      "mentoria": "apoyo_felipe_senior"
+    },
+    "p5_equipo_r1": {
+      "companerismo": "equipo_operaciones",
+      "colaboracion_areas": "colaboracion_otras_areas",
+      "manejo_conflictos": null,
+      "herramientas": "herramientas_informacion"
+    },
+    "p5_equipo_r2": {
+      "companerismo": "trato_y_confianza_equipo",
+      "colaboracion_areas": "colaboracion_operaciones",
+      "manejo_conflictos": "manejo_de_roces",
+      "herramientas": null
+    },
+    "p5_equipo_r3": {
+      "companerismo": "ambiente_equipo",
+      "colaboracion_areas": null,
+      "manejo_conflictos": "gestion_de_roces",
+      "herramientas": "aplicacion_crm"
     }
   },
   "items": {
@@ -75,17 +203,21 @@
         "menciona": true,
         "valor": -1
       },
-      "autonomia": {
-        "menciona": false,
-        "valor": null
-      },
-      "feedback_desarrollo": {
+      "retroalimentacion_desempeno": {
         "menciona": true,
         "valor": -2
+      },
+      "desarrollo_carrera": {
+        "menciona": true,
+        "valor": -2
+      },
+      "trato_personal": {
+        "menciona": true,
+        "valor": 0
       }
     },
     "p1_jefatura_r2": {
-      "comunicacion": {
+      "relacion_general": {
         "menciona": true,
         "valor": 1
       },
@@ -93,249 +225,277 @@
         "menciona": true,
         "valor": 2
       },
-      "autonomia": {
+      "comunicacion": {
+        "menciona": true,
+        "valor": 1
+      },
+      "control_y_autonomia": {
         "menciona": true,
         "valor": -1
-      },
-      "feedback_desarrollo": {
-        "menciona": false,
-        "valor": null
       }
     },
     "p1_jefatura_r3": {
-      "comunicacion": {
+      "relacion_general": {
         "menciona": true,
-        "valor": 0
-      },
-      "reconocimiento": {
-        "menciona": false,
-        "valor": null
+        "valor": 1
       },
       "autonomia": {
         "menciona": true,
         "valor": 2
       },
-      "feedback_desarrollo": {
+      "comunicacion": {
+        "menciona": true,
+        "valor": 0
+      },
+      "desarrollo_profesional": {
+        "menciona": true,
+        "valor": 1
+      },
+      "retroalimentacion_tecnica": {
         "menciona": true,
         "valor": 1
       }
     },
     "p2_carga_r1": {
-      "volumen_trabajo": {
+      "carga_trabajo": {
         "menciona": true,
         "valor": -2
       },
-      "horarios": {
+      "horarios_y_horas_extra": {
         "menciona": true,
         "valor": -2
       },
-      "bienestar": {
+      "flexibilidad_y_permisos": {
         "menciona": true,
         "valor": -1
       },
-      "apoyo_empresa": {
+      "desconexion_y_bienestar": {
         "menciona": true,
-        "valor": -2
+        "valor": -1
       }
     },
     "p2_carga_r2": {
-      "volumen_trabajo": {
+      "carga_trabajo": {
         "menciona": true,
         "valor": 0
       },
-      "horarios": {
+      "flexibilidad_trabajo": {
         "menciona": true,
         "valor": 2
       },
-      "bienestar": {
+      "horas_extra_desconexion": {
         "menciona": true,
         "valor": 1
       },
-      "apoyo_empresa": {
+      "bienestar_personal": {
+        "menciona": true,
+        "valor": 1
+      },
+      "beneficios": {
         "menciona": true,
         "valor": 1
       }
     },
     "p2_carga_r3": {
-      "volumen_trabajo": {
+      "carga_trabajo": {
         "menciona": true,
         "valor": -1
       },
-      "horarios": {
-        "menciona": false,
-        "valor": null
-      },
-      "bienestar": {
-        "menciona": false,
-        "valor": null
-      },
-      "apoyo_empresa": {
+      "beneficios_vida_personal": {
         "menciona": true,
         "valor": -2
+      },
+      "gestion_solicitudes_personales": {
+        "menciona": true,
+        "valor": -2
+      },
+      "discurso_familia_empresa": {
+        "menciona": true,
+        "valor": -1
       }
     },
     "p3_remuneracion_r1": {
-      "sueldo": {
-        "menciona": true,
-        "valor": -1
-      },
-      "beneficios": {
+      "beneficios_sociales": {
         "menciona": true,
         "valor": 2
       },
-      "transparencia": {
-        "menciona": true,
-        "valor": -2
-      },
-      "comparacion_mercado": {
-        "menciona": false,
-        "valor": null
-      }
-    },
-    "p3_remuneracion_r2": {
-      "sueldo": {
-        "menciona": true,
-        "valor": 1
-      },
-      "beneficios": {
-        "menciona": false,
-        "valor": null
-      },
-      "transparencia": {
+      "sueldo_base": {
         "menciona": true,
         "valor": -1
       },
+      "politica_aumentos": {
+        "menciona": true,
+        "valor": -2
+      },
+      "desconfianza_y_permanencia": {
+        "menciona": true,
+        "valor": -2
+      }
+    },
+    "p3_remuneracion_r2": {
+      "salario_general": {
+        "menciona": true,
+        "valor": 1
+      },
       "comparacion_mercado": {
+        "menciona": true,
+        "valor": 1
+      },
+      "bandas_salariales": {
+        "menciona": true,
+        "valor": 0
+      },
+      "criterios_aumentos": {
+        "menciona": true,
+        "valor": -1
+      },
+      "permanencia_por_remuneracion": {
         "menciona": true,
         "valor": 1
       }
     },
     "p3_remuneracion_r3": {
-      "sueldo": {
+      "nivel_sueldo": {
         "menciona": true,
         "valor": -2
       },
-      "beneficios": {
+      "competitividad_salarial": {
+        "menciona": true,
+        "valor": -2
+      },
+      "seguro_complementario": {
+        "menciona": true,
+        "valor": 1
+      },
+      "otros_beneficios": {
         "menciona": true,
         "valor": -1
-      },
-      "transparencia": {
-        "menciona": false,
-        "valor": null
-      },
-      "comparacion_mercado": {
-        "menciona": true,
-        "valor": -2
       }
     },
     "p4_crecimiento_r1": {
-      "capacitacion": {
+      "formacion_aprendizaje": {
         "menciona": true,
         "valor": 2
       },
-      "ascensos": {
-        "menciona": true,
-        "valor": -1
-      },
-      "plan_carrera": {
-        "menciona": true,
-        "valor": -1
-      },
-      "mentoria": {
+      "apoyo_jefatura_companeros": {
         "menciona": true,
         "valor": 1
+      },
+      "criterios_ascensos": {
+        "menciona": true,
+        "valor": -1
       }
     },
     "p4_crecimiento_r2": {
-      "capacitacion": {
-        "menciona": false,
-        "valor": null
-      },
-      "ascensos": {
+      "claridad_ruta_crecimiento": {
         "menciona": true,
         "valor": -2
       },
-      "plan_carrera": {
+      "criterios_y_transparencia_ascensos": {
         "menciona": true,
         "valor": -2
       },
-      "mentoria": {
-        "menciona": false,
-        "valor": null
+      "retencion_de_talento": {
+        "menciona": true,
+        "valor": -2
       }
     },
     "p4_crecimiento_r3": {
-      "capacitacion": {
-        "menciona": true,
-        "valor": 0
-      },
-      "ascensos": {
-        "menciona": true,
-        "valor": 1
-      },
-      "plan_carrera": {
-        "menciona": true,
-        "valor": 1
-      },
-      "mentoria": {
+      "jefatura_carolina": {
         "menciona": true,
         "valor": 2
+      },
+      "apoyo_felipe_senior": {
+        "menciona": true,
+        "valor": 2
+      },
+      "reuniones_de_desarrollo": {
+        "menciona": true,
+        "valor": 2
+      },
+      "mapa_de_cargos": {
+        "menciona": true,
+        "valor": 1
+      },
+      "criterios_de_ascenso": {
+        "menciona": true,
+        "valor": 1
+      },
+      "plazos_de_ascenso": {
+        "menciona": true,
+        "valor": -1
+      },
+      "cursos_y_formacion": {
+        "menciona": true,
+        "valor": 0
       }
     },
     "p5_equipo_r1": {
-      "companerismo": {
+      "equipo_operaciones": {
         "menciona": true,
         "valor": 2
       },
-      "colaboracion_areas": {
+      "colaboracion_otras_areas": {
         "menciona": true,
         "valor": -2
       },
-      "manejo_conflictos": {
-        "menciona": false,
-        "valor": null
+      "herramientas_informacion": {
+        "menciona": true,
+        "valor": -1
       },
-      "herramientas": {
+      "reunion_coordinacion_lunes": {
         "menciona": true,
         "valor": -1
       }
     },
     "p5_equipo_r2": {
-      "companerismo": {
+      "trato_y_confianza_equipo": {
         "menciona": true,
         "valor": 1
       },
-      "colaboracion_areas": {
+      "apoyo_mutuo_equipo": {
+        "menciona": true,
+        "valor": 1
+      },
+      "colaboracion_finanzas": {
+        "menciona": true,
+        "valor": 1
+      },
+      "colaboracion_operaciones": {
         "menciona": true,
         "valor": 0
       },
-      "manejo_conflictos": {
+      "manejo_de_roces": {
         "menciona": true,
         "valor": -1
-      },
-      "herramientas": {
-        "menciona": false,
-        "valor": null
       }
     },
     "p5_equipo_r3": {
-      "companerismo": {
+      "ambiente_equipo": {
         "menciona": true,
         "valor": 0
       },
-      "colaboracion_areas": {
-        "menciona": false,
-        "valor": null
+      "trato_a_nuevos": {
+        "menciona": true,
+        "valor": -1
       },
-      "manejo_conflictos": {
+      "gestion_de_roces": {
         "menciona": true,
         "valor": -2
       },
-      "herramientas": {
+      "aplicacion_crm": {
         "menciona": true,
         "valor": 1
+      },
+      "reunion_semanal_lunes": {
+        "menciona": true,
+        "valor": 1
+      },
+      "grupo_whatsapp": {
+        "menciona": true,
+        "valor": 0
       }
     }
   },
-  "segundos": 12.0
+  "segundos": 96.3
 }

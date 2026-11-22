@@ -2,74 +2,212 @@
   "condicion": "claude_pregunta_jev",
   "modelo_claude": "sonnet",
   "columnas": {
-    "p1_jefatura": {
-      "comunicacion": "Calidad de la comunicación con la jefatura: claridad de las instrucciones, disponibilidad para conversar y transparencia al informar.",
-      "confianza_trato": "Trato personal y confianza: respeto, cercanía, empatía y honestidad en el día a día con la jefatura.",
-      "apoyo_desarrollo": "Apoyo de la jefatura al crecimiento profesional: retroalimentación, aprendizaje, oportunidades y acompañamiento en el trabajo.",
-      "reconocimiento": "Reconocimiento y valoración del trabajo por parte de la jefatura: agradecimiento, justicia en la evaluación y visibilidad de logros.",
-      "autonomia_exigencia": "Forma de dirigir el trabajo: autonomía que otorga, carga y exigencias que impone, y grado de control o microgestión.",
-      "liderazgo_decisiones": "Capacidad de liderazgo de la jefatura: toma de decisiones, coherencia, manejo de conflictos y equidad con el equipo."
+    "p1_jefatura_r1": {
+      "comunicacion": "Calidad de la comunicación con la jefatura: claridad de las instrucciones, disponibilidad para conversar y honestidad al informar.",
+      "confianza_trato": "Nivel de confianza y respeto en el trato personal: cercanía, empatía y trato justo hacia la persona.",
+      "retroalimentacion_reconocimiento": "Feedback recibido sobre el desempeño y reconocimiento del trabajo bien hecho por parte de la jefatura.",
+      "apoyo_desarrollo": "Apoyo de la jefatura para resolver problemas y para el crecimiento profesional, aprendizaje y oportunidades.",
+      "autonomia_liderazgo": "Forma de dirigir el trabajo: autonomía que otorga, organización, toma de decisiones y nivel de control o presión.",
+      "equilibrio_flexibilidad": "Comprensión de la jefatura frente a la carga laboral, los horarios y las necesidades personales o familiares."
     },
-    "p2_carga": {
-      "volumen_carga": "Cantidad de trabajo asignado y si es razonable o excesivo para la capacidad del trabajador y los plazos disponibles.",
-      "horarios_jornada": "Cumplimiento de la jornada laboral, horas extra, trabajo fuera de horario y flexibilidad de horarios o teletrabajo.",
-      "vida_personal": "Tiempo y energía que queda para familia, descanso, salud y actividades personales fuera del trabajo.",
-      "estres_bienestar": "Nivel de estrés, cansancio, agotamiento o tranquilidad emocional que le genera el trabajo.",
-      "apoyo_jefatura": "Cómo la jefatura y la empresa gestionan, reparten y escuchan la carga de trabajo, y si facilitan el equilibrio.",
-      "distribucion_equipo": "Justicia en el reparto del trabajo entre compañeros, dotación suficiente del equipo y colaboración para cubrir tareas."
+    "p1_jefatura_r2": {
+      "comunicacion": "Calidad de la comunicación con la jefatura: claridad de las instrucciones, disponibilidad para conversar y honestidad al informar.",
+      "confianza_trato": "Nivel de confianza y respeto en el trato personal: cercanía, empatía y trato justo hacia la persona.",
+      "retroalimentacion_reconocimiento": "Feedback recibido sobre el desempeño y reconocimiento del trabajo bien hecho por parte de la jefatura.",
+      "apoyo_desarrollo": "Apoyo de la jefatura para resolver problemas y para el crecimiento profesional, aprendizaje y oportunidades.",
+      "autonomia_liderazgo": "Forma de dirigir el trabajo: autonomía que otorga, organización, toma de decisiones y nivel de control o presión.",
+      "equilibrio_flexibilidad": "Comprensión de la jefatura frente a la carga laboral, los horarios y las necesidades personales o familiares."
     },
-    "p3_remuneracion": {
-      "nivel_salarial": "Si el sueldo base es suficiente y acorde al costo de vida, al mercado y al trabajo que la persona realiza.",
-      "equidad_y_reajustes": "Si los sueldos son justos entre personas y cargos, y si los aumentos, ascensos y bonos por desempeño se otorgan de forma transparente y con regularidad.",
-      "beneficios_salud_y_bienestar": "Opinión sobre los beneficios de salud y bienestar, como seguro complementario, apoyo en salud mental, convenios y actividades de bienestar.",
-      "beneficios_economicos_y_cotidianos": "Opinión sobre los beneficios económicos y cotidianos, como bonos, aguinaldos, alimentación, transporte, préstamos o ayudas familiares.",
-      "tiempo_y_flexibilidad": "Opinión sobre los beneficios de tiempo, como días libres adicionales, vacaciones, horarios flexibles y teletrabajo.",
-      "comunicacion_y_claridad": "Si la empresa explica con claridad cómo se calcula la remuneración y qué beneficios existen, y cómo se accede a ellos."
+    "p1_jefatura_r3": {
+      "comunicacion": "Calidad de la comunicación con la jefatura: claridad de las instrucciones, disponibilidad para conversar y honestidad al informar.",
+      "confianza_trato": "Nivel de confianza y respeto en el trato personal: cercanía, empatía y trato justo hacia la persona.",
+      "retroalimentacion_reconocimiento": "Feedback recibido sobre el desempeño y reconocimiento del trabajo bien hecho por parte de la jefatura.",
+      "apoyo_desarrollo": "Apoyo de la jefatura para resolver problemas y para el crecimiento profesional, aprendizaje y oportunidades.",
+      "autonomia_liderazgo": "Forma de dirigir el trabajo: autonomía que otorga, organización, toma de decisiones y nivel de control o presión.",
+      "equilibrio_flexibilidad": "Comprensión de la jefatura frente a la carga laboral, los horarios y las necesidades personales o familiares."
     },
-    "p4_crecimiento": {
-      "claridad_ruta_carrera": "Qué tan definido y conocido es el camino de crecimiento o plan de carrera: qué cargos siguen, qué se necesita para llegar a ellos.",
-      "promociones_ascensos": "Percepción sobre la existencia de ascensos o cambios de cargo disponibles y si se otorgan de forma justa y transparente.",
-      "capacitacion_desarrollo": "Acceso a capacitaciones, cursos, mentorías y oportunidades de aprender nuevas habilidades.",
-      "rol_jefatura": "Apoyo, feedback y conversaciones de desarrollo que da el jefe directo o la jefatura sobre el crecimiento de la persona.",
-      "comunicacion_vacantes": "Qué tan bien comunica la empresa las vacantes, procesos de selección interna y oportunidades de movimiento entre áreas.",
-      "reconocimiento_remuneracion": "Percepción de que el esfuerzo y el desempeño se reconocen con mayores responsabilidades, aumentos de sueldo o beneficios."
+    "p2_carga_r1": {
+      "volumen_carga": "Cantidad de tareas y responsabilidades asignadas, y si el volumen de trabajo es manejable o excesivo para una persona.",
+      "horarios_jornada": "Cumplimiento de la jornada laboral: horas extra, trabajar fuera de horario, fines de semana y flexibilidad de horarios.",
+      "equilibrio_vida_personal": "Cuánto tiempo y energía queda para la familia, el descanso, los amigos y los intereses personales fuera del trabajo.",
+      "estres_bienestar": "Efecto del trabajo en el estrés, el cansancio, el agotamiento y la salud física o mental.",
+      "apoyo_jefatura_equipo": "Cómo la jefatura y los compañeros reparten la carga, escuchan y ayudan a manejar el trabajo y a conciliarlo con la vida personal.",
+      "flexibilidad_permisos": "Facilidad para pedir permisos, vacaciones, teletrabajo o ajustes cuando surgen necesidades personales."
     },
-    "p5_equipo": {
-      "clima_equipo": "Ambiente humano dentro del equipo directo: confianza, respeto, compañerismo y trato cotidiano entre compañeros.",
-      "colaboracion_entre_areas": "Coordinación y disposición a colaborar con otras áreas o departamentos, incluyendo silos, traspasos y ayuda mutua.",
-      "comunicacion": "Claridad, oportunidad y fluidez con que se comparte información y se conversa dentro del equipo y con otras áreas.",
-      "liderazgo_jefatura": "Rol de la jefatura o líder en fomentar el buen ambiente, resolver conflictos y facilitar el trabajo conjunto.",
-      "carga_y_organizacion": "Reparto de tareas, carga de trabajo, procesos y recursos que facilitan o dificultan trabajar bien en conjunto."
+    "p2_carga_r2": {
+      "volumen_carga": "Cantidad de tareas y responsabilidades asignadas, y si el volumen de trabajo es manejable o excesivo para una persona.",
+      "horarios_jornada": "Cumplimiento de la jornada laboral: horas extra, trabajar fuera de horario, fines de semana y flexibilidad de horarios.",
+      "equilibrio_vida_personal": "Cuánto tiempo y energía queda para la familia, el descanso, los amigos y los intereses personales fuera del trabajo.",
+      "estres_bienestar": "Efecto del trabajo en el estrés, el cansancio, el agotamiento y la salud física o mental.",
+      "apoyo_jefatura_equipo": "Cómo la jefatura y los compañeros reparten la carga, escuchan y ayudan a manejar el trabajo y a conciliarlo con la vida personal.",
+      "flexibilidad_permisos": "Facilidad para pedir permisos, vacaciones, teletrabajo o ajustes cuando surgen necesidades personales."
+    },
+    "p2_carga_r3": {
+      "volumen_carga": "Cantidad de tareas y responsabilidades asignadas, y si el volumen de trabajo es manejable o excesivo para una persona.",
+      "horarios_jornada": "Cumplimiento de la jornada laboral: horas extra, trabajar fuera de horario, fines de semana y flexibilidad de horarios.",
+      "equilibrio_vida_personal": "Cuánto tiempo y energía queda para la familia, el descanso, los amigos y los intereses personales fuera del trabajo.",
+      "estres_bienestar": "Efecto del trabajo en el estrés, el cansancio, el agotamiento y la salud física o mental.",
+      "apoyo_jefatura_equipo": "Cómo la jefatura y los compañeros reparten la carga, escuchan y ayudan a manejar el trabajo y a conciliarlo con la vida personal.",
+      "flexibilidad_permisos": "Facilidad para pedir permisos, vacaciones, teletrabajo o ajustes cuando surgen necesidades personales."
+    },
+    "p3_remuneracion_r1": {
+      "nivel_salarial": "Qué tan suficiente y competitivo es el sueldo base frente al costo de vida, las responsabilidades del cargo y el mercado.",
+      "equidad_transparencia": "Qué tan justa, equitativa y transparente es la forma en que se definen sueldos, aumentos y ascensos entre personas y cargos.",
+      "bonos_incentivos": "Bonos, comisiones, gratificaciones y otros pagos variables por desempeño o resultados: si existen, se entienden y se cumplen.",
+      "beneficios_salud_bienestar": "Beneficios de salud y bienestar como seguro complementario, convenios médicos, apoyo en salud mental, alimentación y ayudas económicas.",
+      "beneficios_tiempo_flexibilidad": "Beneficios de tiempo y flexibilidad como días libres extra, teletrabajo, horarios flexibles y permisos.",
+      "pago_y_reajustes": "Puntualidad y exactitud del pago de remuneraciones, y frecuencia y cumplimiento de reajustes por IPC o aumentos prometidos."
+    },
+    "p3_remuneracion_r2": {
+      "nivel_salarial": "Qué tan suficiente y competitivo es el sueldo base frente al costo de vida, las responsabilidades del cargo y el mercado.",
+      "equidad_transparencia": "Qué tan justa, equitativa y transparente es la forma en que se definen sueldos, aumentos y ascensos entre personas y cargos.",
+      "bonos_incentivos": "Bonos, comisiones, gratificaciones y otros pagos variables por desempeño o resultados: si existen, se entienden y se cumplen.",
+      "beneficios_salud_bienestar": "Beneficios de salud y bienestar como seguro complementario, convenios médicos, apoyo en salud mental, alimentación y ayudas económicas.",
+      "beneficios_tiempo_flexibilidad": "Beneficios de tiempo y flexibilidad como días libres extra, teletrabajo, horarios flexibles y permisos.",
+      "pago_y_reajustes": "Puntualidad y exactitud del pago de remuneraciones, y frecuencia y cumplimiento de reajustes por IPC o aumentos prometidos."
+    },
+    "p3_remuneracion_r3": {
+      "nivel_salarial": "Qué tan suficiente y competitivo es el sueldo base frente al costo de vida, las responsabilidades del cargo y el mercado.",
+      "equidad_transparencia": "Qué tan justa, equitativa y transparente es la forma en que se definen sueldos, aumentos y ascensos entre personas y cargos.",
+      "bonos_incentivos": "Bonos, comisiones, gratificaciones y otros pagos variables por desempeño o resultados: si existen, se entienden y se cumplen.",
+      "beneficios_salud_bienestar": "Beneficios de salud y bienestar como seguro complementario, convenios médicos, apoyo en salud mental, alimentación y ayudas económicas.",
+      "beneficios_tiempo_flexibilidad": "Beneficios de tiempo y flexibilidad como días libres extra, teletrabajo, horarios flexibles y permisos.",
+      "pago_y_reajustes": "Puntualidad y exactitud del pago de remuneraciones, y frecuencia y cumplimiento de reajustes por IPC o aumentos prometidos."
+    },
+    "p4_crecimiento_r1": {
+      "claridad_ruta_carrera": "Qué tan definido y conocido es el camino de ascenso o plan de carrera, con cargos y requisitos para avanzar.",
+      "oportunidades_ascenso": "Existencia real de vacantes, promociones o movimientos a cargos superiores o a otras áreas dentro de la empresa.",
+      "capacitacion_desarrollo": "Acceso a capacitaciones, cursos, mentorías y aprendizaje para desarrollar habilidades.",
+      "rol_jefatura_feedback": "Apoyo de la jefatura directa en conversaciones sobre desempeño, feedback y metas de crecimiento.",
+      "justicia_transparencia_criterios": "Percepción de que los ascensos se deciden con criterios justos y transparentes, basados en mérito y no en favoritismo.",
+      "reconocimiento_compensacion": "Reconocimiento del esfuerzo y mejoras salariales o de beneficios al crecer o asumir más responsabilidades."
+    },
+    "p4_crecimiento_r2": {
+      "claridad_ruta_carrera": "Qué tan definido y conocido es el camino de ascenso o plan de carrera, con cargos y requisitos para avanzar.",
+      "oportunidades_ascenso": "Existencia real de vacantes, promociones o movimientos a cargos superiores o a otras áreas dentro de la empresa.",
+      "capacitacion_desarrollo": "Acceso a capacitaciones, cursos, mentorías y aprendizaje para desarrollar habilidades.",
+      "rol_jefatura_feedback": "Apoyo de la jefatura directa en conversaciones sobre desempeño, feedback y metas de crecimiento.",
+      "justicia_transparencia_criterios": "Percepción de que los ascensos se deciden con criterios justos y transparentes, basados en mérito y no en favoritismo.",
+      "reconocimiento_compensacion": "Reconocimiento del esfuerzo y mejoras salariales o de beneficios al crecer o asumir más responsabilidades."
+    },
+    "p4_crecimiento_r3": {
+      "claridad_ruta_carrera": "Qué tan definido y conocido es el camino de ascenso o plan de carrera, con cargos y requisitos para avanzar.",
+      "oportunidades_ascenso": "Existencia real de vacantes, promociones o movimientos a cargos superiores o a otras áreas dentro de la empresa.",
+      "capacitacion_desarrollo": "Acceso a capacitaciones, cursos, mentorías y aprendizaje para desarrollar habilidades.",
+      "rol_jefatura_feedback": "Apoyo de la jefatura directa en conversaciones sobre desempeño, feedback y metas de crecimiento.",
+      "justicia_transparencia_criterios": "Percepción de que los ascensos se deciden con criterios justos y transparentes, basados en mérito y no en favoritismo.",
+      "reconocimiento_compensacion": "Reconocimiento del esfuerzo y mejoras salariales o de beneficios al crecer o asumir más responsabilidades."
+    },
+    "p5_equipo_r1": {
+      "clima_equipo": "Ambiente humano dentro del equipo directo: confianza, respeto, compañerismo y trato entre compañeros.",
+      "apoyo_trabajo_equipo": "Ayuda mutua y trabajo conjunto en el equipo: si se apoyan en tareas, reparten bien la carga y cumplen en conjunto.",
+      "colaboracion_otras_areas": "Disposición y fluidez al trabajar con otras áreas: si responden, cooperan y se llevan bien en el día a día.",
+      "coordinacion_procesos": "Claridad de procesos, roles y traspasos entre áreas: si hay información oportuna, prioridades alineadas y se evitan retrasos o duplicidades.",
+      "comunicacion_liderazgo": "Comunicación y rol de jefaturas en el ambiente: si informan con claridad, escuchan, median conflictos y fomentan la colaboración."
+    },
+    "p5_equipo_r2": {
+      "clima_equipo": "Ambiente humano dentro del equipo directo: confianza, respeto, compañerismo y trato entre compañeros.",
+      "apoyo_trabajo_equipo": "Ayuda mutua y trabajo conjunto en el equipo: si se apoyan en tareas, reparten bien la carga y cumplen en conjunto.",
+      "colaboracion_otras_areas": "Disposición y fluidez al trabajar con otras áreas: si responden, cooperan y se llevan bien en el día a día.",
+      "coordinacion_procesos": "Claridad de procesos, roles y traspasos entre áreas: si hay información oportuna, prioridades alineadas y se evitan retrasos o duplicidades.",
+      "comunicacion_liderazgo": "Comunicación y rol de jefaturas en el ambiente: si informan con claridad, escuchan, median conflictos y fomentan la colaboración."
+    },
+    "p5_equipo_r3": {
+      "clima_equipo": "Ambiente humano dentro del equipo directo: confianza, respeto, compañerismo y trato entre compañeros.",
+      "apoyo_trabajo_equipo": "Ayuda mutua y trabajo conjunto en el equipo: si se apoyan en tareas, reparten bien la carga y cumplen en conjunto.",
+      "colaboracion_otras_areas": "Disposición y fluidez al trabajar con otras áreas: si responden, cooperan y se llevan bien en el día a día.",
+      "coordinacion_procesos": "Claridad de procesos, roles y traspasos entre áreas: si hay información oportuna, prioridades alineadas y se evitan retrasos o duplicidades.",
+      "comunicacion_liderazgo": "Comunicación y rol de jefaturas en el ambiente: si informan con claridad, escuchan, median conflictos y fomentan la colaboración."
     }
   },
   "alineacion": {
-    "p1_jefatura": {
+    "p1_jefatura_r1": {
       "comunicacion": "comunicacion",
-      "reconocimiento": "reconocimiento",
-      "autonomia": "autonomia_exigencia",
+      "reconocimiento": "retroalimentacion_reconocimiento",
+      "autonomia": "autonomia_liderazgo",
       "feedback_desarrollo": "apoyo_desarrollo"
     },
-    "p2_carga": {
+    "p1_jefatura_r2": {
+      "comunicacion": "comunicacion",
+      "reconocimiento": "retroalimentacion_reconocimiento",
+      "autonomia": "autonomia_liderazgo",
+      "feedback_desarrollo": "apoyo_desarrollo"
+    },
+    "p1_jefatura_r3": {
+      "comunicacion": "comunicacion",
+      "reconocimiento": "retroalimentacion_reconocimiento",
+      "autonomia": "autonomia_liderazgo",
+      "feedback_desarrollo": "apoyo_desarrollo"
+    },
+    "p2_carga_r1": {
       "volumen_trabajo": "volumen_carga",
       "horarios": "horarios_jornada",
       "bienestar": "estres_bienestar",
-      "apoyo_empresa": "apoyo_jefatura"
+      "apoyo_empresa": null
     },
-    "p3_remuneracion": {
+    "p2_carga_r2": {
+      "volumen_trabajo": "volumen_carga",
+      "horarios": "horarios_jornada",
+      "bienestar": "estres_bienestar",
+      "apoyo_empresa": null
+    },
+    "p2_carga_r3": {
+      "volumen_trabajo": "volumen_carga",
+      "horarios": "horarios_jornada",
+      "bienestar": "estres_bienestar",
+      "apoyo_empresa": null
+    },
+    "p3_remuneracion_r1": {
       "sueldo": "nivel_salarial",
       "beneficios": null,
-      "transparencia": "comunicacion_y_claridad",
+      "transparencia": "equidad_transparencia",
       "comparacion_mercado": null
     },
-    "p4_crecimiento": {
+    "p3_remuneracion_r2": {
+      "sueldo": "nivel_salarial",
+      "beneficios": null,
+      "transparencia": "equidad_transparencia",
+      "comparacion_mercado": null
+    },
+    "p3_remuneracion_r3": {
+      "sueldo": "nivel_salarial",
+      "beneficios": null,
+      "transparencia": "equidad_transparencia",
+      "comparacion_mercado": null
+    },
+    "p4_crecimiento_r1": {
       "capacitacion": "capacitacion_desarrollo",
-      "ascensos": "promociones_ascensos",
+      "ascensos": "oportunidades_ascenso",
       "plan_carrera": "claridad_ruta_carrera",
       "mentoria": null
     },
-    "p5_equipo": {
+    "p4_crecimiento_r2": {
+      "capacitacion": "capacitacion_desarrollo",
+      "ascensos": "oportunidades_ascenso",
+      "plan_carrera": "claridad_ruta_carrera",
+      "mentoria": null
+    },
+    "p4_crecimiento_r3": {
+      "capacitacion": "capacitacion_desarrollo",
+      "ascensos": "oportunidades_ascenso",
+      "plan_carrera": "claridad_ruta_carrera",
+      "mentoria": null
+    },
+    "p5_equipo_r1": {
       "companerismo": "clima_equipo",
-      "colaboracion_areas": "colaboracion_entre_areas",
+      "colaboracion_areas": "colaboracion_otras_areas",
+      "manejo_conflictos": null,
+      "herramientas": null
+    },
+    "p5_equipo_r2": {
+      "companerismo": "clima_equipo",
+      "colaboracion_areas": "colaboracion_otras_areas",
+      "manejo_conflictos": null,
+      "herramientas": null
+    },
+    "p5_equipo_r3": {
+      "companerismo": "clima_equipo",
+      "colaboracion_areas": "colaboracion_otras_areas",
       "manejo_conflictos": null,
       "herramientas": null
     }
@@ -92,12 +230,25 @@
       "confianza_trato": {
         "menciona": true,
         "valor": -1,
-        "noul": 0.92,
-        "score": 0.83,
+        "noul": 0.84,
+        "score": 0.87,
         "probabilidades": {
-          "0": 0.18,
-          "1": 0.81,
-          "2": 0.01,
+          "0": 0.16,
+          "1": 0.82,
+          "2": 0.02,
+          "3": 0.0,
+          "4": 0.0
+        }
+      },
+      "retroalimentacion_reconocimiento": {
+        "menciona": true,
+        "valor": -1,
+        "noul": 0.99,
+        "score": 0.65,
+        "probabilidades": {
+          "0": 0.35,
+          "1": 0.65,
+          "2": 0.0,
           "3": 0.0,
           "4": 0.0
         }
@@ -105,51 +256,38 @@
       "apoyo_desarrollo": {
         "menciona": true,
         "valor": -2,
-        "noul": 0.99,
-        "score": 0.0,
+        "noul": 0.98,
+        "score": 0.04,
         "probabilidades": {
-          "0": 1.0,
-          "1": 0.0,
+          "0": 0.96,
+          "1": 0.04,
           "2": 0.0,
           "3": 0.0,
           "4": 0.0
         }
       },
-      "reconocimiento": {
-        "menciona": true,
-        "valor": -1,
-        "noul": 0.99,
-        "score": 0.97,
-        "probabilidades": {
-          "0": 0.03,
-          "1": 0.97,
-          "2": 0.0,
-          "3": 0.0,
-          "4": 0.0
-        }
-      },
-      "autonomia_exigencia": {
-        "menciona": false,
-        "valor": null,
-        "noul": 0.31,
-        "score": 0.89,
-        "probabilidades": {
-          "0": 0.33,
-          "1": 0.47,
-          "2": 0.18,
-          "3": 0.02,
-          "4": 0.0
-        }
-      },
-      "liderazgo_decisiones": {
+      "autonomia_liderazgo": {
         "menciona": true,
         "valor": -2,
-        "noul": 0.69,
-        "score": 0.33,
+        "noul": 0.59,
+        "score": 0.39,
         "probabilidades": {
-          "0": 0.68,
+          "0": 0.65,
           "1": 0.32,
-          "2": 0.0,
+          "2": 0.02,
+          "3": 0.01,
+          "4": 0.0
+        }
+      },
+      "equilibrio_flexibilidad": {
+        "menciona": false,
+        "valor": null,
+        "noul": 0.2,
+        "score": 1.14,
+        "probabilidades": {
+          "0": 0.2,
+          "1": 0.47,
+          "2": 0.33,
           "3": 0.0,
           "4": 0.0
         }
@@ -164,38 +302,25 @@
         "probabilidades": {
           "0": 0.0,
           "1": 0.0,
-          "2": 0.05,
-          "3": 0.92,
+          "2": 0.06,
+          "3": 0.91,
           "4": 0.03
         }
       },
       "confianza_trato": {
         "menciona": true,
         "valor": 1,
-        "noul": 0.98,
-        "score": 2.95,
+        "noul": 0.95,
+        "score": 3.0,
         "probabilidades": {
           "0": 0.0,
           "1": 0.0,
-          "2": 0.11,
-          "3": 0.83,
-          "4": 0.06
+          "2": 0.09,
+          "3": 0.81,
+          "4": 0.1
         }
       },
-      "apoyo_desarrollo": {
-        "menciona": true,
-        "valor": 1,
-        "noul": 0.93,
-        "score": 2.84,
-        "probabilidades": {
-          "0": 0.0,
-          "1": 0.01,
-          "2": 0.19,
-          "3": 0.76,
-          "4": 0.04
-        }
-      },
-      "reconocimiento": {
+      "retroalimentacion_reconocimiento": {
         "menciona": true,
         "valor": 2,
         "noul": 0.99,
@@ -208,30 +333,43 @@
           "4": 0.87
         }
       },
-      "autonomia_exigencia": {
+      "apoyo_desarrollo": {
         "menciona": true,
-        "valor": 0,
-        "noul": 0.98,
-        "score": 1.85,
+        "valor": 1,
+        "noul": 0.78,
+        "score": 2.65,
         "probabilidades": {
           "0": 0.0,
-          "1": 0.25,
-          "2": 0.65,
-          "3": 0.1,
+          "1": 0.01,
+          "2": 0.34,
+          "3": 0.63,
+          "4": 0.02
+        }
+      },
+      "autonomia_liderazgo": {
+        "menciona": true,
+        "valor": 0,
+        "noul": 0.99,
+        "score": 2.09,
+        "probabilidades": {
+          "0": 0.0,
+          "1": 0.11,
+          "2": 0.7,
+          "3": 0.19,
           "4": 0.0
         }
       },
-      "liderazgo_decisiones": {
-        "menciona": true,
-        "valor": 1,
-        "noul": 0.9,
-        "score": 2.62,
+      "equilibrio_flexibilidad": {
+        "menciona": false,
+        "valor": null,
+        "noul": 0.07,
+        "score": 2.07,
         "probabilidades": {
           "0": 0.0,
-          "1": 0.02,
-          "2": 0.35,
-          "3": 0.63,
-          "4": 0.0
+          "1": 0.03,
+          "2": 0.88,
+          "3": 0.08,
+          "4": 0.01
         }
       }
     },
@@ -252,65 +390,65 @@
       "confianza_trato": {
         "menciona": true,
         "valor": 2,
-        "noul": 0.93,
-        "score": 3.79,
+        "noul": 0.89,
+        "score": 3.77,
         "probabilidades": {
           "0": 0.0,
           "1": 0.0,
           "2": 0.01,
-          "3": 0.2,
-          "4": 0.79
+          "3": 0.21,
+          "4": 0.78
+        }
+      },
+      "retroalimentacion_reconocimiento": {
+        "menciona": true,
+        "valor": 1,
+        "noul": 0.81,
+        "score": 3.16,
+        "probabilidades": {
+          "0": 0.0,
+          "1": 0.01,
+          "2": 0.1,
+          "3": 0.6,
+          "4": 0.29
         }
       },
       "apoyo_desarrollo": {
         "menciona": true,
-        "valor": 1,
+        "valor": 2,
         "noul": 0.99,
-        "score": 3.06,
+        "score": 3.58,
         "probabilidades": {
           "0": 0.0,
           "1": 0.0,
           "2": 0.01,
-          "3": 0.92,
-          "4": 0.07
+          "3": 0.41,
+          "4": 0.58
         }
       },
-      "reconocimiento": {
-        "menciona": false,
-        "valor": null,
-        "noul": 0.43,
-        "score": 2.78,
-        "probabilidades": {
-          "0": 0.0,
-          "1": 0.01,
-          "2": 0.38,
-          "3": 0.42,
-          "4": 0.19
-        }
-      },
-      "autonomia_exigencia": {
+      "autonomia_liderazgo": {
         "menciona": true,
         "valor": 2,
         "noul": 0.99,
-        "score": 3.94,
+        "score": 3.63,
         "probabilidades": {
           "0": 0.0,
           "1": 0.0,
-          "2": 0.0,
-          "3": 0.05,
-          "4": 0.95
+          "2": 0.02,
+          "3": 0.32,
+          "4": 0.66
         }
       },
-      "liderazgo_decisiones": {
-        "menciona": true,
-        "valor": 1,
-        "noul": 0.87,
-        "score": 3.0,
+      "equilibrio_flexibilidad": {
+        "menciona": false,
+        "valor": null,
+        "noul": 0.13,
+        "score": 2.53,
         "probabilidades": {
           "0": 0.0,
-          "1": 0.0,
-          "2": 0.18,
-          "3": 0.64,
+          "1": 0.01,
+          "2": 0.62,
+          "3": 0.19,
           "4": 0.18
         }
       }
@@ -320,10 +458,10 @@
         "menciona": true,
         "valor": -2,
         "noul": 0.99,
-        "score": 0.02,
+        "score": 0.03,
         "probabilidades": {
-          "0": 0.98,
-          "1": 0.02,
+          "0": 0.97,
+          "1": 0.03,
           "2": 0.0,
           "3": 0.0,
           "4": 0.0
@@ -342,14 +480,14 @@
           "4": 0.0
         }
       },
-      "vida_personal": {
+      "equilibrio_vida_personal": {
         "menciona": true,
         "valor": -2,
-        "noul": 0.98,
-        "score": 0.3,
+        "noul": 0.97,
+        "score": 0.29,
         "probabilidades": {
-          "0": 0.7,
-          "1": 0.3,
+          "0": 0.71,
+          "1": 0.29,
           "2": 0.0,
           "3": 0.0,
           "4": 0.0
@@ -359,36 +497,36 @@
         "menciona": true,
         "valor": -2,
         "noul": 0.99,
-        "score": 0.48,
+        "score": 0.5,
         "probabilidades": {
-          "0": 0.52,
-          "1": 0.48,
+          "0": 0.5,
+          "1": 0.5,
           "2": 0.0,
           "3": 0.0,
           "4": 0.0
         }
       },
-      "apoyo_jefatura": {
+      "apoyo_jefatura_equipo": {
         "menciona": true,
         "valor": -2,
-        "noul": 0.99,
-        "score": 0.06,
+        "noul": 0.95,
+        "score": 0.21,
         "probabilidades": {
-          "0": 0.94,
-          "1": 0.06,
+          "0": 0.8,
+          "1": 0.2,
           "2": 0.0,
           "3": 0.0,
           "4": 0.0
         }
       },
-      "distribucion_equipo": {
+      "flexibilidad_permisos": {
         "menciona": true,
         "valor": -2,
-        "noul": 0.9,
-        "score": 0.09,
+        "noul": 0.98,
+        "score": 0.08,
         "probabilidades": {
-          "0": 0.93,
-          "1": 0.07,
+          "0": 0.92,
+          "1": 0.08,
           "2": 0.0,
           "3": 0.0,
           "4": 0.0
@@ -400,12 +538,12 @@
         "menciona": true,
         "valor": 0,
         "noul": 0.99,
-        "score": 2.15,
+        "score": 2.13,
         "probabilidades": {
           "0": 0.0,
           "1": 0.0,
-          "2": 0.85,
-          "3": 0.15,
+          "2": 0.87,
+          "3": 0.13,
           "4": 0.0
         }
       },
@@ -413,65 +551,65 @@
         "menciona": true,
         "valor": 2,
         "noul": 0.99,
-        "score": 3.78,
+        "score": 3.77,
         "probabilidades": {
           "0": 0.0,
           "1": 0.0,
           "2": 0.0,
-          "3": 0.21,
-          "4": 0.79
+          "3": 0.22,
+          "4": 0.78
         }
       },
-      "vida_personal": {
+      "equilibrio_vida_personal": {
         "menciona": true,
         "valor": 1,
         "noul": 0.98,
-        "score": 3.32,
+        "score": 3.4,
         "probabilidades": {
           "0": 0.0,
           "1": 0.0,
-          "2": 0.04,
-          "3": 0.61,
-          "4": 0.35
+          "2": 0.03,
+          "3": 0.53,
+          "4": 0.44
         }
       },
       "estres_bienestar": {
         "menciona": true,
         "valor": 1,
-        "noul": 0.99,
-        "score": 2.9,
+        "noul": 0.98,
+        "score": 2.95,
         "probabilidades": {
           "0": 0.0,
           "1": 0.0,
-          "2": 0.12,
-          "3": 0.86,
-          "4": 0.02
+          "2": 0.09,
+          "3": 0.87,
+          "4": 0.04
         }
       },
-      "apoyo_jefatura": {
+      "apoyo_jefatura_equipo": {
         "menciona": true,
         "valor": 2,
-        "noul": 0.98,
-        "score": 3.52,
+        "noul": 0.89,
+        "score": 3.69,
         "probabilidades": {
           "0": 0.0,
           "1": 0.0,
-          "2": 0.01,
-          "3": 0.47,
-          "4": 0.52
+          "2": 0.0,
+          "3": 0.3,
+          "4": 0.7
         }
       },
-      "distribucion_equipo": {
-        "menciona": false,
-        "valor": null,
-        "noul": 0.08,
-        "score": 2.06,
+      "flexibilidad_permisos": {
+        "menciona": true,
+        "valor": 2,
+        "noul": 0.97,
+        "score": 3.96,
         "probabilidades": {
           "0": 0.0,
           "1": 0.0,
-          "2": 0.94,
-          "3": 0.06,
-          "4": 0.0
+          "2": 0.0,
+          "3": 0.03,
+          "4": 0.97
         }
       }
     },
@@ -480,7 +618,7 @@
         "menciona": true,
         "valor": -1,
         "noul": 0.99,
-        "score": 0.99,
+        "score": 0.98,
         "probabilidades": {
           "0": 0.03,
           "1": 0.96,
@@ -492,24 +630,24 @@
       "horarios_jornada": {
         "menciona": false,
         "valor": null,
-        "noul": 0.36,
-        "score": 1.02,
+        "noul": 0.16,
+        "score": 1.35,
         "probabilidades": {
-          "0": 0.12,
-          "1": 0.75,
-          "2": 0.13,
+          "0": 0.11,
+          "1": 0.44,
+          "2": 0.45,
           "3": 0.0,
           "4": 0.0
         }
       },
-      "vida_personal": {
+      "equilibrio_vida_personal": {
         "menciona": true,
         "valor": -2,
-        "noul": 0.97,
-        "score": 0.06,
+        "noul": 0.94,
+        "score": 0.08,
         "probabilidades": {
-          "0": 0.94,
-          "1": 0.06,
+          "0": 0.92,
+          "1": 0.08,
           "2": 0.0,
           "3": 0.0,
           "4": 0.0
@@ -518,39 +656,39 @@
       "estres_bienestar": {
         "menciona": true,
         "valor": -1,
-        "noul": 0.76,
-        "score": 0.75,
+        "noul": 0.61,
+        "score": 0.86,
         "probabilidades": {
-          "0": 0.26,
-          "1": 0.73,
-          "2": 0.01,
+          "0": 0.16,
+          "1": 0.82,
+          "2": 0.02,
           "3": 0.0,
           "4": 0.0
         }
       },
-      "apoyo_jefatura": {
+      "apoyo_jefatura_equipo": {
         "menciona": true,
         "valor": -2,
-        "noul": 0.99,
-        "score": 0.27,
+        "noul": 0.87,
+        "score": 0.36,
         "probabilidades": {
-          "0": 0.73,
-          "1": 0.27,
+          "0": 0.65,
+          "1": 0.35,
           "2": 0.0,
           "3": 0.0,
           "4": 0.0
         }
       },
-      "distribucion_equipo": {
-        "menciona": false,
-        "valor": null,
-        "noul": 0.35,
-        "score": 1.17,
+      "flexibilidad_permisos": {
+        "menciona": true,
+        "valor": -2,
+        "noul": 0.97,
+        "score": 0.01,
         "probabilidades": {
-          "0": 0.03,
-          "1": 0.78,
-          "2": 0.18,
-          "3": 0.01,
+          "0": 0.99,
+          "1": 0.01,
+          "2": 0.0,
+          "3": 0.0,
           "4": 0.0
         }
       }
@@ -559,56 +697,56 @@
       "nivel_salarial": {
         "menciona": true,
         "valor": -1,
-        "noul": 0.96,
-        "score": 1.14,
+        "noul": 0.95,
+        "score": 1.06,
         "probabilidades": {
-          "0": 0.0,
-          "1": 0.86,
-          "2": 0.13,
-          "3": 0.01,
+          "0": 0.01,
+          "1": 0.92,
+          "2": 0.07,
+          "3": 0.0,
           "4": 0.0
         }
       },
-      "equidad_y_reajustes": {
+      "equidad_transparencia": {
         "menciona": true,
         "valor": -2,
         "noul": 0.98,
-        "score": 0.02,
+        "score": 0.0,
         "probabilidades": {
-          "0": 0.98,
-          "1": 0.02,
+          "0": 1.0,
+          "1": 0.0,
           "2": 0.0,
           "3": 0.0,
           "4": 0.0
         }
       },
-      "beneficios_salud_y_bienestar": {
+      "bonos_incentivos": {
+        "menciona": true,
+        "valor": -2,
+        "noul": 0.61,
+        "score": 1.39,
+        "probabilidades": {
+          "0": 0.34,
+          "1": 0.23,
+          "2": 0.21,
+          "3": 0.16,
+          "4": 0.06
+        }
+      },
+      "beneficios_salud_bienestar": {
         "menciona": true,
         "valor": 2,
-        "noul": 0.99,
-        "score": 4.0,
+        "noul": 0.98,
+        "score": 3.98,
         "probabilidades": {
           "0": 0.0,
           "1": 0.0,
           "2": 0.0,
-          "3": 0.0,
-          "4": 1.0
+          "3": 0.01,
+          "4": 0.99
         }
       },
-      "beneficios_economicos_y_cotidianos": {
-        "menciona": true,
-        "valor": 2,
-        "noul": 0.98,
-        "score": 3.64,
-        "probabilidades": {
-          "0": 0.0,
-          "1": 0.01,
-          "2": 0.1,
-          "3": 0.14,
-          "4": 0.75
-        }
-      },
-      "tiempo_y_flexibilidad": {
+      "beneficios_tiempo_flexibilidad": {
         "menciona": true,
         "valor": 2,
         "noul": 0.97,
@@ -621,16 +759,16 @@
           "4": 0.96
         }
       },
-      "comunicacion_y_claridad": {
+      "pago_y_reajustes": {
         "menciona": true,
         "valor": -2,
-        "noul": 0.92,
-        "score": 0.63,
+        "noul": 0.97,
+        "score": 0.83,
         "probabilidades": {
-          "0": 0.58,
-          "1": 0.23,
-          "2": 0.19,
-          "3": 0.0,
+          "0": 0.42,
+          "1": 0.34,
+          "2": 0.23,
+          "3": 0.01,
           "4": 0.0
         }
       }
@@ -639,7 +777,7 @@
       "nivel_salarial": {
         "menciona": true,
         "valor": 1,
-        "noul": 0.98,
+        "noul": 0.99,
         "score": 2.93,
         "probabilidades": {
           "0": 0.0,
@@ -649,46 +787,46 @@
           "4": 0.0
         }
       },
-      "equidad_y_reajustes": {
+      "equidad_transparencia": {
         "menciona": true,
         "valor": 0,
-        "noul": 0.96,
-        "score": 1.8,
+        "noul": 0.97,
+        "score": 1.66,
         "probabilidades": {
           "0": 0.0,
-          "1": 0.23,
-          "2": 0.74,
-          "3": 0.03,
-          "4": 0.0
-        }
-      },
-      "beneficios_salud_y_bienestar": {
-        "menciona": false,
-        "valor": null,
-        "noul": 0.03,
-        "score": 2.01,
-        "probabilidades": {
-          "0": 0.0,
-          "1": 0.0,
-          "2": 0.99,
+          "1": 0.35,
+          "2": 0.64,
           "3": 0.01,
           "4": 0.0
         }
       },
-      "beneficios_economicos_y_cotidianos": {
-        "menciona": true,
-        "valor": 1,
-        "noul": 0.58,
-        "score": 2.71,
+      "bonos_incentivos": {
+        "menciona": false,
+        "valor": null,
+        "noul": 0.14,
+        "score": 1.74,
         "probabilidades": {
           "0": 0.0,
-          "1": 0.01,
-          "2": 0.26,
-          "3": 0.73,
+          "1": 0.29,
+          "2": 0.68,
+          "3": 0.03,
           "4": 0.0
         }
       },
-      "tiempo_y_flexibilidad": {
+      "beneficios_salud_bienestar": {
+        "menciona": false,
+        "valor": null,
+        "noul": 0.04,
+        "score": 2.01,
+        "probabilidades": {
+          "0": 0.0,
+          "1": 0.01,
+          "2": 0.97,
+          "3": 0.02,
+          "4": 0.0
+        }
+      },
+      "beneficios_tiempo_flexibilidad": {
         "menciona": false,
         "valor": null,
         "noul": 0.03,
@@ -701,16 +839,16 @@
           "4": 0.0
         }
       },
-      "comunicacion_y_claridad": {
+      "pago_y_reajustes": {
         "menciona": true,
-        "valor": -1,
-        "noul": 0.83,
-        "score": 1.45,
+        "valor": 0,
+        "noul": 0.63,
+        "score": 2.34,
         "probabilidades": {
           "0": 0.0,
-          "1": 0.56,
-          "2": 0.43,
-          "3": 0.01,
+          "1": 0.08,
+          "2": 0.5,
+          "3": 0.42,
           "4": 0.0
         }
       }
@@ -729,67 +867,67 @@
           "4": 0.0
         }
       },
-      "equidad_y_reajustes": {
+      "equidad_transparencia": {
         "menciona": true,
         "valor": -2,
-        "noul": 0.65,
-        "score": 0.12,
+        "noul": 0.69,
+        "score": 0.15,
         "probabilidades": {
-          "0": 0.89,
-          "1": 0.11,
+          "0": 0.86,
+          "1": 0.14,
           "2": 0.0,
           "3": 0.0,
           "4": 0.0
         }
       },
-      "beneficios_salud_y_bienestar": {
+      "bonos_incentivos": {
+        "menciona": true,
+        "valor": -1,
+        "noul": 0.51,
+        "score": 1.06,
+        "probabilidades": {
+          "0": 0.11,
+          "1": 0.72,
+          "2": 0.17,
+          "3": 0.0,
+          "4": 0.0
+        }
+      },
+      "beneficios_salud_bienestar": {
         "menciona": true,
         "valor": -1,
         "noul": 0.98,
-        "score": 1.31,
+        "score": 1.32,
         "probabilidades": {
           "0": 0.0,
-          "1": 0.69,
-          "2": 0.31,
+          "1": 0.68,
+          "2": 0.32,
           "3": 0.0,
           "4": 0.0
         }
       },
-      "beneficios_economicos_y_cotidianos": {
+      "beneficios_tiempo_flexibilidad": {
         "menciona": true,
         "valor": -1,
-        "noul": 0.99,
-        "score": 0.54,
+        "noul": 0.65,
+        "score": 1.37,
         "probabilidades": {
-          "0": 0.46,
-          "1": 0.54,
-          "2": 0.0,
-          "3": 0.0,
-          "4": 0.0
-        }
-      },
-      "tiempo_y_flexibilidad": {
-        "menciona": true,
-        "valor": -1,
-        "noul": 0.8,
-        "score": 1.26,
-        "probabilidades": {
-          "0": 0.03,
-          "1": 0.69,
-          "2": 0.27,
+          "0": 0.01,
+          "1": 0.61,
+          "2": 0.37,
           "3": 0.01,
           "4": 0.0
         }
       },
-      "comunicacion_y_claridad": {
+      "pago_y_reajustes": {
         "menciona": false,
         "valor": null,
-        "noul": 0.3,
-        "score": 1.27,
+        "noul": 0.15,
+        "score": 0.9,
         "probabilidades": {
-          "0": 0.17,
-          "1": 0.4,
-          "2": 0.43,
+          "0": 0.4,
+          "1": 0.31,
+          "2": 0.29,
           "3": 0.0,
           "4": 0.0
         }
@@ -799,25 +937,25 @@
       "claridad_ruta_carrera": {
         "menciona": true,
         "valor": -1,
-        "noul": 0.94,
-        "score": 0.97,
+        "noul": 0.96,
+        "score": 0.95,
         "probabilidades": {
-          "0": 0.04,
+          "0": 0.05,
           "1": 0.95,
-          "2": 0.01,
+          "2": 0.0,
           "3": 0.0,
           "4": 0.0
         }
       },
-      "promociones_ascensos": {
+      "oportunidades_ascenso": {
         "menciona": true,
         "valor": -1,
-        "noul": 0.99,
-        "score": 0.96,
+        "noul": 0.98,
+        "score": 0.98,
         "probabilidades": {
-          "0": 0.04,
+          "0": 0.03,
           "1": 0.96,
-          "2": 0.0,
+          "2": 0.01,
           "3": 0.0,
           "4": 0.0
         }
@@ -835,42 +973,42 @@
           "4": 0.88
         }
       },
-      "rol_jefatura": {
+      "rol_jefatura_feedback": {
         "menciona": true,
-        "valor": 0,
-        "noul": 0.94,
-        "score": 2.03,
+        "valor": 1,
+        "noul": 0.89,
+        "score": 2.46,
         "probabilidades": {
           "0": 0.0,
-          "1": 0.23,
-          "2": 0.5,
-          "3": 0.26,
+          "1": 0.12,
+          "2": 0.3,
+          "3": 0.57,
           "4": 0.01
         }
       },
-      "comunicacion_vacantes": {
+      "justicia_transparencia_criterios": {
         "menciona": true,
         "valor": -1,
-        "noul": 0.92,
-        "score": 0.96,
+        "noul": 0.98,
+        "score": 0.85,
         "probabilidades": {
-          "0": 0.05,
-          "1": 0.95,
+          "0": 0.15,
+          "1": 0.85,
           "2": 0.0,
           "3": 0.0,
           "4": 0.0
         }
       },
-      "reconocimiento_remuneracion": {
-        "menciona": true,
-        "valor": -1,
-        "noul": 0.96,
-        "score": 1.0,
+      "reconocimiento_compensacion": {
+        "menciona": false,
+        "valor": null,
+        "noul": 0.4,
+        "score": 1.18,
         "probabilidades": {
           "0": 0.02,
-          "1": 0.96,
-          "2": 0.02,
-          "3": 0.0,
+          "1": 0.8,
+          "2": 0.17,
+          "3": 0.01,
           "4": 0.0
         }
       }
@@ -889,11 +1027,11 @@
           "4": 0.0
         }
       },
-      "promociones_ascensos": {
+      "oportunidades_ascenso": {
         "menciona": true,
         "valor": -2,
-        "noul": 0.99,
-        "score": 0.0,
+        "noul": 0.98,
+        "score": 0.01,
         "probabilidades": {
           "0": 1.0,
           "1": 0.0,
@@ -905,20 +1043,33 @@
       "capacitacion_desarrollo": {
         "menciona": false,
         "valor": null,
-        "noul": 0.19,
-        "score": 0.47,
+        "noul": 0.15,
+        "score": 0.57,
         "probabilidades": {
-          "0": 0.71,
-          "1": 0.13,
-          "2": 0.16,
+          "0": 0.64,
+          "1": 0.16,
+          "2": 0.2,
           "3": 0.0,
           "4": 0.0
         }
       },
-      "rol_jefatura": {
+      "rol_jefatura_feedback": {
         "menciona": true,
         "valor": -2,
-        "noul": 0.94,
+        "noul": 0.84,
+        "score": 0.01,
+        "probabilidades": {
+          "0": 1.0,
+          "1": 0.0,
+          "2": 0.0,
+          "3": 0.0,
+          "4": 0.0
+        }
+      },
+      "justicia_transparencia_criterios": {
+        "menciona": true,
+        "valor": -2,
+        "noul": 0.95,
         "score": 0.0,
         "probabilidades": {
           "0": 1.0,
@@ -928,27 +1079,14 @@
           "4": 0.0
         }
       },
-      "comunicacion_vacantes": {
-        "menciona": true,
-        "valor": -2,
-        "noul": 0.98,
-        "score": 0.0,
+      "reconocimiento_compensacion": {
+        "menciona": false,
+        "valor": null,
+        "noul": 0.29,
+        "score": 0.03,
         "probabilidades": {
-          "0": 1.0,
-          "1": 0.0,
-          "2": 0.0,
-          "3": 0.0,
-          "4": 0.0
-        }
-      },
-      "reconocimiento_remuneracion": {
-        "menciona": true,
-        "valor": -2,
-        "noul": 0.92,
-        "score": 0.0,
-        "probabilidades": {
-          "0": 1.0,
-          "1": 0.0,
+          "0": 0.98,
+          "1": 0.02,
           "2": 0.0,
           "3": 0.0,
           "4": 0.0
@@ -960,45 +1098,45 @@
         "menciona": true,
         "valor": 1,
         "noul": 0.99,
-        "score": 2.97,
+        "score": 2.94,
         "probabilidades": {
           "0": 0.0,
           "1": 0.0,
-          "2": 0.06,
-          "3": 0.91,
-          "4": 0.03
+          "2": 0.08,
+          "3": 0.9,
+          "4": 0.02
         }
       },
-      "promociones_ascensos": {
+      "oportunidades_ascenso": {
         "menciona": true,
         "valor": 1,
-        "noul": 0.98,
+        "noul": 0.96,
         "score": 2.97,
         "probabilidades": {
           "0": 0.0,
           "1": 0.0,
-          "2": 0.05,
-          "3": 0.93,
-          "4": 0.02
+          "2": 0.07,
+          "3": 0.89,
+          "4": 0.04
         }
       },
       "capacitacion_desarrollo": {
         "menciona": true,
         "valor": 0,
         "noul": 0.99,
-        "score": 2.45,
+        "score": 2.46,
         "probabilidades": {
           "0": 0.0,
           "1": 0.01,
-          "2": 0.58,
+          "2": 0.57,
           "3": 0.37,
-          "4": 0.04
+          "4": 0.05
         }
       },
-      "rol_jefatura": {
+      "rol_jefatura_feedback": {
         "menciona": true,
         "valor": 2,
-        "noul": 0.99,
+        "noul": 0.98,
         "score": 3.99,
         "probabilidades": {
           "0": 0.0,
@@ -1008,30 +1146,30 @@
           "4": 0.99
         }
       },
-      "comunicacion_vacantes": {
-        "menciona": false,
-        "valor": null,
-        "noul": 0.46,
-        "score": 2.53,
-        "probabilidades": {
-          "0": 0.0,
-          "1": 0.02,
-          "2": 0.44,
-          "3": 0.53,
-          "4": 0.01
-        }
-      },
-      "reconocimiento_remuneracion": {
+      "justicia_transparencia_criterios": {
         "menciona": true,
         "valor": 1,
-        "noul": 0.89,
-        "score": 2.95,
+        "noul": 0.98,
+        "score": 2.97,
         "probabilidades": {
           "0": 0.0,
           "1": 0.0,
-          "2": 0.07,
-          "3": 0.91,
-          "4": 0.02
+          "2": 0.04,
+          "3": 0.95,
+          "4": 0.01
+        }
+      },
+      "reconocimiento_compensacion": {
+        "menciona": false,
+        "valor": null,
+        "noul": 0.24,
+        "score": 2.35,
+        "probabilidades": {
+          "0": 0.0,
+          "1": 0.02,
+          "2": 0.62,
+          "3": 0.35,
+          "4": 0.01
         }
       }
     },
@@ -1049,11 +1187,37 @@
           "4": 1.0
         }
       },
-      "colaboracion_entre_areas": {
+      "apoyo_trabajo_equipo": {
+        "menciona": true,
+        "valor": 2,
+        "noul": 0.99,
+        "score": 3.99,
+        "probabilidades": {
+          "0": 0.0,
+          "1": 0.0,
+          "2": 0.0,
+          "3": 0.0,
+          "4": 1.0
+        }
+      },
+      "colaboracion_otras_areas": {
         "menciona": true,
         "valor": -2,
-        "noul": 0.99,
-        "score": 0.02,
+        "noul": 0.98,
+        "score": 0.0,
+        "probabilidades": {
+          "0": 1.0,
+          "1": 0.0,
+          "2": 0.0,
+          "3": 0.0,
+          "4": 0.0
+        }
+      },
+      "coordinacion_procesos": {
+        "menciona": true,
+        "valor": -2,
+        "noul": 0.98,
+        "score": 0.01,
         "probabilidades": {
           "0": 0.99,
           "1": 0.01,
@@ -1062,41 +1226,15 @@
           "4": 0.0
         }
       },
-      "comunicacion": {
-        "menciona": true,
-        "valor": 0,
-        "noul": 0.99,
-        "score": 1.2,
-        "probabilidades": {
-          "0": 0.31,
-          "1": 0.18,
-          "2": 0.51,
-          "3": 0.0,
-          "4": 0.0
-        }
-      },
-      "liderazgo_jefatura": {
-        "menciona": false,
-        "valor": null,
-        "noul": 0.28,
-        "score": 2.01,
-        "probabilidades": {
-          "0": 0.03,
-          "1": 0.14,
-          "2": 0.67,
-          "3": 0.12,
-          "4": 0.04
-        }
-      },
-      "carga_y_organizacion": {
+      "comunicacion_liderazgo": {
         "menciona": true,
         "valor": -2,
-        "noul": 0.99,
-        "score": 0.79,
+        "noul": 0.55,
+        "score": 0.53,
         "probabilidades": {
-          "0": 0.42,
-          "1": 0.37,
-          "2": 0.21,
+          "0": 0.58,
+          "1": 0.32,
+          "2": 0.1,
           "3": 0.0,
           "4": 0.0
         }
@@ -1116,55 +1254,55 @@
           "4": 0.01
         }
       },
-      "colaboracion_entre_areas": {
+      "apoyo_trabajo_equipo": {
+        "menciona": true,
+        "valor": 1,
+        "noul": 0.99,
+        "score": 3.09,
+        "probabilidades": {
+          "0": 0.0,
+          "1": 0.0,
+          "2": 0.0,
+          "3": 0.91,
+          "4": 0.09
+        }
+      },
+      "colaboracion_otras_areas": {
         "menciona": true,
         "valor": 0,
         "noul": 0.99,
-        "score": 1.8,
+        "score": 1.89,
         "probabilidades": {
           "0": 0.0,
-          "1": 0.2,
-          "2": 0.8,
+          "1": 0.12,
+          "2": 0.88,
           "3": 0.0,
           "4": 0.0
         }
       },
-      "comunicacion": {
-        "menciona": true,
-        "valor": -1,
-        "noul": 0.98,
-        "score": 1.49,
-        "probabilidades": {
-          "0": 0.0,
-          "1": 0.51,
-          "2": 0.49,
-          "3": 0.0,
-          "4": 0.0
-        }
-      },
-      "liderazgo_jefatura": {
-        "menciona": true,
-        "valor": -1,
-        "noul": 0.96,
-        "score": 0.99,
-        "probabilidades": {
-          "0": 0.02,
-          "1": 0.97,
-          "2": 0.01,
-          "3": 0.0,
-          "4": 0.0
-        }
-      },
-      "carga_y_organizacion": {
+      "coordinacion_procesos": {
         "menciona": true,
         "valor": 0,
-        "noul": 0.94,
-        "score": 1.91,
+        "noul": 0.9,
+        "score": 1.57,
         "probabilidades": {
           "0": 0.0,
-          "1": 0.14,
-          "2": 0.81,
-          "3": 0.05,
+          "1": 0.43,
+          "2": 0.57,
+          "3": 0.0,
+          "4": 0.0
+        }
+      },
+      "comunicacion_liderazgo": {
+        "menciona": true,
+        "valor": -1,
+        "noul": 0.97,
+        "score": 0.99,
+        "probabilidades": {
+          "0": 0.03,
+          "1": 0.95,
+          "2": 0.02,
+          "3": 0.0,
           "4": 0.0
         }
       }
@@ -1173,46 +1311,7 @@
       "clima_equipo": {
         "menciona": true,
         "valor": -2,
-        "noul": 0.98,
-        "score": 0.17,
-        "probabilidades": {
-          "0": 0.85,
-          "1": 0.13,
-          "2": 0.02,
-          "3": 0.0,
-          "4": 0.0
-        }
-      },
-      "colaboracion_entre_areas": {
-        "menciona": true,
-        "valor": -2,
-        "noul": 0.89,
-        "score": 0.42,
-        "probabilidades": {
-          "0": 0.72,
-          "1": 0.15,
-          "2": 0.12,
-          "3": 0.01,
-          "4": 0.0
-        }
-      },
-      "comunicacion": {
-        "menciona": true,
-        "valor": -2,
-        "noul": 0.97,
-        "score": 0.03,
-        "probabilidades": {
-          "0": 0.98,
-          "1": 0.01,
-          "2": 0.01,
-          "3": 0.0,
-          "4": 0.0
-        }
-      },
-      "liderazgo_jefatura": {
-        "menciona": true,
-        "valor": -2,
-        "noul": 0.93,
+        "noul": 0.99,
         "score": 0.1,
         "probabilidades": {
           "0": 0.91,
@@ -1222,20 +1321,59 @@
           "4": 0.0
         }
       },
-      "carga_y_organizacion": {
+      "apoyo_trabajo_equipo": {
         "menciona": true,
-        "valor": 0,
-        "noul": 0.95,
-        "score": 1.08,
+        "valor": -2,
+        "noul": 0.93,
+        "score": 0.7,
         "probabilidades": {
-          "0": 0.36,
-          "1": 0.22,
-          "2": 0.4,
-          "3": 0.02,
+          "0": 0.49,
+          "1": 0.33,
+          "2": 0.18,
+          "3": 0.0,
+          "4": 0.0
+        }
+      },
+      "colaboracion_otras_areas": {
+        "menciona": true,
+        "valor": -2,
+        "noul": 0.68,
+        "score": 0.41,
+        "probabilidades": {
+          "0": 0.73,
+          "1": 0.15,
+          "2": 0.11,
+          "3": 0.01,
+          "4": 0.0
+        }
+      },
+      "coordinacion_procesos": {
+        "menciona": true,
+        "valor": -2,
+        "noul": 0.89,
+        "score": 0.22,
+        "probabilidades": {
+          "0": 0.86,
+          "1": 0.07,
+          "2": 0.06,
+          "3": 0.01,
+          "4": 0.0
+        }
+      },
+      "comunicacion_liderazgo": {
+        "menciona": true,
+        "valor": -2,
+        "noul": 0.97,
+        "score": 0.01,
+        "probabilidades": {
+          "0": 0.99,
+          "1": 0.01,
+          "2": 0.0,
+          "3": 0.0,
           "4": 0.0
         }
       }
     }
   },
-  "segundos": 29.0
+  "segundos": 23.7
 }

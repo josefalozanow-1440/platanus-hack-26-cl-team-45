@@ -11,13 +11,13 @@ La literatura dice que:
 - Entrenar un modelo propio solo conviene con muchos datos etiquetados. No tenemos, así que queda fuera.
 - El flujo más usado es que un LLM proponga las categorías y después se clasifique contra ellas (TopicGPT, GATOS).
 
-Como no hay etiquetas, fabricamos un dataset con la respuesta correcta conocida: definimos las columnas y los valores, y Claude escribe respuestas que los expresan.
+Como no hay etiquetas, fabricamos un dataset con la respuesta correcta conocida: definimos las columnas y los valores, y Claude escribe respuestas que los expresan. Las columnas de referencia solo sirven para medir. Ningún sistema las conoce, salvo Jev en `jev_columnas_sabidas`.
 
 ## Dataset
 
 - 5 preguntas de clima laboral, cada una con 4 columnas de referencia. Están en [preguntas.json](preguntas.json).
 - 3 perfiles por pregunta. Cada perfil le asigna a cada columna un valor de -2 a 2, o `null` si la persona no habla de ese tema.
-- Claude Opus (effort medium) escribe una transcripción de 300 a 450 palabras por perfil, en español chileno hablado, con muletillas y errores de transcriptor. El resultado queda en `dataset.json`: 15 respuestas y 60 celdas.
+- Claude Opus (effort medium) escribe una transcripción de 300 a 450 palabras por perfil, en español chileno hablado, con muletillas y errores de transcriptor. El resultado queda en `dataset.json` (versión legible en [DATASET.md](DATASET.md)): 15 respuestas y 60 celdas.
 
 Escala:
 
@@ -34,12 +34,12 @@ Escala:
 
 | Condición | Quién arma las columnas | Quién clasifica |
 |---|---|---|
-| `claude_solo` | De referencia | Claude |
-| `jev_columnas_sabidas` | De referencia | Jev |
-| `claude_pregunta_jev` | Claude, viendo solo la pregunta | Jev |
-| `claude_respuestas_jev` | Claude, viendo la pregunta y las 3 respuestas | Jev |
+| `claude_solo` | Claude, temas libres en cada respuesta | Claude, en la misma llamada |
+| `claude_respuestas_jev` | Claude, una lista por pregunta viendo sus 3 respuestas | Jev |
+| `claude_pregunta_jev` | Claude, una lista por pregunta viendo solo la pregunta | Jev |
+| `jev_columnas_sabidas` | Las de referencia | Jev |
 
-Cuando Claude induce las columnas, hay que saber cuál corresponde a cuál columna de referencia. Para eso Opus las alinea. Una columna de referencia sin pareja cuenta como "no mencionada" en todas las respuestas.
+Para comparar contra la referencia, Opus alinea las columnas propuestas con las de referencia, uno a uno: cada columna de referencia queda con la propuesta que mide el mismo tema o con ninguna. En `claude_solo` se alinea respuesta por respuesta, porque cada respuesta tiene sus propios temas. Una columna de referencia sin pareja cuenta como "no mencionada".
 
 Por cada columna, Jev recibe:
 
@@ -52,42 +52,45 @@ Por cada columna, Jev recibe:
 - **F1 mención:** si acierta qué temas toca cada respuesta.
 - **MAE valor:** error promedio en la escala, solo en celdas donde ambos dicen que se menciona.
 - **Signo invertido:** celdas donde dijo positivo y era negativo, o al revés. Es el error más caro para un informe.
-- **Cobertura columnas:** % de columnas de referencia que la condición logró recuperar. Es 100% cuando se usan las de referencia.
-- **Columnas extra:** columnas inducidas que no calzaron con ninguna de referencia. No restan puntaje, pero se reportan.
-- **Nouls dudosos:** menciones con probabilidad entre 0,3 y 0,7.
+- **Cobertura:** % de las 45 celdas mencionadas cuya columna de referencia tiene pareja entre las propuestas.
+- **Columnas extra por respuesta:** columnas propuestas sin pareja. No restan puntaje. Pueden ser ruido o hallazgos que la referencia no tenía; se revisan en [COLUMNAS.md](resultados/COLUMNAS.md).
+- **Nouls dudosos:** menciones de Jev con probabilidad entre 0,3 y 0,7.
 
-## Pasos
+## Cómo correrlo
 
-1. Commitear preguntas, script y este plan.
-2. `python3 eval.py generar`: Opus escribe el dataset. Leer algunas respuestas para confirmar que expresan los valores pedidos.
-3. `TYPESAFE_API_KEY=... python3 eval.py correr --modelo opus`: las 4 condiciones corren en paralelo, cada una con hasta 8 llamadas simultáneas (`claude -p` o Jev).
-4. Repetir con `--modelo sonnet` y `--modelo haiku`. El dataset y el alineador siguen en Opus para que la vara no cambie.
-5. `python3 eval.py puntuar` escribe `resultados/RESULTADOS.md`.
-6. Commitear dataset y resultados.
+```sh
+set -a; . ../../.env; set +a           # TYPESAFE_API_KEY
+python3 eval.py generar                 # Opus escribe dataset.json
+python3 eval.py correr --modelo jev     # jev_columnas_sabidas, una sola vez
+python3 eval.py correr --modelo opus    # las 3 condiciones con Claude, en paralelo
+python3 eval.py correr --modelo sonnet
+python3 eval.py correr --modelo haiku
+python3 eval.py puntuar                 # resultados/RESULTADOS.md y COLUMNAS.md
+python3 eval.py juzgar                  # resultados/JUICIO.md
+```
 
-Claude corre con `claude -p` sobre la suscripción, no con API key. Cada llamada va aislada: sin tools, sin settings, sin MCP y fuera del repo, para que no cargue instrucciones del proyecto.
+El dataset, el alineador y el juez siempre son Opus, para que cambiar el modelo bajo prueba no cambie la vara. Claude corre con `claude -p` sobre la suscripción, no con API key. Cada llamada va aislada: sin tools, sin settings, sin MCP y fuera del repo, para que no cargue instrucciones del proyecto.
 
 ## Límites conocidos
 
-- El dataset lo escribe Claude y Claude también clasifica. Eso puede favorecer a `claude_solo`, porque reconoce su propia forma de expresar un "-1".
+- El dataset lo escribe Claude y Claude también clasifica y juzga. Eso puede favorecer a Claude, porque reconoce su propia forma de expresar un "-1".
 - 15 respuestas son pocas: diferencias de 1 o 2 celdas son ruido.
-- El alineador puede ser más o menos estricto y eso mueve la cobertura de las condiciones inducidas.
+- La alineación uno a uno castiga a quien parte un tema en varios: si Claude separa "beneficios" en seguro, aguinaldos y días libres, ninguno calza con "beneficios" y esas celdas cuentan como perdidas aunque las haya leído bien.
 - No medimos sarcasmo ni tono de voz, que se pierden al transcribir.
 
-## Hallazgos (corrida del 21-11-2026)
+## Hallazgos (corrida del 22-11-2026)
 
-Detalle en [resultados/RESULTADOS.md](resultados/RESULTADOS.md).
+La primera corrida (21-11) le pasaba a `claude_solo` las columnas de referencia, que ningún sistema debería conocer. Esta corrida lo corrige. Detalle en [RESULTADOS.md](resultados/RESULTADOS.md), [JUICIO.md](resultados/JUICIO.md) y [COLUMNAS.md](resultados/COLUMNAS.md).
 
-- `claude_solo` gana con los tres modelos: 97% de celdas exactas con Opus y 93% con Sonnet y Haiku. Puede estar inflado, porque Claude escribió el dataset (ver límites).
-- `claude_respuestas_jev` empata o casi empata a `claude_solo`: 93% con Sonnet y 87% con Opus y Haiku. Inducir columnas mirando las respuestas recupera entre 90% y 100% de las columnas de referencia.
-- `claude_pregunta_jev` es la peor (63% a 72%). Mirando solo la pregunta, Claude propone columnas razonables que no son las que la gente después menciona.
-- `jev_columnas_sabidas` da entre 85% y 87%, y la variación es de una celda en corridas con la misma entrada. Sus errores son sobre todo falsos positivos de mención en temas vecinos, más algunos errores de un nivel de intensidad.
-- Ninguna condición invirtió el signo en ninguna celda.
-- El modelo de Claude pesa poco: Haiku queda a 4 puntos de Opus en `claude_solo` y empata en `claude_respuestas_jev`.
-- Jev responde las 15 respuestas en alrededor de 1 segundo. Las condiciones con Claude tardan entre 10 y 30 segundos. Cada modelo usó unos 90k tokens de entrada de Jev en 45 requests.
+| Condición | Opus | Sonnet | Haiku |
+|---|---|---|---|
+| `claude_solo` | 88% | 85% | **97%** |
+| `claude_respuestas_jev` | 87% | 87% | 90% |
+| `claude_pregunta_jev` | 65% | 62% | 68% |
+| `jev_columnas_sabidas` (sin Claude) | 85% | | |
 
-## Juicio cualitativo
-
-`python3 eval.py juzgar` le pide a Opus que lea cada transcripción y compare lo esperado con lo obtenido, sin porcentajes y sin saber qué condición ni qué modelo está juzgando. Clasifica cada diferencia como grave, menor o defendible, y al final ordena los sistemas. Resultado en [resultados/JUICIO.md](resultados/JUICIO.md).
-
-El orden de arriba coincide con los números: `claude_solo` primero y `claude_pregunta_jev` último. La diferencia está en el medio: el juez castiga más los temas inventados que las celdas exactas, y por eso deja `claude_respuestas_jev` con Opus y `jev_columnas_sabidas` como "Aceptable, no lo usaría".
+- `claude_solo` con Haiku es lo mejor en números y en el juicio de Opus ("Excelente", 0 errores graves). Con Opus y Sonnet baja porque parten temas en varios, no porque lean mal: el juez no les encuentra errores graves.
+- `claude_respuestas_jev` queda cerca y tiene la ventaja de una sola lista de columnas por pregunta, que es lo que necesita un informe agregado. Su error típico es que Jev marca como mencionado un tema vecino que la persona no tocó.
+- `claude_pregunta_jev` es la peor con los tres modelos. Sin ver respuestas, Claude propone columnas razonables pero no las que la gente usa, y Jev mete las quejas en la columna más cercana.
+- Ninguna condición invirtió el signo de una opinión.
+- Las columnas extra de `claude_solo` a veces son hallazgos: varios modelos sacaron solos "intención de irse" o "desconfianza", que no estaba en la referencia. El juez recomienda sumarla como columna fija.

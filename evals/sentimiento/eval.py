@@ -126,11 +126,9 @@ def cmd_generar(_):
 
 # ---------- clasificadores ----------
 
-def clasificar_claude(item, columnas, modelo):
+def clasificar_claude_libre(item, modelo):
+    """Claude sin columnas: inventa los temas de esta respuesta y les pone sentimiento."""
     pregunta = PREGUNTAS[item["pregunta_id"]]
-    prop = {c: {"type": "object",
-                "properties": {"menciona": {"type": "boolean"}, "valor": {"type": "integer", "enum": NIVELES}},
-                "required": ["menciona", "valor"]} for c in columnas}
     prompt = f"""Esta es la respuesta de una persona a una pregunta abierta de una encuesta de clima laboral. {TIPO_TEXTO}
 
 Pregunta: {pregunta['texto']}
@@ -138,18 +136,18 @@ Pregunta: {pregunta['texto']}
 Respuesta:
 {item['respuesta']}
 
-Para cada tema, indica si la persona habla de él (menciona) y, si habla, qué opina según esta escala:
+Identifica los temas sobre los que la persona da una opinión y, para cada uno, qué opina según esta escala:
 {lista_escala()}
 
-Temas:
-{lista_columnas(columnas)}
-
-Si la persona no habla de un tema, pon menciona en false y valor en 0."""
-    out = claude(prompt, {"type": "object", "properties": {"columnas": {
-        "type": "object", "properties": prop, "required": list(columnas)}}, "required": ["columnas"]},
-        modelo, "Clasificas respuestas abiertas de encuestas de clima laboral.")["columnas"]
-    return {c: {"menciona": out[c]["menciona"], "valor": out[c]["valor"] if out[c]["menciona"] else None}
-            for c in columnas}
+Ignora lo que no tenga que ver con la pregunta. Cada tema tiene que ser distinto de los demás y describirse en una frase concreta."""
+    out = claude(prompt, {"type": "object", "properties": {"temas": {
+        "type": "array", "minItems": 1, "maxItems": 8, "items": {"type": "object", "properties": {
+            "id": {"type": "string", "pattern": "^[a-z_]+$"}, "descripcion": {"type": "string"},
+            "valor": {"type": "integer", "enum": NIVELES}}, "required": ["id", "descripcion", "valor"]}}},
+        "required": ["temas"]}, modelo, "Clasificas respuestas abiertas de encuestas de clima laboral.")["temas"]
+    temas = {t["id"]: t for t in out}  # si repite un id, queda el último
+    return ({c: t["descripcion"] for c, t in temas.items()},
+            {c: {"menciona": True, "valor": t["valor"]} for c, t in temas.items()})
 
 
 def clasificar_jev(item, columnas):
@@ -224,23 +222,29 @@ Para cada columna de referencia, elige la columna propuesta que mide el mismo te
 # ---------- correr ----------
 
 def correr_condicion(nombre, dataset, modelo):
+    """Devuelve columnas, alineación y predicciones por respuesta (id de item)."""
     por_pregunta = {pid: [it for it in dataset if it["pregunta_id"] == pid] for pid in PREGUNTAS}
     with ThreadPoolExecutor(8) as pool:
-        if nombre in ("claude_solo", "jev_columnas_sabidas"):
-            columnas = {pid: p["columnas"] for pid, p in PREGUNTAS.items()}
-            alineacion = {pid: {c: c for c in p["columnas"]} for pid, p in PREGUNTAS.items()}
-        else:
-            usar_resp = nombre == "claude_respuestas_jev"
-            pids = list(PREGUNTAS)
-            columnas = dict(zip(pids, pool.map(
-                lambda pid: inducir_columnas(PREGUNTAS[pid], [it["respuesta"] for it in por_pregunta[pid]]
-                                             if usar_resp else None, modelo), pids)))
-            alineacion = dict(zip(pids, pool.map(lambda pid: alinear(PREGUNTAS[pid], columnas[pid]), pids)))
         if nombre == "claude_solo":
-            preds = pool.map(lambda it: clasificar_claude(it, columnas[it["pregunta_id"]], modelo), dataset)
+            libres = list(pool.map(lambda it: clasificar_claude_libre(it, modelo), dataset))
+            columnas = {it["id"]: cols for it, (cols, _) in zip(dataset, libres)}
+            items = {it["id"]: preds for it, (_, preds) in zip(dataset, libres)}
+            alineacion = dict(zip(columnas, pool.map(
+                lambda it: alinear(PREGUNTAS[it["pregunta_id"]], columnas[it["id"]]), dataset)))
         else:
-            preds = pool.map(lambda it: clasificar_jev(it, columnas[it["pregunta_id"]]), dataset)
-        items = {it["id"]: p for it, p in zip(dataset, preds)}
+            if nombre == "jev_columnas_sabidas":
+                por_pid = {pid: p["columnas"] for pid, p in PREGUNTAS.items()}
+                ali_pid = {pid: {c: c for c in p["columnas"]} for pid, p in PREGUNTAS.items()}
+            else:
+                usar_resp = nombre == "claude_respuestas_jev"
+                pids = list(PREGUNTAS)
+                por_pid = dict(zip(pids, pool.map(
+                    lambda pid: inducir_columnas(PREGUNTAS[pid], [it["respuesta"] for it in por_pregunta[pid]]
+                                                 if usar_resp else None, modelo), pids)))
+                ali_pid = dict(zip(pids, pool.map(lambda pid: alinear(PREGUNTAS[pid], por_pid[pid]), pids)))
+            columnas = {it["id"]: por_pid[it["pregunta_id"]] for it in dataset}
+            alineacion = {it["id"]: ali_pid[it["pregunta_id"]] for it in dataset}
+            items = dict(zip(columnas, pool.map(lambda it: clasificar_jev(it, columnas[it["id"]]), dataset)))
     return {"condicion": nombre, "modelo_claude": modelo, "columnas": columnas,
             "alineacion": alineacion, "items": items}
 
@@ -251,7 +255,10 @@ def cmd_correr(args):
         raise SystemExit("Falta TYPESAFE_API_KEY: sin Jev no corre el experimento.")
     carpeta = RES / args.modelo
     carpeta.mkdir(parents=True, exist_ok=True)
-    pendientes = [c for c in CONDICIONES if args.forzar or not (carpeta / f"{c}.json").exists()]
+    # jev_columnas_sabidas no usa Claude: corre una sola vez, en resultados/jev/
+    condiciones = ["jev_columnas_sabidas"] if args.modelo == "jev" else \
+        [c for c in CONDICIONES if c != "jev_columnas_sabidas"]
+    pendientes = [c for c in condiciones if args.forzar or not (carpeta / f"{c}.json").exists()]
 
     def una(c):
         t = time.time()
@@ -270,13 +277,16 @@ def cmd_correr(args):
 
 def metricas(r, dataset):
     exactas = tp = fp = fn = invertidos = dudosas = 0
-    errores, celdas = [], 0
+    errores, celdas, mencionadas, con_pareja, extras = [], 0, 0, 0, 0
     por_pregunta = {pid: [0, 0] for pid in PREGUNTAS}  # [exactas, celdas]
     for it in dataset:
-        pid = it["pregunta_id"]
+        pid, ali = it["pregunta_id"], r["alineacion"][it["id"]]
+        extras += len(r["columnas"][it["id"]]) - sum(v is not None for v in ali.values())
         for g, gv in it["gold"].items():
             celdas += 1
-            ind = r["alineacion"][pid][g]
+            ind = ali[g]
+            mencionadas += gv is not None
+            con_pareja += gv is not None and ind is not None
             p = r["items"][it["id"]][ind] if ind else {"menciona": False, "valor": None}
             pv = p["valor"] if p["menciona"] else None
             exactas += pv == gv
@@ -291,13 +301,9 @@ def metricas(r, dataset):
             dudosas += "noul" in p and 0.3 <= p["noul"] <= 0.7
     prec = tp / (tp + fp) if tp + fp else 0
     rec = tp / (tp + fn) if tp + fn else 0
-    gold_cols = sum(len(p["columnas"]) for p in PREGUNTAS.values())
-    alineadas = sum(v is not None for a in r["alineacion"].values() for v in a.values())
-    extras = sum(len(r["columnas"][pid]) - sum(v is not None for v in r["alineacion"][pid].values())
-                 for pid in PREGUNTAS)
     return {"exactas": exactas / celdas, "f1_mencion": 2 * prec * rec / (prec + rec) if prec + rec else 0,
             "mae": sum(errores) / len(errores) if errores else None, "invertidos": invertidos,
-            "cobertura": alineadas / gold_cols, "extras": extras, "dudosas": dudosas,
+            "cobertura": con_pareja / mencionadas, "extras": extras / len(dataset), "dudosas": dudosas,
             "por_pregunta": {pid: e / n for pid, (e, n) in por_pregunta.items()}}
 
 
@@ -319,12 +325,14 @@ def cmd_puntuar(_):
             resumen[(carpeta.name, c)] = m
             filas.append(f"| {c} | {m['exactas']:.0%} | {m['f1_mencion']:.2f} | "
                          f"{'-' if m['mae'] is None else f'{m['mae']:.2f}'} | {m['invertidos']} | "
-                         f"{m['cobertura']:.0%} | {m['extras']} | "
+                         f"{m['cobertura']:.0%} | {m['extras']:.1f} | "
                          f"{m['dudosas'] if c != 'claude_solo' else '-'} | {r['segundos']} |")
         tokens = carpeta / "tokens_jev.txt"
-        lineas += [f"## Claude {carpeta.name} (effort medium)", "",
+        titulo = "Sin Claude (Jev con las columnas de referencia)" if carpeta.name == "jev" \
+            else f"Claude {carpeta.name} (effort medium)"
+        lineas += [f"## {titulo}", "",
                    f"Tokens de entrada Jev: {tokens.read_text().strip() if tokens.exists() else '-'}", "",
-                   "| Condición | Celdas exactas | F1 mención | MAE valor | Signo invertido | Cobertura columnas | Columnas extra | Nouls dudosos | Segundos |",
+                   "| Condición | Celdas exactas | F1 mención | MAE valor | Signo invertido | Cobertura | Columnas extra por respuesta | Nouls dudosos | Segundos |",
                    "|---|---|---|---|---|---|---|---|---|", *filas, ""]
     lineas += ["## Celdas exactas por pregunta", "",
                "| Modelo | Condición | " + " | ".join(PREGUNTAS) + " |",
@@ -333,6 +341,39 @@ def cmd_puntuar(_):
         lineas.append(f"| {mod} | {c} | " + " | ".join(f"{m['por_pregunta'][p]:.0%}" for p in PREGUNTAS) + " |")
     (RES / "RESULTADOS.md").write_text("\n".join(lineas) + "\n")
     print((RES / "RESULTADOS.md").read_text())
+    escribir_columnas(dataset)
+
+
+def escribir_columnas(dataset):
+    """COLUMNAS.md: qué columnas propuso cada LLM y con cuál de referencia calzó cada una."""
+    L = ["# Columnas propuestas por los LLM", "",
+         "Por pregunta: las de referencia (las conoce solo Jev en `jev_columnas_sabidas`) y las que propuso cada "
+         "condición. «→ x» dice con qué columna de referencia la emparejó Opus; «sin pareja» es un tema que "
+         "no estaba entre las de referencia.", ""]
+    corridas = sorted((m.name, c) for m in RES.iterdir() if m.is_dir() for c in CONDICIONES
+                      if c != "jev_columnas_sabidas" and (m / f"{c}.json").exists())
+    datos = {mc: json.loads((RES / mc[0] / f"{mc[1]}.json").read_text()) for mc in corridas}
+
+    def lista(cols, ali):
+        inv = {v: g for g, v in ali.items() if v}
+        return [f"- **{c}**: {d} " + (f"→ {inv[c]}" if c in inv else "*(sin pareja)*") for c, d in cols.items()]
+
+    for pid, p in PREGUNTAS.items():
+        items = [it for it in dataset if it["pregunta_id"] == pid]
+        L += [f"## {p['texto']}", "", "**Referencia:**", *[f"- **{c}**: {d}" for c, d in p["columnas"].items()], ""]
+        for cond in ("claude_pregunta_jev", "claude_respuestas_jev"):
+            for (mod, c), r in datos.items():
+                if c == cond:
+                    i0 = items[0]["id"]
+                    L += [f"**{c} · Claude {mod}** (una lista para toda la pregunta):",
+                          *lista(r["columnas"][i0], r["alineacion"][i0]), ""]
+        for (mod, c), r in datos.items():
+            if c == "claude_solo":
+                L.append(f"**claude_solo · Claude {mod}** (temas libres por respuesta):")
+                for it in items:
+                    L += [f"- *{it['id']}*:"] + ["  " + x for x in lista(r["columnas"][it["id"]], r["alineacion"][it["id"]])]
+                L.append("")
+    (RES / "COLUMNAS.md").write_text("\n".join(L) + "\n")
 
 
 # ---------- juzgar (cualitativo, Opus a ciegas) ----------
@@ -345,16 +386,16 @@ def comparacion(r, dataset):
     """Texto con transcripción, esperado y obtenido por respuesta, sin nombrar condición ni modelo."""
     bloques = []
     for pid, p in PREGUNTAS.items():
-        ali, cols = r["alineacion"][pid], r["columnas"][pid]
-        usadas = {v for v in ali.values() if v}
-        b = [f"## Pregunta: {p['texto']}", "", "Columnas que usó el sistema y a qué columna de referencia corresponden:"]
-        b += [f"- {g} ({p['columnas'][g]}) → " + (f"{ali[g]}: {cols[ali[g]]}" if ali[g] else "ninguna; el sistema no midió este tema")
-              for g in p["columnas"]]
-        b += [f"- Columna extra del sistema, sin pareja: {c}: {d}" for c, d in cols.items() if c not in usadas]
+        b = [f"## Pregunta: {p['texto']}"]
         for it in (x for x in dataset if x["pregunta_id"] == pid):
-            preds = r["items"][it["id"]]
+            ali, cols, preds = r["alineacion"][it["id"]], r["columnas"][it["id"]], r["items"][it["id"]]
+            usadas = {v for v in ali.values() if v}
             b += ["", f"### {it['id']}", "", "Transcripción:", it["respuesta"], "",
-                  "| Columna de referencia | Esperado | Obtenido |", "|---|---|---|"]
+                  "Columnas que usó el sistema en esta respuesta y a qué columna de referencia corresponden:"]
+            b += [f"- {g} ({p['columnas'][g]}) → " + (f"{ali[g]}: {cols[ali[g]]}" if ali[g] else "ninguna")
+                  for g in p["columnas"]]
+            b += [f"- Columna extra del sistema, sin pareja: {c}: {d}" for c, d in cols.items() if c not in usadas]
+            b += ["", "| Columna de referencia | Esperado | Obtenido |", "|---|---|---|"]
             for g, gv in it["gold"].items():
                 pr = preds[ali[g]] if ali[g] else {"menciona": False, "valor": None}
                 b.append(f"| {g} | {texto_valor(gv)} | {texto_valor(pr['valor'] if pr['menciona'] else None)} |")
@@ -373,8 +414,10 @@ SCHEMA_JUICIO = {"type": "object", "properties": {
         "tipo": {"type": "string", "enum": ["grave", "menor", "defendible"]},
         "explicacion": {"type": "string"}}, "required": ["respuesta", "columna", "tipo", "explicacion"]}},
     "fortalezas": {"type": "string"}, "debilidades": {"type": "string"},
+    "calidad_columnas": {"type": "string"},
     "confiaria_para_un_informe": {"type": "boolean"}, "resumen": {"type": "string"}},
-    "required": ["veredicto", "errores", "fortalezas", "debilidades", "confiaria_para_un_informe", "resumen"]}
+    "required": ["veredicto", "errores", "fortalezas", "debilidades", "calidad_columnas",
+                 "confiaria_para_un_informe", "resumen"]}
 
 
 def juzgar_corrida(r, dataset):
@@ -385,7 +428,7 @@ Juzga la calidad de este sistema como lo haría un analista de personas que va a
 - menor: misma dirección, distinta intensidad, o un tema tocado de pasada.
 - defendible: leyendo la transcripción, lo obtenido es tan razonable como lo esperado.
 
-Si el sistema no midió un tema de referencia o agregó columnas extra, júzgalo según si un informe con esas columnas sería útil igual.
+Si el sistema no midió un tema de referencia o agregó columnas extra, júzgalo según si un informe con esas columnas sería útil igual. En calidad_columnas di si las columnas que usó el sistema capturan lo que de verdad dicen las personas: si se pisan entre sí, si son demasiado amplias o estrechas, y si alguna extra es un hallazgo valioso que las de referencia no tenían.
 
 {comparacion(r, dataset)}"""
     return claude(prompt, SCHEMA_JUICIO, MODELO_FIJO, "Eres un analista de personas exigente que revisa la calidad de análisis de encuestas.")
@@ -393,10 +436,8 @@ Si el sistema no midió un tema de referencia o agregó columnas extra, júzgalo
 
 def cmd_juzgar(_):
     dataset = json.loads(DATASET.read_text())
-    # jev_columnas_sabidas no usa Claude: se juzga una sola vez
-    corridas = [("opus", "jev_columnas_sabidas")] + [(m, c) for m in ("opus", "sonnet", "haiku")
-                                                     for c in CONDICIONES if c != "jev_columnas_sabidas"]
-    corridas = [(m, c) for m, c in corridas if (RES / m / f"{c}.json").exists()]
+    corridas = [(m, c) for m in ("jev", "opus", "sonnet", "haiku") for c in CONDICIONES
+                if (RES / m / f"{c}.json").exists()]
     with ThreadPoolExecutor(len(corridas)) as pool:
         juicios = list(pool.map(lambda mc: juzgar_corrida(json.loads((RES / mc[0] / f"{mc[1]}.json").read_text()),
                                                          dataset), corridas))
@@ -439,7 +480,8 @@ def escribir_juicio():
     lineas += ["", f"**Conclusión:** {nombrar(final['conclusion'])}", ""]
     for s, j in ciegos.items():
         lineas += [f"## {nombre[s]}", "", nombrar(j["resumen"]), "", f"- A favor: {nombrar(j['fortalezas'])}",
-                   f"- En contra: {nombrar(j['debilidades'])}", ""]
+                   f"- En contra: {nombrar(j['debilidades'])}",
+                   f"- Columnas: {nombrar(j.get('calidad_columnas', '-'))}", ""]
         lineas += [f"- [{e['tipo']}] {e['respuesta']} / {e['columna']}: {nombrar(e['explicacion'])}" for e in j["errores"]]
         lineas.append("")
     (RES / "JUICIO.md").write_text("\n".join(lineas) + "\n")
@@ -451,7 +493,8 @@ if __name__ == "__main__":
     sub = ap.add_subparsers(required=True)
     sub.add_parser("generar").set_defaults(f=cmd_generar)
     c = sub.add_parser("correr")
-    c.add_argument("--modelo", required=True, choices=["opus", "sonnet", "haiku"])
+    c.add_argument("--modelo", required=True, choices=["opus", "sonnet", "haiku", "jev"],
+                   help="modelo de Claude bajo prueba; 'jev' corre solo jev_columnas_sabidas")
     c.add_argument("--forzar", action="store_true")
     c.set_defaults(f=cmd_correr)
     sub.add_parser("puntuar").set_defaults(f=cmd_puntuar)
