@@ -3,8 +3,8 @@ import { createRoot } from 'react-dom/client';
 import { ConvexProvider, ConvexReactClient } from 'convex/react';
 import './comun.css';
 
-// Always the prod deployment (public client URL, not a secret); VITE_CONVEX_URL overrides it.
-const cvx = new ConvexReactClient(import.meta.env.VITE_CONVEX_URL ?? 'https://proper-hippopotamus-200.convex.cloud');
+// The dev deployment that `convex dev` keeps in sync is the one the demo uses (public URL, not a secret); VITE_CONVEX_URL overrides it.
+const cvx = new ConvexReactClient(import.meta.env.VITE_CONVEX_URL ?? 'https://intent-ox-498.convex.cloud');
 
 // The poll is the first path segment: /<slug>, /<slug>/panel, /<slug>/flujo. '' on / and /admin.
 const seg = location.pathname.split('/')[1] || '';

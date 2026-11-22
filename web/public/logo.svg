@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Audem">
+  <rect width="64" height="64" rx="14" fill="#1f1e1c"/>
+  <g stroke-linecap="round" stroke-width="6">
+    <line x1="14" y1="27" x2="14" y2="37" stroke="#b5b4ad"/>
+    <line x1="23" y1="18" x2="23" y2="46" stroke="#3987e5"/>
+    <line x1="32" y1="12" x2="32" y2="52" stroke="#f4f3ef"/>
+    <line x1="41" y1="21" x2="41" y2="43" stroke="#e66767"/>
+    <line x1="50" y1="28" x2="50" y2="36" stroke="#b5b4ad"/>
+  </g>
+</svg>
