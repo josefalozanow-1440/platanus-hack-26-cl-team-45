@@ -42,6 +42,7 @@ Toda pantalla o gráfico de Audem sigue esto. Si algo nuevo no calza, se cambia 
 - **Panel en vivo** (`web/src/Panel.jsx` + `panel-dibujo.js`): para la pantalla grande. Controlable con línea de tiempo, filtro de tono y detalle por tema. Dos vistas: **Red** (personas → frases → temas, con física; por defecto) y **Temas** (grilla de círculos, la más fácil de leer).
 - **Flujo** (`web/src/Flujo.jsx` + `flujo-dibujo.js`): el camino completo en 4 columnas, respuestas → frases → conceptos → temas, con cintas curvas. Pasar el cursor por cualquier nodo ilumina todo lo que comparte frases con él. Los temas van ordenados por personas; el resto se ordena por baricentro para que las cintas se crucen poco.
 - Los tokens y las reglas de tono son compartidos (`web/src/comun.css`, `web/src/comun.js`). Ninguna vista define sus propios colores.
+- **Excepción: Voces** (`web/public/voces.html`, en `/voces.html`): pieza de pitch estática con los 25 datos sintéticos. Un blob 3D (Three.js) crece hacia el tema de cada opinión, los puntos usan el canal de tono y, al final, 6 lecturas unen con hilos las opiniones que las sostienen. Rompe la regla de movimiento a propósito (el blob respira lento y rebota al llegar una opinión; con `prefers-reduced-motion` casi se detiene). Copia los tokens de `comun.css` porque no pasa por Vite: si cambia la paleta, actualízala ahí también.
 
 ## Layout y espaciado
 - Base de 4 px: 4 · 8 · 12 · 16 · 24 · 32 · 48. Estrecho dentro de un grupo, amplio entre grupos.
