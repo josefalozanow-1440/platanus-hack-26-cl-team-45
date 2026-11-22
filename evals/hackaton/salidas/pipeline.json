@@ -1,0 +1,1199 @@
+{
+  "model": "claude-opus-5-5",
+  "effort": "low",
+  "frases": [
+    {
+      "id": "h01_f1",
+      "respuesta_id": "h01",
+      "texto": "Agotamiento extremo tras unas veintidós horas sin dormir",
+      "cita": "estoy muerto llevo como veintidós horas despierto",
+      "emocion": "cansancio",
+      "intensidad": 0.9,
+      "conceptos": [
+        "cansancio",
+        "sueño"
+      ]
+    },
+    {
+      "id": "h01_f2",
+      "respuesta_id": "h01",
+      "texto": "El proyecto funciona parcialmente, pero funciona",
+      "cita": "el proyecto anda a medias pero anda",
+      "emocion": "satisfaccion",
+      "intensidad": 0.4,
+      "conceptos": [
+        "proyecto"
+      ]
+    },
+    {
+      "id": "h01_f3",
+      "respuesta_id": "h01",
+      "texto": "La comida estuvo bien",
+      "cita": "La comida bien",
+      "emocion": "satisfaccion",
+      "intensidad": 0.4,
+      "conceptos": [
+        "comida"
+      ]
+    },
+    {
+      "id": "h01_f4",
+      "respuesta_id": "h01",
+      "texto": "El café se acabó de madrugada y no lo repusieron",
+      "cita": "El café se acabó como a las cuatro de la mañana y nadie lo repuso",
+      "emocion": "molestia",
+      "intensidad": 0.6,
+      "conceptos": [
+        "café",
+        "organización"
+      ]
+    },
+    {
+      "id": "h02_f1",
+      "respuesta_id": "h02",
+      "texto": "Llegó solo y tuvo que armar equipo en el evento",
+      "cita": "me inscribí solo porque mis amigos no quisieron venir, y me tocó armar equipo ahí el viernes",
+      "emocion": "neutral",
+      "intensidad": 0.3,
+      "conceptos": [
+        "formación equipo",
+        "llegar solo"
+      ]
+    },
+    {
+      "id": "h02_f2",
+      "respuesta_id": "h02",
+      "texto": "Sentía miedo por ser su primera hackatón",
+      "cita": "me daba un susto terrible porque nunca había hecho una hackatón",
+      "emocion": "miedo",
+      "intensidad": 0.7,
+      "conceptos": [
+        "primera hackatón"
+      ]
+    },
+    {
+      "id": "h02_f3",
+      "respuesta_id": "h02",
+      "texto": "Su equipo lo apoyó aunque es el que menos sabe",
+      "cita": "los chiquillos han sido súper buena onda, me pasaron toda la parte del scraping y me dejaron hacerla",
+      "emocion": "gratitud",
+      "intensidad": 0.7,
+      "conceptos": [
+        "equipo",
+        "apoyo"
+      ]
+    },
+    {
+      "id": "h02_f4",
+      "respuesta_id": "h02",
+      "texto": "Un mentor les dio feedback duro pero acertado",
+      "cita": "fue medio duro escucharlo pero tenía razón po. Cambiamos harto después de eso",
+      "emocion": "satisfaccion",
+      "intensidad": 0.6,
+      "conceptos": [
+        "mentoría",
+        "feedback"
+      ]
+    },
+    {
+      "id": "h02_f5",
+      "respuesta_id": "h02",
+      "texto": "Cansado pero contento de haber venido solo",
+      "cita": "cansado pero bien, contento de haber venido solo al final",
+      "emocion": "alegria",
+      "intensidad": 0.7,
+      "conceptos": [
+        "llegar solo",
+        "cansancio"
+      ]
+    },
+    {
+      "id": "h03_f1",
+      "respuesta_id": "h03",
+      "texto": "Un compañero se fue a un matrimonio sin avisar",
+      "cita": "uno de los chiquillos dijo que tenía que ir a un matrimonio, cosa que nadie sabía",
+      "emocion": "molestia",
+      "intensidad": 0.7,
+      "conceptos": [
+        "equipo",
+        "compromiso"
+      ]
+    },
+    {
+      "id": "h03_f2",
+      "respuesta_id": "h03",
+      "texto": "Un compañero perdió horas en infraestructura que no se usó",
+      "cita": "estuvo como diez horas en eso y al final no lo usamos",
+      "emocion": "frustracion",
+      "intensidad": 0.75,
+      "conceptos": [
+        "equipo",
+        "prioridades"
+      ]
+    },
+    {
+      "id": "h03_f3",
+      "respuesta_id": "h03",
+      "texto": "Mucho estrés, llegó a llorar de madrugada",
+      "cita": "A las tres de la mañana me puse a llorar en el baño",
+      "emocion": "angustia",
+      "intensidad": 0.9,
+      "conceptos": [
+        "estrés"
+      ]
+    },
+    {
+      "id": "h03_f4",
+      "respuesta_id": "h03",
+      "texto": "El apoyo de una participante de otro equipo la ayudó",
+      "cita": "me pasó un chicle y me dijo que a ella le había pasado lo mismo el año pasado",
+      "emocion": "gratitud",
+      "intensidad": 0.7,
+      "conceptos": [
+        "comunidad",
+        "apoyo"
+      ]
+    },
+    {
+      "id": "h03_f5",
+      "respuesta_id": "h03",
+      "texto": "Lograron un producto funcional aunque no ideal",
+      "cita": "No está lindo, no está lo que queríamos, pero funciona el flujo principal",
+      "emocion": "alivio",
+      "intensidad": 0.6,
+      "conceptos": [
+        "producto"
+      ]
+    },
+    {
+      "id": "h04_f1",
+      "respuesta_id": "h04",
+      "texto": "Problemas técnicos con Docker en Mac con chip M",
+      "cita": "Docker en Mac con chip M no sé qué no levanta la imagen que usamos",
+      "emocion": "frustracion",
+      "intensidad": 0.5,
+      "conceptos": [
+        "problemas técnicos",
+        "docker"
+      ]
+    },
+    {
+      "id": "h04_f2",
+      "respuesta_id": "h04",
+      "texto": "El wifi del segundo piso no funciona",
+      "cita": "aprendí que el wifi del segundo piso no existe",
+      "emocion": "molestia",
+      "intensidad": 0.5,
+      "conceptos": [
+        "problemas técnicos",
+        "wifi"
+      ]
+    },
+    {
+      "id": "h04_f3",
+      "respuesta_id": "h04",
+      "texto": "Lo pasa bien aunque todo sale mal de forma chistosa",
+      "cita": "todo ha salido mal pero de una forma chistosa",
+      "emocion": "alegria",
+      "intensidad": 0.6,
+      "conceptos": [
+        "humor",
+        "experiencia"
+      ]
+    },
+    {
+      "id": "h04_f4",
+      "respuesta_id": "h04",
+      "texto": "Tres pivots: de veterinarias a contadores",
+      "cita": "Llevamos tres pivots. El tercero es el bueno, creo",
+      "emocion": "duda",
+      "intensidad": 0.5,
+      "conceptos": [
+        "pivots",
+        "idea"
+      ]
+    },
+    {
+      "id": "h04_f5",
+      "respuesta_id": "h04",
+      "texto": "El buen ambiente del equipo compensa todo",
+      "cita": "el equipo se ríe harto y eso vale",
+      "emocion": "satisfaccion",
+      "intensidad": 0.7,
+      "conceptos": [
+        "equipo",
+        "humor"
+      ]
+    },
+    {
+      "id": "h05_f1",
+      "respuesta_id": "h05",
+      "texto": "No hubo información sobre dónde estacionar",
+      "cita": "nadie me supo decir dónde estacionar, terminé dejándolo como a cuatro cuadras",
+      "emocion": "frustracion",
+      "intensidad": 0.6,
+      "conceptos": [
+        "estacionamiento",
+        "información"
+      ]
+    },
+    {
+      "id": "h05_f2",
+      "respuesta_id": "h05",
+      "texto": "Pasó la noche preocupado por un posible robo del auto",
+      "cita": "me pasé toda la noche pensando que me lo iban a robar. Bajé dos veces a verlo",
+      "emocion": "preocupacion",
+      "intensidad": 0.7,
+      "conceptos": [
+        "estacionamiento",
+        "seguridad"
+      ]
+    },
+    {
+      "id": "h05_f3",
+      "respuesta_id": "h05",
+      "texto": "Llegar en transporte público con equipaje era difícil",
+      "cita": "venir en micro con el notebook y el saco de dormir era un cacho",
+      "emocion": "molestia",
+      "intensidad": 0.4,
+      "conceptos": [
+        "transporte"
+      ]
+    },
+    {
+      "id": "h05_f4",
+      "respuesta_id": "h05",
+      "texto": "La hackatón en sí le parece bien",
+      "cita": "la hackatón en sí bien",
+      "emocion": "satisfaccion",
+      "intensidad": 0.4,
+      "conceptos": [
+        "hackatón"
+      ]
+    },
+    {
+      "id": "h05_f5",
+      "respuesta_id": "h05",
+      "texto": "Pide información de estacionamiento para el próximo año",
+      "cita": "pongan info del estacionamiento pal próximo año porfa",
+      "emocion": "esperanza",
+      "intensidad": 0.5,
+      "conceptos": [
+        "estacionamiento",
+        "información"
+      ]
+    },
+    {
+      "id": "h06_f1",
+      "respuesta_id": "h06",
+      "texto": "Experiencia mixta en la hackathon",
+      "cita": "mi experiencia, eh, mixta diría",
+      "emocion": "neutral",
+      "intensidad": 0.4,
+      "conceptos": [
+        "experiencia general"
+      ]
+    },
+    {
+      "id": "h06_f2",
+      "respuesta_id": "h06",
+      "texto": "Se siente subvalorada como diseñadora por su equipo",
+      "cita": "siento que me tratan como la que pone colores",
+      "emocion": "frustracion",
+      "intensidad": 0.8,
+      "conceptos": [
+        "rol diseño",
+        "equipo"
+      ]
+    },
+    {
+      "id": "h06_f3",
+      "respuesta_id": "h06",
+      "texto": "Su investigación y diseño en Figma fueron descartados por rapidez",
+      "cita": "me dijeron ya sí lindo pero hagámoslo con shadcn por defecto nomás que es más rápido",
+      "emocion": "decepcion",
+      "intensidad": 0.7,
+      "conceptos": [
+        "rol diseño",
+        "equipo"
+      ]
+    },
+    {
+      "id": "h06_f4",
+      "respuesta_id": "h06",
+      "texto": "La mentora validó el problema que ella ya había resuelto",
+      "cita": "Me dio una mezcla de rabia y de, no sé, de razón",
+      "emocion": "rabia",
+      "intensidad": 0.7,
+      "conceptos": [
+        "mentoria",
+        "rol diseño"
+      ]
+    },
+    {
+      "id": "h06_f5",
+      "respuesta_id": "h06",
+      "texto": "Finalmente implementan su diseño, pero quedó agotada",
+      "cita": "O sea al final pasó, pero me cansó",
+      "emocion": "cansancio",
+      "intensidad": 0.6,
+      "conceptos": [
+        "rol diseño"
+      ]
+    },
+    {
+      "id": "h07_f1",
+      "respuesta_id": "h07",
+      "texto": "Experiencia general positiva en la hackatón",
+      "cita": "hola sí bien bien",
+      "emocion": "satisfaccion",
+      "intensidad": 0.5,
+      "conceptos": [
+        "experiencia general"
+      ]
+    },
+    {
+      "id": "h07_f2",
+      "respuesta_id": "h07",
+      "texto": "Poco tiempo para responder por estar en la recta final",
+      "cita": "estamos en la recta final así que no puedo hablar mucho",
+      "emocion": "cansancio",
+      "intensidad": 0.4,
+      "conceptos": [
+        "tiempo"
+      ]
+    },
+    {
+      "id": "h07_f3",
+      "respuesta_id": "h07",
+      "texto": "La caída del wifi les hizo perder una hora",
+      "cita": "La wifi se cayó un rato en la noche y perdimos como una hora",
+      "emocion": "molestia",
+      "intensidad": 0.5,
+      "conceptos": [
+        "wifi",
+        "tiempo"
+      ]
+    },
+    {
+      "id": "h08_f1",
+      "respuesta_id": "h08",
+      "texto": "Participar era una prueba para validar su cambio de carrera",
+      "cita": "para mí esto era como una prueba, ver si de verdad me la podía con gente que lleva toda la vida en esto",
+      "emocion": "duda",
+      "intensidad": 0.5,
+      "conceptos": [
+        "cambio carrera",
+        "edad"
+      ]
+    },
+    {
+      "id": "h08_f2",
+      "respuesta_id": "h08",
+      "texto": "Se sintió bien recibido por su equipo joven",
+      "cita": "Pensé que me iban a mirar raro y no, para nada",
+      "emocion": "sorpresa",
+      "intensidad": 0.7,
+      "conceptos": [
+        "equipo",
+        "inclusión"
+      ]
+    },
+    {
+      "id": "h08_f3",
+      "respuesta_id": "h08",
+      "texto": "Su experiencia previa en logística es valorada en el proyecto",
+      "cita": "por primera vez siento que lo que hice antes sirve para algo acá",
+      "emocion": "orgullo",
+      "intensidad": 0.8,
+      "conceptos": [
+        "experiencia previa",
+        "equipo"
+      ]
+    },
+    {
+      "id": "h08_f4",
+      "respuesta_id": "h08",
+      "texto": "El cansancio físico y el ruido nocturno fueron difíciles",
+      "cita": "Dormí como dos horas en un puf y me duele la espalda entera, y el ruido en la noche",
+      "emocion": "cansancio",
+      "intensidad": 0.7,
+      "conceptos": [
+        "condiciones físicas",
+        "descanso"
+      ]
+    },
+    {
+      "id": "h08_f5",
+      "respuesta_id": "h08",
+      "texto": "Desearía mayor participación de personas de su edad",
+      "cita": "Ojalá hubiera más gente de mi edad",
+      "emocion": "esperanza",
+      "intensidad": 0.5,
+      "conceptos": [
+        "edad",
+        "inclusión"
+      ]
+    },
+    {
+      "id": "h09_f1",
+      "respuesta_id": "h09",
+      "texto": "La experiencia en la hackathon ha sido intensa",
+      "cita": "Ha sido intenso.",
+      "emocion": "cansancio",
+      "intensidad": 0.5,
+      "conceptos": [
+        "experiencia"
+      ]
+    },
+    {
+      "id": "h09_f2",
+      "respuesta_id": "h09",
+      "texto": "Perdieron dos horas por un límite de uso de la API",
+      "cita": "estuvimos como dos horas pensando que era nuestro código. Era el límite nomás",
+      "emocion": "frustracion",
+      "intensidad": 0.7,
+      "conceptos": [
+        "rate limit",
+        "api"
+      ]
+    },
+    {
+      "id": "h09_f3",
+      "respuesta_id": "h09",
+      "texto": "Agradecen la rápida reacción de la organización con créditos",
+      "cita": "gracias a los de la organización que se movieron rápido, eso sí",
+      "emocion": "gratitud",
+      "intensidad": 0.6,
+      "conceptos": [
+        "organización",
+        "créditos"
+      ]
+    },
+    {
+      "id": "h09_f4",
+      "respuesta_id": "h09",
+      "texto": "Tuvieron que rehacer el backend y las respuestas empeoraron",
+      "cita": "tuvimos que cambiar medio backend... las respuestas son más cortas y más tontas",
+      "emocion": "decepcion",
+      "intensidad": 0.5,
+      "conceptos": [
+        "backend",
+        "calidad"
+      ]
+    },
+    {
+      "id": "h09_f5",
+      "respuesta_id": "h09",
+      "texto": "Incertidumbre sobre cómo resultará la demo en el pitch",
+      "cita": "No sé si eso es bueno o malo pa la demo... Veremos en el pitch.",
+      "emocion": "duda",
+      "intensidad": 0.6,
+      "conceptos": [
+        "demo",
+        "pitch"
+      ]
+    },
+    {
+      "id": "h10_f1",
+      "respuesta_id": "h10",
+      "texto": "Disfruta mucho más esta edición al no enfocarse en ganar",
+      "cita": "esta vez lo estoy disfrutando mucho más, como que el año pasado vine muy enfocado en ganar y lo pasé mal",
+      "emocion": "satisfaccion",
+      "intensidad": 0.8,
+      "conceptos": [
+        "disfrute",
+        "competencia"
+      ]
+    },
+    {
+      "id": "h10_f2",
+      "respuesta_id": "h10",
+      "texto": "El proyecto de micros es técnicamente entretenido pese a datos desordenados",
+      "cita": "técnicamente es súper entretenido porque los datos son un desastre",
+      "emocion": "entusiasmo",
+      "intensidad": 0.7,
+      "conceptos": [
+        "proyecto",
+        "datos"
+      ]
+    },
+    {
+      "id": "h10_f3",
+      "respuesta_id": "h10",
+      "texto": "Excelente dinámica con un equipo diverso y talentoso",
+      "cita": "nos llevamos increíble... La niña de Conce es seca, seca",
+      "emocion": "alegria",
+      "intensidad": 0.85,
+      "conceptos": [
+        "equipo"
+      ]
+    },
+    {
+      "id": "h10_f4",
+      "respuesta_id": "h10",
+      "texto": "Falta de duchas se nota tras muchas horas",
+      "cita": "no hay duchas po, y después de treinta y tantas horas igual se nota",
+      "emocion": "molestia",
+      "intensidad": 0.5,
+      "conceptos": [
+        "infraestructura"
+      ]
+    },
+    {
+      "id": "h10_f5",
+      "respuesta_id": "h10",
+      "texto": "Mentores mejoraron: más frecuentes y con feedback concreto",
+      "cita": "ahora pasan más seguido y son más concretos",
+      "emocion": "satisfaccion",
+      "intensidad": 0.7,
+      "conceptos": [
+        "mentores"
+      ]
+    },
+    {
+      "id": "h11_f1",
+      "respuesta_id": "h11",
+      "texto": "Se resfrió por el frío junto a la puerta",
+      "cita": "hacía un frío terrible en el sector donde nos tocó, al lado de la puerta que la abrían cada dos minutos",
+      "emocion": "molestia",
+      "intensidad": 0.7,
+      "conceptos": [
+        "frío",
+        "salud"
+      ]
+    },
+    {
+      "id": "h11_f2",
+      "respuesta_id": "h11",
+      "texto": "Hoy cree tener fiebre y se siente mal",
+      "cita": "Mal, la verdad. Me resfrié el viernes en la noche... y hoy tengo fiebre creo",
+      "emocion": "cansancio",
+      "intensidad": 0.7,
+      "conceptos": [
+        "salud"
+      ]
+    },
+    {
+      "id": "h11_f3",
+      "respuesta_id": "h11",
+      "texto": "Faltó comida vegana pese a avisar en el formulario",
+      "cita": "avisé en el formulario y las primeras dos comidas no había nada para mí, como pan con palta y ya",
+      "emocion": "frustracion",
+      "intensidad": 0.7,
+      "conceptos": [
+        "comida vegana"
+      ]
+    },
+    {
+      "id": "h11_f4",
+      "respuesta_id": "h11",
+      "texto": "Luego hubo lentejas ricas, pero tuvo que preguntar",
+      "cita": "después sí apareció algo, unas lentejas, que estaban ricas, pero tuve que andar preguntando",
+      "emocion": "decepcion",
+      "intensidad": 0.4,
+      "conceptos": [
+        "comida vegana"
+      ]
+    },
+    {
+      "id": "h11_f5",
+      "respuesta_id": "h11",
+      "texto": "Se siente culpable por no rendir y quizás se vaya",
+      "cita": "El equipo bien... pero yo no estoy rindiendo nada, me siento culpable. Probablemente me vaya a la casa antes del pitch",
+      "emocion": "tristeza",
+      "intensidad": 0.7,
+      "conceptos": [
+        "equipo",
+        "salud"
+      ]
+    },
+    {
+      "id": "h12_f1",
+      "respuesta_id": "h12",
+      "texto": "Sospecha que algunos equipos traían el código hecho",
+      "cita": "Hay equipos que claramente traían el código hecho.",
+      "emocion": "molestia",
+      "intensidad": 0.7,
+      "conceptos": [
+        "juego limpio",
+        "código previo"
+      ]
+    },
+    {
+      "id": "h12_f2",
+      "respuesta_id": "h12",
+      "texto": "Su equipo partió desde cero y llegará con algo simple",
+      "cita": "nosotros partimos de cero, de verdad de cero, con un create vite nomás",
+      "emocion": "frustracion",
+      "intensidad": 0.5,
+      "conceptos": [
+        "juego limpio"
+      ]
+    },
+    {
+      "id": "h12_f3",
+      "respuesta_id": "h12",
+      "texto": "Pide que los jurados revisen los commits",
+      "cita": "Ojalá los jurados revisen los commits o algo, no sé si lo hacen.",
+      "emocion": "esperanza",
+      "intensidad": 0.5,
+      "conceptos": [
+        "jurado",
+        "juego limpio"
+      ]
+    },
+    {
+      "id": "h12_f4",
+      "respuesta_id": "h12",
+      "texto": "Organización atenta y rápida para resolver problemas",
+      "cita": "la gente de la organización muy atenta, nos ayudaron con un tema de un enchufe que no funcionaba y llegaron al tiro",
+      "emocion": "gratitud",
+      "intensidad": 0.6,
+      "conceptos": [
+        "organización",
+        "lugar"
+      ]
+    },
+    {
+      "id": "h12_f5",
+      "respuesta_id": "h12",
+      "texto": "Aprender Convex fue lo mejor técnicamente",
+      "cita": "aprendí harto de Convex, que no lo conocía, eso fue lo mejor técnicamente",
+      "emocion": "satisfaccion",
+      "intensidad": 0.7,
+      "conceptos": [
+        "aprendizaje"
+      ]
+    },
+    {
+      "id": "h13_f1",
+      "respuesta_id": "h13",
+      "texto": "La experiencia en la hackathon fue muy buena",
+      "cita": "ha sido buena o sea súper buena",
+      "emocion": "satisfaccion",
+      "intensidad": 0.8,
+      "conceptos": [
+        "experiencia general"
+      ]
+    },
+    {
+      "id": "h13_f2",
+      "respuesta_id": "h13",
+      "texto": "Mentores de startups reales aportaron mucho, especialmente sobre cómo cobrar",
+      "cita": "nos dijo que sin eso no era un producto era un hobby y ahí como que nos cayó la teja",
+      "emocion": "gratitud",
+      "intensidad": 0.8,
+      "conceptos": [
+        "mentores",
+        "modelo negocio"
+      ]
+    },
+    {
+      "id": "h13_f3",
+      "respuesta_id": "h13",
+      "texto": "Durmieron poco y en condiciones incómodas, tomado con humor",
+      "cita": "yo dormí debajo de la mesa con el polerón de almohada y amanecí con la cara marcada jaja",
+      "emocion": "cansancio",
+      "intensidad": 0.4,
+      "conceptos": [
+        "descanso"
+      ]
+    },
+    {
+      "id": "h13_f4",
+      "respuesta_id": "h13",
+      "texto": "Comida bien, aunque exceso de pizza; el sushi destacó",
+      "cita": "hartas pizzas demasiadas pizzas quizás, el sushi del sábado eso sí estaba bueno",
+      "emocion": "satisfaccion",
+      "intensidad": 0.5,
+      "conceptos": [
+        "comida"
+      ]
+    },
+    {
+      "id": "h13_f5",
+      "respuesta_id": "h13",
+      "texto": "Mal audio en la apertura impidió entender las reglas de entrega",
+      "cita": "el audio de la charla de apertura no se escuchaba nada atrás entonces no cachamos bien las reglas de entrega",
+      "emocion": "molestia",
+      "intensidad": 0.5,
+      "conceptos": [
+        "audio",
+        "reglas"
+      ]
+    },
+    {
+      "id": "h14_f1",
+      "respuesta_id": "h14",
+      "texto": "La experiencia superó lo que imaginaba, muy distinta",
+      "cita": "La experiencia ha sido muy distinta a lo que me imaginaba.",
+      "emocion": "sorpresa",
+      "intensidad": 0.6,
+      "conceptos": [
+        "experiencia"
+      ]
+    },
+    {
+      "id": "h14_f2",
+      "respuesta_id": "h14",
+      "texto": "En regiones no existen eventos de esta escala",
+      "cita": "Allá en Temuco no hay nada de esto, o sea hay cosas pero chicas",
+      "emocion": "decepcion",
+      "intensidad": 0.4,
+      "conceptos": [
+        "regiones"
+      ]
+    },
+    {
+      "id": "h14_f3",
+      "respuesta_id": "h14",
+      "texto": "Ver tanto talento junto genera susto y motivación",
+      "cita": "ver a tanta gente tan buena junta da como susto y ganas al mismo tiempo",
+      "emocion": "entusiasmo",
+      "intensidad": 0.7,
+      "conceptos": [
+        "comunidad",
+        "motivación"
+      ]
+    },
+    {
+      "id": "h14_f4",
+      "respuesta_id": "h14",
+      "texto": "Se siente atrás, pero cree poder seguir el ritmo",
+      "cita": "Me siento un poco atrás de los demás... pero también me doy cuenta de que puedo seguirles el ritmo si me esfuerzo",
+      "emocion": "esperanza",
+      "intensidad": 0.6,
+      "conceptos": [
+        "nivel técnico",
+        "motivación"
+      ]
+    },
+    {
+      "id": "h14_f5",
+      "respuesta_id": "h14",
+      "texto": "Pide difundir más la beca de viaje en regiones",
+      "cita": "la beca de viaje me enteré tarde que existía, ojalá la difundan más en regiones",
+      "emocion": "frustracion",
+      "intensidad": 0.5,
+      "conceptos": [
+        "beca viaje",
+        "regiones"
+      ]
+    },
+    {
+      "id": "h15_f1",
+      "respuesta_id": "h15",
+      "texto": "El producto está casi listo",
+      "cita": "El producto está, está casi listo",
+      "emocion": "satisfaccion",
+      "intensidad": 0.4,
+      "conceptos": [
+        "producto"
+      ]
+    },
+    {
+      "id": "h15_f2",
+      "respuesta_id": "h15",
+      "texto": "Le angustia tener que presentar el pitch",
+      "cita": "lo que me tiene mal es el pitch",
+      "emocion": "angustia",
+      "intensidad": 0.8,
+      "conceptos": [
+        "pitch",
+        "presentación"
+      ]
+    },
+    {
+      "id": "h15_f3",
+      "respuesta_id": "h15",
+      "texto": "No logra ajustar el pitch a los tres minutos",
+      "cita": "Tenemos tres minutos y en el ensayo me demoré seis",
+      "emocion": "preocupacion",
+      "intensidad": 0.7,
+      "conceptos": [
+        "pitch",
+        "tiempo"
+      ]
+    },
+    {
+      "id": "h15_f4",
+      "respuesta_id": "h15",
+      "texto": "Se trabó en la demo durante el ensayo",
+      "cita": "me trabé en la parte de la demo porque se me olvidó qué botón apretar",
+      "emocion": "frustracion",
+      "intensidad": 0.6,
+      "conceptos": [
+        "demo",
+        "pitch"
+      ]
+    },
+    {
+      "id": "h15_f5",
+      "respuesta_id": "h15",
+      "texto": "El fin de semana, equipo y comida han sido buenos",
+      "cita": "El resto del fin de semana ha sido entretenido, el equipo bien, la comida bien",
+      "emocion": "satisfaccion",
+      "intensidad": 0.5,
+      "conceptos": [
+        "equipo",
+        "experiencia"
+      ]
+    }
+  ],
+  "temas": [
+    {
+      "id": "t1",
+      "nombre": "Agotamiento, estrés y malestar extremo",
+      "resumen": "Cansancio, estrés, enfermedad y angustia por el pitch marcaron la experiencia.",
+      "x": -2,
+      "y": -1
+    },
+    {
+      "id": "t2",
+      "nombre": "Proyecto avanza aunque incompleto",
+      "resumen": "Los proyectos funcionan parcialmente o con pivots, pero avanzan.",
+      "x": 1,
+      "y": -2
+    },
+    {
+      "id": "t3",
+      "nombre": "Comida bien, café y duchas insuficientes",
+      "resumen": "La comida fue buena en general, pero faltó café, duchas y opciones veganas.",
+      "x": -1,
+      "y": 2
+    },
+    {
+      "id": "t4",
+      "nombre": "Venir solo o nuevo valió la pena",
+      "resumen": "Participantes nuevos, solos o de regiones valoran haber venido pese a sus miedos.",
+      "x": 2,
+      "y": 1
+    },
+    {
+      "id": "t5",
+      "nombre": "Apoyo y buen ambiente fueron clave",
+      "resumen": "Equipos, mentores y organización aportaron apoyo y buen ambiente.",
+      "x": 2,
+      "y": 0
+    },
+    {
+      "id": "t6",
+      "nombre": "Compañeros de equipo fallaron",
+      "resumen": "Algunos compañeros abandonaron, perdieron tiempo o subvaloraron aportes.",
+      "x": -1,
+      "y": -2.5
+    },
+    {
+      "id": "t7",
+      "nombre": "Fallas técnicas e infraestructura molestan",
+      "resumen": "Wifi, APIs, Docker y audio causaron pérdidas de tiempo.",
+      "x": -2.5,
+      "y": 0.5
+    },
+    {
+      "id": "t8",
+      "nombre": "Falta información de estacionamiento y acceso",
+      "resumen": "No hubo información sobre estacionamiento ni facilidades de acceso.",
+      "x": -2.5,
+      "y": 2.5
+    },
+    {
+      "id": "t9",
+      "nombre": "Sospecha de código previo, revisar commits",
+      "resumen": "Se sospecha que algunos equipos traían código hecho y piden revisar commits.",
+      "x": 0,
+      "y": -3
+    }
+  ],
+  "asignacion": [
+    {
+      "frase": "h01_f1",
+      "tema": "t1"
+    },
+    {
+      "frase": "h01_f2",
+      "tema": "t2"
+    },
+    {
+      "frase": "h01_f3",
+      "tema": "t3"
+    },
+    {
+      "frase": "h01_f4",
+      "tema": "t3"
+    },
+    {
+      "frase": "h02_f1",
+      "tema": "t4"
+    },
+    {
+      "frase": "h02_f2",
+      "tema": "t4"
+    },
+    {
+      "frase": "h02_f3",
+      "tema": "t5"
+    },
+    {
+      "frase": "h02_f4",
+      "tema": "t5"
+    },
+    {
+      "frase": "h02_f5",
+      "tema": "t4"
+    },
+    {
+      "frase": "h03_f1",
+      "tema": "t6"
+    },
+    {
+      "frase": "h03_f2",
+      "tema": "t6"
+    },
+    {
+      "frase": "h03_f3",
+      "tema": "t1"
+    },
+    {
+      "frase": "h03_f4",
+      "tema": "t5"
+    },
+    {
+      "frase": "h03_f5",
+      "tema": "t2"
+    },
+    {
+      "frase": "h04_f1",
+      "tema": "t7"
+    },
+    {
+      "frase": "h04_f2",
+      "tema": "t7"
+    },
+    {
+      "frase": "h04_f3",
+      "tema": "t5"
+    },
+    {
+      "frase": "h04_f4",
+      "tema": "t2"
+    },
+    {
+      "frase": "h04_f5",
+      "tema": "t5"
+    },
+    {
+      "frase": "h05_f1",
+      "tema": "t8"
+    },
+    {
+      "frase": "h05_f2",
+      "tema": "t8"
+    },
+    {
+      "frase": "h05_f3",
+      "tema": "t8"
+    },
+    {
+      "frase": "h05_f4",
+      "tema": "t5"
+    },
+    {
+      "frase": "h05_f5",
+      "tema": "t8"
+    },
+    {
+      "frase": "h06_f1",
+      "tema": "t6"
+    },
+    {
+      "frase": "h06_f2",
+      "tema": "t6"
+    },
+    {
+      "frase": "h06_f3",
+      "tema": "t6"
+    },
+    {
+      "frase": "h06_f4",
+      "tema": "t6"
+    },
+    {
+      "frase": "h06_f5",
+      "tema": "t1"
+    },
+    {
+      "frase": "h07_f1",
+      "tema": "t5"
+    },
+    {
+      "frase": "h07_f2",
+      "tema": "t2"
+    },
+    {
+      "frase": "h07_f3",
+      "tema": "t7"
+    },
+    {
+      "frase": "h08_f1",
+      "tema": "t4"
+    },
+    {
+      "frase": "h08_f2",
+      "tema": "t4"
+    },
+    {
+      "frase": "h08_f3",
+      "tema": "t4"
+    },
+    {
+      "frase": "h08_f4",
+      "tema": "t1"
+    },
+    {
+      "frase": "h08_f5",
+      "tema": "t4"
+    },
+    {
+      "frase": "h09_f1",
+      "tema": "t1"
+    },
+    {
+      "frase": "h09_f2",
+      "tema": "t7"
+    },
+    {
+      "frase": "h09_f3",
+      "tema": "t5"
+    },
+    {
+      "frase": "h09_f4",
+      "tema": "t7"
+    },
+    {
+      "frase": "h09_f5",
+      "tema": "t1"
+    },
+    {
+      "frase": "h10_f1",
+      "tema": "t5"
+    },
+    {
+      "frase": "h10_f2",
+      "tema": "t2"
+    },
+    {
+      "frase": "h10_f3",
+      "tema": "t5"
+    },
+    {
+      "frase": "h10_f4",
+      "tema": "t3"
+    },
+    {
+      "frase": "h10_f5",
+      "tema": "t5"
+    },
+    {
+      "frase": "h11_f1",
+      "tema": "t1"
+    },
+    {
+      "frase": "h11_f2",
+      "tema": "t1"
+    },
+    {
+      "frase": "h11_f3",
+      "tema": "t3"
+    },
+    {
+      "frase": "h11_f4",
+      "tema": "t3"
+    },
+    {
+      "frase": "h11_f5",
+      "tema": "t1"
+    },
+    {
+      "frase": "h12_f1",
+      "tema": "t9"
+    },
+    {
+      "frase": "h12_f2",
+      "tema": "t9"
+    },
+    {
+      "frase": "h12_f3",
+      "tema": "t9"
+    },
+    {
+      "frase": "h12_f4",
+      "tema": "t5"
+    },
+    {
+      "frase": "h12_f5",
+      "tema": "t2"
+    },
+    {
+      "frase": "h13_f1",
+      "tema": "t5"
+    },
+    {
+      "frase": "h13_f2",
+      "tema": "t5"
+    },
+    {
+      "frase": "h13_f3",
+      "tema": "t1"
+    },
+    {
+      "frase": "h13_f4",
+      "tema": "t3"
+    },
+    {
+      "frase": "h13_f5",
+      "tema": "t7"
+    },
+    {
+      "frase": "h14_f1",
+      "tema": "t4"
+    },
+    {
+      "frase": "h14_f2",
+      "tema": "t4"
+    },
+    {
+      "frase": "h14_f3",
+      "tema": "t4"
+    },
+    {
+      "frase": "h14_f4",
+      "tema": "t4"
+    },
+    {
+      "frase": "h14_f5",
+      "tema": "t4"
+    },
+    {
+      "frase": "h15_f1",
+      "tema": "t2"
+    },
+    {
+      "frase": "h15_f2",
+      "tema": "t1"
+    },
+    {
+      "frase": "h15_f3",
+      "tema": "t1"
+    },
+    {
+      "frase": "h15_f4",
+      "tema": "t1"
+    },
+    {
+      "frase": "h15_f5",
+      "tema": "t3"
+    }
+  ]
+}

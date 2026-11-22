@@ -1,0 +1,527 @@
+[
+  {
+    "paso": "haiku_solo",
+    "k": 1,
+    "model": "claude-haiku-5-5",
+    "entrada": 1261,
+    "salida": 288
+  },
+  {
+    "paso": "extraer",
+    "k": 1,
+    "model": "claude-opus-5-5",
+    "entrada": 983,
+    "salida": 328
+  },
+  {
+    "paso": "normalizar_haiku",
+    "k": 1,
+    "model": "claude-haiku-5-5",
+    "entrada": 1028,
+    "salida": 444
+  },
+  {
+    "paso": "agrupar",
+    "k": 1,
+    "model": "claude-opus-5-5",
+    "entrada": 946,
+    "salida": 305
+  },
+  {
+    "paso": "normalizar_opus",
+    "k": 1,
+    "model": "claude-opus-5-5",
+    "entrada": 1028,
+    "salida": 263
+  },
+  {
+    "paso": "extraer",
+    "k": 2,
+    "model": "claude-opus-5-5",
+    "entrada": 1244,
+    "salida": 490
+  },
+  {
+    "paso": "haiku_solo",
+    "k": 2,
+    "model": "claude-haiku-5-5",
+    "entrada": 1522,
+    "salida": 1140
+  },
+  {
+    "paso": "agrupar",
+    "k": 2,
+    "model": "claude-opus-5-5",
+    "entrada": 1204,
+    "salida": 498
+  },
+  {
+    "paso": "normalizar_haiku",
+    "k": 2,
+    "model": "claude-haiku-5-5",
+    "entrada": 1481,
+    "salida": 1193
+  },
+  {
+    "paso": "normalizar_opus",
+    "k": 2,
+    "model": "claude-opus-5-5",
+    "entrada": 1501,
+    "salida": 547
+  },
+  {
+    "paso": "extraer",
+    "k": 3,
+    "model": "claude-opus-5-5",
+    "entrada": 1808,
+    "salida": 504
+  },
+  {
+    "paso": "haiku_solo",
+    "k": 3,
+    "model": "claude-haiku-5-5",
+    "entrada": 2086,
+    "salida": 1427
+  },
+  {
+    "paso": "agrupar",
+    "k": 3,
+    "model": "claude-opus-5-5",
+    "entrada": 1427,
+    "salida": 657
+  },
+  {
+    "paso": "normalizar_opus",
+    "k": 3,
+    "model": "claude-opus-5-5",
+    "entrada": 2076,
+    "salida": 832
+  },
+  {
+    "paso": "normalizar_haiku",
+    "k": 3,
+    "model": "claude-haiku-5-5",
+    "entrada": 2161,
+    "salida": 2189
+  },
+  {
+    "paso": "extraer",
+    "k": 4,
+    "model": "claude-opus-5-5",
+    "entrada": 1178,
+    "salida": 452
+  },
+  {
+    "paso": "haiku_solo",
+    "k": 4,
+    "model": "claude-haiku-5-5",
+    "entrada": 1456,
+    "salida": 1125
+  },
+  {
+    "paso": "agrupar",
+    "k": 4,
+    "model": "claude-opus-5-5",
+    "entrada": 1637,
+    "salida": 891
+  },
+  {
+    "paso": "normalizar_opus",
+    "k": 4,
+    "model": "claude-opus-5-5",
+    "entrada": 2473,
+    "salida": 993
+  },
+  {
+    "paso": "normalizar_haiku",
+    "k": 4,
+    "model": "claude-haiku-5-5",
+    "entrada": 2771,
+    "salida": 2595
+  },
+  {
+    "paso": "haiku_solo",
+    "k": 5,
+    "model": "claude-haiku-5-5",
+    "entrada": 1469,
+    "salida": 368
+  },
+  {
+    "paso": "extraer",
+    "k": 5,
+    "model": "claude-opus-5-5",
+    "entrada": 1191,
+    "salida": 476
+  },
+  {
+    "paso": "normalizar_opus",
+    "k": 5,
+    "model": "claude-opus-5-5",
+    "entrada": 2755,
+    "salida": 1128
+  },
+  {
+    "paso": "agrupar",
+    "k": 5,
+    "model": "claude-opus-5-5",
+    "entrada": 1864,
+    "salida": 1089
+  },
+  {
+    "paso": "normalizar_haiku",
+    "k": 5,
+    "model": "claude-haiku-5-5",
+    "entrada": 3206,
+    "salida": 2707
+  },
+  {
+    "paso": "haiku_solo",
+    "k": 6,
+    "model": "claude-haiku-5-5",
+    "entrada": 1573,
+    "salida": 427
+  },
+  {
+    "paso": "extraer",
+    "k": 6,
+    "model": "claude-opus-5-5",
+    "entrada": 1295,
+    "salida": 450
+  },
+  {
+    "paso": "agrupar",
+    "k": 6,
+    "model": "claude-opus-5-5",
+    "entrada": 2068,
+    "salida": 1157
+  },
+  {
+    "paso": "normalizar_opus",
+    "k": 6,
+    "model": "claude-opus-5-5",
+    "entrada": 3087,
+    "salida": 1261
+  },
+  {
+    "paso": "normalizar_haiku",
+    "k": 6,
+    "model": "claude-haiku-5-5",
+    "entrada": 3597,
+    "salida": 3714
+  },
+  {
+    "paso": "extraer",
+    "k": 7,
+    "model": "claude-opus-5-5",
+    "entrada": 972,
+    "salida": 323
+  },
+  {
+    "paso": "haiku_solo",
+    "k": 7,
+    "model": "claude-haiku-5-5",
+    "entrada": 1250,
+    "salida": 559
+  },
+  {
+    "paso": "normalizar_opus",
+    "k": 7,
+    "model": "claude-opus-5-5",
+    "entrada": 3208,
+    "salida": 1301
+  },
+  {
+    "paso": "agrupar",
+    "k": 7,
+    "model": "claude-opus-5-5",
+    "entrada": 2203,
+    "salida": 1237
+  },
+  {
+    "paso": "normalizar_haiku",
+    "k": 7,
+    "model": "claude-haiku-5-5",
+    "entrada": 3817,
+    "salida": 3497
+  },
+  {
+    "paso": "extraer",
+    "k": 8,
+    "model": "claude-opus-5-5",
+    "entrada": 1281,
+    "salida": 513
+  },
+  {
+    "paso": "haiku_solo",
+    "k": 8,
+    "model": "claude-haiku-5-5",
+    "entrada": 1559,
+    "salida": 1068
+  },
+  {
+    "paso": "agrupar",
+    "k": 8,
+    "model": "claude-opus-5-5",
+    "entrada": 2395,
+    "salida": 1327
+  },
+  {
+    "paso": "normalizar_opus",
+    "k": 8,
+    "model": "claude-opus-5-5",
+    "entrada": 3466,
+    "salida": 1410
+  },
+  {
+    "paso": "normalizar_haiku",
+    "k": 8,
+    "model": "claude-haiku-5-5",
+    "entrada": 4138,
+    "salida": 4206
+  },
+  {
+    "paso": "extraer",
+    "k": 9,
+    "model": "claude-opus-5-5",
+    "entrada": 1197,
+    "salida": 463
+  },
+  {
+    "paso": "haiku_solo",
+    "k": 9,
+    "model": "claude-haiku-5-5",
+    "entrada": 1475,
+    "salida": 1020
+  },
+  {
+    "paso": "normalizar_opus",
+    "k": 9,
+    "model": "claude-opus-5-5",
+    "entrada": 3814,
+    "salida": 1530
+  },
+  {
+    "paso": "agrupar",
+    "k": 9,
+    "model": "claude-opus-5-5",
+    "entrada": 2582,
+    "salida": 1425
+  },
+  {
+    "paso": "normalizar_haiku",
+    "k": 9,
+    "model": "claude-haiku-5-5",
+    "entrada": 4759,
+    "salida": 4287
+  },
+  {
+    "paso": "extraer",
+    "k": 10,
+    "model": "claude-opus-5-5",
+    "entrada": 1859,
+    "salida": 505
+  },
+  {
+    "paso": "haiku_solo",
+    "k": 10,
+    "model": "claude-haiku-5-5",
+    "entrada": 2137,
+    "salida": 1725
+  },
+  {
+    "paso": "agrupar",
+    "k": 10,
+    "model": "claude-opus-5-5",
+    "entrada": 2767,
+    "salida": 1536
+  },
+  {
+    "paso": "normalizar_opus",
+    "k": 10,
+    "model": "claude-opus-5-5",
+    "entrada": 4310,
+    "salida": 1735
+  },
+  {
+    "paso": "normalizar_haiku",
+    "k": 10,
+    "model": "claude-haiku-5-5",
+    "entrada": 5375,
+    "salida": 4774
+  },
+  {
+    "paso": "extraer",
+    "k": 11,
+    "model": "claude-opus-5-5",
+    "entrada": 1135,
+    "salida": 496
+  },
+  {
+    "paso": "haiku_solo",
+    "k": 11,
+    "model": "claude-haiku-5-5",
+    "entrada": 1413,
+    "salida": 866
+  },
+  {
+    "paso": "agrupar",
+    "k": 11,
+    "model": "claude-opus-5-5",
+    "entrada": 2947,
+    "salida": 1685
+  },
+  {
+    "paso": "normalizar_opus",
+    "k": 11,
+    "model": "claude-opus-5-5",
+    "entrada": 4629,
+    "salida": 1845
+  },
+  {
+    "paso": "normalizar_haiku",
+    "k": 11,
+    "model": "claude-haiku-5-5",
+    "entrada": 5753,
+    "salida": 6239
+  },
+  {
+    "paso": "extraer",
+    "k": 12,
+    "model": "claude-opus-5-5",
+    "entrada": 1223,
+    "salida": 480
+  },
+  {
+    "paso": "haiku_solo",
+    "k": 12,
+    "model": "claude-haiku-5-5",
+    "entrada": 1501,
+    "salida": 1077
+  },
+  {
+    "paso": "normalizar_opus",
+    "k": 12,
+    "model": "claude-opus-5-5",
+    "entrada": 4938,
+    "salida": 1958
+  },
+  {
+    "paso": "agrupar",
+    "k": 12,
+    "model": "claude-opus-5-5",
+    "entrada": 3132,
+    "salida": 1848
+  },
+  {
+    "paso": "normalizar_haiku",
+    "k": 12,
+    "model": "claude-haiku-5-5",
+    "entrada": 6217,
+    "salida": 6274
+  },
+  {
+    "paso": "haiku_solo",
+    "k": 13,
+    "model": "claude-haiku-5-5",
+    "entrada": 1483,
+    "salida": 904
+  },
+  {
+    "paso": "extraer",
+    "k": 13,
+    "model": "claude-opus-5-5",
+    "entrada": 1205,
+    "salida": 530
+  },
+  {
+    "paso": "agrupar",
+    "k": 13,
+    "model": "claude-opus-5-5",
+    "entrada": 3351,
+    "salida": 1950
+  },
+  {
+    "paso": "normalizar_opus",
+    "k": 13,
+    "model": "claude-opus-5-5",
+    "entrada": 5237,
+    "salida": 2062
+  },
+  {
+    "paso": "normalizar_haiku",
+    "k": 13,
+    "model": "claude-haiku-5-5",
+    "entrada": 6613,
+    "salida": 5827
+  },
+  {
+    "paso": "extraer",
+    "k": 14,
+    "model": "claude-opus-5-5",
+    "entrada": 1260,
+    "salida": 508
+  },
+  {
+    "paso": "haiku_solo",
+    "k": 14,
+    "model": "claude-haiku-5-5",
+    "entrada": 1538,
+    "salida": 1038
+  },
+  {
+    "paso": "agrupar",
+    "k": 14,
+    "model": "claude-opus-5-5",
+    "entrada": 3533,
+    "salida": 2066
+  },
+  {
+    "paso": "normalizar_opus",
+    "k": 14,
+    "model": "claude-opus-5-5",
+    "entrada": 5517,
+    "salida": 2211
+  },
+  {
+    "paso": "normalizar_haiku",
+    "k": 14,
+    "model": "claude-haiku-5-5",
+    "entrada": 6889,
+    "salida": 5776
+  },
+  {
+    "paso": "haiku_solo",
+    "k": 15,
+    "model": "claude-haiku-5-5",
+    "entrada": 1477,
+    "salida": 668
+  },
+  {
+    "paso": "extraer",
+    "k": 15,
+    "model": "claude-opus-5-5",
+    "entrada": 1199,
+    "salida": 430
+  },
+  {
+    "paso": "agrupar",
+    "k": 15,
+    "model": "claude-opus-5-5",
+    "entrada": 3697,
+    "salida": 2148
+  },
+  {
+    "paso": "normalizar_opus",
+    "k": 15,
+    "model": "claude-opus-5-5",
+    "entrada": 5752,
+    "salida": 2315
+  },
+  {
+    "paso": "normalizar_haiku",
+    "k": 15,
+    "model": "claude-haiku-5-5",
+    "entrada": 7133,
+    "salida": 5900
+  }
+]

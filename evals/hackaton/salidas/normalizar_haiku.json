@@ -1,0 +1,502 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "medium",
+  "topicos": [
+    {
+      "id": "k1",
+      "nombre": "cansancio y desgaste",
+      "descripcion": "Agotamiento físico y mental durante el hackathon por falta de sueño y esfuerzo sostenido."
+    },
+    {
+      "id": "k2",
+      "nombre": "avance del proyecto",
+      "descripcion": "Estado de avance del proyecto que cada persona desarrolla durante el hackathon."
+    },
+    {
+      "id": "k3",
+      "nombre": "comida",
+      "descripcion": "Calidad, disponibilidad y opinión sobre la comida servida durante el evento."
+    },
+    {
+      "id": "k4",
+      "nombre": "café y bebidas",
+      "descripcion": "Disponibilidad o reposición de café y otras bebidas durante el evento."
+    },
+    {
+      "id": "k5",
+      "nombre": "compañeros de equipo",
+      "descripcion": "Relación y ambiente con las personas que integran el equipo."
+    },
+    {
+      "id": "k6",
+      "nombre": "idea del proyecto y feedback",
+      "descripcion": "Evaluación de la idea original del proyecto y de las críticas recibidas sobre ella."
+    },
+    {
+      "id": "k7",
+      "nombre": "nivel técnico propio",
+      "descripcion": "Autoevaluación de las habilidades técnicas personales frente al resto del equipo."
+    },
+    {
+      "id": "k8",
+      "nombre": "venir solo al evento",
+      "descripcion": "Haber asistido al hackathon sin compañeros de antemano y cómo resultó esa decisión."
+    },
+    {
+      "id": "k9",
+      "nombre": "duración de tareas técnicas",
+      "descripcion": "Tiempo que tomó completar tareas técnicas específicas frente a lo esperado."
+    },
+    {
+      "id": "k10",
+      "nombre": "decisiones de infraestructura",
+      "descripcion": "Elecciones de arquitectura o herramientas de infraestructura técnica del proyecto."
+    },
+    {
+      "id": "k11",
+      "nombre": "apoyo entre participantes",
+      "descripcion": "Ayuda o solidaridad recibida de otras personas del evento que no son del equipo."
+    },
+    {
+      "id": "k12",
+      "nombre": "organización y lugar",
+      "descripcion": "Evaluación de la organización general del evento, las instalaciones y el entorno del lugar."
+    },
+    {
+      "id": "k13",
+      "nombre": "mentores",
+      "descripcion": "Presencia, disponibilidad y aporte de los mentores durante el hackathon."
+    },
+    {
+      "id": "k14",
+      "nombre": "experiencia general",
+      "descripcion": "Valoración global de cómo ha sido el hackathon para la persona."
+    },
+    {
+      "id": "k15",
+      "nombre": "problemas con herramientas técnicas",
+      "descripcion": "Fallas al usar herramientas, entornos o software durante el desarrollo."
+    },
+    {
+      "id": "k16",
+      "nombre": "resultado en competencia",
+      "descripcion": "Expectativas o percepción sobre el resultado del proyecto frente a otros equipos."
+    },
+    {
+      "id": "k17",
+      "nombre": "diseño propio y su uso",
+      "descripcion": "Trabajo de diseño o investigación de la persona y cómo fue considerado o implementado en el proyecto."
+    },
+    {
+      "id": "k18",
+      "nombre": "ambiente del evento",
+      "descripcion": "Clima general y atmósfera del hackathon como evento."
+    },
+    {
+      "id": "k19",
+      "nombre": "conocer gente y contactos",
+      "descripcion": "Personas nuevas conocidas durante el evento y contactos que se llevan."
+    },
+    {
+      "id": "k20",
+      "nombre": "experiencia previa valorada",
+      "descripcion": "Percepción de que conocimientos o trabajos anteriores de la persona sirven en el hackathon."
+    },
+    {
+      "id": "k21",
+      "nombre": "ruido nocturno",
+      "descripcion": "Molestias por ruido o música durante la noche que dificultan descansar o concentrarse."
+    },
+    {
+      "id": "k22",
+      "nombre": "edad de participantes",
+      "descripcion": "Opinión sobre la diversidad de edades entre las personas asistentes al evento."
+    },
+    {
+      "id": "k23",
+      "nombre": "demo y presentación",
+      "descripcion": "Preparación y percepción de la demo o pitch final del proyecto."
+    },
+    {
+      "id": "k24",
+      "nombre": "wifi y conexión",
+      "descripcion": "Fallas o ausencia de conexión a internet wifi durante el evento."
+    },
+    {
+      "id": "k25",
+      "nombre": "estacionamiento y transporte",
+      "descripcion": "Dificultades para estacionar o llegar al lugar del evento."
+    },
+    {
+      "id": "k27",
+      "nombre": "salud y malestar",
+      "descripcion": "Enfermedad o molestias de salud que afectan a la persona durante el evento."
+    },
+    {
+      "id": "k28",
+      "nombre": "rendimiento personal",
+      "descripcion": "Percepción sobre cuánto está avanzando o aportando la persona en el hackathon."
+    },
+    {
+      "id": "k29",
+      "nombre": "punto de partida del equipo",
+      "descripcion": "Diferencias en qué tan avanzado partió cada equipo, con o sin código previo."
+    },
+    {
+      "id": "k30",
+      "nombre": "datos del proyecto",
+      "descripcion": "Características y calidad de los datos con que trabaja el proyecto."
+    },
+    {
+      "id": "k31",
+      "nombre": "aprendizaje de tecnologías nuevas",
+      "descripcion": "Conocimiento de herramientas o tecnologías nuevas adquirido durante el hackathon."
+    },
+    {
+      "id": "k32",
+      "nombre": "calidad de respuestas del sistema",
+      "descripcion": "Calidad o precisión de las respuestas que entrega el sistema del proyecto tras cambios técnicos."
+    },
+    {
+      "id": "k33",
+      "nombre": "duchas e higiene",
+      "descripcion": "Disponibilidad de duchas y condiciones de higiene durante el evento."
+    },
+    {
+      "id": "k36",
+      "nombre": "charla de apertura y reglas",
+      "descripcion": "Claridad de la charla inicial y de las reglas de entrega comunicadas al comienzo."
+    },
+    {
+      "id": "k37",
+      "nombre": "beca de viaje",
+      "descripcion": "Difusión y conocimiento de la beca para financiar el viaje al evento."
+    }
+  ],
+  "asignacion": [
+    {
+      "tema": "h01_t1",
+      "topico": "k1"
+    },
+    {
+      "tema": "h01_t2",
+      "topico": "k2"
+    },
+    {
+      "tema": "h01_t3",
+      "topico": "k3"
+    },
+    {
+      "tema": "h01_t4",
+      "topico": "k4"
+    },
+    {
+      "tema": "h02_t1",
+      "topico": "k5"
+    },
+    {
+      "tema": "h02_t2",
+      "topico": "k6"
+    },
+    {
+      "tema": "h02_t3",
+      "topico": "k6"
+    },
+    {
+      "tema": "h02_t4",
+      "topico": "k7"
+    },
+    {
+      "tema": "h02_t5",
+      "topico": "k9"
+    },
+    {
+      "tema": "h02_t6",
+      "topico": "k8"
+    },
+    {
+      "tema": "h03_t1",
+      "topico": "k5"
+    },
+    {
+      "tema": "h03_t2",
+      "topico": "k5"
+    },
+    {
+      "tema": "h03_t3",
+      "topico": "k10"
+    },
+    {
+      "tema": "h03_t4",
+      "topico": "k1"
+    },
+    {
+      "tema": "h03_t5",
+      "topico": "k11"
+    },
+    {
+      "tema": "h03_t6",
+      "topico": "k12"
+    },
+    {
+      "tema": "h03_t7",
+      "topico": "k13"
+    },
+    {
+      "tema": "h03_t8",
+      "topico": "k2"
+    },
+    {
+      "tema": "h04_t1",
+      "topico": "k14"
+    },
+    {
+      "tema": "h04_t2",
+      "topico": "k15"
+    },
+    {
+      "tema": "h04_t3",
+      "topico": "k24"
+    },
+    {
+      "tema": "h04_t4",
+      "topico": "k6"
+    },
+    {
+      "tema": "h04_t5",
+      "topico": "k6"
+    },
+    {
+      "tema": "h04_t6",
+      "topico": "k5"
+    },
+    {
+      "tema": "h04_t7",
+      "topico": "k16"
+    },
+    {
+      "tema": "h05_t1",
+      "topico": "k25"
+    },
+    {
+      "tema": "h05_t2",
+      "topico": "k14"
+    },
+    {
+      "tema": "h06_t1",
+      "topico": "k17"
+    },
+    {
+      "tema": "h06_t2",
+      "topico": "k17"
+    },
+    {
+      "tema": "h06_t3",
+      "topico": "k17"
+    },
+    {
+      "tema": "h06_t4",
+      "topico": "k17"
+    },
+    {
+      "tema": "h06_t5",
+      "topico": "k17"
+    },
+    {
+      "tema": "h06_t6",
+      "topico": "k18"
+    },
+    {
+      "tema": "h06_t7",
+      "topico": "k19"
+    },
+    {
+      "tema": "h07_t1",
+      "topico": "k14"
+    },
+    {
+      "tema": "h07_t2",
+      "topico": "k24"
+    },
+    {
+      "tema": "h08_t1",
+      "topico": "k20"
+    },
+    {
+      "tema": "h08_t2",
+      "topico": "k5"
+    },
+    {
+      "tema": "h08_t3",
+      "topico": "k1"
+    },
+    {
+      "tema": "h08_t4",
+      "topico": "k21"
+    },
+    {
+      "tema": "h08_t5",
+      "topico": "k22"
+    },
+    {
+      "tema": "h09_t1",
+      "topico": "k15"
+    },
+    {
+      "tema": "h09_t2",
+      "topico": "k12"
+    },
+    {
+      "tema": "h09_t3",
+      "topico": "k32"
+    },
+    {
+      "tema": "h09_t4",
+      "topico": "k23"
+    },
+    {
+      "tema": "h10_t1",
+      "topico": "k14"
+    },
+    {
+      "tema": "h10_t2",
+      "topico": "k16"
+    },
+    {
+      "tema": "h10_t3",
+      "topico": "k30"
+    },
+    {
+      "tema": "h10_t4",
+      "topico": "k5"
+    },
+    {
+      "tema": "h10_t5",
+      "topico": "k33"
+    },
+    {
+      "tema": "h10_t6",
+      "topico": "k3"
+    },
+    {
+      "tema": "h10_t7",
+      "topico": "k13"
+    },
+    {
+      "tema": "h10_t8",
+      "topico": "k21"
+    },
+    {
+      "tema": "h11_t1",
+      "topico": "k27"
+    },
+    {
+      "tema": "h11_t2",
+      "topico": "k12"
+    },
+    {
+      "tema": "h11_t3",
+      "topico": "k3"
+    },
+    {
+      "tema": "h11_t4",
+      "topico": "k5"
+    },
+    {
+      "tema": "h11_t5",
+      "topico": "k28"
+    },
+    {
+      "tema": "h11_t6",
+      "topico": "k23"
+    },
+    {
+      "tema": "h12_t1",
+      "topico": "k29"
+    },
+    {
+      "tema": "h12_t2",
+      "topico": "k29"
+    },
+    {
+      "tema": "h12_t3",
+      "topico": "k12"
+    },
+    {
+      "tema": "h12_t4",
+      "topico": "k12"
+    },
+    {
+      "tema": "h12_t5",
+      "topico": "k31"
+    },
+    {
+      "tema": "h13_t1",
+      "topico": "k13"
+    },
+    {
+      "tema": "h13_t2",
+      "topico": "k13"
+    },
+    {
+      "tema": "h13_t3",
+      "topico": "k1"
+    },
+    {
+      "tema": "h13_t4",
+      "topico": "k3"
+    },
+    {
+      "tema": "h13_t5",
+      "topico": "k36"
+    },
+    {
+      "tema": "h13_t6",
+      "topico": "k14"
+    },
+    {
+      "tema": "h14_t1",
+      "topico": "k18"
+    },
+    {
+      "tema": "h14_t2",
+      "topico": "k7"
+    },
+    {
+      "tema": "h14_t3",
+      "topico": "k25"
+    },
+    {
+      "tema": "h14_t4",
+      "topico": "k37"
+    },
+    {
+      "tema": "h14_t5",
+      "topico": "k14"
+    },
+    {
+      "tema": "h15_t1",
+      "topico": "k2"
+    },
+    {
+      "tema": "h15_t2",
+      "topico": "k23"
+    },
+    {
+      "tema": "h15_t3",
+      "topico": "k23"
+    },
+    {
+      "tema": "h15_t4",
+      "topico": "k5"
+    },
+    {
+      "tema": "h15_t5",
+      "topico": "k3"
+    },
+    {
+      "tema": "h15_t6",
+      "topico": "k18"
+    }
+  ]
+}

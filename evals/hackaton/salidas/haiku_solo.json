@@ -1,0 +1,663 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "medium",
+  "respuestas": {
+    "h01": {
+      "temas": [
+        {
+          "tema": "cansancio fisico",
+          "direccion": "negativo",
+          "intensidad": "fuerte",
+          "tendencia": "empeora",
+          "cita": "ya mira estoy muerto llevo como veintidós horas despierto"
+        },
+        {
+          "tema": "avance del proyecto",
+          "direccion": "mixto",
+          "intensidad": null,
+          "tendencia": "no_dice",
+          "cita": "el proyecto anda a medias pero anda, igual"
+        },
+        {
+          "tema": "comida",
+          "direccion": "positivo",
+          "intensidad": "leve",
+          "tendencia": "no_dice",
+          "cita": "La comida bien"
+        },
+        {
+          "tema": "falta de cafe",
+          "direccion": "negativo",
+          "intensidad": "moderada",
+          "tendencia": "empeora",
+          "cita": "El café se acabó como a las cuatro de la mañana y nadie lo repuso"
+        }
+      ],
+      "emocion": "cansancio",
+      "propone": "reponer el café"
+    },
+    "h02": {
+      "temas": [
+        {
+          "tema": "compañeros de equipo",
+          "direccion": "positivo",
+          "intensidad": "fuerte",
+          "tendencia": "no_dice",
+          "cita": "los chiquillos han sido súper buena onda"
+        },
+        {
+          "tema": "mentor que criticó la idea",
+          "direccion": "mixto",
+          "intensidad": null,
+          "tendencia": "no_dice",
+          "cita": "fue medio duro escucharlo pero tenía razón po"
+        },
+        {
+          "tema": "idea original del proyecto",
+          "direccion": "negativo",
+          "intensidad": "moderada",
+          "tendencia": "mejora",
+          "cita": "la idea estaba mal planteada... Cambiamos harto después de eso"
+        },
+        {
+          "tema": "su nivel técnico",
+          "direccion": "negativo",
+          "intensidad": "leve",
+          "tendencia": "no_dice",
+          "cita": "Y igual soy el que menos sabe, eso es verdad jaja"
+        },
+        {
+          "tema": "tarea de scraping",
+          "direccion": "negativo",
+          "intensidad": "leve",
+          "tendencia": "no_dice",
+          "cita": "me demoré como el triple"
+        },
+        {
+          "tema": "haber venido solo",
+          "direccion": "positivo",
+          "intensidad": "moderada",
+          "tendencia": "mejora",
+          "cita": "contento de haber venido solo al final"
+        }
+      ],
+      "emocion": "satisfaccion",
+      "propone": null
+    },
+    "h03": {
+      "temas": [
+        {
+          "tema": "equipo",
+          "direccion": "negativo",
+          "intensidad": "fuerte",
+          "tendencia": "empeora",
+          "cita": "Lo que sí, no sé si volvería con el mismo equipo. Con la Cata sí, mil veces. Con los otros dos no sé."
+        },
+        {
+          "tema": "abandono de integrante",
+          "direccion": "negativo",
+          "intensidad": "moderada",
+          "tendencia": "no_dice",
+          "cita": "uno de los chiquillos dijo que tenía que ir a un matrimonio, cosa que nadie sabía"
+        },
+        {
+          "tema": "infraestructura con Kubernetes",
+          "direccion": "negativo",
+          "intensidad": "moderada",
+          "tendencia": "no_dice",
+          "cita": "se obsesionó con hacer la infraestructura perfecta, con Kubernetes, en una hackatón de treinta y seis horas"
+        },
+        {
+          "tema": "estrés",
+          "direccion": "negativo",
+          "intensidad": "fuerte",
+          "tendencia": "empeora",
+          "cita": "Entonces fue mucho estrés, mucho. A las tres de la mañana me puse a llorar en el baño"
+        },
+        {
+          "tema": "apoyo de otra participante",
+          "direccion": "positivo",
+          "intensidad": "moderada",
+          "tendencia": "no_dice",
+          "cita": "me pasó un chicle y me dijo que a ella le había pasado lo mismo el año pasado, y no sé, eso me ayudó caleta"
+        },
+        {
+          "tema": "organización y lugar",
+          "direccion": "neutro",
+          "intensidad": null,
+          "tendencia": "no_dice",
+          "cita": "la organización bien, la comida bien, el lugar bien, no tengo nada que decir de eso"
+        },
+        {
+          "tema": "mentores",
+          "direccion": "negativo",
+          "intensidad": "leve",
+          "tendencia": "no_dice",
+          "cita": "los mentores a veces pasaban justo cuando no estábamos"
+        },
+        {
+          "tema": "producto final",
+          "direccion": "mixto",
+          "intensidad": null,
+          "tendencia": "no_dice",
+          "cita": "No está lindo, no está lo que queríamos, pero funciona el flujo principal"
+        }
+      ],
+      "emocion": "cansancio",
+      "propone": null
+    },
+    "h04": {
+      "temas": [
+        {
+          "tema": "experiencia general",
+          "direccion": "positivo",
+          "intensidad": "fuerte",
+          "tendencia": "no_dice",
+          "cita": "Excelente, increíble, aprendí muchísimo"
+        },
+        {
+          "tema": "docker en mac m",
+          "direccion": "negativo",
+          "intensidad": "moderada",
+          "tendencia": "no_dice",
+          "cita": "Docker en Mac con chip M no sé qué no levanta la imagen que usamos"
+        },
+        {
+          "tema": "wifi del segundo piso",
+          "direccion": "negativo",
+          "intensidad": "leve",
+          "tendencia": "no_dice",
+          "cita": "el wifi del segundo piso no existe"
+        },
+        {
+          "tema": "pivots del proyecto",
+          "direccion": "mixto",
+          "intensidad": null,
+          "tendencia": "no_dice",
+          "cita": "Llevamos tres pivots. El tercero es el bueno, creo."
+        },
+        {
+          "tema": "nueva idea para contadores",
+          "direccion": "positivo",
+          "intensidad": "leve",
+          "tendencia": "no_dice",
+          "cita": "ahora es para, ya ni sé cómo explicarlo, es para contadores"
+        },
+        {
+          "tema": "ambiente del equipo",
+          "direccion": "positivo",
+          "intensidad": "fuerte",
+          "tendencia": "no_dice",
+          "cita": "el equipo se ríe harto y eso vale"
+        },
+        {
+          "tema": "resultado en competencia",
+          "direccion": "neutro",
+          "intensidad": null,
+          "tendencia": "no_dice",
+          "cita": "Si ganamos algo va a ser de puro milagro"
+        }
+      ],
+      "emocion": "alegria",
+      "propone": null
+    },
+    "h05": {
+      "temas": [
+        {
+          "tema": "estacionamiento",
+          "direccion": "negativo",
+          "intensidad": "moderada",
+          "tendencia": "no_dice",
+          "cita": "nadie me supo decir dónde estacionar, terminé dejándolo como a cuatro cuadras y me pasé toda la noche pensando que me lo iban a robar"
+        },
+        {
+          "tema": "hackatón en general",
+          "direccion": "positivo",
+          "intensidad": "leve",
+          "tendencia": "no_dice",
+          "cita": "la hackatón en sí bien"
+        }
+      ],
+      "emocion": "preocupacion",
+      "propone": "Poner información del estacionamiento para el próximo año"
+    },
+    "h06": {
+      "temas": [
+        {
+          "tema": "rol de diseñadora",
+          "direccion": "negativo",
+          "intensidad": "fuerte",
+          "tendencia": "no_dice",
+          "cita": "siento que me tratan como la que pone colores, cachai"
+        },
+        {
+          "tema": "trabajo de investigación ignorado",
+          "direccion": "negativo",
+          "intensidad": "moderada",
+          "tendencia": "no_dice",
+          "cita": "hice como cinco entrevistas rápidas a gente aquí mismo... y cuando lo mostré me dijeron ya sí lindo pero hagámoslo con shadcn por defecto"
+        },
+        {
+          "tema": "uso de shadcn por defecto",
+          "direccion": "negativo",
+          "intensidad": "moderada",
+          "tendencia": "no_dice",
+          "cita": "hagámoslo con shadcn por defecto nomás que es más rápido"
+        },
+        {
+          "tema": "validación del diseño por mentora",
+          "direccion": "mixto",
+          "intensidad": null,
+          "tendencia": "no_dice",
+          "cita": "una mentora vio el producto y lo primero que dijo fue que no se entendía qué hacía la pantalla principal, que era exactamente lo que yo había resuelto en el Figma"
+        },
+        {
+          "tema": "implementación del diseño propio",
+          "direccion": "mixto",
+          "intensidad": null,
+          "tendencia": "no_dice",
+          "cita": "Ahora están implementando mi diseño a la rápida. O sea al final pasó, pero me cansó."
+        },
+        {
+          "tema": "ambiente del evento",
+          "direccion": "positivo",
+          "intensidad": "moderada",
+          "tendencia": "no_dice",
+          "cita": "el ambiente es súper lindo"
+        },
+        {
+          "tema": "contactos y conocer gente",
+          "direccion": "positivo",
+          "intensidad": "moderada",
+          "tendencia": "no_dice",
+          "cita": "he conocido gente bacán, me llevo contactos"
+        }
+      ],
+      "emocion": "frustracion",
+      "propone": null
+    },
+    "h07": {
+      "temas": [
+        {
+          "tema": "experiencia general",
+          "direccion": "positivo",
+          "intensidad": "leve",
+          "tendencia": "no_dice",
+          "cita": "sí bien bien"
+        },
+        {
+          "tema": "caída de wifi",
+          "direccion": "negativo",
+          "intensidad": "leve",
+          "tendencia": "no_dice",
+          "cita": "La wifi se cayó un rato en la noche y perdimos como una hora, pero todo bien"
+        }
+      ],
+      "emocion": "neutral",
+      "propone": null
+    },
+    "h08": {
+      "temas": [
+        {
+          "tema": "experiencia previa valorada",
+          "direccion": "positivo",
+          "intensidad": "fuerte",
+          "tendencia": "no_dice",
+          "cita": "por primera vez siento que lo que hice antes sirve para algo acá"
+        },
+        {
+          "tema": "trato del equipo",
+          "direccion": "positivo",
+          "intensidad": "moderada",
+          "tendencia": "no_dice",
+          "cita": "me piden opinión todo el rato"
+        },
+        {
+          "tema": "cansancio físico",
+          "direccion": "negativo",
+          "intensidad": "moderada",
+          "tendencia": "no_dice",
+          "cita": "Dormí como dos horas en un puf y me duele la espalda entera"
+        },
+        {
+          "tema": "ruido nocturno",
+          "direccion": "negativo",
+          "intensidad": "moderada",
+          "tendencia": "no_dice",
+          "cita": "el ruido en la noche, la música, a mí me cuesta concentrarme con eso"
+        },
+        {
+          "tema": "poca gente mayor",
+          "direccion": "negativo",
+          "intensidad": "leve",
+          "tendencia": "no_dice",
+          "cita": "Ojalá hubiera más gente de mi edad"
+        }
+      ],
+      "emocion": "alegria",
+      "propone": null
+    },
+    "h09": {
+      "temas": [
+        {
+          "tema": "límite de uso de la API",
+          "direccion": "negativo",
+          "intensidad": "moderada",
+          "tendencia": "no_dice",
+          "cita": "a las tres de la mañana nos empezó a tirar error de límite, rate limit, y estuvimos como dos horas pensando que era nuestro código"
+        },
+        {
+          "tema": "créditos de la organización",
+          "direccion": "positivo",
+          "intensidad": "moderada",
+          "tendencia": "no_dice",
+          "cita": "Después nos pasaron créditos de otra cosa, gracias a los de la organización que se movieron rápido, eso sí"
+        },
+        {
+          "tema": "calidad de las respuestas tras cambiar backend",
+          "direccion": "negativo",
+          "intensidad": "moderada",
+          "tendencia": "empeora",
+          "cita": "las respuestas son más cortas y más tontas, no sé"
+        },
+        {
+          "tema": "demo y pitch",
+          "direccion": "neutro",
+          "intensidad": null,
+          "tendencia": "no_dice",
+          "cita": "No sé si eso es bueno o malo pa la demo. A lo mejor nadie se da cuenta."
+        }
+      ],
+      "emocion": "duda",
+      "propone": null
+    },
+    "h10": {
+      "temas": [
+        {
+          "tema": "disfrute de la hackatón",
+          "direccion": "positivo",
+          "intensidad": "fuerte",
+          "tendencia": "mejora",
+          "cita": "esta vez lo estoy disfrutando mucho más"
+        },
+        {
+          "tema": "presión por ganar",
+          "direccion": "negativo",
+          "intensidad": "moderada",
+          "tendencia": "mejora",
+          "cita": "el año pasado vine muy enfocado en ganar y lo pasé mal, estaba todo el rato mirando lo que hacían los otros equipos y comparándome"
+        },
+        {
+          "tema": "proyecto técnico y datos",
+          "direccion": "positivo",
+          "intensidad": "fuerte",
+          "tendencia": "no_dice",
+          "cita": "técnicamente es súper entretenido porque los datos son un desastre"
+        },
+        {
+          "tema": "equipo de trabajo",
+          "direccion": "positivo",
+          "intensidad": "fuerte",
+          "tendencia": "no_dice",
+          "cita": "Y nos llevamos increíble"
+        },
+        {
+          "tema": "duchas",
+          "direccion": "negativo",
+          "intensidad": "moderada",
+          "tendencia": "no_dice",
+          "cita": "las duchas, o sea no hay duchas po, y después de treinta y tantas horas igual se nota"
+        },
+        {
+          "tema": "comida",
+          "direccion": "positivo",
+          "intensidad": "moderada",
+          "tendencia": "no_dice",
+          "cita": "el almuerzo de ayer estaba buenísimo, el de hoy medio frío pero bien"
+        },
+        {
+          "tema": "mentores",
+          "direccion": "positivo",
+          "intensidad": "moderada",
+          "tendencia": "mejora",
+          "cita": "El tema de los mentores encuentro que mejoró harto respecto al año pasado"
+        },
+        {
+          "tema": "ruido nocturno",
+          "direccion": "negativo",
+          "intensidad": "leve",
+          "tendencia": "no_dice",
+          "cita": "que alguien le diga al del equipo de la mesa del fondo que deje de poner reguetón a las seis de la mañana"
+        }
+      ],
+      "emocion": "alegria",
+      "propone": "Habilitar duchas para los participantes"
+    },
+    "h11": {
+      "temas": [
+        {
+          "tema": "salud y resfriado",
+          "direccion": "negativo",
+          "intensidad": "fuerte",
+          "tendencia": "no_dice",
+          "cita": "Me resfrié el viernes en la noche... hoy tengo fiebre creo."
+        },
+        {
+          "tema": "frío en el sector",
+          "direccion": "negativo",
+          "intensidad": "moderada",
+          "tendencia": "no_dice",
+          "cita": "hacía un frío terrible en el sector donde nos tocó, al lado de la puerta que la abrían cada dos minutos"
+        },
+        {
+          "tema": "comida vegana",
+          "direccion": "mixto",
+          "intensidad": null,
+          "tendencia": "mejora",
+          "cita": "las primeras dos comidas no había nada para mí... después sí apareció algo, unas lentejas, que estaban ricas, pero tuve que andar preguntando"
+        },
+        {
+          "tema": "equipo",
+          "direccion": "positivo",
+          "intensidad": "leve",
+          "tendencia": "no_dice",
+          "cita": "El equipo bien, no tengo nada contra ellos"
+        },
+        {
+          "tema": "rendimiento en el hackatón",
+          "direccion": "negativo",
+          "intensidad": "fuerte",
+          "tendencia": "no_dice",
+          "cita": "yo no estoy rindiendo nada, me siento culpable"
+        },
+        {
+          "tema": "salir antes del pitch",
+          "direccion": "neutro",
+          "intensidad": null,
+          "tendencia": "no_dice",
+          "cita": "Probablemente me vaya a la casa antes del pitch, no sé, depende de cómo esté en un rato."
+        }
+      ],
+      "emocion": "frustracion",
+      "propone": null
+    },
+    "h12": {
+      "temas": [
+        {
+          "tema": "equipos con código previo",
+          "direccion": "negativo",
+          "intensidad": "moderada",
+          "tendencia": "no_dice",
+          "cita": "Hay equipos que claramente traían el código hecho"
+        },
+        {
+          "tema": "desventaja de partir de cero",
+          "direccion": "negativo",
+          "intensidad": "leve",
+          "tendencia": "no_dice",
+          "cita": "nosotros partimos de cero, de verdad de cero, con un create vite nomás"
+        },
+        {
+          "tema": "lugar del evento",
+          "direccion": "positivo",
+          "intensidad": "leve",
+          "tendencia": "no_dice",
+          "cita": "el lugar es bonito"
+        },
+        {
+          "tema": "atención de la organización",
+          "direccion": "positivo",
+          "intensidad": "moderada",
+          "tendencia": "no_dice",
+          "cita": "la gente de la organización muy atenta, nos ayudaron con un tema de un enchufe que no funcionaba y llegaron al tiro"
+        },
+        {
+          "tema": "aprendizaje de convex",
+          "direccion": "positivo",
+          "intensidad": "moderada",
+          "tendencia": "no_dice",
+          "cita": "aprendí harto de Convex, que no lo conocía, eso fue lo mejor técnicamente"
+        }
+      ],
+      "emocion": "molestia",
+      "propone": "Que los jurados revisen los commits para verificar el trabajo realizado durante la hackatón"
+    },
+    "h13": {
+      "temas": [
+        {
+          "tema": "mentores de startups",
+          "direccion": "positivo",
+          "intensidad": "fuerte",
+          "tendencia": "no_dice",
+          "cita": "me gustó mucho el tema de los mentores que vinieron de startups de verdad"
+        },
+        {
+          "tema": "consejo sobre cobrar",
+          "direccion": "positivo",
+          "intensidad": "moderada",
+          "tendencia": "no_dice",
+          "cita": "sin eso no era un producto era un hobby"
+        },
+        {
+          "tema": "descanso y sueño",
+          "direccion": "negativo",
+          "intensidad": "moderada",
+          "tendencia": "no_dice",
+          "cita": "dormimos poco obvio yo dormí debajo de la mesa con el polerón de almohada"
+        },
+        {
+          "tema": "comida",
+          "direccion": "mixto",
+          "intensidad": null,
+          "tendencia": "no_dice",
+          "cita": "hartas pizzas demasiadas pizzas quizás, el sushi del sábado eso sí estaba bueno"
+        },
+        {
+          "tema": "audio de la charla de apertura",
+          "direccion": "negativo",
+          "intensidad": "leve",
+          "tendencia": "no_dice",
+          "cita": "el audio de la charla de apertura no se escuchaba nada atrás entonces no cachamos bien las reglas de entrega"
+        },
+        {
+          "tema": "experiencia general",
+          "direccion": "positivo",
+          "intensidad": "fuerte",
+          "tendencia": "no_dice",
+          "cita": "la experiencia en la plata nos jack ha sido buena o sea súper buena, recomendaría"
+        }
+      ],
+      "emocion": "satisfaccion",
+      "propone": null
+    },
+    "h14": {
+      "temas": [
+        {
+          "tema": "ambiente de la hackatón",
+          "direccion": "mixto",
+          "intensidad": null,
+          "tendencia": "no_dice",
+          "cita": "ver a tanta gente tan buena junta da como susto y ganas al mismo tiempo"
+        },
+        {
+          "tema": "nivel técnico propio",
+          "direccion": "negativo",
+          "intensidad": "moderada",
+          "tendencia": "no_dice",
+          "cita": "Me siento un poco atrás de los demás, como que todos hablan de herramientas que yo ni conocía"
+        },
+        {
+          "tema": "costo del pasaje",
+          "direccion": "negativo",
+          "intensidad": "leve",
+          "tendencia": "no_dice",
+          "cita": "el pasaje me salió caro"
+        },
+        {
+          "tema": "difusión de la beca de viaje",
+          "direccion": "negativo",
+          "intensidad": "moderada",
+          "tendencia": "no_dice",
+          "cita": "la beca de viaje me enteré tarde que existía, ojalá la difundan más en regiones"
+        },
+        {
+          "tema": "decisión de participar",
+          "direccion": "positivo",
+          "intensidad": "fuerte",
+          "tendencia": "no_dice",
+          "cita": "Pero no me arrepiento para nada"
+        }
+      ],
+      "emocion": "satisfaccion",
+      "propone": "Difundir la beca de viaje con más anticipación y más en regiones"
+    },
+    "h15": {
+      "temas": [
+        {
+          "tema": "producto",
+          "direccion": "positivo",
+          "intensidad": "leve",
+          "tendencia": "no_dice",
+          "cita": "El producto está, está casi listo"
+        },
+        {
+          "tema": "pitch",
+          "direccion": "negativo",
+          "intensidad": "fuerte",
+          "tendencia": "mejora",
+          "cita": "lo que me tiene mal es el pitch"
+        },
+        {
+          "tema": "hablar en público",
+          "direccion": "negativo",
+          "intensidad": "moderada",
+          "tendencia": "no_dice",
+          "cita": "yo no hablo bien, hablo harto que es distinto"
+        },
+        {
+          "tema": "equipo",
+          "direccion": "positivo",
+          "intensidad": "moderada",
+          "tendencia": "no_dice",
+          "cita": "el equipo bien"
+        },
+        {
+          "tema": "comida",
+          "direccion": "positivo",
+          "intensidad": "leve",
+          "tendencia": "no_dice",
+          "cita": "la comida bien"
+        },
+        {
+          "tema": "ambiente del fin de semana",
+          "direccion": "positivo",
+          "intensidad": "leve",
+          "tendencia": "no_dice",
+          "cita": "El resto del fin de semana ha sido entretenido"
+        }
+      ],
+      "emocion": "preocupacion",
+      "propone": null
+    }
+  }
+}
