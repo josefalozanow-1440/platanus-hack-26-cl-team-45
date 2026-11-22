@@ -65,8 +65,8 @@ Proyección (solo pitch, por decidir): que el sistema también elija la mejor fo
 - 22-nov: al lado de extraer (Opus low) y agrupar corre `analizar` (Haiku medium, una fila en `analisis` por respuesta con temas libres, dirección, intensidad, tendencia, emoción y propuesta) y `normalizar` (junta esos temas en `topicos` neutros de la encuesta). Cuesta ~0,3 ¢ más por respuesta.
 - 22-nov: agrupar y normalizar pasan a Haiku low para que el mapa se actualice más rápido (~15 s desde que entra un texto, antes ~22 s). Sin eval de calidad, solo tiempos (`evals/hackaton/latencia.ts`).
 - 22-nov: pitch y descripción de la entrega reenfocados en encuestas de opinión con respuestas continuas, como alternativa a Cadem y Criteria. La ronda 2 cruzada sale de la descripción y del pitch. Se dice "un audio, como en WhatsApp", porque hoy se responde en la web.
+- 22-nov: pantalla de tópicos en `/<slug>/voces` (blob 3D, un eje por tópico, un punto por persona, propuestas y emociones). Lee `encuestas.topicos`; necesita que el deployment de Convex tenga esa query.
 
 ## Pendientes
-- **Visualizar los tópicos.** La query `encuestas.topicos({ slug })` ya entrega, por tópico, personas, cuántas positivas, negativas, mixtas y neutras, cuántas dicen que mejoró o empeoró, y las citas por persona; además la lista de propuestas y las emociones. Falta decidir cómo se ve (barras por tópico al lado del mapa, lista de propuestas).
 
 ## Lo que dijeron mentores/jueces

@@ -45,6 +45,7 @@ const Lienzo = memo(() => (
         <h1 id="pregunta">Audem</h1>
         <div className="total"><span className="num" id="total">0</span><span>personas</span></div>
         <a className="boton" href={`/${SLUG}/flujo`}>Ver flujo</a>
+        <a className="boton" href={`/${SLUG}/voces`}>Ver tópicos</a>
       </header>
       <main>
         <section id="mapa">
