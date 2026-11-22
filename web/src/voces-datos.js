@@ -1,0 +1,101 @@
+// Voces data layer: any poll → one shape the blob can draw, plus readings computed from the data.
+// Pure functions, no DOM (checked by voces-datos.check.js).
+import { tono, plural } from './comun.js';
+
+const TONO_DIR = { positivo: 'pos', negativo: 'neg', mixto: 'neu', neutro: 'neu' };
+const FUERZA = { leve: 0.33, moderada: 0.66, fuerte: 1 };
+const contar = (celdas, t) => celdas.filter(c => c.tono === t).length;
+const eje = (id, nombre, celdas) => ({ id, nombre, celdas, personas: celdas.length, pos: contar(celdas, 'pos'), neu: contar(celdas, 'neu'), neg: contar(celdas, 'neg') });
+
+// encuestas.topicos: one axis per neutral topic, one cell per person with the stance Haiku read.
+export function desdeTopicos(d) {
+  return {
+    pregunta: d.pregunta, casos: d.analizadas, fuente: 'topicos',
+    ejes: d.topicos.map(k => eje(k.id, k.nombre, k.celdas.map(c => ({
+      id: c.respuestaId, tono: TONO_DIR[c.direccion] ?? 'neu', postura: c.direccion, tendencia: c.tendencia,
+      fuerza: Math.max(0.33, ...c.temas.map(t => FUERZA[t.intensidad] ?? 0.33)), citas: c.temas.map(t => t.cita),
+    })))),
+    propuestas: d.propuestas.map(p => p.texto),
+    emociones: d.emociones,
+  };
+}
+
+// encuestas.mapa: one axis per stance group; a person's cell joins their phrases there (good + bad together = neu, like mixto).
+export function desdeMapa(d) {
+  const ejes = d.clusters.map(c => {
+    const porPersona = new Map();
+    for (const f of d.frases.filter(f => f.cluster_id === c.id)) {
+      if (!porPersona.has(f.respuesta_id)) porPersona.set(f.respuesta_id, []);
+      porPersona.get(f.respuesta_id).push(f);
+    }
+    return eje(c.id, c.nombre, [...porPersona].map(([id, fs]) => {
+      const ts = new Set(fs.map(f => tono(f.emocion)));
+      const t = ts.has('pos') && ts.has('neg') ? 'neu' : ts.has('pos') ? 'pos' : ts.has('neg') ? 'neg' : 'neu';
+      return { id, tono: t, postura: { pos: 'positivo', neg: 'negativo', neu: 'neutro o mixto' }[t], tendencia: 'no_dice',
+        fuerza: Math.max(...fs.map(f => f.intensidad)), citas: fs.map(f => f.cita) };
+    }));
+  });
+  // Emotion per person (not per phrase): each answer counts each of its emotions once.
+  const emo = {};
+  for (const id of new Set(d.frases.map(f => f.respuesta_id)))
+    for (const e of new Set(d.frases.filter(f => f.respuesta_id === id).map(f => f.emocion))) emo[e] = (emo[e] ?? 0) + 1;
+  return {
+    pregunta: d.pregunta, casos: d.total_participantes, fuente: 'mapa', ejes,
+    propuestas: [], emociones: Object.entries(emo).map(([emocion, n]) => ({ emocion, n })).sort((a, b) => b.n - a.n),
+  };
+}
+
+// Prefer tópicos (de qué se habla + postura); fall back to the map groups while tópicos is missing or empty.
+export function elegir(topicos, mapa) {
+  const t = topicos instanceof Error ? null : topicos, m = mapa instanceof Error ? null : mapa;
+  if (t?.topicos?.length) return desdeTopicos(t);
+  if (m?.clusters?.length) return desdeMapa(m);
+  if (topicos === null || mapa === null) return null;    // a query that runs and finds no poll answers null
+  return { pregunta: t?.pregunta ?? m?.pregunta, casos: 0, fuente: 'vacio', ejes: [], propuestas: [], emociones: [] };
+}
+
+export const clave = (ejeId, celdaId) => `${ejeId}|${celdaId}`;
+
+// Readings for any question. Each one says which dots to light (claves), which axes, and optional threads between dots.
+export function lecturas(v, max = 6) {
+  const ejes = v.ejes.slice(0, max);
+  if (!ejes.length) return [];
+  const out = [];
+  const de = (e, filtro = () => true) => e.celdas.filter(filtro).map(c => clave(e.id, c.id));
+  const pct = n => v.casos ? ` (${Math.round(n / v.casos * 100)}%)` : '';
+
+  const top = ejes[0];
+  out.push({ titulo: 'Lo más mencionado', ejes: [top.id], claves: de(top),
+    texto: `${top.nombre}: ${plural(top.personas, 'persona', 'personas')} de ${v.casos}${pct(top.personas)}. ${top.pos} pos · ${top.neu} neu · ${top.neg} neg.` });
+
+  const dividido = ejes.filter(e => e.pos && e.neg).sort((a, b) => Math.min(b.pos, b.neg) - Math.min(a.pos, a.neg))[0];
+  if (dividido) out.push({ titulo: 'Donde hay división', ejes: [dividido.id], claves: de(dividido, c => c.tono !== 'neu'),
+    texto: `${dividido.nombre}: ${dividido.pos} lo ven bien y ${dividido.neg} lo ven mal.` });
+
+  const critico = ejes.filter(e => e.neg).sort((a, b) => b.neg - a.neg || b.neg / b.personas - a.neg / a.personas)[0];
+  if (critico) out.push({ titulo: 'Lo que más molesta', ejes: [critico.id], claves: de(critico, c => c.tono === 'neg'),
+    texto: `${critico.nombre}: ${critico.neg} de ${plural(critico.personas, 'persona', 'personas')} lo mencionan en negativo.` });
+
+  const valorado = ejes.filter(e => e.pos).sort((a, b) => b.pos - a.pos || b.pos / b.personas - a.pos / a.personas)[0];
+  if (valorado) out.push({ titulo: 'Lo mejor evaluado', ejes: [valorado.id], claves: de(valorado, c => c.tono === 'pos'),
+    texto: `${valorado.nombre}: ${valorado.pos} de ${plural(valorado.personas, 'persona', 'personas')} lo mencionan en positivo.` });
+
+  // The pair of axes that most people talk about together; threads join each person's two dots.
+  let par = null;
+  for (let i = 0; i < ejes.length; i++) for (let j = i + 1; j < ejes.length; j++) {
+    const ids = new Set(ejes[i].celdas.map(c => c.id)), comunes = ejes[j].celdas.filter(c => ids.has(c.id)).map(c => c.id);
+    if (comunes.length >= 2 && (!par || comunes.length > par.comunes.length)) par = { a: ejes[i], b: ejes[j], comunes };
+  }
+  if (par) out.push({ titulo: 'Lo que va junto', ejes: [par.a.id, par.b.id],
+    claves: par.comunes.flatMap(id => [clave(par.a.id, id), clave(par.b.id, id)]),
+    hilos: par.comunes.map(id => [clave(par.a.id, id), clave(par.b.id, id)]),
+    texto: `${par.comunes.length} personas hablan de ${par.a.nombre} y de ${par.b.nombre} en la misma respuesta.` });
+
+  if (v.propuestas.length) out.push({ titulo: 'Lo que proponen', ejes: [], claves: [],
+    texto: `${plural(v.propuestas.length, 'propuesta', 'propuestas')}. Por ejemplo: «${v.propuestas[v.propuestas.length - 1]}».` });
+
+  const todas = v.ejes.flatMap(e => e.celdas), n = t => contar(todas, t);
+  out.push({ titulo: 'El tono general', ejes: [], claves: null,
+    texto: `Sumando todas las menciones: ${n('pos')} positivas, ${n('neu')} neutras o mixtas y ${n('neg')} negativas.` });
+  return out;
+}

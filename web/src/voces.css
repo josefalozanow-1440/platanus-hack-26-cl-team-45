@@ -1,44 +1,56 @@
-/* Voces: tópicos en vivo. Canvas + SVG fill the screen behind; header, card and key float above. Rules: DESIGN.md. */
+/* Voces: any poll as a blob. Canvas + SVG fill the screen behind; header and card float above. Rules: DESIGN.md. */
 body { overflow: hidden; height: 100vh; }
 #escenario, #voces { position: fixed; inset: 0; width: 100%; height: 100%; }
 #voces { pointer-events: none; user-select: none; }
 #voces .anillo { fill: none; stroke: var(--edge); stroke-width: 1.5; }
 #voces .eje { stroke: var(--edge); }
 #voces .nodo { fill: url(#g-perla); stroke: var(--edge); stroke-width: 1.5; }
-#voces text { font-family: var(--sans); font-size: var(--t-1); fill: var(--ink-2); }
-#voces text.nombre { fill: var(--ink); font-weight: 500; transition: fill .3s ease-out; }
+#voces text { font-family: var(--sans); font-size: var(--t-1); fill: var(--ink-2); transition: fill .3s ease-out, opacity .3s ease-out; }
+#voces text.nombre { fill: var(--ink); font-weight: 500; }
 #voces text.nombre.on { fill: var(--accent-ink); }
+#voces text.nombre.dim { opacity: .35; }
 #voces text.cuenta { font-family: var(--mono); fill: var(--muted); }
-#voces .punto { pointer-events: all; cursor: pointer; stroke: var(--surface); stroke-width: 1.5; }
-#voces .punto.sel { stroke: var(--ink); stroke-width: 2; }
+#voces .punto { pointer-events: all; cursor: pointer; outline: none; transition: opacity .3s ease-out; }
+#voces .punto .toque { fill: transparent; }
+#voces .punto .bola { stroke: var(--surface); stroke-width: 1.5; }
+#voces .punto.sel .bola, #voces .punto:focus-visible .bola { stroke: var(--ink); stroke-width: 2; }
+#voces .punto.dim { opacity: .15; }
+#voces .hilo { fill: none; stroke: var(--accent-ink); stroke-width: 1.5; opacity: .6; stroke-dasharray: 1; stroke-dashoffset: 1; animation: trazo .3s ease-out forwards; }
+@keyframes trazo { to { stroke-dashoffset: 0; } }
 
-header { position: relative; z-index: 1; display: flex; align-items: center; gap: var(--s3) var(--s5); padding: var(--s5) var(--s6) 0; flex-wrap: wrap; justify-content: flex-start; text-align: left; max-width: none; }
+header { position: relative; z-index: 1; display: flex; align-items: center; gap: var(--s3) var(--s5); padding: var(--s5) var(--s6) 0; flex-wrap: wrap; justify-content: flex-start; text-align: left; max-width: calc(100% - 420px); margin: 0; }
 h1 { margin: 0; font-size: clamp(var(--t2), 2.4vw, var(--t4)); font-weight: 600; line-height: 1.15; letter-spacing: -0.015em; }
-nav { display: flex; gap: var(--s2); }
+.total { display: flex; align-items: baseline; gap: var(--s2); color: var(--ink-2); font-size: var(--t-1); }
+.total .num { font-size: var(--t2); color: var(--ink); font-weight: 500; }
+nav { display: flex; gap: var(--s2); flex-wrap: wrap; }
+.modos { display: inline-flex; gap: var(--s1); }
+.clave-fila { flex-basis: 100%; margin: 0; display: flex; flex-wrap: wrap; gap: var(--s1) var(--s4); font-size: var(--t-1); color: var(--ink-2); }
+.clave { display: inline-flex; align-items: center; gap: var(--s2); }
 
-#tarjeta { position: fixed; z-index: 1; right: var(--s5); top: 96px; bottom: 72px; width: 380px; overflow: auto; display: flex; flex-direction: column; gap: var(--s4);
+#tarjeta { position: fixed; z-index: 1; right: var(--s5); top: var(--s5); bottom: var(--s5); width: 380px; overflow: auto; display: flex; flex-direction: column; gap: var(--s4);
   background: var(--surface); border-radius: 12px; padding: var(--s4) var(--s5); box-shadow: var(--card); }
-#tarjeta:empty { display: none; }
 .bloque h2 { margin: 0 0 var(--s2); font-size: var(--t-1); font-weight: 500; color: var(--accent-ink); display: flex; align-items: center; gap: var(--s2); flex-wrap: wrap; }
-.bloque h2 .num { color: var(--muted); }
+.bloque h2 .num { color: var(--muted); font-weight: 400; }
 .persona q { display: block; font-size: var(--t0); line-height: 1.45; margin-bottom: var(--s2); }
 .persona .cuenta { margin: 0 0 var(--s2); font-size: var(--t-1); color: var(--muted); }
-.persona button { margin-top: var(--s1); }
+.lectura .titulo { margin: 0; font-size: var(--t1); font-weight: 600; line-height: 1.25; }
+.lectura p { margin: var(--s1) 0 var(--s3); line-height: 1.45; }
+.pasos { display: flex; align-items: center; gap: var(--s3); }
+.barra { flex: 1; height: 3px; background: var(--line); border-radius: 2px; overflow: hidden; }
+.barra i { display: block; height: 100%; background: var(--accent-ink); transition: width .3s ease-out; }
 .propuestas, .emociones { list-style: none; margin: 0; padding: 0; }
 .propuestas li { padding: var(--s2) 0; border-top: 1px solid var(--line); font-size: var(--t-1); line-height: 1.45; }
 .propuestas li:first-child { border-top: 0; padding-top: 0; }
 .emociones { display: flex; flex-wrap: wrap; gap: var(--s2) var(--s4); font-size: var(--t-1); }
 .emociones li { display: inline-flex; align-items: center; gap: var(--s2); }
 .emociones .num { color: var(--muted); }
-.vacio { margin: 0; color: var(--ink-2); font-size: var(--t-1); }
+.vacio { margin: 0 0 var(--s3); color: var(--ink-2); font-size: var(--t-1); }
+.metodo { margin: auto 0 0; padding-top: var(--s3); border-top: 1px solid var(--line); font-family: var(--mono); font-size: var(--t-1); color: var(--muted); line-height: 1.5; }
 
-footer { position: fixed; z-index: 1; left: 0; right: 420px; bottom: var(--s4); display: flex; flex-wrap: wrap; justify-content: center; gap: var(--s1) var(--s5); align-items: center; font-size: var(--t-1); color: var(--ink-2); padding: 0 var(--s5); }
-.clave { display: inline-flex; align-items: center; gap: var(--s2); }
-.metodo { flex-basis: 100%; text-align: center; font-family: var(--mono); color: var(--muted); }
-
-/* Narrow: blob on top, card as a bottom sheet, key hidden behind it (the card carries the tones). */
+/* Narrow: blob on top, card as a bottom sheet. */
 @media (max-width: 999px) {
-  header { padding: var(--s4) var(--s4) 0; }
-  #tarjeta { left: var(--s4); right: var(--s4); top: auto; bottom: var(--s4); width: auto; max-height: 34vh; }
-  footer { display: none; }
+  header { padding: var(--s4) var(--s4) 0; max-width: none; gap: var(--s2) var(--s3); }
+  nav button, nav a.boton { min-height: 32px; padding: 0 var(--s3); font-size: var(--t-1); }
+  .clave-fila .clave:last-child { display: none; }   /* the card's persona line and the method note carry it */
+  #tarjeta { left: var(--s4); right: var(--s4); top: auto; bottom: var(--s4); width: auto; max-height: 36vh; }
 }
